@@ -61,12 +61,14 @@ img {
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.navbar .logo {
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+
+.navbar .logo img {
+  height: 40px;       /* Adjust as needed */
+  width: auto;        /* Maintain aspect ratio */
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
+
 
 .navbar ul {
   list-style: none;
