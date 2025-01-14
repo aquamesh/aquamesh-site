@@ -11,6 +11,11 @@
   --secondary-color: #f97316; /* Accent color (orange-ish) */
   --dark-color: #1e293b;      /* Dark text color */
   --light-color: #f8fafc;     /* Light background color */
+  --gradient-hero: linear-gradient(
+      to right,
+      rgba(3, 105, 161, 0.9),
+      rgba(249, 115, 22, 0.9)
+    ); /* For a gradient effect over hero image */
   --body-font: "Montserrat", sans-serif;
 }
 
@@ -37,9 +42,7 @@ img {
   display: block;
 }
 
-/* -----------------------------------
-  UTILITY CLASSES
--------------------------------------- */
+/* Container utility */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -60,29 +63,29 @@ img {
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-
-
 .navbar .logo img {
-  height: 40px;       /* Adjust as needed */
-  width: auto;        /* Maintain aspect ratio */
+  height: 40px;
+  width: auto;
   margin-right: 0.5rem;
   vertical-align: middle;
 }
-
-
+.navbar .logo span {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
 .navbar ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
-
 .navbar a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
-
 .navbar a:hover {
   color: var(--secondary-color);
 }
@@ -92,21 +95,28 @@ img {
 -------------------------------------- */
 .hero {
   min-height: 80vh;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.4), 
-      rgba(0, 0, 0, 0.4)
-    ),
-    url("https://via.placeholder.com/1600x900") 
-      center/cover no-repeat;
+  background: 
+    var(--gradient-hero),
+    url("https://via.placeholder.com/1600x900") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   padding: 2rem;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+  opacity: 0.4; /* Overlay on top of hero image */
 }
 
 .hero-content {
+  position: relative; /* So it sits above the overlay */
   padding: 2rem;
   border-radius: 8px;
   max-width: 700px;
@@ -119,14 +129,13 @@ img {
   margin-bottom: 1rem;
   font-weight: 700;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
-
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
-
 .hero button {
   background-color: var(--secondary-color);
   color: #fff;
@@ -135,11 +144,11 @@ img {
   cursor: pointer;
   font-size: 1rem;
   border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
 .hero button:hover {
   background-color: #d65f13; /* Darker orange on hover */
+  transform: scale(1.05);
 }
 
 /* Simple fade-down animation */
@@ -155,6 +164,24 @@ img {
 }
 
 /* -----------------------------------
+  CTA BUTTON (GLOBAL CLASS)
+-------------------------------------- */
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.cta-button:hover {
+  background-color: #d65f13;
+  transform: scale(1.04);
+}
+
+/* -----------------------------------
   CORE HIGHLIGHTS
 -------------------------------------- */
 .core-highlights {
@@ -165,7 +192,6 @@ img {
   padding: 2rem 0;
   background-color: #f1f5f9;
 }
-
 .highlight-card {
   background: #fff;
   flex: 1 1 200px;
@@ -175,20 +201,18 @@ img {
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .highlight-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-
 .highlight-card h3 {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
   color: var(--primary-color);
   font-weight: 600;
 }
-
 .highlight-card p {
   font-size: 0.95rem;
   color: #475569;
@@ -265,6 +289,11 @@ section ul {
   background: #fff;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
 }
 .product-card h3 {
   color: var(--secondary-color);
@@ -286,7 +315,6 @@ section ul {
   margin-bottom: 2rem;
   padding: 3rem 1rem;
 }
-
 .technology-section p {
   max-width: 800px;
   margin: 0.75rem auto 1.5rem;
@@ -314,6 +342,11 @@ section ul {
   padding: 1.5rem;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.use-case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
 }
 .use-case-card h3 {
   color: var(--secondary-color);
@@ -339,6 +372,7 @@ section ul {
   color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 600;
 }
 .resources-section a:hover {
   color: #c65b12;
@@ -360,6 +394,11 @@ section ul {
   padding: 1.5rem;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
 }
 .blog-post h3 {
   color: var(--secondary-color);
@@ -416,10 +455,11 @@ section ul {
   cursor: pointer;
   border-radius: 5px;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .contact-section button[type="submit"]:hover {
   background-color: #02577e;
+  transform: scale(1.05);
 }
 .contact-section a {
   color: var(--secondary-color);
@@ -442,7 +482,9 @@ section ul {
   font-size: 0.95rem;
 }
 
-/* Media Queries for responsiveness */
+/* -----------------------------------
+  MEDIA QUERIES
+-------------------------------------- */
 @media screen and (max-width: 768px) {
   .navbar ul {
     gap: 1rem;
