@@ -32,30 +32,39 @@
   </section>
 
   <!-- Preorder Form Section -->
-  <section id="preorder-form" class="about-section">
-    <div class="container">
-      <h2>Secure Your AquaSpectra™</h2>
-      <p>
-        Limited quantities available. Fill out the form below to reserve your unit.
-        We’ll reach out with pricing, shipping details, and next steps.
-      </p>
-      <form id="preorder-form" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
+  <section id="preorder-form" class="form-section">
+  <div class="container">
+    <h2>Secure Your <span class="highlight">AquaSpectra™</span></h2>
+    <p>
+      Limited quantities available. Fill out the form below to reserve your unit. 
+      We’ll reach out with pricing, shipping details, and next steps.
+    </p>
+    <form id="preorder-form" method="POST" class="styled-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required />
+      </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="john.doe@example.com" required />
+      </div>
 
-        <label for="quantity">Desired Quantity:</label>
+      <div class="form-group">
+        <label for="quantity">Desired Quantity</label>
         <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required />
+      </div>
 
-        <label for="comments">Any Comments/Questions:</label>
-        <textarea id="comments" name="comments" rows="4"></textarea>
+      <div class="form-group">
+        <label for="comments">Any Comments/Questions</label>
+        <textarea id="comments" name="comments" placeholder="Let us know any specific details..." rows="4"></textarea>
+      </div>
 
-        <button type="submit">Preorder Now</button>
-      </form>
-    </div>
-  </section>
+      <button type="submit" class="form-button">Preorder Now</button>
+    </form>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer class="footer">
