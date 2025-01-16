@@ -306,3 +306,87 @@ footer a:hover {
   margin-bottom: 0.5rem;
 }
 
+/* -----------------------------------
+  FORM SECTION
+-------------------------------------- */
+.form-section {
+  background-color: #f9fafb;
+  padding: 3rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.form-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.form-section .highlight {
+  color: var(--secondary-color);
+}
+
+.form-section p {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+.styled-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 4px rgba(3, 105, 161, 0.2);
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-button:hover {
+  background-color: #d65f13;
+  transform: translateY(-2px);
+}
+
