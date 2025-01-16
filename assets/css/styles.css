@@ -1,0 +1,154 @@
+/* -----------------------------------
+  GOOGLE FONT IMPORT
+-------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+/* -----------------------------------
+  COLOR & FONT VARIABLES
+-------------------------------------- */
+:root {
+  --primary-color: #0369a1;   /* Vibrant primary color (blue-ish) */
+  --secondary-color: #f97316; /* Accent color (orange-ish) */
+  --dark-color: #1e293b;      /* Dark text color */
+  --light-color: #f8fafc;     /* Light background color */
+  --gradient-hero: linear-gradient(
+      to right,
+      rgba(3, 105, 161, 0.9),
+      rgba(249, 115, 22, 0.9)
+    ); /* Gradient for hero section */
+  --body-font: "Montserrat", sans-serif;
+}
+
+/* -----------------------------------
+  GLOBAL STYLES
+-------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* -----------------------------------
+  NAVBAR
+-------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .logo img {
+  height: 40px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--secondary-color);
+}
+
+/* -----------------------------------
+  HERO SECTION
+-------------------------------------- */
+.hero {
+  min-height: 80vh;
+  background: var(--gradient-hero), 
+              url("https://via.placeholder.com/1600x900") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 700px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #d65f13;
+  transform: scale(1.04);
+}
+
+/* -----------------------------------
+  FORM SECTION
+-------------------------------------- */
+.about-section {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom:
