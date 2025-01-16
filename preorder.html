@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Preorder AquaSpectra™ | AquaMesh</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">
-      <!-- If you have a logo image, place it here -->
       <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo" />
     </div>
     <nav>
@@ -23,7 +22,7 @@
     </nav>
   </header>
 
-  <!-- Hero Section for Preorder -->
+  <!-- Hero Section -->
   <section class="hero preorder-hero">
     <div class="hero-content">
       <h1>Preorder <span style="color: var(--secondary-color)">AquaSpectra™</span></h1>
@@ -37,10 +36,10 @@
     <div class="container">
       <h2>Secure Your AquaSpectra™</h2>
       <p>
-        Limited quantities available. Fill out the form below to reserve your unit. 
+        Limited quantities available. Fill out the form below to reserve your unit.
         We’ll reach out with pricing, shipping details, and next steps.
       </p>
-      <form action="#" method="POST" style="max-width: 500px; margin: 2rem auto;">
+      <form id="preorder-form" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required />
 
@@ -53,19 +52,4 @@
         <label for="comments">Any Comments/Questions:</label>
         <textarea id="comments" name="comments" rows="4"></textarea>
 
-        <button type="submit" style="margin-top: 1.5rem;">Preorder Now</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© <span id="year"></span> AquaMesh. All Rights Reserved.</p>
-  </footer>
-
-  <!-- Optional JavaScript for dynamic year -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+        <button type="submit">Preorder Now</button>
