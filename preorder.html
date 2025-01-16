@@ -36,34 +36,37 @@
   <div class="container">
     <h2>Secure Your <span class="highlight">AquaSpectra™</span></h2>
     <p>
-      Limited quantities available. Fill out the form below to reserve your unit. 
-      We’ll reach out with pricing, shipping details, and next steps.
+      Limited quantities available. Reserve your unit today and join the future of water quality monitoring.
     </p>
-    <form id="preorder-form" method="POST" class="styled-form">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required />
+    <form id="preorder-form" method="POST" class="modern-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="john.doe@example.com" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="quantity">Desired Quantity</label>
+          <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required />
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="john.doe@example.com" required />
+        <label for="comments">Comments or Questions</label>
+        <textarea id="comments" name="comments" placeholder="Let us know if you have any specific requirements..."></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="quantity">Desired Quantity</label>
-        <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required />
-      </div>
-
-      <div class="form-group">
-        <label for="comments">Any Comments/Questions</label>
-        <textarea id="comments" name="comments" placeholder="Let us know any specific details..." rows="4"></textarea>
-      </div>
-
-      <button type="submit" class="form-button">Preorder Now</button>
+      <button type="submit" class="primary-button">Preorder Now</button>
     </form>
   </div>
 </section>
+
 
 
   <!-- Footer -->
