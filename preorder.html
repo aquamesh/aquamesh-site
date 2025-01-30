@@ -110,7 +110,7 @@
       const quantity = document.getElementById("quantity").value;
 
       try {
-        const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session", {
+        const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, quantity }),
