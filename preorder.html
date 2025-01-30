@@ -1,24 +1,121 @@
-document.querySelector('#preorder-form').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent form submission
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preorder AquaSpectra™ | AquaMesh</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="preorder.html" class="active">Preorder</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    const email = document.getElementById('email').value;
-    const quantity = document.getElementById('quantity').value;
+  <!-- Hero Section -->
+  <section class="hero preorder-hero">
+    <div class="hero-content">
+      <h1>Preorder <span class="highlight">AquaSpectra™</span></h1>
+      <p>Be among the first to experience the next-generation water quality probe.</p>
+      <a class="cta-button" href="#preorder-form">Reserve Now</a>
+    </div>
+  </section>
 
-    try {
-        const response = await fetch('https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, quantity }),
+  <!-- Preorder Form Section -->
+  <section id="preorder-form" class="form-section">
+    <div class="container">
+      <h2>Secure Your <span class="highlight">AquaSpectra™</span></h2>
+      <p>
+        Limited quantities available. Reserve your unit today and join the future of water quality monitoring.
+      </p>
+      <form id="preorderForm" class="modern-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="quantity">Desired Quantity</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Comments or Questions</label>
+          <textarea id="comments" name="comments" placeholder="Let us know if you have any specific requirements..."></textarea>
+        </div>
+
+        <button type="submit" class="primary-button">Preorder Now</button>
+      </form>
+      
+      <!-- Success Message -->
+      <p id="success-message" class="hidden-message">Redirecting to checkout...</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© <span id="year"></span> AquaMesh. All Rights Reserved. 
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms and Conditions</a>
+    </p>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>We use cookies to enhance your experience. By continuing to visit this site, you accept our 
+      <a href="privacy.html">Privacy Policy</a>.
+    </p>
+    <button id="accept-cookies">Accept</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/scripts.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Handle Cookie Banner
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+      document.getElementById('accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+    });
+
+    // API Gateway Preorder Submission
+    document.getElementById("preorderForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const quantity = document.getElementById("quantity").value;
+
+      try {
+        const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, quantity }),
         });
 
         const data = await response.json();
         if (data.url) {
-            window.location.href = data.url; // Redirect to Stripe Checkout
-        } else {
-            alert('Failed to create checkout session.');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    }
-});
+          document.getElementById("success-message").classList.remove("hidde
