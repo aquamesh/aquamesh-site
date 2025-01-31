@@ -35,9 +35,8 @@
   <section id="preorder-form" class="form-section">
     <div class="container">
       <h2>Secure Your <span class="highlight">AquaSpectra™</span></h2>
-      <p>
-        Limited quantities available. Reserve your unit today and join the future of water quality monitoring.
-      </p>
+      <p>Limited quantities available. Reserve your unit today and join the future of water quality monitoring.</p>
+      
       <form id="preorderForm" class="modern-form">
         <div class="form-row">
           <div class="form-group">
@@ -63,10 +62,9 @@
         </div>
 
         <button type="submit" class="primary-button">Preorder Now</button>
+        <p id="loading-message" class="hidden-message">Processing order...</p>
+        <p id="success-message" class="hidden-message">Redirecting to checkout...</p>
       </form>
-      
-      <!-- Success Message -->
-      <p id="success-message" class="hidden-message">Redirecting to checkout...</p>
     </div>
   </section>
 
@@ -106,10 +104,16 @@
     document.getElementById("preorderForm").addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const quantity = document.getElementById("quantity").value;
-      const name = document.getElementById("name").value;
       const comments = document.getElementById("comments").value;
+
+      const loadingMessage = document.getElementById("loading-message");
+      const successMessage = document.getElementById("success-message");
+
+      // Show loading message
+      loadingMessage.classList.remove("hidden-message");
 
       try {
         const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session", {
@@ -119,8 +123,10 @@
         });
 
         const data = await response.json();
+        loadingMessage.classList.add("hidden-message"); // Hide loading
+
         if (data.url) {
-          document.getElementById("success-message").classList.remove("hidden-message");
+          successMessage.classList.remove("hidden-message");
           window.location.href = data.url; // Redirect to Stripe Checkout
         } else {
           alert("Something went wrong! Please try again.");
@@ -128,8 +134,23 @@
       } catch (error) {
         console.error("Error:", error);
         alert("Failed to process order. Please try again later.");
+        loadingMessage.classList.add("hidden-message"); // Hide loading on error
       }
     });
   </script>
+
+  <style>
+    .hidden-message {
+      display: none;
+      font-size: 14px;
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    #loading-message {
+      color: blue;
+    }
+  </style>
 </body>
 </html>
