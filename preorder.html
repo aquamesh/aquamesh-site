@@ -108,14 +108,28 @@
 
       const email = document.getElementById("email").value;
       const quantity = document.getElementById("quantity").value;
+      const name = document.getElementById("name").value;
+      const comments = document.getElementById("comments").value;
 
       try {
-        const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/", {
+        const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, quantity }),
+          body: JSON.stringify({ name, email, quantity, comments }),
         });
 
         const data = await response.json();
         if (data.url) {
-          document.getElementById("success-message").classList.remove("hidde
+          document.getElementById("success-message").classList.remove("hidden-message");
+          window.location.href = data.url; // Redirect to Stripe Checkout
+        } else {
+          alert("Something went wrong! Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to process order. Please try again later.");
+      }
+    });
+  </script>
+</body>
+</html>
