@@ -114,6 +114,9 @@
         const quantity = Number(quantityValue); // Convert to a number
         const comments = document.getElementById("comments").value.trim();
 
+        // Debug: log the captured values
+        console.log("Email:", email, "Quantity:", quantityValue);
+
         // Basic validation: check if required fields are present
         if (!email || !quantityValue) {
           console.error("Email and Quantity are required.");
