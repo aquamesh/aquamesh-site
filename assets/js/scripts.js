@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Uncomment and update the following line with your actual authentication URL
-  // authenticateUser();
-
   // Preorder form handler (only attach if the form exists)
   const preorderForm = document.querySelector('#preorder-form');
   if (preorderForm) {
@@ -23,32 +20,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-// Function to authenticate the user (update the URL before enabling)
-/*function authenticateUser() {
-  // Replace the placeholder URL with your actual authentication endpoint URL
-  const authUrl = 'https://your-authentication-endpoint.example.com/authenticate';
-
-  fetch(authUrl, {
-    method: 'GET',
-    credentials: 'include', // include cookies/credentials in the request
-    headers: {
-      'Content-Type': 'application/json',
-      // Uncomment and set your Authorization header if needed:
-      // 'Authorization': 'Bearer YOUR_TOKEN_HERE'
-    }
-  })
-  .then(response => {
-    if (response.status === 401) {
-      console.error('Authentication failed: Unauthorized (401). Please check your credentials or login status.');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Authentication data:', data);
-    // You can add further handling here if needed.
-  })
-  .catch(error => {
-    console.error('Authentication fetch error:', error);
-  });
-}*/
