@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Cookie banner not found.");
   }
 
-  // Preorder Form Handler
+  // Preorder Form Handler with Stripe Checkout Integration
   const preorderForm = document.getElementById("preorder-form");
   if (preorderForm) {
     console.log("Preorder form found. Attaching submit event listener.");
-    preorderForm.addEventListener("submit", (event) => {
+    preorderForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       console.log("Preorder form submitted.");
 
@@ -48,9 +48,44 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Captured Values:", { name, email, quantity, comments });
 
       if (name && email && quantity) {
-        alert(`Thank you, ${name}! Your preorder for ${quantity} AquaSpectra™ unit(s) has been received.`);
-        preorderForm.reset();
-        console.log("Form reset after successful submission.");
+        // Optionally, show a loading message:
+        document.getElementById("loading-message").style.display = "block";
+
+        // Build the payload
+        const payload = { name, email, quantity, comments };
+
+        try {
+          // Call your backend endpoint that creates a Stripe checkout session
+          const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to create checkout session.");
+          }
+
+          const data = await response.json();
+          console.log("Response data:", data);
+
+          // Optionally hide the loading message
+          document.getElementById("loading-message").style.display = "none";
+
+          if (data.url) {
+            // Redirect to Stripe Checkout
+            console.log("Redirecting to Stripe Checkout:", data.url);
+            window.location.href = data.url;
+          } else {
+            alert("Unexpected response: no checkout URL returned.");
+            console.error("No checkout URL returned in response.");
+          }
+        } catch (error) {
+          // Optionally hide the loading message
+          document.getElementById("loading-message").style.display = "none";
+          alert("Error processing your order: " + error.message);
+          console.error("Error:", error);
+        }
       } else {
         alert('Please fill in all required fields.');
         console.log("Form submission blocked: missing required fields.");
