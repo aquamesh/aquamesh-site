@@ -6,7 +6,7 @@
   <title>Preorder AquaSpectra™ | AquaMesh</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    /* Ensure that the message elements are hidden by default */
+    /* Ensure messages are hidden */
     .hidden-message {
       display: none !important;
       font-size: 14px;
@@ -71,9 +71,9 @@
         </div>
 
         <button type="submit" class="primary-button">Preorder Now</button>
-        <p id="loading-message" class="hidden-message" style="display: none;">Processing order...</p>
-        <p id="success-message" class="hidden-message" style="display: none;">Redirecting to checkout...</p>
-        <p id="error-message" class="hidden-message" style="display: none;">Failed to process order. Please try again later.</p>
+        <p id="loading-message" class="hidden-message">Processing order...</p>
+        <p id="success-message" class="hidden-message">Redirecting to checkout...</p>
+        <p id="error-message" class="hidden-message">Failed to process order. Please try again later.</p>
       </form>
     </div>
   </section>
@@ -94,7 +94,7 @@
     <button id="accept-cookies">Accept</button>
   </div>
 
-  <!-- External Script with cache busting -->
+  <!-- Reference External Script with a version query string -->
   <script src="assets/js/scripts.js?v=4"></script>
 </body>
 </html>
