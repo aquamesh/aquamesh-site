@@ -93,6 +93,18 @@
       // Set the current year in the footer
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      // Debug: log the existence of key elements
+      const form = document.getElementById("preorder-form");
+      console.log("Form element:", form);
+      const nameInput = document.getElementById("name");
+      console.log("Name input:", nameInput);
+      const emailInput = document.getElementById("email");
+      console.log("Email input:", emailInput);
+      const quantityInput = document.getElementById("quantity");
+      console.log("Quantity input:", quantityInput);
+      const commentsInput = document.getElementById("comments");
+      console.log("Comments input:", commentsInput);
+
       // Handle Cookie Banner
       if (!localStorage.getItem('cookiesAccepted')) {
         document.getElementById('cookie-banner').style.display = 'block';
@@ -103,19 +115,18 @@
       });
 
       // API Gateway Preorder Submission
-      const form = document.getElementById("preorder-form");
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         // Retrieve and process input values
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const quantityValue = document.getElementById("quantity").value;
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const quantityValue = quantityInput.value;
         const quantity = Number(quantityValue); // Convert to a number
-        const comments = document.getElementById("comments").value.trim();
+        const comments = commentsInput.value.trim();
 
         // Debug: log the captured values
-        console.log("Email:", email, "Quantity:", quantityValue);
+        console.log("Captured Values - Name:", name, "Email:", email, "Quantity:", quantityValue, "Comments:", comments);
 
         // Basic validation: check if required fields are present
         if (!email || !quantityValue) {
