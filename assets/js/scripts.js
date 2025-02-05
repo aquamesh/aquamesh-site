@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Call the authentication endpoint on page load
-  authenticateUser();
+  // Uncomment and update the following line with your actual authentication URL
+  // authenticateUser();
 
   // Preorder form handler (only attach if the form exists)
   const preorderForm = document.querySelector('#preorder-form');
@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Function to authenticate the user
-function authenticateUser() {
-  // Replace with your actual authentication endpoint URL
+// Function to authenticate the user (update the URL before enabling)
+/*function authenticateUser() {
+  // Replace the placeholder URL with your actual authentication endpoint URL
   const authUrl = 'https://your-authentication-endpoint.example.com/authenticate';
 
   fetch(authUrl, {
@@ -51,4 +51,4 @@ function authenticateUser() {
   .catch(error => {
     console.error('Authentication fetch error:', error);
   });
-}
+}*/
