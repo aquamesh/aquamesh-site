@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Preorder AquaSpectra™ | AquaMesh</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Optional: Inline CSS to force hidden messages -->
+  <style>
+    .hidden-message {
+      display: none !important;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -62,9 +71,10 @@
         </div>
 
         <button type="submit" class="primary-button">Preorder Now</button>
-        <p id="loading-message" class="hidden-message">Processing order...</p>
-        <p id="success-message" class="hidden-message">Redirecting to checkout...</p>
-        <p id="error-message" class="hidden-message">Failed to process order. Please try again later.</p>
+        <!-- Inline style added to guarantee these messages are hidden by default -->
+        <p id="loading-message" class="hidden-message" style="display: none;">Processing order...</p>
+        <p id="success-message" class="hidden-message" style="display: none;">Redirecting to checkout...</p>
+        <p id="error-message" class="hidden-message" style="display: none;">Failed to process order. Please try again later.</p>
       </form>
     </div>
   </section>
@@ -85,7 +95,7 @@
     <button id="accept-cookies">Accept</button>
   </div>
 
-  <!-- External Script (version query added for cache busting) -->
+  <!-- External Script with versioning for cache busting -->
   <script src="assets/js/scripts.js?v=3"></script>
 </body>
 </html>
