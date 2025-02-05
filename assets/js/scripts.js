@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem('cookiesAccepted')) {
       cookieBanner.style.display = 'block';
     }
-    const acceptCookiesButton = document.getElementById('accept-cookies');
+    const acceptCookiesButton = document.getElementById("accept-cookies");
     if (acceptCookiesButton) {
       acceptCookiesButton.addEventListener('click', () => {
         localStorage.setItem('cookiesAccepted', 'true');
@@ -36,6 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Form Values:", { name, email, quantity, comments });
 
       if (name && email && quantity) {
+        // Hide any previous messages
+        document.getElementById("loading-message").style.display = "none";
+        document.getElementById("success-message").style.display = "none";
+        document.getElementById("error-message").style.display = "none";
+        
+        // Display a success alert and reset the form
         alert(`Thank you, ${name}! Your preorder for ${quantity} AquaSpectra™ unit(s) has been received.`);
         preorderForm.reset();
       } else {
