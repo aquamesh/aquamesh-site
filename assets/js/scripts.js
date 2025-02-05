@@ -1,7 +1,10 @@
+// Log to confirm the JS file is loaded
+console.log("scripts.js loaded");
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
-  // Set the current year in the footer
+  // Set current year
   const yearElement = document.getElementById("year");
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
@@ -35,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       console.log("Preorder form submitted");
 
-      // Retrieve and trim input values
+      // Retrieve form values
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const quantity = document.getElementById("quantity").value.trim();
@@ -44,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Captured Values:", { name, email, quantity, comments });
 
       if (name && email && quantity) {
-        // For demonstration, we use alert
         alert(`Thank you, ${name}! Your preorder for ${quantity} AquaSpectra™ unit(s) has been received.`);
         preorderForm.reset();
       } else {
