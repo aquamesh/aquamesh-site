@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM fully loaded and parsed");
+
   // Set the current year in the footer
   const yearElement = document.getElementById("year");
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
+  } else {
+    console.error("Year element not found");
   }
 
   // Handle Cookie Banner
@@ -17,7 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem('cookiesAccepted', 'true');
         cookieBanner.style.display = 'none';
       });
+    } else {
+      console.error("Accept Cookies button not found");
     }
+  } else {
+    console.error("Cookie banner not found");
   }
 
   // Preorder Form Handler
@@ -25,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (preorderForm) {
     preorderForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      console.log("Preorder form submitted");
 
       // Retrieve and trim input values
       const name = document.getElementById("name").value.trim();
@@ -32,21 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const quantity = document.getElementById("quantity").value.trim();
       const comments = document.getElementById("comments").value.trim();
 
-      // Debug log (optional)
-      console.log("Form Values:", { name, email, quantity, comments });
+      console.log("Captured Values:", { name, email, quantity, comments });
 
       if (name && email && quantity) {
-        // Hide any previous messages
-        document.getElementById("loading-message").style.display = "none";
-        document.getElementById("success-message").style.display = "none";
-        document.getElementById("error-message").style.display = "none";
-        
-        // Display a success alert and reset the form
+        // For demonstration, we use alert
         alert(`Thank you, ${name}! Your preorder for ${quantity} AquaSpectra™ unit(s) has been received.`);
         preorderForm.reset();
       } else {
         alert('Please fill in all required fields.');
       }
     });
+  } else {
+    console.error("Preorder form not found");
   }
 });
