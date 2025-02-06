@@ -1,3 +1,8 @@
+// Quick fix: If the URL ends with success.html or cancel.html, redirect to preorder.html.
+if (window.location.pathname.endsWith("success.html") || window.location.pathname.endsWith("cancel.html")) {
+  window.location.href = "preorder.html";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and external script is executing.");
 
