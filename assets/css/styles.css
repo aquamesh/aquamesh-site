@@ -1,23 +1,24 @@
 /* -----------------------------------
   GOOGLE FONT IMPORT
--------------------------------------- */
+----------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
 /* -----------------------------------
   COLOR & FONT VARIABLES
--------------------------------------- */
+----------------------------------- */
 :root {
-  --primary-color: #0369a1;   /* Vibrant primary color (blue-ish) */
-  --secondary-color: #f97316; /* Accent color (orange-ish) */
-  --dark-color: #1e293b;      /* Dark text color */
-  --light-color: #f8fafc;     /* Light background color */
-  --gradient-hero: linear-gradient(135deg, #00c6ff, #0072ff); /* Modern hero gradient */
-  --body-font: "Montserrat", sans-serif;
+  --primary-color: #0369a1;      /* Dark blue */
+  --secondary-color: #f97316;    /* Vivid orange */
+  --accent-color: #0072ff;       /* Accent blue */
+  --dark-color: #1e293b;
+  --light-color: #f8fafc;
+  --body-font: 'Montserrat', sans-serif;
+  --gradient-hero: linear-gradient(135deg, #00c6ff, #0072ff);
 }
 
 /* -----------------------------------
   GLOBAL STYLES
--------------------------------------- */
+----------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -32,333 +33,307 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  margin: 1rem 0 0.5rem;
-  line-height: 1.3;
-}
-
-p {
-  margin: 0.5rem 0 1rem;
-  line-height: 1.8;
-  color: #475569;
-}
-
-ul {
-  margin: 0.5rem 0 1rem;
-  padding-left: 1.5rem;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
+/* -----------------------------------
+  CONTAINER
+----------------------------------- */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* -----------------------------------
   NAVBAR
--------------------------------------- */
+----------------------------------- */
 .navbar {
+  background-color: var(--primary-color);
+  padding: 1rem 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
+}
+.navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-color);
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
-
 .navbar .logo img {
-  height: 40px;
+  height: 50px;
 }
-
-.navbar ul {
+.navbar nav ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
-
-.navbar a {
+.navbar nav ul li a {
   color: #fff;
-  text-decoration: none;
   font-weight: 600;
+  padding: 0.5rem 0.75rem;
   transition: color 0.3s ease;
 }
-
-.navbar a:hover {
+.navbar nav ul li a:hover,
+.navbar nav ul li a.active {
   color: var(--secondary-color);
+}
+.navbar nav ul li a.cta {
+  background: var(--secondary-color);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
 }
 
 /* -----------------------------------
   HERO SECTION
--------------------------------------- */
+----------------------------------- */
 .hero {
+  position: relative;
   min-height: 80vh;
-  background: var(--gradient-hero), url("assets/images/hero-bg.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 2rem;
   color: #fff;
+  text-align: center;
+  background: var(--gradient-hero);
 }
-
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
 .hero-content {
-  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
   padding: 2rem;
-  border-radius: 8px;
   max-width: 700px;
-  margin: 0 auto;
 }
-
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
-
 .hero p {
   font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.cta-button {
-  padding: 0.75rem 1.5rem;
-  background-color: var(--secondary-color);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.cta-button:hover {
-  background-color: #d65f13;
-  transform: scale(1.04);
-}
-
-/* -----------------------------------
-  SECTION STYLES & CONTAINERS
--------------------------------------- */
-section {
-  padding: 2rem 1rem;
-}
-
-/* Modern section container with light shadow */
-.about-section,
-.products-section,
-.use-cases-section,
-.resources-section,
-.technology-section,
-.contact-section {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  text-align: center;
-}
-
-.about-section h2,
-.products-section h2,
-.use-cases-section h2,
-.resources-section h2,
-.technology-section h2,
-.contact-section h2 {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-/* -----------------------------------
-  GRID & CARD STYLES
--------------------------------------- */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.product-card,
-.use-case-card {
-  background: #f9fafb;
-  padding: 1.5rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover,
-.use-case-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* -----------------------------------
-  ABOUT SECTION DETAILS
--------------------------------------- */
-.about-section ul {
-  text-align: left;
-  margin-top: 1rem;
-  padding-left: 1.5rem;
-}
-
-.about-section ul li {
-  margin-bottom: 0.5rem;
-}
-
-/* -----------------------------------
-  FORM SECTION
--------------------------------------- */
-.form-section {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  padding: 3rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  text-align: center;
-}
-
-.form-section h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-.form-section .highlight {
-  color: var(--secondary-color);
-}
-
-.form-section p {
-  font-size: 1rem;
-  color: #6b7280;
   margin-bottom: 2rem;
 }
-
-/* -----------------------------------
-  FORM STYLING
--------------------------------------- */
-.modern-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-row {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.form-group {
-  flex: 1;
-  min-width: 48%;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 0.9rem;
-  font-size: 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: #f9fafb;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--primary-color);
-  background: #fff;
-  box-shadow: 0 0 6px rgba(3, 105, 161, 0.2);
-}
-
-textarea {
-  resize: none;
-  min-height: 120px;
-}
-
-/* -----------------------------------
-  BUTTONS
--------------------------------------- */
-.primary-button {
-  padding: 1rem 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+.btn {
+  background-color: var(--secondary-color);
   color: #fff;
-  background: var(--secondary-color);
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
 }
-
-.primary-button:hover {
-  background: #d65f13;
+.btn:hover {
+  background-color: #d65f13;
   transform: translateY(-3px);
 }
 
 /* -----------------------------------
-  FOOTER
--------------------------------------- */
-footer.footer {
-  background-color: var(--primary-color);
-  color: #fff;
+  FEATURES SECTION
+----------------------------------- */
+.features {
+  padding: 3rem 0;
+  background-color: #fff;
   text-align: center;
+}
+.features .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+}
+.feature {
+  flex: 1 1 300px;
   padding: 1rem;
-  margin-top: 2rem;
+}
+.feature h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+.feature p {
+  font-size: 1rem;
+  color: #475569;
 }
 
-footer a {
-  color: var(--secondary-color);
-  text-decoration: none;
+/* -----------------------------------
+  PRODUCTS SECTION
+----------------------------------- */
+.products {
+  padding: 3rem 0;
+  background-color: var(--light-color);
+  text-align: center;
+}
+.products h2 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.product-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.product-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+.product-card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+/* -----------------------------------
+  TESTIMONIAL SECTION
+----------------------------------- */
+.testimonial {
+  padding: 3rem 0;
+  background-color: #f1f5f9;
+  text-align: center;
+  font-style: italic;
+}
+.testimonial blockquote {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.testimonial .author {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+/* -----------------------------------
+  CONTACT SECTION
+----------------------------------- */
+.contact-section {
+  padding: 3rem 0;
+  background: #fff;
+  text-align: center;
+}
+.contact-section form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact-section label {
   font-weight: 600;
+  color: var(--primary-color);
+}
+.contact-section input,
+.contact-section textarea {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: var(--light-color);
+}
+.contact-section button {
+  padding: 0.75rem;
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.contact-section button:hover {
+  background: var(--secondary-color);
+}
+
+/* -----------------------------------
+  FOOTER
+----------------------------------- */
+.footer {
+  background-color: var(--dark-color);
+  color: #aaa;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+}
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.footer ul li a {
+  color: var(--secondary-color);
   transition: color 0.3s ease;
 }
-
-footer a:hover {
+.footer ul li a:hover {
   color: #c65b12;
 }
 
 /* -----------------------------------
+  COOKIE BANNER
+----------------------------------- */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  z-index: 999;
+}
+#cookie-banner a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+#cookie-banner button {
+  background: var(--secondary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+/* -----------------------------------
   MEDIA QUERIES
--------------------------------------- */
+----------------------------------- */
 @media screen and (max-width: 768px) {
-  .navbar ul {
+  .navbar .container {
+    flex-direction: column;
     gap: 1rem;
   }
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   .hero p {
     font-size: 1rem;
   }
-  section h2 {
-    font-size: 1.75rem;
-  }
-  .products-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .features .container {
+    flex-direction: column;
   }
 }
