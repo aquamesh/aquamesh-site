@@ -139,7 +139,7 @@ body {
 ----------------------------------- */
 .features {
   padding: 3rem 0;
-  background: #fff;
+  background-color: #fff;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -165,7 +165,7 @@ body {
 ----------------------------------- */
 .products {
   padding: 3rem 0;
-  background: var(--light-color);
+  background-color: var(--light-color);
   text-align: center;
 }
 .products h2 {
@@ -179,7 +179,7 @@ body {
   gap: 2rem;
 }
 .product-card {
-  background: #fff;
+  background-color: #fff;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -206,7 +206,7 @@ body {
 ----------------------------------- */
 .testimonial {
   padding: 3rem 0;
-  background: #f1f5f9;
+  background-color: #f1f5f9;
   text-align: center;
   font-style: italic;
 }
@@ -226,7 +226,7 @@ body {
 ----------------------------------- */
 .contact-section {
   padding: 3rem 0;
-  background: #fff;
+  background-color: #fff;
   text-align: center;
 }
 .contact-section form {
@@ -246,12 +246,12 @@ body {
   border: 1px solid #d1d5db;
   border-radius: 4px;
   font-size: 1rem;
-  background: var(--light-color);
+  background-color: var(--light-color);
 }
 .contact-section button {
   padding: 0.75rem;
   border: none;
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   color: #fff;
   font-size: 1rem;
   border-radius: 4px;
@@ -259,14 +259,79 @@ body {
   transition: background 0.3s;
 }
 .contact-section button:hover {
-  background: var(--secondary-color);
+  background-color: var(--secondary-color);
+}
+
+/* -----------------------------------
+  FORM STYLING (Modern Form)
+----------------------------------- */
+.modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.form-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.form-group {
+  flex: 1;
+  min-width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group textarea {
+  padding: 0.9rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  background: #fff;
+  box-shadow: 0 0 6px rgba(3, 105, 161, 0.2);
+}
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* -----------------------------------
+  BUTTONS
+----------------------------------- */
+.primary-button {
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.primary-button:hover {
+  background-color: #d65f13;
+  transform: translateY(-3px);
 }
 
 /* -----------------------------------
   FOOTER
 ----------------------------------- */
 .footer {
-  background: var(--dark-color);
+  background-color: var(--dark-color);
   color: #aaa;
   text-align: center;
   padding: 1.5rem 0;
@@ -298,7 +363,7 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   color: #fff;
   padding: 1rem;
   text-align: center;
@@ -309,7 +374,7 @@ body {
   text-decoration: underline;
 }
 #cookie-banner button {
-  background: var(--secondary-color);
+  background-color: var(--secondary-color);
   border: none;
   padding: 0.5rem 1rem;
   color: #fff;
@@ -331,7 +396,10 @@ body {
   .hero p {
     font-size: 1.25rem;
   }
-  .features {
+  .features .container {
     flex-direction: column;
+  }
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
