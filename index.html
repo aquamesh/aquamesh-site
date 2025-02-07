@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | AquaMesh</title>
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Link to external stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -22,7 +25,7 @@
         <li><a href="resources.html">Resources</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="preorder.html" style="color: var(--secondary-color)">Preorder</a></li>
+        <li><a href="preorder.html" class="preorder-link">Preorder</a></li>
       </ul>
     </nav>
   </header>
@@ -42,15 +45,15 @@
     <div class="products-grid">
       <div class="product-card">
         <h3>AquaSpectra™</h3>
-        <p>Compact design, 16+ optical parameters.</p>
+        <p>Compact design with 16+ optical parameters.</p>
       </div>
       <div class="product-card">
         <h3>AquaSync™</h3>
-        <p>USB/Bluetooth adapter for any environment.</p>
+        <p>Seamless USB/Bluetooth connectivity for any environment.</p>
       </div>
       <div class="product-card">
         <h3>AquaView™</h3>
-        <p>Real-time monitoring, GIS mapping, AI analytics.</p>
+        <p>Real-time monitoring with GIS mapping and AI analytics.</p>
       </div>
       <div class="product-card">
         <h3>AquaLink™</h3>
@@ -63,7 +66,8 @@
   <section class="about-section container">
     <h2>About Us</h2>
     <p>
-      AquaMesh began as an AP Research project, evolving into a UCSD startup focused on sustainability, public health, and innovative water quality solutions.
+      AquaMesh began as an AP Research project and evolved into a pioneering startup at UCSD.
+      We focus on sustainability, public health, and innovative water quality solutions that empower communities and industries alike.
     </p>
     <ul>
       <li><strong>Mission:</strong> Provide accessible, accurate, and scalable water monitoring solutions.</li>
@@ -71,76 +75,39 @@
     </ul>
   </section>
 
-  <!-- Products -->
-  <section id="products" class="products-section">
-    <h2>Our Products</h2>
-
-    <article class="product-card">
-      <h3>AquaSpectra™ Sensor Probe</h3>
-      <p>Our flagship sensor. Measures over 16 optical parameters using a compact design that cuts costs by $27,000 compared to traditional systems.</p>
-      <ul>
-        <li>Size: 8" x 2"</li>
-        <li>Range: 0–10,000 NTU</li>
-        <li>Accuracy: ±0.01 NTU</li>
-      </ul>
-    </article>
-
-    <article class="product-card">
-      <h3>AquaSync™ Adapter</h3>
-      <p>Rugged USB/Bluetooth connectivity for lab and field use. Seamlessly integrates with AquaSpectra™ for quick data transfers.</p>
-    </article>
-
-    <article class="product-card">
-      <h3>AquaLink™ Hub</h3>
-      <p>Multi-network connectivity hub with extendable mesh range, perfect for large-scale or remote locations.</p>
-    </article>
-
-    <article class="product-card">
-      <h3>AquaView™ Dashboard</h3>
-      <p>Real-time water quality monitoring with GIS mapping, AI-driven analytics, and easy data sharing across platforms.</p>
-    </article>
-  </section>
-
-  <!-- Technology -->
-  <section id="technology" class="technology-section">
+  <!-- Technology Section -->
+  <section id="technology" class="technology-section container">
     <h2>Technology</h2>
     <p>
-      AquaMesh combines cutting-edge optical sensing with secure mesh networking to provide 
-      real-time, high-fidelity data. Our patent-pending <strong>MagWipe™ cleaning technology</strong> 
-      ensures each sensor stays free from biofouling, reducing maintenance intervals.
+      We combine advanced optical sensing with secure mesh networking to deliver real-time, high-fidelity water quality data.
+      Our innovative <strong>MagWipe™ cleaning technology</strong> ensures sensors remain clear, reducing maintenance and ensuring accuracy.
     </p>
     <ul>
-      <li><strong>Optical Sensing:</strong> Advanced photometric and spectrographic measurements.</li>
-      <li><strong>Mesh Networking:</strong> Automatic node discovery and self-healing links.</li>
-      <li><strong>Cloud Analytics:</strong> Scalable storage and AI insights.</li>
+      <li><strong>Optical Sensing:</strong> High-precision photometric and spectrographic measurements.</li>
+      <li><strong>Mesh Networking:</strong> Self-healing, automated node discovery.</li>
+      <li><strong>Cloud Analytics:</strong> Scalable storage and AI-driven insights.</li>
     </ul>
   </section>
 
-  <!-- Use Cases -->
-  <section id="use-cases" class="use-cases-section">
+  <!-- Use Cases Section -->
+  <section id="use-cases" class="use-cases-section container">
     <h2>Use Cases</h2>
     <div class="use-case-card">
       <h3>Urban Water Monitoring</h3>
-      <p>
-        Real-time data for city water departments to ensure compliance and safety.
-      </p>
+      <p>Empowering city water departments with real-time, accurate data for safety and compliance.</p>
     </div>
     <div class="use-case-card">
       <h3>Rural & Underserved Communities</h3>
-      <p>
-        Low-cost, scalable solutions that empower communities to monitor well water or local streams.
-      </p>
+      <p>Affordable solutions bringing advanced water monitoring to remote areas.</p>
     </div>
     <div class="use-case-card">
-      <h3>Industrial & Environmental Compliance</h3>
-      <p>
-        Continuous monitoring to meet strict environmental standards and reduce risk of contamination events.
-      </p>
+      <h3>Industrial Compliance</h3>
+      <p>Continuous monitoring to meet strict environmental standards and reduce risk.</p>
     </div>
   </section>
 
-  <!-- Resources -->
-  <section id="resources" class="resources-section">
+  <!-- Resources Section -->
+  <section id="resources" class="resources-section container">
     <h2>Resources</h2>
     <ul>
       <li><a href="#">Download Product Catalog (PDF)</a></li>
@@ -149,30 +116,30 @@
     </ul>
   </section>
 
-  <!-- Blog/Updates -->
-  <section id="blog" class="blog-section">
+  <!-- Blog Section -->
+  <section id="blog" class="blog-section container">
     <h2>Blog & Updates</h2>
     <article class="blog-post">
       <h3>Innovation in Water Quality</h3>
-      <p>Latest breakthroughs in optical sensing for real-time monitoring.</p>
+      <p>Exploring the latest breakthroughs in optical sensing and real-time monitoring.</p>
       <a href="#">Read More</a>
     </article>
     <article class="blog-post">
-      <h3>Climate Challenges & Water Solutions</h3>
-      <p>How AquaMesh addresses drought and contamination issues globally.</p>
+      <h3>Climate Challenges & Solutions</h3>
+      <p>How AquaMesh is addressing global water scarcity and contamination issues.</p>
       <a href="#">Read More</a>
     </article>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="contact-section">
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section container">
     <h2>Contact Us</h2>
     <form action="#" method="post">
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required>
 
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email" required>
 
       <label for="message">Message:</label>
       <textarea id="message" name="message" rows="5" required></textarea>
@@ -180,7 +147,6 @@
       <button type="submit">Send Message</button>
     </form>
     <p>Or reach us at: <a href="mailto:sales@aquamesh.ai">sales@aquamesh.ai</a></p>
-    <!-- Optional: map iframe or static image here -->
   </section>
 
   <!-- Footer -->
@@ -188,39 +154,24 @@
     <p>© <span id="year"></span> AquaMesh. All Rights Reserved.</p>
   </footer>
 
-  <!-- Optional JavaScript for dynamic year -->
+  <!-- Cookie Banner -->
+  <div id="cookie-banner">
+    <p>We use cookies to enhance your experience. By continuing to visit this site, you accept our <a href="privacy.html">Privacy Policy</a>.</p>
+    <button id="accept-cookies">Accept</button>
+  </div>
+
+  <!-- Dynamic Year and Cookie Banner Script -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
-  
-  <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; width: 100%; background: #0369a1; color: #fff; padding: 1rem; text-align: center; z-index: 999;">
-  <p>We use cookies to enhance your experience. By continuing to visit this site, you accept our <a href="privacy.html" style="color: #f97316; text-decoration: underline;">Privacy Policy</a>.</p>
-  <button id="accept-cookies" style="background: #f97316; border: none; padding: 0.5rem 1rem; color: #fff; cursor: pointer;">Accept</button>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (!localStorage.getItem('cookiesAccepted')) {
-      document.getElementById('cookie-banner').style.display = 'block';
-    }
-    document.getElementById('accept-cookies').addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      document.getElementById('cookie-banner').style.display = 'none';
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+      document.getElementById('accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
-
-
-  <footer class="footer">
-  <p>© <span id="year"></span> AquaMesh. All Rights Reserved. 
-    <a href="privacy.html">Privacy Policy</a> | 
-    <a href="terms.html">Terms and Conditions</a>
-  </p>
-</footer>
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
 </html>
