@@ -3,173 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | AquaMesh</title>
-  <!-- Google Fonts for modern typography -->
+  <title>AquaMesh | Redefining Water Quality Monitoring</title>
+  <!-- Google Font: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Link to external stylesheet -->
+  <!-- External CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">
-      <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo">
+    <div class="container">
+      <div class="logo">
+        <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="preorder.html" class="cta">Preorder</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="technology.html">Technology</a></li>
-        <li><a href="usecases.html">Use Cases</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="preorder.html" class="preorder-link">Preorder</a></li>
-      </ul>
-    </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Redefining Water Quality Monitoring</h1>
-      <p>Compact. Cost-Effective. Scalable.</p>
-      <a class="cta-button" href="about.html">Learn More About AquaMesh</a>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1>Revolutionizing Water Quality Monitoring</h1>
+      <p>Innovative. Reliable. Sustainable.</p>
+      <a class="btn" href="about.html">Discover Our Story</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features container">
+    <div class="feature">
+      <h2>Cutting-Edge Technology</h2>
+      <p>Our advanced optical sensing and secure mesh networking deliver real-time water quality data with exceptional accuracy.</p>
+    </div>
+    <div class="feature">
+      <h2>Sustainability at Its Core</h2>
+      <p>Engineered for longevity and minimal environmental impact, our solutions ensure clean water for every community.</p>
+    </div>
+    <div class="feature">
+      <h2>Scalable Solutions</h2>
+      <p>From urban centers to rural areas, our modular system adapts to your needs—effortlessly and cost-effectively.</p>
     </div>
   </section>
 
   <!-- Products Section -->
-  <section class="products-section container">
-    <h2>Our Products</h2>
+  <section class="products container">
+    <h2>Our Innovations</h2>
     <div class="products-grid">
       <div class="product-card">
         <h3>AquaSpectra™</h3>
-        <p>Compact design with 16+ optical parameters.</p>
+        <p>Compact sensor with 16+ optical parameters for precise monitoring.</p>
+        <a class="btn" href="products.html">Learn More</a>
       </div>
       <div class="product-card">
         <h3>AquaSync™</h3>
-        <p>Seamless USB/Bluetooth connectivity for any environment.</p>
-      </div>
-      <div class="product-card">
-        <h3>AquaView™</h3>
-        <p>Real-time monitoring with GIS mapping and AI analytics.</p>
+        <p>Seamless connectivity via USB/Bluetooth for effortless data transfer.</p>
+        <a class="btn" href="products.html">Learn More</a>
       </div>
       <div class="product-card">
         <h3>AquaLink™</h3>
-        <p>Extendable mesh connectivity for remote sites.</p>
+        <p>Robust mesh network connectivity for remote and large-scale monitoring.</p>
+        <a class="btn" href="products.html">Learn More</a>
+      </div>
+      <div class="product-card">
+        <h3>AquaView™</h3>
+        <p>Real-time dashboards powered by AI-driven analytics for actionable insights.</p>
+        <a class="btn" href="products.html">Learn More</a>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about-section container">
-    <h2>About Us</h2>
-    <p>
-      AquaMesh began as an AP Research project and evolved into a pioneering startup at UCSD.
-      We focus on sustainability, public health, and innovative water quality solutions that empower communities and industries alike.
-    </p>
-    <ul>
-      <li><strong>Mission:</strong> Provide accessible, accurate, and scalable water monitoring solutions.</li>
-      <li><strong>Vision:</strong> Ensure clean water for every community.</li>
-    </ul>
-  </section>
-
-  <!-- Technology Section -->
-  <section id="technology" class="technology-section container">
-    <h2>Technology</h2>
-    <p>
-      We combine advanced optical sensing with secure mesh networking to deliver real-time, high-fidelity water quality data.
-      Our innovative <strong>MagWipe™ cleaning technology</strong> ensures sensors remain clear, reducing maintenance and ensuring accuracy.
-    </p>
-    <ul>
-      <li><strong>Optical Sensing:</strong> High-precision photometric and spectrographic measurements.</li>
-      <li><strong>Mesh Networking:</strong> Self-healing, automated node discovery.</li>
-      <li><strong>Cloud Analytics:</strong> Scalable storage and AI-driven insights.</li>
-    </ul>
-  </section>
-
-  <!-- Use Cases Section -->
-  <section id="use-cases" class="use-cases-section container">
-    <h2>Use Cases</h2>
-    <div class="use-case-card">
-      <h3>Urban Water Monitoring</h3>
-      <p>Empowering city water departments with real-time, accurate data for safety and compliance.</p>
-    </div>
-    <div class="use-case-card">
-      <h3>Rural & Underserved Communities</h3>
-      <p>Affordable solutions bringing advanced water monitoring to remote areas.</p>
-    </div>
-    <div class="use-case-card">
-      <h3>Industrial Compliance</h3>
-      <p>Continuous monitoring to meet strict environmental standards and reduce risk.</p>
-    </div>
-  </section>
-
-  <!-- Resources Section -->
-  <section id="resources" class="resources-section container">
-    <h2>Resources</h2>
-    <ul>
-      <li><a href="#">Download Product Catalog (PDF)</a></li>
-      <li><a href="#">User Manuals & FAQs</a></li>
-      <li><a href="#">Technical Support</a></li>
-    </ul>
-  </section>
-
-  <!-- Blog Section -->
-  <section id="blog" class="blog-section container">
-    <h2>Blog & Updates</h2>
-    <article class="blog-post">
-      <h3>Innovation in Water Quality</h3>
-      <p>Exploring the latest breakthroughs in optical sensing and real-time monitoring.</p>
-      <a href="#">Read More</a>
-    </article>
-    <article class="blog-post">
-      <h3>Climate Challenges & Solutions</h3>
-      <p>How AquaMesh is addressing global water scarcity and contamination issues.</p>
-      <a href="#">Read More</a>
-    </article>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section container">
-    <h2>Contact Us</h2>
-    <form action="#" method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
-    <p>Or reach us at: <a href="mailto:sales@aquamesh.ai">sales@aquamesh.ai</a></p>
+  <!-- Testimonial Section -->
+  <section class="testimonial container">
+    <blockquote>
+      "AquaMesh's technology has completely transformed our approach to water quality monitoring. It’s innovative, reliable, and truly scalable."
+    </blockquote>
+    <p class="author">– City Water Department</p>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>© <span id="year"></span> AquaMesh. All Rights Reserved.</p>
+    <div class="container">
+      <p>&copy; <span id="year"></span> AquaMesh. All Rights Reserved.</p>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
   </footer>
 
-  <!-- Cookie Banner -->
+  <!-- Optional: Cookie Banner (if desired) -->
   <div id="cookie-banner">
-    <p>We use cookies to enhance your experience. By continuing to visit this site, you accept our <a href="privacy.html">Privacy Policy</a>.</p>
+    <p>We use cookies to enhance your experience. By continuing to visit, you accept our <a href="privacy.html">Privacy Policy</a>.</p>
     <button id="accept-cookies">Accept</button>
   </div>
 
-  <!-- Dynamic Year and Cookie Banner Script -->
+  <!-- Dynamic Year and Cookie Script -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    document.addEventListener('DOMContentLoaded', () => {
-      if (!localStorage.getItem('cookiesAccepted')) {
-        document.getElementById('cookie-banner').style.display = 'block';
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!localStorage.getItem("cookiesAccepted")) {
+        document.getElementById("cookie-banner").style.display = "block";
       }
-      document.getElementById('accept-cookies').addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        document.getElementById('cookie-banner').style.display = 'none';
+      document.getElementById("accept-cookies").addEventListener("click", () => {
+        localStorage.setItem("cookiesAccepted", "true");
+        document.getElementById("cookie-banner").style.display = "none";
       });
     });
   </script>
