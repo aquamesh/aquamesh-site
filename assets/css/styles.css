@@ -3,13 +3,6 @@
 ----------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
-/* Remove underline from all heading elements */
-h1, h2, h3, h4, h5, h6 {
-  text-decoration: none;
-}
-
-
-
 /* -----------------------------------
   COLOR & FONT VARIABLES
 ----------------------------------- */
@@ -38,6 +31,11 @@ body {
   background-color: var(--light-color);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Remove underline from all headings */
+h1, h2, h3, h4, h5, h6 {
+  text-decoration: none;
 }
 
 /* -----------------------------------
