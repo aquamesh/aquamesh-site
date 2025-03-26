@@ -1,124 +1,393 @@
+<!-- index.html - AquaMesh Landing Page -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AquaMesh | Redefining Water Quality Monitoring</title>
-  <!-- Google Font: Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- External CSS -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <title>AquaMesh | IoT Water Quality Monit`ing</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <div class="logo">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
         <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo">
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="technology.html">Technology</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="preorder.html" class="cta">Preorder</a></li>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#partners">Partners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary text-white ms-3" href="#contact">Contact Us</a>
+          </li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
+  <section id="home" class="hero">
+    <div class="container">
       <h1>Transforming Water Quality Monitoring</h1>
-      <p>Precision. Innovation. Sustainability.</p>
-      <a class="btn" href="about.html">Discover Our Story</a>
+      <p>Precision sensing with advanced mesh networking technology</p>
+      <a href="#products" class="btn btn-primary">LEARN MORE</a>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features container">
-    <div class="feature">
-      <h2>Innovative Sensing</h2>
-      <p>State-of-the-art optical and spectral sensing for real‑time analysis.</p>
-    </div>
-    <div class="feature">
-      <h2>Seamless Connectivity</h2>
-      <p>Smart, self-healing mesh networking that scales with your needs.</p>
-    </div>
-    <div class="feature">
-      <h2>Actionable Insights</h2>
-      <p>Intuitive dashboards and AI‑powered analytics to drive informed decisions.</p>
-    </div>
-  </section>
-
-  <!-- Products Section -->
-  <section class="products container">
-    <h2>Our Innovations</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <h3>AquaSpectra™ Sensor Probe</h3>
-        <p>High‑precision sensor measuring 16+ parameters in a compact design.</p>
-        <a class="btn" href="products.html">Learn More</a>
-      </div>
-      <div class="product-card">
-        <h3>AquaSync™ Adapter</h3>
-        <p>Effortless USB/Bluetooth connectivity for seamless data integration.</p>
-        <a class="btn" href="products.html">Learn More</a>
-      </div>
-      <div class="product-card">
-        <h3>AquaLink™ Hub</h3>
-        <p>Robust mesh networking for connecting remote or large-scale installations.</p>
-        <a class="btn" href="products.html">Learn More</a>
-      </div>
-      <div class="product-card">
-        <h3>AquaView™ Dashboard</h3>
-        <p>Real‑time monitoring with intuitive GIS mapping and AI analytics.</p>
-        <a class="btn" href="products.html">Learn More</a>
+  <!-- Partners Section -->
+  <section id="partners" class="partners">
+    <div class="container">
+      <h2 class="section-title">Partners</h2>
+      <div class="partner-logos">
+        <img src="https://placehold.co/150x80.png" alt="Partner 1" class="partner-logo">
+        <img src="https://placehold.co/150x80.png" alt="Partner 2" class="partner-logo">
+        <img src="https://placehold.co/150x80.png" alt="Partner 3" class="partner-logo">
+        <img src="https://placehold.co/150x80.png" alt="Partner 4" class="partner-logo">
+        <img src="https://placehold.co/150x80.png" alt="Partner 5" class="partner-logo">
       </div>
     </div>
   </section>
 
-  <!-- Testimonial Section -->
-  <section class="testimonial container">
-    <blockquote>
-      "AquaMesh delivers unmatched real-time insights that empower us to manage water quality with confidence."
-    </blockquote>
-    <p class="author">– Municipal Water Authority</p>
+  <!-- About Us Section (Updated) -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About AquaMesh</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="lead">AquaMesh designs and manufactures cutting-edge water quality monitoring systems. Our
+            innovative technology combines high-precision sensing with seamless connectivity to provide
+            comprehensive water quality data.</p>
+          <p>Our mission is to revolutionize water quality monitoring through advanced technology that makes
+            data collection more efficient, accurate, and accessible than ever before.</p>
+          <h3>Our Unique Technology:</h3>
+          <ul>
+            <li><i class="fas fa-network-wired"></i> Mesh networking between sensors using LoRa technology
+            </li>
+            <li><i class="fas fa-microscope"></i> Multiple sensing capabilities (fluorescence, absorbance,
+              turbidity) in a single device</li>
+            <li><i class="fas fa-mobile-alt"></i> Intuitive web application for real-time monitoring and
+              management</li>
+            <li><i class="fas fa-brain"></i> AI-powered analytics for predictive water quality insights</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="https://placehold.co/400x600.png" alt="AquaMesh Technology" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Updated Products Section -->
+  <section id="products" class="products">
+    <div class="container">
+      <h2 class="section-title">Our Solutions</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://placehold.co/600x300.png" alt="AquaSpectra Sensor" class="product-image">
+            <div class="product-content">
+              <h3>AquaSpectra™ Sensor</h3>
+              <p class="product-description">Our flagship multi-parameter sensor featuring fluorescence,
+                absorbance, and turbidity
+                measurements in a single compact device.</p>
+              <div class="product-features">
+                <h4>Key features:</h4>
+                <ul>
+                  <li><i class="fas fa-check-circle"></i> High precision</li>
+                  <li><i class="fas fa-check-circle"></i> Low power consumption</li>
+                  <li><i class="fas fa-check-circle"></i> Extended battery life</li>
+                </ul>
+              </div>
+              <div class="product-action">
+                <a href="#" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://placehold.co/600x300.png" alt="AquaLink Hub" class="product-image">
+            <div class="product-content">
+              <h3>AquaLink™ Hub</h3>
+              <p class="product-description">The central gateway for our mesh network, facilitating
+                long-range communication between
+                sensors and seamless data transmission to the cloud.</p>
+              <div class="product-features">
+                <h4>Key features:</h4>
+                <ul>
+                  <li><i class="fas fa-check-circle"></i> LoRa connectivity</li>
+                  <li><i class="fas fa-check-circle"></i> Solar powered</li>
+                  <li><i class="fas fa-check-circle"></i> Extensive range</li>
+                </ul>
+              </div>
+              <div class="product-action">
+                <a href="#" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product-card">
+            <img src="https://placehold.co/600x300.png" alt="AquaView Platform" class="product-image">
+            <div class="product-content">
+              <h3>AquaView™ Platform</h3>
+              <p class="product-description">Comprehensive web application for monitoring, visualizing,
+                and analyzing water quality
+                data from all connected sensors.</p>
+              <div class="product-features">
+                <h4>Key features:</h4>
+                <ul>
+                  <li><i class="fas fa-check-circle"></i> Real-time alerts</li>
+                  <li><i class="fas fa-check-circle"></i> Data visualization</li>
+                  <li><i class="fas fa-check-circle"></i> Custom reporting</li>
+                </ul>
+              </div>
+              <div class="product-action">
+                <a href="#" class="btn btn-primary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section (Updated) -->
+  <section id="stats" class="stats">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="stats-item">
+            <i class="fas fa-tint"></i>
+            <h3 class="stats-number">10,000+</h3>
+            <p class="stats-text">Sensors Deployed</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="stats-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3 class="stats-number">28</h3>
+            <p class="stats-text">Countries</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="stats-item">
+            <i class="fas fa-building"></i>
+            <h3 class="stats-number">150+</h3>
+            <p class="stats-text">Enterprise Clients</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="stats-item">
+            <i class="fas fa-database"></i>
+            <h3 class="stats-number">2.5M+</h3>
+            <p class="stats-text">Data Points Daily</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section id="contact" class="cta">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow">
+            <div class="card-body p-4">
+              <form>
+                <div class="mb-3">
+                  <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                  <select class="form-select">
+                    <option selected>I'm interested in...</option>
+                    <option value="1">AquaSpectra™ Sensor</option>
+                    <option value="2">AquaLink™ Hub</option>
+                    <option value="3">AquaView™ Platform</option>
+                    <option value="4">Custom Solution</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Get in Touch</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> AquaMesh. All Rights Reserved.</p>
-      <ul>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms & Conditions</a></li>
-      </ul>
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo" class="mb-4" style="height: 40px;">
+          <p>Revolutionizing water quality monitoring with precision technology and innovative IoT solutions.
+          </p>
+          <div class="social-icons mt-3">
+            <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#home">Home</a></li>
+            <li class="mb-2"><a href="#about">About Us</a></li>
+            <li class="mb-2"><a href="#products">Products</a></li>
+            <li class="mb-2"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+          <h5>Products</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#">AquaSpectra™ Sensor</a></li>
+            <li class="mb-2"><a href="#">AquaLink™ Hub</a></li>
+            <li class="mb-2"><a href="#">AquaView™ Platform</a></li>
+            <li class="mb-2"><a href="#">Custom Solutions</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <h5>Contact</h5>
+          <address>
+            <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Tech Park, San Francisco, CA
+              94107</p>
+            <p class="mb-2"><i class="fas fa-phone me-2"></i> (123) 456-7890</p>
+            <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@aquamesh.tech</p>
+          </address>
+        </div>
+      </div>
+      <hr class="mt-4 mb-4">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2025 AquaMesh. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="privacy.html" class="me-3">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <!-- Optional: Cookie Banner -->
-  <div id="cookie-banner">
-    <p>We use cookies to enhance your experience. By continuing to visit, you accept our <a href="privacy.html">Privacy Policy</a>.</p>
-    <button id="accept-cookies">Accept</button>
-  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 
-  <!-- Dynamic Year & Cookie Banner Script -->
+  <!-- Custom JS -->
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.addEventListener("DOMContentLoaded", () => {
-      if (!localStorage.getItem("cookiesAccepted")) {
-        document.getElementById("cookie-banner").style.display = "block";
-      }
-      document.getElementById("accept-cookies").addEventListener("click", () => {
-        localStorage.setItem("cookiesAccepted", "true");
-        document.getElementById("cookie-banner").style.display = "none";
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
       });
+    });
+
+    // Place this script before the closing </body> tag
+    document.addEventListener('DOMContentLoaded', function () {
+      /**
+       * Equalizes the heights of specified elements to match the tallest one
+       * @param {string} selector - CSS selector for the elements to equalize
+       */
+      function equalizeHeights(selector) {
+        const elements = document.querySelectorAll(selector);
+        if (elements.length <= 1) return; // No need to equalize single element
+
+        // Reset heights first (important for resize events)
+        elements.forEach(el => {
+          el.style.height = 'auto';
+        });
+
+        // Find the tallest element
+        let maxHeight = 0;
+        elements.forEach(el => {
+          const height = el.offsetHeight;
+          if (height > maxHeight) {
+            maxHeight = height;
+          }
+        });
+
+        // Set all elements to the tallest height
+        elements.forEach(el => {
+          el.style.height = maxHeight + 'px';
+        });
+
+        // Debug log (optional)
+        // console.log(`Equalized ${selector} to ${maxHeight}px`);
+      }
+
+      /**
+       * Equalizes all card elements that need consistent heights
+       */
+      function equalizeAllCardElements() {
+        // Equalize product titles
+        equalizeHeights('.product-content h3');
+
+        // Equalize product descriptions
+        equalizeHeights('.product-description');
+
+        // Equalize feature sections
+        equalizeHeights('.product-features');
+
+        // Optionally equalize the feature lists themselves
+        // equalizeHeights('.product-features ul');
+      }
+
+      // Run on page load
+      equalizeAllCardElements();
+
+      // Run on window resize with debounce for performance
+      let resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(equalizeAllCardElements, 250);
+      });
+
+      // Optional: Run again after images are loaded, as this can affect layout
+      window.addEventListener('load', equalizeAllCardElements);
     });
   </script>
 </body>
+
 </html>

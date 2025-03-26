@@ -1,0 +1,728 @@
+/* assets/css/style.css - Global Styles */
+@media (max-width: 992px) and (min-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
+    }
+}
+
+.navbar .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+.navbar .btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(10, 147, 150, 0.3);
+}
+
+:root {
+    --primary-color: #0a9396;
+    --secondary-color: #005f73;
+    --accent-color: #94d2bd;
+    --light-color: #e9f5f5;
+    --dark-color: #001219;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* padding: 1rem 0; */
+    transition: all 0.3s ease;
+}
+
+.navbar-scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark-color) !important;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(0, 95, 115, 0.9), rgba(0, 18, 25, 0.8)),
+        url('https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Add wave transition to hero section */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+}
+
+.hero .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(10, 147, 150, 0.4);
+}
+
+/* Global Section Styling with Consistent Backgrounds */
+section {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: left;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+
+/* Partners Section */
+/* Partners Section - White Background with Subtle Pattern */
+.partners {
+    background-color: white;
+    position: relative;
+}
+
+/* Add wave transition to partners section (white to light) */
+.partners::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23e9f5f5' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* About Section - Light Background */
+.about {
+    background-color: var(--light-color);
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(10, 147, 150, 0.08));
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 0;
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+.about .section-title {
+    margin-bottom: 3rem;
+}
+
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text .lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.about-text h3 {
+    color: var(--secondary-color);
+    margin: 2.5rem 0 1.5rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.about-text ul {
+    padding-left: 0;
+    list-style: none;
+    margin-top: 2rem;
+}
+
+/* Make bullet point text stand out more */
+.about-text li {
+    /* text-align: justify; Justify text for better readability */
+    margin-bottom: 2rem;
+    /* Increased spacing between items */
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    font-weight: 500;
+    /* Medium weight for better visibility */
+    font-size: 1.1rem;
+    /* Slightly larger text */
+    color: var(--dark-color);
+    /* Darker text color for contrast */
+}
+
+/* Stronger hover effect */
+.about-text li:hover {
+    transform: translateX(8px);
+    /* Increased movement on hover */
+}
+
+/* Make icons consistent size */
+.about-text li i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    /* Standardized width */
+    height: 60px;
+    /* Standardized height */
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 12px;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    /* Standardized font size */
+    box-shadow: 0 6px 15px rgba(10, 147, 150, 0.25);
+    transition: all 0.3s ease;
+    text-align: center;
+    flex-shrink: 0;
+    /* Prevents icon from shrinking */
+}
+
+/* More prominent icon hover effect */
+.about-text li:hover i {
+    transform: scale(1.15);
+    background-color: var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(0, 95, 115, 0.5);
+    /* Stronger shadow */
+}
+
+/* Update to the about-image class in assets/css/style.css */
+.about-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Added to vertically center the image */
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.about-image img {
+    width: 400px;
+    /* Changed from 100% to fixed width */
+    height: 600px;
+    /* Added fixed height */
+    object-fit: cover;
+    /* This ensures the image covers the area without distortion */
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 15px 30px rgba(0, 18, 25, 0.1);
+    transition: all 0.5s ease;
+}
+
+.about-image:hover img {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 18, 25, 0.15);
+}
+
+/* Also update the media query to maintain image dimensions on smaller screens */
+@media (max-width: 992px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-image {
+        margin-top: 3rem;
+    }
+
+    .about-image::before {
+        top: 20px;
+        right: 20px;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 4rem 0;
+    }
+
+    .about::before {
+        width: 0;
+    }
+
+    .about-text li i {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Products Section */
+/* Products Section - White Background */
+.products {
+    background-color: white;
+    position: relative;
+}
+
+/* Update products transition to match the wave style */
+.products::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23e9f5f5' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+/* Updated Product Card Styles */
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.product-content h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    /* This helps with vertical centering */
+    /* No fixed height - the JS will handle this */
+}
+
+.product-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex-grow: 0;
+    height: auto;
+    /* Allow text to display fully */
+    overflow: visible;
+    /* Show all text */
+}
+
+.product-features {
+    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    flex-grow: 0;
+    /* Changed from 1 to 0 to prevent stretching */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-features h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.product-features ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    height: 100%;
+    /* Ensure consistent height */
+}
+
+.product-features li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.product-features li i {
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.product-action {
+    margin-top: auto;
+    /* Pushes button to bottom */
+    text-align: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    /* Prevents shrinking */
+}
+
+.product-action .btn {
+    padding: 0.6rem 2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.product-action .btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(10, 147, 150, 0.3);
+}
+
+/* Call to Action Section */
+.cta {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    text-align: center;
+    padding: 5rem 0;
+    position: relative;
+}
+
+/* Remove the CTA before pseudo-element since we're transitioning directly from stats */
+.cta::before {
+    display: none;
+}
+
+/* Add wave transition to CTA section (gradient to dark) */
+.cta::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23001219' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+.cta .section-title {
+    color: white;
+}
+
+.cta .section-title::after {
+    background-color: var(--light-color);
+}
+
+.cta .card {
+    border-radius: 15px;
+    border: none;
+}
+
+.cta .form-control,
+.cta .form-select {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* Stats Section */
+/* Stats Section - Light Background */
+.stats {
+    background-color: var(--light-color);
+    position: relative;
+}
+
+/* Update the stats section's after pseudo-element to precisely match the CTA gradient */
+.stats::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    /* This gradient matches the exact 90-degree gradient used in the CTA section */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23005f73;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%230a9396;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23grad)' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+.stats-item {
+    background-color: white;
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 18, 25, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 35px rgba(0, 18, 25, 0.1);
+}
+
+.stats-item i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 12px;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(10, 147, 150, 0.25);
+    transition: all 0.3s ease;
+}
+
+.stats-item:hover i {
+    transform: scale(1.1);
+    background-color: var(--secondary-color);
+    box-shadow: 0 10px 25px rgba(0, 95, 115, 0.35);
+}
+
+.stats-number {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.stats-item:hover .stats-number {
+    color: var(--primary-color);
+}
+
+.stats-text {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    font-weight: 500;
+}
+
+@media (max-width: 992px) {
+    .stats-item {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats {
+        padding: 4rem 0;
+    }
+
+    .stats-item i {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .stats-number {
+        font-size: 2.25rem;
+    }
+}
