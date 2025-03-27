@@ -735,3 +735,30 @@ section {
         font-size: 2.25rem;
     }
 }
+
+/* -----------------------------------
+  COOKIE BANNER
+----------------------------------- */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  z-index: 999;
+}
+#cookie-banner a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+#cookie-banner button {
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
