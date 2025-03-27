@@ -170,6 +170,10 @@ section {
 
 /* Partners Section */
 /* Partners Section - White Background with Subtle Pattern */
+.parterns {
+    display: none;
+}
+
 .partners {
     background-color: white;
     position: relative;
@@ -625,6 +629,11 @@ section {
 
 /* Stats Section */
 /* Stats Section - Light Background */
+.stats {
+    display: none;
+}
+
+
 .stats {
     background-color: var(--light-color);
     position: relative;
