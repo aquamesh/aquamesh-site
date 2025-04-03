@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -70,5 +70,107 @@
   });
 </script>
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | AquaMesh</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html#home">
+        <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#partners">Partners</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#products">Products</a></li>
+          <li class="nav-item"><a class="btn btn-teal text-white ms-3" href="index.html#contact" style="background-color: var(--primary-color); font-weight: 600;">Contact Us</a></li>
+          <li class="nav-item"><a class="btn text-white ms-2" href="preorder.html" style="background-color: orange; font-weight: 600;">Preorder</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <header class="mb-5 text-center">
+      <h1 class="display-5 fw-bold">Privacy Policy</h1>
+      <p class="text-muted">Last updated: January 16, 2025</p>
+      <p class="lead">We are committed to protecting your privacy. This policy explains how we handle your data.</p>
+    </header>
+
+    <section class="mb-4 p-4 bg-light rounded shadow-sm">
+      <h2 class="h4 mb-3"><i class="fas fa-user-shield me-2 text-primary"></i>1. Information We Collect</h2>
+      <p>We collect personal information that you provide to us, including name, email, address, and payment details, when you make a preorder or contact us.</p>
+    </section>
+
+    <section class="mb-4 p-4 bg-white border rounded shadow-sm">
+      <h2 class="h4 mb-3"><i class="fas fa-cogs me-2 text-primary"></i>2. How We Use Your Information</h2>
+      <ul class="mb-0">
+        <li>To fulfill and manage preorders.</li>
+        <li>To communicate updates about your orders.</li>
+        <li>To analyze website usage and improve user experience.</li>
+      </ul>
+    </section>
+
+    <section class="mb-4 p-4 bg-light rounded shadow-sm">
+      <h2 class="h4 mb-3"><i class="fas fa-plug me-2 text-primary"></i>3. Third-Party Services</h2>
+      <p>We use third-party services like Stripe for payment processing and Google Analytics for tracking website performance. These services have their own privacy policies.</p>
+    </section>
+
+    <section class="mb-4 p-4 bg-white border rounded shadow-sm">
+      <h2 class="h4 mb-3"><i class="fas fa-user-lock me-2 text-primary"></i>4. Your Rights</h2>
+      <p>You have the right to access, update, or delete your personal data. To exercise these rights, contact us at <a href="mailto:info@aquamesh.ai" class="text-decoration-underline">info@aquamesh.ai</a>.</p>
+    </section>
+
+    <section class="mb-4 p-4 bg-light rounded shadow-sm">
+      <h2 class="h4 mb-3"><i class="fas fa-cookie-bite me-2 text-primary"></i>5. Cookies</h2>
+      <p>We use cookies to enhance your browsing experience. By continuing to use our website, you consent to the use of cookies.</p>
+    </section>
+
+    <section class="mb-4 p-4 bg-white border rounded shadow-sm">
+      <h2 class="h4 mb-3"><i class="fas fa-envelope me-2 text-primary"></i>6. Contact</h2>
+      <p>If you have questions about this policy, contact us at <a href="mailto:privacy@aquamesh.ai" class="text-decoration-underline">privacy@aquamesh.ai</a>.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; <span id="year"></span> AquaMesh. All Rights Reserved. <a href="terms.html">Terms and Conditions</a></p>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner">
+    <p>We use cookies to enhance your experience. By continuing to visit this site, you accept our <a href="privacy.html">Privacy Policy</a>.</p>
+    <button id="accept-cookies">Accept</button>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+      document.getElementById('accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
