@@ -147,7 +147,7 @@ body {
 .product-image {
   width: 100%;
   height: 300px;
-  object-fit: cover;       /* or 'contain' depending on visual preference */
+  object-fit: contain;       /* or 'contain' depending on visual preference */
   object-position: center;
   border-radius: 12px;     /* Optional: rounded corners for a modern touch */
   background-color: #fff;  /* Prevent any background edge color bleed */
