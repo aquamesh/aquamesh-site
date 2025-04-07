@@ -14,6 +14,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -107,11 +109,11 @@
   </section>
 
   <!-- Updated Products Section -->
-  <section id="products" class="products">
+  <!-- <section id="products" class="products">
     <div class="container">
       <h2 class="section-title">Our Solutions</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
+      <div class="row g-4"> -->
+        <!-- <div class="col-md-4">
           <div class="product-card">
             <img src="assets/images/probelanding.png" alt="AquaSpectra Sensor" class="product-image">
             <div class="product-content">
@@ -132,8 +134,8 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
+        </div> -->
+        <!-- <div class="col-md-4">
           <div class="product-card">
             <img src="https://placehold.co/600x300.png" alt="AquaLink Hub" class="product-image">
             <div class="product-content">
@@ -179,7 +181,84 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+
+<!-- Updated Products Section (Stripe-inspired layout with real mockup images) -->
+<section id="products" class="py-6">
+  <svg style="position:absolute; top:-120px; left:-150px; opacity:0.2; z-index:0;" width="650" height="680" viewBox="0 0 654 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#A0E9FF" d="M212.152 0.000198364C294.12 2.84178 393.168 23.7007 469.058 78.3602C544.072 132.336 586.164 219.602 607.683 306.122C628.355 390.732 630.529 478.162 575.061 541.527C519.592 604.893 416.187 644.968 319.913 664.233C224.513 683.2 134.613 674.04 74.1613 615.237C13.7094 556.434 -17.0091 448.201 1.27656 353.133C19.5622 258.065 96.0267 174.453 168.974 104.93C188.305 86.6372 201.406 -0.441472 212.152 0.000198364Z"/>
+  </svg>
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Our Solutions</h2>
+
+    <!-- AquaSpectra -->
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+        <h2 class="display-6 fw-bold text-dark mb-3">AquaSpectra™ Sensor</h2>
+        <p class="lead text-muted mb-4">
+          Our flagship multi-parameter sensor featuring fluorescence, absorbance, and turbidity measurements in a single compact device.
+        </p>
+        <ul class="list-unstyled text-muted small">
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> High precision</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Low power consumption</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Extended battery life</li>
+        </ul>
+        <a href="#preorder" class="btn btn-primary mt-3" data-aos="zoom-in" data-aos-delay="300">Preorder Now</a>
+      </div>
+    
+      <div class="col-lg-6 text-center position-relative" data-aos="fade-left">
+        <!-- Gradient blob background -->
+        <div class="blob-background"></div>
+      
+        <!-- Product image with transparent background -->
+        <img src="assets/images/probelanding_fully_clean.png" class="img-fluid position-relative" alt="AquaSpectra Sensor" style="max-height: 400px; z-index: 1;">
+      </div>
+      
+    
+    <!-- AquaLink Blob Background -->
+    <svg style="position:absolute; top:400px; right:-700px; opacity:0.15; z-index:0;" width="650" height="680" viewBox="0 0 654 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#A0E9FF" d="M212.152 0.000198364C294.12 2.84178 393.168 23.7007 469.058 78.3602C544.072 132.336 586.164 219.602 607.683 306.122C628.355 390.732 630.529 478.162 575.061 541.527C519.592 604.893 416.187 644.968 319.913 664.233C224.513 683.2 134.613 674.04 74.1613 615.237C13.7094 556.434 -17.0091 448.201 1.27656 353.133C19.5622 258.065 96.0267 174.453 168.974 104.93C188.305 86.6372 201.406 -0.441472 212.152 0.000198364Z"/>
+    </svg>
+    <!-- AquaLink -->
+    <div class="row align-items-center flex-lg-row-reverse mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-left">
+        <h2 class="display-6 fw-bold text-dark mb-3">AquaLink™ Hub</h2>
+        <p class="lead text-muted mb-4">
+          The central gateway for our mesh network, facilitating long-range communication between sensors and seamless data transmission to the cloud.
+        </p>
+        <ul class="list-unstyled text-muted small">
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> LoRa connectivity</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Solar powered</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Extensive range</li>
+        </ul>
+        <a href="#preorder" class="btn btn-primary mt-3" data-aos="zoom-in" data-aos-delay="300">Learn More</a>
+      </div>
+    
+      <div class="col-lg-6 text-center" data-aos="fade-right">
+        <img src="assets/images/aqualink.jpg" class="img-fluid" alt="AquaLink Hub" style="max-height: 400px;">
+      </div>
+    </div>    
+
+    <!-- AquaView -->
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+        <h2 class="display-6 fw-bold text-dark mb-3">AquaView™ Platform</h2>
+        <p class="lead text-muted mb-4">
+          Comprehensive web application for monitoring, visualizing, and analyzing water quality data from all connected sensors.
+        </p>
+        <ul class="list-unstyled text-muted small">
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Real-time alerts</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Data visualization</li>
+          <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Custom reporting</li>
+        </ul>
+        <a href="#preorder" class="btn btn-primary mt-3" data-aos="zoom-in" data-aos-delay="300">See Platform</a>
+      </div>
+    
+      <div class="col-lg-6 text-center" data-aos="fade-left">
+        <img src="assets/images/platform.png" class="img-fluid" alt="AquaView Platform" style="max-height: 400px;">
+      </div>
+    </div>    
+
 
   <!-- Stats Section (Updated) -->
   <section id="stats" class="stats">
@@ -219,49 +298,35 @@
 
   <section id="use-cases" class="py-5 bg-light">
     <div class="container text-center">
-      <h2 class="fw-bold text-uppercase text-success mb-3">USE CASES</h2>
-      <p class="text-muted mb-5">Our solutions are tailored for diverse applications across multiple sectors.</p>
+      <h2 class="fw-bold text-uppercase text-success mb-3">Use Cases</h2>
+      <p class="text-muted mb-5">AquaMesh solutions power reliable sensing across diverse industries.</p>
       <div class="row g-4">
   
-        <!-- Tile 1 -->
-        <div class="col-md-3">
-          <div class="p-3 bg-white rounded shadow-sm h-100">
-            <img src="assets/images/forests.jpg" class="img-fluid mb-3" alt="Forests">
-            <h5 class="text-success fw-semibold text-uppercase">Forestry & Natural Assets</h5>
-            <p class="small text-muted">Protect ecosystems using our remote sensing and detection networks.</p>
+        <div class="col-md-4">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h5 class="text-success fw-bold text-uppercase">In Situ Monitoring</h5>
+            <p class="text-muted small">Deploy in lakes, reservoirs, or marine environments for long-term autonomous sensing.</p>
           </div>
         </div>
   
-        <!-- Tile 2 -->
-        <div class="col-md-3">
-          <div class="p-3 bg-white rounded shadow-sm h-100">
-            <img src="assets/images/disaster-response.jpg" class="img-fluid mb-3" alt="Firefighting">
-            <h5 class="text-success fw-semibold text-uppercase">Emergency & Disaster Response</h5>
-            <p class="small text-muted">Get real-time alerts during the early phases of wildfires and hazards.</p>
+        <div class="col-md-4">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h5 class="text-success fw-bold text-uppercase">Stormwater & Wastewater</h5>
+            <p class="text-muted small">Capture runoff dynamics, pollution events, and infrastructure health in real time.</p>
           </div>
         </div>
   
-        <!-- Tile 3 -->
-        <div class="col-md-3">
-          <div class="p-3 bg-white rounded shadow-sm h-100">
-            <img src="assets/images/infrastructure.jpg" class="img-fluid mb-3" alt="Infrastructure">
-            <h5 class="text-success fw-semibold text-uppercase">Utilities & Grid Infrastructure</h5>
-            <p class="small text-muted">Mitigate risk and liabilities with scalable monitoring tools.</p>
-          </div>
-        </div>
-  
-        <!-- Tile 4 -->
-        <div class="col-md-3">
-          <div class="p-3 bg-white rounded shadow-sm h-100">
-            <img src="assets/images/mountains.jpg" class="img-fluid mb-3" alt="General">
-            <h5 class="text-success fw-semibold text-uppercase">Other Applications</h5>
-            <p class="small text-muted">Custom solutions for research, agriculture, logistics, and more.</p>
+        <div class="col-md-4">
+          <div class="p-4 bg-white shadow-sm rounded h-100">
+            <h5 class="text-success fw-bold text-uppercase">Research & Laboratory</h5>
+            <p class="text-muted small">Collect high-resolution sample data in controlled experiments using our AquaCell™ adapter.</p>
           </div>
         </div>
   
       </div>
     </div>
   </section>
+  
   
 
   <!-- Call to Action -->
@@ -452,7 +517,12 @@
   </script>
 
 
-  
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 </body>
 
 </html>
