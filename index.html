@@ -8,16 +8,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AquaMesh | IoT Water Quality Monitoring</title>
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Lottie Animations -->
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <style>
+    .about {
+      background: linear-gradient(145deg, #e0f7fa, #ffffff);
+      padding: 4rem 0;
+      overflow: hidden;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .about-text {
+      flex: 1 1 50%;
+      padding-right: 2rem;
+    }
+    .about-image {
+      flex: 1 1 45%;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .about ul {
+      list-style: none;
+      padding: 0;
+    }
+    .about ul li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+    }
+    .about ul li i {
+      color: #0d6efd;
+      margin-right: 0.75rem;
+    }
+    .about h2.section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #003c43;
+      margin-bottom: 2rem;
+    }
+    .about h3 {
+      margin-top: 1.5rem;
+      font-weight: 500;
+      color: #014751;
+    }
+    .about .lead {
+      font-size: 1.15rem;
+      color: #333;
+    }
+    .blob {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #a0e9ff 0%, transparent 70%);
+      z-index: -1;
+      animation: floatBlob 6s ease-in-out infinite;
+      top: -40px;
+      left: -60px;
+      border-radius: 50%;
+    }
+    @keyframes floatBlob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(20px); }
+    }
+    .logo-fade-in {
+      opacity: 0;
+      margin-top: 2rem;
+      transition: opacity 2s ease;
+      height: auto;
+      max-height: 100px;
+      max-width: 500px;
+      object-fit: contain;
+    }
+
+    .logo-fade-in.visible {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
@@ -79,109 +161,42 @@
     </div>
   </section>
 
-  <!-- About Us Section (Updated) -->
-  <section id="about" class="about">
+
+  <!-- About Us Section (Updated with dynamic animation and Lottie) -->
+  <section id="about" class="about position-relative">
+    <div class="blob"></div>
     <div class="container">
-      <h2 class="section-title">About AquaMesh</h2>
+      <h2 class="section-title" data-aos="fade-up">About AquaMesh</h2>
       <div class="about-content">
-        <div class="about-text">
-          <p class="lead">AquaMesh designs and manufactures cutting-edge water quality monitoring systems. Our
-            innovative technology combines high-precision sensing with seamless connectivity to provide
-            comprehensive water quality data.</p>
-          <p>Our mission is to revolutionize water quality monitoring through advanced technology that makes
-            data collection more efficient, accurate, and accessible than ever before.</p>
+        <div class="about-text" data-aos="fade-right">
+          <p class="lead">AquaMesh designs and manufactures cutting-edge water quality monitoring systems. Our innovative technology combines high-precision sensing with seamless connectivity to provide comprehensive water quality data.</p>
+          <p>Our mission is to revolutionize water quality monitoring through advanced technology that makes data collection more efficient, accurate, and accessible than ever before.</p>
           <h3>Our Unique Technology:</h3>
           <ul>
-            <li><i class="fas fa-network-wired"></i> Mesh networking between sensors using LoRa technology
-            </li>
-            <li><i class="fas fa-microscope"></i> Multiple sensing capabilities (fluorescence, absorbance,
-              turbidity) in a single device</li>
-            <li><i class="fas fa-mobile-alt"></i> Intuitive web application for real-time monitoring and
-              management</li>
+            <li><i class="fas fa-network-wired"></i> Mesh networking between sensors using LoRa technology</li>
+            <li><i class="fas fa-microscope"></i> Multiple sensing capabilities (fluorescence, absorbance, turbidity) in a single device</li>
+            <li><i class="fas fa-mobile-alt"></i> Intuitive web application for real-time monitoring and management</li>
             <li><i class="fas fa-brain"></i> AI-powered analytics for predictive water quality insights</li>
           </ul>
         </div>
-        <div class="about-image">
-          <img src="https://placehold.co/400x600.png" alt="AquaMesh Technology" class="img-fluid">
+        <div class="about-image text-center" data-aos="fade-left">
+          <dotlottie-player id="aboutAnimation" src="https://lottie.host/298568ab-d1f8-4c8f-b866-8abd5a5f8ec4/Cg3oMkxqkG.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" autoplay></dotlottie-player>
+          <img id="fadeInLogo" src="assets/images/aquameshlogo.png" alt="AquaMesh Logo" class="logo-fade-in">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Updated Products Section -->
-  <!-- <section id="products" class="products">
-    <div class="container">
-      <h2 class="section-title">Our Solutions</h2>
-      <div class="row g-4"> -->
-        <!-- <div class="col-md-4">
-          <div class="product-card">
-            <img src="assets/images/probelanding.png" alt="AquaSpectra Sensor" class="product-image">
-            <div class="product-content">
-              <h3>AquaSpectra™ Sensor</h3>
-              <p class="product-description">Our flagship multi-parameter sensor featuring fluorescence,
-                absorbance, and turbidity
-                measurements in a single compact device.</p>
-              <div class="product-features">
-                <h4>Key features:</h4>
-                <ul>
-                  <li><i class="fas fa-check-circle"></i> High precision</li>
-                  <li><i class="fas fa-check-circle"></i> Low power consumption</li>
-                  <li><i class="fas fa-check-circle"></i> Extended battery life</li>
-                </ul>
-              </div>
-              <div class="product-action">
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <!-- <div class="col-md-4">
-          <div class="product-card">
-            <img src="https://placehold.co/600x300.png" alt="AquaLink Hub" class="product-image">
-            <div class="product-content">
-              <h3>AquaLink™ Hub</h3>
-              <p class="product-description">The central gateway for our mesh network, facilitating
-                long-range communication between
-                sensors and seamless data transmission to the cloud.</p>
-              <div class="product-features">
-                <h4>Key features:</h4>
-                <ul>
-                  <li><i class="fas fa-check-circle"></i> LoRa connectivity</li>
-                  <li><i class="fas fa-check-circle"></i> Solar powered</li>
-                  <li><i class="fas fa-check-circle"></i> Extensive range</li>
-                </ul>
-              </div>
-              <div class="product-action">
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-card">
-            <img src="https://placehold.co/600x300.png" alt="AquaView Platform" class="product-image">
-            <div class="product-content">
-              <h3>AquaView™ Platform</h3>
-              <p class="product-description">Comprehensive web application for monitoring, visualizing,
-                and analyzing water quality
-                data from all connected sensors.</p>
-              <div class="product-features">
-                <h4>Key features:</h4>
-                <ul>
-                  <li><i class="fas fa-check-circle"></i> Real-time alerts</li>
-                  <li><i class="fas fa-check-circle"></i> Data visualization</li>
-                  <li><i class="fas fa-check-circle"></i> Custom reporting</li>
-                </ul>
-              </div>
-              <div class="product-action">
-                <a href="#" class="btn btn-primary">Learn More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
+  <script>
+    const animationPlayer = document.getElementById('aboutAnimation');
+    const fadeInLogo = document.getElementById('fadeInLogo');
+
+    animationPlayer.addEventListener('ready', () => {
+      setTimeout(() => {
+        fadeInLogo.classList.add('visible');
+      }, 2000); // Adjust this duration to match animation timing
+    });
+  </script>
 
 <!-- Updated Products Section (Stripe-inspired layout with real mockup images) -->
 <section id="products" class="py-6">
@@ -233,7 +248,7 @@
           <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Solar powered</li>
           <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Extensive range</li>
         </ul>
-        <a href="#preorder" class="btn btn-primary mt-3" data-aos="zoom-in" data-aos-delay="300">Learn More</a>
+        <a href="products/aqualink.html" class="btn btn-primary mt-3" data-aos="zoom-in" data-aos-delay="300">Learn More</a>
       </div>
     
       <div class="col-lg-6 text-center" data-aos="fade-right">

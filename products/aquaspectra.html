@@ -1,3 +1,5 @@
+<!-- index.html - AquaMesh Product Page with Interactive Breakdown -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,45 +15,47 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" href="../assets/images/favicon.png" type="image/png">
-  <meta name="description" content="AquaSpectra™ Sensor - High-precision water quality detection by AquaMesh.">
+
   <style>
     body {
-      background: linear-gradient(to bottom, #001219, #0a9396);
+      background: #000;
       color: #fff;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
       margin: 0;
       padding: 0;
     }
-    .container, .container-fluid {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-dark {
-      min-height: 100vh;
+    .sensor-hero {
+      height: 100vh;
+      background: linear-gradient(to bottom, #ffffff, #d7faff);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
+      flex-direction: column;
     }
-    .hero-dark h1 {
-      font-size: 1.6rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #ccc;
-      margin-bottom: 2rem;
+    .sensor-hero .typewriter {
+      font-size: 2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      color: #000;
+      font-weight: 600;
+      width: 0;
+      border-right: 3px solid rgba(0,0,0,0.75);
+      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
     .sensor-wrapper {
       position: relative;
-      width: 300px;
-      margin: 0 auto;
+      width: 280px;
+      margin: 1rem auto 0;
       filter: drop-shadow(0 5px 20px rgba(0,0,0,0.3));
     }
     .sensor-main {
@@ -91,118 +95,336 @@
       0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
       50% { transform: translateX(-50%) scale(1.2); opacity: 0.3; }
     }
-    .feature-section {
-      background: #002f35;
-      padding: 4rem 0;
-      margin: 0;
+
+    .interactive-diagram {
+      background-color: #001e28;
+      padding: 2rem 1rem;
+      color: #fff;
     }
-    .feature-box {
-      background: #014751;
-      padding: 2rem;
+    .diagram-container {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .diagram-container img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .label-box {
+      position: absolute;
+      background: rgba(0, 40, 50, 0.95);
+      padding: 12px 14px;
+      border-left: 4px solid #00d4ff;
       border-radius: 12px;
-      text-align: center;
-      color: #e0f7f7;
-      transition: all 0.3s ease;
-      height: 100%;
+      width: 200px;
+      color: #e0f7fa;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
-    .feature-box:hover {
-      background-color: #026873;
-      transform: translateY(-5px);
+    .label-box:hover {
+      transform: scale(1.05);
     }
-    .feature-box i {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #0af;
-    }
-    footer {
-      background: #001219;
-      padding: 2rem 0;
-      color: #ccc;
-      font-size: 0.9rem;
-      margin: 0;
-    }
+    .why-aquamesh-section {
+        background-color: #085930;
+        padding: 4rem 1rem;
+        }
+
+        .feature-card {
+        background-color: #1a7280;
+        border-radius: 16px;
+        color: #e0f7f7;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .feature-card:hover {
+        background-color: #026873;
+        transform: translateY(-5px);
+        }
+
+        .feature-card .icon {
+        color: #00d4ff;
+        }
+
   </style>
 </head>
 <body>
 
-<!-- White Navigation Bar -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
-    <div class="container">
-      <a class="navbar-brand" href="../index.html#home">
-        <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height: 32px;">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#partners">Partners</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html#products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn text-white ms-3" href="../preorder.html" style="background-color: orange; font-size: 1.1rem; padding: 0.5rem 1rem;">Preorder</a>
-          </li>
-        </ul>
+  <div class="container">
+    <a class="navbar-brand" href="../index.html#home">
+      <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height: 32px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="../index.html#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#partners">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#products">Products</a></li>
+        <li class="nav-item"><a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact Us</a></li>
+        <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background-color: orange; font-size: 1.1rem; padding: 0.5rem 1rem;">Preorder</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="sensor-hero">
+  <div class="typewriter">Advanced sensing. Crystal-clear insights.</div>
+  <div class="sensor-wrapper">
+    <img src="../assets/images/probelanding_fully_clean.png" alt="AquaSpectra Sensor" class="sensor-main" />
+    <img src="../assets/images/probelanding_fully_clean.png" alt="Reflection" class="sensor-reflection" />
+    <div class="ripple-overlay"></div>
+  </div>
+</section>
+
+<!-- Inside AquaSpectra Section -->
+<section class="interactive-diagram" id="inside">
+    <div class="container text-center">
+      <h2 class="mb-4 text-white">Inside AquaSpectra™</h2>
+      <div class="diagram-container position-relative">
+        <img src="../assets/images/probelanding_fully_clean.png" alt="Sensor Breakdown" class="img-fluid">
+  
+        <!-- Connectivity & Storage -->
+        <a href="#connectivity-detail" class="text-decoration-none">
+          <div class="label-box" style="top: 8%; left: 65%;">
+            <strong>Connectivity & Storage</strong><br />
+            <small>LoRa communication and onboard SD storage ensure robust, reliable data transfer and backup.</small>
+          </div>
+        </a>
+  
+        <!-- Cartridge Slot -->
+        <a href="#cartridge-detail" class="text-decoration-none">
+          <div class="label-box" style="top: 45%; left: 65%;">
+            <strong>Cartridge Slot</strong><br />
+            <small>Swappable optics/filter modules for target-specific detection.</small>
+          </div>
+        </a>
+  
+        <!-- Optical Head -->
+        <a href="#optical-detail" class="text-decoration-none">
+          <div class="label-box" style="top: 75%; left: 65%;">
+            <strong>Optical Head</strong><br />
+            <small>Dual-mode fluorometer/spectrometer for real-time optical sensing.</small>
+          </div>
+        </a>
+  
+        <!-- Power Core -->
+        <a href="#power-detail" class="text-decoration-none">
+          <div class="label-box" style="top: 60%; left: 5%;">
+            <strong>Power Core</strong><br />
+            <small>Rechargeable lithium battery + solar trickle-charge support.</small>
+          </div>
+        </a>
       </div>
     </div>
-  </nav>
+  </section>
   
+<!-- Why AquaMesh - Carousel Style -->
+<section id="aqua-carousel" class="py-5" style="background-color: #001d21;">
+    <div class="container text-center text-white">
+      <h2 class="mb-5 fw-bold">Why AquaMesh?</h2>
   
-  <!-- Hero Section -->
-  <section class="hero-dark">
-    <h1>THE NEXT GENERATION OF WATER SENSING</h1>
-    <div class="sensor-wrapper">
-      <img src="../assets/images/probelanding_fully_clean.png" alt="AquaSpectra Sensor" class="sensor-main" />
-      <img src="../assets/images/probelanding_fully_clean.png" alt="Reflection" class="sensor-reflection" />
-      <div class="ripple-overlay"></div>
+      <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+  
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row align-items-center">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <img src="../assets/images/sdcard_icon.png" alt="Connectivity" class="img-fluid" style="max-height: 250px;">
+              </div>
+              <div class="col-md-6 text-start">
+                <h4 class="fw-bold text-info">Connectivity & Storage</h4>
+                <p class="fs-5">Equipped with LoRa communication and onboard SD card storage for real-time syncing and secure backups.</p>
+                <ul class="list-unstyled text-light">
+                  <li>✓ Async & live data syncing</li>
+                  <li>✓ Rugged-environment reliability</li>
+                  <li>✓ Offline-ready logging</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row align-items-center">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <img src="../assets/images/optics_icon.png" alt="Optical Head" class="img-fluid" style="max-height: 250px;">
+              </div>
+              <div class="col-md-6 text-start">
+                <h4 class="fw-bold text-info">Optical Head</h4>
+                <p class="fs-5">Dual-mode fluorometer + spectrometer provides lab-grade chemical & turbidity sensing in the field.</p>
+                <ul class="list-unstyled text-light">
+                  <li>✓ High signal-to-noise ratio</li>
+                  <li>✓ Real-time optical calibration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="row align-items-center">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <img src="../assets/images/cartridge_icon.png" alt="Cartridge Slot" class="img-fluid" style="max-height: 250px;">
+              </div>
+              <div class="col-md-6 text-start">
+                <h4 class="fw-bold text-info">Modular Cartridge Slot</h4>
+                <p class="fs-5">Swappable optical and filter cartridges tailored to specific environments and substances.</p>
+                <ul class="list-unstyled text-light">
+                  <li>✓ Plug-and-play flexibility</li>
+                  <li>✓ Expandable configurations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Slide 4 -->
+          <div class="carousel-item">
+            <div class="row align-items-center">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <img src="../assets/images/power_icon.png" alt="Power Core" class="img-fluid" style="max-height: 250px;">
+              </div>
+              <div class="col-md-6 text-start">
+                <h4 class="fw-bold text-info">Power Core</h4>
+                <p class="fs-5">Long-lasting rechargeable battery with optional solar trickle charge and smart energy monitoring.</p>
+                <ul class="list-unstyled text-light">
+                  <li>✓ Up to 30 days runtime</li>
+                  <li>✓ Solar & USB fast charging</li>
+                  <li>✓ Energy-efficient field use</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#featureCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+  
+        <button class="carousel-control-next" type="button" data-bs-target="#featureCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- Feature Section -->
-  <section class="feature-section">
-    <div class="container">
-      <div class="row g-4">
+<!-- Economic Advantage Section -->
+<section class="py-5" style="background-color: #00353c; color: #e0f7f7;">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Economic Advantage</h2>
+      <p class="fs-5 mb-5 px-3 px-md-5">
+        AquaSpectra™ is engineered not only for precision but also for sustainability and cost-efficiency. From reduced maintenance to modular upgrades,
+        it redefines the economic model for long-term water quality monitoring.
+      </p>
+  
+      <div class="row g-4 justify-content-center">
         <div class="col-md-4">
-          <div class="feature-box">
-            <i class="fas fa-vial"></i>
-            <h5>Fluorescence & Absorbance</h5>
-            <p>Detect organic compounds and nutrients with dual-mode optical sensing.</p>
+          <div class="p-4 rounded-4 h-100" style="background-color: #014e56;">
+            <h5 class="fw-semibold text-info mb-3"><i class="fas fa-sync-alt me-2"></i>Modular Upgrades</h5>
+            <p>Only upgrade what you need. Swap optical modules or filters without replacing the entire device, saving money on future needs.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="feature-box">
-            <i class="fas fa-tint"></i>
-            <h5>Turbidity Measurement</h5>
-            <p>Monitor water clarity using IR-based suspended solids detection.</p>
+          <div class="p-4 rounded-4 h-100" style="background-color: #014e56;">
+            <h5 class="fw-semibold text-info mb-3"><i class="fas fa-wrench me-2"></i>Low Maintenance</h5>
+            <p>With MagWipe™ auto-cleaning and rugged design, AquaSpectra™ reduces downtime, labor, and unexpected servicing costs.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="feature-box">
-            <i class="fas fa-cogs"></i>
-            <h5>Modular Design</h5>
-            <p>Interchangeable cartridges allow flexible use for different environments.</p>
+          <div class="p-4 rounded-4 h-100" style="background-color: #014e56;">
+            <h5 class="fw-semibold text-info mb-3"><i class="fas fa-battery-full me-2"></i>Energy Efficiency</h5>
+            <p>Extended battery life, solar trickle charging, and smart data syncing minimize power costs even in remote deployments.</p>
           </div>
         </div>
+      </div>
+  
+      <!-- Preorder CTA -->
+      <div class="mt-5 p-4 rounded-4" style="background-color: #00a896;">
+        <h4 class="fw-bold text-dark mb-3">Get Ahead with AquaSpectra™</h4>
+        <p class="fs-5 text-white mb-3">Future-proof your water sensing solution and save operational costs from day one.</p>
+        <a href="../preorder.html" class="btn btn-dark btn-lg px-4 py-2 fw-semibold">
+          <i class="fas fa-cart-plus me-2"></i>Preorder Now
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="text-center">
-    &copy; 2025 AquaMesh. All rights reserved.
+  <!-- Footer Section -->
+<footer class="mt-0 text-light" style="background-color: #001219;">
+    <div class="container py-5">
+      <div class="row">
+        <!-- Logo + Brief -->
+        <div class="col-md-4 mb-4">
+          <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height: 36px;">
+          <p class="mt-3" style="color: #ccc;">
+            AquaMesh™ is revolutionizing environmental monitoring through smart, modular water sensing. Built for researchers, professionals, and the planet.
+          </p>
+        </div>
+  
+        <!-- Quick Links -->
+        <div class="col-md-2 mb-4">
+          <h6 class="text-uppercase fw-bold mb-3">Explore</h6>
+          <ul class="list-unstyled" style="line-height: 2;">
+            <li><a href="../index.html#home" class="text-light text-decoration-none">Home</a></li>
+            <li><a href="../index.html#products" class="text-light text-decoration-none">Products</a></li>
+            <li><a href="../index.html#partners" class="text-light text-decoration-none">Partners</a></li>
+            <li><a href="../index.html#about" class="text-light text-decoration-none">About Us</a></li>
+          </ul>
+        </div>
+  
+        <!-- Support -->
+        <div class="col-md-2 mb-4">
+          <h6 class="text-uppercase fw-bold mb-3">Support</h6>
+          <ul class="list-unstyled" style="line-height: 2;">
+            <li><a href="../index.html#contact" class="text-light text-decoration-none">Contact</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Documentation</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Warranty</a></li>
+            <li><a href="#" class="text-light text-decoration-none">FAQs</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Info -->
+        <div class="col-md-4 mb-4">
+          <h6 class="text-uppercase fw-bold mb-3">Contact</h6>
+          <p><i class="fas fa-envelope me-2"></i> support@aquamesh.io</p>
+          <p><i class="fas fa-phone me-2"></i> +1 (800) 123-4567</p>
+          <p><i class="fas fa-map-marker-alt me-2"></i> San Diego, CA</p>
+          <div class="mt-3">
+            <a href="#" class="text-light me-3"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-light me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-github fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+  
+      <hr class="border-secondary" />
+      <div class="text-center text-muted" style="font-size: 0.9rem;">
+        &copy; 2025 AquaMesh. All rights reserved.
+      </div>
+    </div>
   </footer>
+  
+  
+  
+  
+  
+  
+  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+
 </body>
 </html>
