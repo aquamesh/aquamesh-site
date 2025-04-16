@@ -837,3 +837,17 @@ section {
     padding: 0;
   }
   
+
+
+
+  img[src*="landscape.png"] {
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+  }
+  
+  #sensor-network-section svg path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  

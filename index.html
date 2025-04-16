@@ -179,24 +179,178 @@
             <li><i class="fas fa-brain"></i> AI-powered analytics for predictive water quality insights</li>
           </ul>
         </div>
-        <div class="about-image text-center" data-aos="fade-left">
-          <dotlottie-player id="aboutAnimation" src="https://lottie.host/298568ab-d1f8-4c8f-b866-8abd5a5f8ec4/Cg3oMkxqkG.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" autoplay></dotlottie-player>
-          <img id="fadeInLogo" src="assets/images/aquameshlogo.png" alt="AquaMesh Logo" class="logo-fade-in">
-        </div>
       </div>
     </div>
   </section>
 
-  <script>
-    const animationPlayer = document.getElementById('aboutAnimation');
-    const fadeInLogo = document.getElementById('fadeInLogo');
 
-    animationPlayer.addEventListener('ready', () => {
-      setTimeout(() => {
-        fadeInLogo.classList.add('visible');
-      }, 2000); // Adjust this duration to match animation timing
-    });
-  </script>
+
+  
+
+
+
+
+
+  <section id="aquamesh-network" style="padding: 3rem 1rem; background: #f5faff;">
+    <div style="max-width: 500px; margin: 0 auto; position: relative;">
+      <!-- Background Image -->
+      <img src="/assets/images/river-8286407.svg" alt="River Background" style="width: 100%; display: block;" />
+  
+      <!-- Overlayed SVG -->
+      <svg viewBox="0 0 768 761" style="position: absolute; top: 0; left: 0; width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg">
+  
+        <!-- Water Sensor Icons -->
+        <svg class="sensor-icon" x="688" y="588" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z" />
+          <path d="M9 14a3 3 0 0 0 6 0" />
+        </svg>
+  
+        <svg class="sensor-icon" x="168" y="458" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z" />
+          <path d="M9 14a3 3 0 0 0 6 0" />
+        </svg>
+  
+        <svg class="sensor-icon" x="338" y="658" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z" />
+          <path d="M9 14a3 3 0 0 0 6 0" />
+        </svg>
+  
+        <!-- Improved Cloud Icon -->
+        <svg id="cloud" x="354" y="70" width="60" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 30H52C58 30 60 20 52 18C52 10 42 6 36 12C30 6 18 8 16 16C8 16 8 30 20 30Z" fill="#ccc"/>
+        </svg>
+  
+        <!-- Improved Dashboard (Monitor) Icon -->
+        <svg id="dashboard" x="354" y="120" width="60" height="40" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" />
+          <path d="M8 21h8M12 17v4" />
+        </svg>
+  
+        <!-- Connecting Lines -->
+        <path id="line1" d="M700 600 L577 347" class="link" />
+        <path id="line2" d="M180 470 L577 347" class="link" />
+        <path id="line3" d="M350 670 L577 347" class="link" />
+        <path id="line4" d="M577 347 L384 100" class="link" />
+        <path id="line5" d="M384 100 L384 135" class="link" />
+  
+        <!-- Data Flow Dots -->
+        <circle id="dot1" r="4" fill="#00BFFF" />
+        <circle id="dot2" r="4" fill="#00BFFF" />
+        <circle id="dot3" r="4" fill="#00BFFF" />
+        <circle id="dot4" r="4" fill="#FFA500" />
+        <circle id="dot5" r="4" fill="#999" />
+
+        <!-- Enlarged Gateway Hub Icon -->
+        <svg id="gateway" x="558" y="328" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFA500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="8" width="16" height="12" rx="2" />
+          <path d="M8 12h.01M16 12h.01" />
+          <path d="M12 4v4" />
+        </svg>
+  
+      </svg>
+    </div>
+  
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+      // Line animations
+      anime({
+        targets: ['#line1', '#line2', '#line3'],
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1200,
+        delay: anime.stagger(300, { start: 600 })
+      });
+  
+      // Gateway animation
+      anime({
+        targets: '#gateway',
+        scale: [0, 1],
+        easing: 'easeOutBack',
+        duration: 600,
+        delay: 1800
+      });
+  
+      // Gateway to cloud line
+      anime({
+        targets: '#line4',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1200,
+        delay: 2400
+      });
+  
+      // Cloud pulse
+      anime({
+        targets: '#cloud',
+        scale: [0.95, 1.05],
+        direction: 'alternate',
+        loop: true,
+        easing: 'easeInOutQuad',
+        delay: 3400
+      });
+  
+      // Dashboard bounce
+      anime({
+        targets: '#dashboard',
+        scale: [1, 1.1, 1],
+        duration: 600,
+        easing: 'easeInOutSine',
+        delay: 3800
+      });
+  
+      // Animate dots on paths
+      function animateDot(dotId, pathId, delay = 0) {
+        const path = anime.path(`#${pathId}`);
+        anime({
+          targets: `#${dotId}`,
+          translateX: path('x'),
+          translateY: path('y'),
+          easing: 'linear',
+          duration: 2000,
+          delay: delay,
+          loop: true
+        });
+      }
+  
+      animateDot('dot1', 'line1', 1000);
+      animateDot('dot2', 'line2', 1200);
+      animateDot('dot3', 'line3', 1400);
+      animateDot('dot4', 'line4', 2600);
+      animateDot('dot5', 'line5', 3000);
+    </script>
+  
+    <!-- Styles -->
+    <style>
+      .link {
+        stroke: #00BFFF;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+      }
+  
+      .sensor-icon,
+      #gateway, #cloud, #dashboard {
+        transform-origin: center;
+      }
+  
+      #dot1, #dot2, #dot3, #dot4, #dot5 {
+        pointer-events: none;
+      }
+    </style>
+  </section>
+  
+  
+  
+
+
+
+
+
+
+
+
 
 <!-- Updated Products Section (Stripe-inspired layout with real mockup images) -->
 <section id="products" class="py-6">
