@@ -200,32 +200,39 @@
       <!-- Overlayed SVG -->
       <svg viewBox="0 0 768 761" style="position: absolute; top: 0; left: 0; width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg">
   
-        <!-- Water Sensor Icons -->
-        <svg class="sensor-icon" x="688" y="588" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z" />
-          <path d="M9 14a3 3 0 0 0 6 0" />
+        <!-- Water Sensor Icons (Stylized Cylinder + Cable) -->
+
+        <!-- Large Water Sensor Icons (Cylindrical with Cable) -->
+
+        <svg class="sensor-icon" x="676" y="564" width="40" height="64" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0 C9 12, 15 12, 12 24" stroke="#00BFFF" stroke-width="3" fill="none"/>
+          <rect x="6" y="24" width="12" height="20" rx="3" fill="#00BFFF"/>
+          <circle cx="12" cy="38" r="5" fill="#0077cc" stroke="#00BFFF" stroke-width="2"/>
         </svg>
-  
-        <svg class="sensor-icon" x="168" y="458" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z" />
-          <path d="M9 14a3 3 0 0 0 6 0" />
+
+        <svg class="sensor-icon" x="156" y="434" width="40" height="64" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0 C9 12, 15 12, 12 24" stroke="#00BFFF" stroke-width="3" fill="none"/>
+          <rect x="6" y="24" width="12" height="20" rx="3" fill="#00BFFF"/>
+          <circle cx="12" cy="38" r="5" fill="#0077cc" stroke="#00BFFF" stroke-width="2"/>
         </svg>
-  
-        <svg class="sensor-icon" x="338" y="658" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00BFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2C12 2 5 9 5 14a7 7 0 0 0 14 0c0-5-7-12-7-12z" />
-          <path d="M9 14a3 3 0 0 0 6 0" />
+
+        <svg class="sensor-icon" x="326" y="634" width="40" height="64" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0 C9 12, 15 12, 12 24" stroke="#00BFFF" stroke-width="3" fill="none"/>
+          <rect x="6" y="24" width="12" height="20" rx="3" fill="#00BFFF"/>
+          <circle cx="12" cy="38" r="5" fill="#0077cc" stroke="#00BFFF" stroke-width="2"/>
         </svg>
-  
-        <!-- Improved Cloud Icon -->
-        <svg id="cloud" x="354" y="70" width="60" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Improved & Enlarged Cloud Icon -->
+        <svg id="cloud" x="324" y="40" width="100" height="64" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M20 30H52C58 30 60 20 52 18C52 10 42 6 36 12C30 6 18 8 16 16C8 16 8 30 20 30Z" fill="#ccc"/>
         </svg>
-  
-        <!-- Improved Dashboard (Monitor) Icon -->
-        <svg id="dashboard" x="354" y="120" width="60" height="40" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <path d="M8 21h8M12 17v4" />
+
+        <!-- Improved & Enlarged Dashboard Icon -->
+        <svg id="dashboard" x="324" y="112" width="100" height="64" viewBox="0 0 24 24" fill="#999" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
+
   
         <!-- Connecting Lines -->
         <path id="line1" d="M700 600 L577 347" class="link" />
@@ -241,12 +248,25 @@
         <circle id="dot4" r="4" fill="#FFA500" />
         <circle id="dot5" r="4" fill="#999" />
 
-        <!-- Enlarged Gateway Hub Icon -->
-        <svg id="gateway" x="558" y="328" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFA500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="8" width="16" height="12" rx="2" />
-          <path d="M8 12h.01M16 12h.01" />
-          <path d="M12 4v4" />
+        <!-- Updated Gateway Icon (Bigger & Styled Like AquaMesh) -->
+        <svg id="gateway" x="540" y="300" width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <!-- Device Body -->
+          <rect x="12" y="20" width="40" height="28" rx="3" fill="#FFA500" />
+
+          <!-- Antennas -->
+          <line x1="16" y1="20" x2="16" y2="2" stroke="white" stroke-width="3"/>
+          <line x1="32" y1="20" x2="32" y2="0" stroke="white" stroke-width="3"/>
+          <line x1="48" y1="20" x2="48" y2="6" stroke="white" stroke-width="3"/>
+
+          <!-- Bottom Connectors -->
+          <rect x="22" y="48" width="4" height="6" fill="white" rx="1"/>
+          <rect x="38" y="48" width="4" height="6" fill="white" rx="1"/>
+
+          <!-- Label Area -->
+          <rect x="18" y="30" width="28" height="8" fill="white" rx="2"/>
+          <text x="32" y="36" font-size="6" font-family="Arial" fill="#FFA500" text-anchor="middle">GATEWAY</text>
         </svg>
+
   
       </svg>
     </div>
