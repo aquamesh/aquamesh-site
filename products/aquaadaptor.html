@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaSync™ Adapter | AquaMesh</title>
+
+  <!-- Bootstrap & Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { background: #f2fdfc; color: #003c43; font-family: 'Poppins', sans-serif; }
+    .hero { background: linear-gradient(135deg, #014751, #001e28); color: #fff; padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .hero h1 { font-size: 3rem; font-weight: 700; position: relative; z-index: 1; }
+    .hero p { font-size: 1.25rem; max-width: 600px; margin: 1rem auto 0; position: relative; z-index: 1; }
+    .feature-box { background: #fff; border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .feature-box:hover { transform: translateY(-5px); }
+    .feature-box i { font-size: 2.5rem; color: #00b4d8; margin-bottom: 1rem; }
+    .spec-list { list-style: none; padding: 0; }
+    .spec-list li { margin-bottom: 0.75rem; }
+    .section-title { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 2rem; }
+    .btn-primary-custom { background: #00b4d8; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; }
+    footer { background: #001219; color: #ccc; padding: 3rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html#home">
+      <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height:36px;" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="../index.html#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#partners">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="collections.html">Products</a></li>
+        <li class="nav-item"><a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact</a></li>
+        <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background:orange;">Preorder</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 data-aos="zoom-in">AquaSync™ Adapter</h1>
+  <p data-aos="fade-up" data-aos-delay="200">Universal connectivity for your AquaMesh probes—USB, serial, and wireless.</p>
+</section>
+
+<!-- Features -->
+<section class="container py-5">
+  <h2 class="section-title" data-aos="fade-up">Key Features</h2>
+  <div class="row g-4">
+    <div class="col-md-3" data-aos="fade-up">
+      <div class="feature-box">
+        <i class="fas fa-plug"></i>
+        <h5>RS-485 & RS-232</h5>
+        <p>Connect probes to PCs, COM ports, or SCADA systems for 24/7 monitoring.</p>
+      </div>
+    </div>
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="feature-box">
+        <i class="fas fa-water"></i>
+        <h5>Wet-Mate Connector</h5>
+        <p>Rugged, waterproof design for reliable connections in harsh environments.</p>
+      </div>
+    </div>
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <div class="feature-box">
+        <i class="fas fa-bluetooth"></i>
+        <h5>USB & Bluetooth</h5>
+        <p>Flexible wired or wireless data transmission for laboratory and field use.</p>
+      </div>
+    </div>
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+      <div class="feature-box">
+        <i class="fas fa-memory"></i>
+        <h5>SD Card Backup</h5>
+        <p>Optional SD storage up to 2 TB ensures uninterrupted data logging.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Specifications -->
+<section class="container py-5">
+  <h2 class="section-title" data-aos="fade-up">Specifications</h2>
+  <ul class="spec-list" data-aos="fade-up" data-aos-delay="100">
+    <li><strong>Connector:</strong> RS-485 / RS-232 wet-mate</li>
+    <li><strong>Communication:</strong> USB 2.0, Bluetooth 4.2</li>
+    <li><strong>Storage:</strong> microSD up to 2 TB (optional)</li>
+    <li><strong>Power:</strong> 5 V DC via USB</li>
+    <li><strong>Dimensions:</strong> 120 × 60 × 30 mm</li>
+    <li><strong>Operating Temp:</strong> -20 °C to +60 °C</li>
+    <li><strong>Enclosure:</strong> IP67-rated polymer housing</li>
+  </ul>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height:40px;" />
+        <p class="mt-3">© 2025 AquaMesh. All rights reserved.</p>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold">Explore</h6>
+        <ul class="list-unstyled">
+          <li><a href="../index.html#home" class="text-decoration-none text-light">Home</a></li>
+          <li><a href="collections.html" class="text-decoration-none text-light">Products</a></li>
+          <li><a href="../index.html#partners" class="text-decoration-none text-light">Partners</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold">Support</h6>
+        <ul class="list-unstyled">
+          <li><a href="../index.html#contact" class="text-decoration-none text-light">Contact</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Docs</a></li>
+          <li><a href="#" class="text-decoration-none text-light">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-end">
+        <p><i class="fas fa-envelope"></i> support@aquamesh.io</p>
+        <p><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
+</body>
+</html>

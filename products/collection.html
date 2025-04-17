@@ -1,0 +1,188 @@
+<!-- collections.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Products | AquaMesh</title>
+
+  <!-- Bootstrap & Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- AOS Animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { background: #f2fdfc; color: #003c43; font-family: 'Poppins', sans-serif; }
+    .hero { background: linear-gradient(135deg, #014751, #001e28); color: #fff; padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at center, rgba(0, 180, 216,0.3) 0%, transparent 60%); animation: rotateBg 20s linear infinite; }
+    @keyframes rotateBg { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
+    .hero h1 { font-size: 3rem; font-weight: 700; position: relative; z-index: 1; }
+    .hero p { font-size: 1.25rem; max-width: 600px; margin: 1rem auto 0; position: relative; z-index: 1; }
+    .products-grid { padding: 4rem 0; }
+    .product-card { background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
+    .product-card img { width: 100%; height: 200px; object-fit: cover; }
+    .product-content { padding: 1.5rem; }
+    .product-content h5 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .product-content p { font-size: 0.95rem; margin-bottom: 1rem; color: #555; }
+    .product-content ul { padding-left: 1.2rem; color: #555; margin-bottom: 1rem; }
+    .price { font-size: 1.1rem; font-weight: 700; color: #00b4d8; }
+    .btn-outline-custom { border-color: #00b4d8; color: #00b4d8; transition: background 0.3s; }
+    .btn-outline-custom:hover { background: #00b4d8; color: #fff; }
+    footer { background: #001219; color: #ccc; padding: 3rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html#home">
+      <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height:36px;" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="../index.html#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#partners">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.html#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="collections.html">Products</a></li>
+        <li class="nav-item"><a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact</a></li>
+        <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background:orange;">Preorder</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 data-aos="zoom-in">Our AquaMesh Portfolio</h1>
+  <p data-aos="fade-up" data-aos-delay="200">Explore our cutting-edge IoT products designed for seamless water quality monitoring.</p>
+</section>
+
+<!-- Products Grid -->
+<section class="products-grid container">
+  <div class="row g-4">
+    <!-- AquaSpectra Sensor Probe -->
+    <div class="col-sm-6 col-lg-4" data-aos="fade-up">
+      <div class="product-card">
+        <img src="../assets/images/probe_water_splash_blue.jpg" alt="AquaSpectra Sensor Probe">
+        <div class="product-content">
+          <h5>AquaSpectra™ Sensor Probe</h5>
+          <p>16-optical-parameter sensor with MagWipe™ electromagnetic cleaning to prevent fouling.</p>
+          <ul>
+            <li>Fluorometry & Absorption (190–850 nm)</li>
+            <li>Turbidity: 0–4,000 NTU (±2% EPA)</li>
+            <li>SD Card storage (2 TB) & RS-485 interface</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price">$10,000.00</span>
+            <a href="aquaspectra.html" class="btn btn-outline-custom btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- AquaSync Adapter -->
+    <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="product-card">
+        <img src="../assets/images/aquasync_adapter.jpg" alt="AquaSync Adapter">
+        <div class="product-content">
+          <h5>AquaSync™ Adapter</h5>
+          <p>Connect probes via USB, RS-485/RS-232, or Bluetooth with rugged wet-mate design.</p>
+          <ul>
+            <li>Wet-mate connector for harsh environments</li>
+            <li>USB & Bluetooth communication</li>
+            <li>Optional SD backup storage</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price">$0.00</span>
+            <a href="aquaadaptor.html" class="btn btn-outline-custom btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- AquaLink Hub -->
+    <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="product-card">
+        <img src="../assets/images/aqualink_hub.jpg" alt="AquaLink Hub">
+        <div class="product-content">
+          <h5>AquaLink™ Hub</h5>
+          <p>Multi-hop LoRa mesh with cellular & WiFi backup for global deployments.</p>
+          <ul>
+            <li>902–927 MHz ISM band; 65k nodes mesh</li>
+            <li>Solar+battery for 24/7 uptime</li>
+            <li>OTA updates & external antenna support</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price">$0.00</span>
+            <a href="aqualink.html" class="btn btn-outline-custom btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- AquaView Dashboard -->
+    <div class="col-sm-6 col-lg-4" data-aos="fade-up">
+      <div class="product-card">
+        <img src="../assets/images/aquaview_dashboard.jpg" alt="AquaView Dashboard">
+        <div class="product-content">
+          <h5>AquaView™ Dashboard</h5>
+          <p>Cloud analytics platform with interactive mapping, custom alerts, and AI-driven insights.</p>
+          <ul>
+            <li>GIS mapping & real-time geofencing</li>
+            <li>Threshold & anomaly alerts</li>
+            <li>Future AI capabilities</li>
+          </ul>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price">Subscription</span>
+            <a href="aquaview.html" class="btn btn-outline-custom btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height:40px;" />
+        <p class="mt-3">© 2025 AquaMesh. All rights reserved.</p>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold">Explore</h6>
+        <ul class="list-unstyled">
+          <li><a href="../index.html#home" class="text-decoration-none text-light">Home</a></li>
+          <li><a href="collections.html" class="text-decoration-none text-light">Products</a></li>
+          <li><a href="../index.html#partners" class="text-decoration-none text-light">Partners</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold">Support</h6>
+        <ul class="list-unstyled">
+          <li><a href="../index.html#contact" class="text-decoration-none text-light">Contact</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Docs</a></li>
+          <li><a href="#" class="text-decoration-none text-light">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-end">
+        <p><i class="fas fa-envelope"></i> support@aquamesh.io</p>
+        <p><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
+</body>
+</html>
