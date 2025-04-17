@@ -186,182 +186,196 @@
 
 
 
-  
-
-
-
-
-
-  <section id="aquamesh-network" style="padding: 3rem 1rem; background: #f5faff;">
+  <section id="aquamesh-network" style="padding: 3rem 1rem; background: #f5faff; min-height: 100vh;">
     <div style="max-width: 500px; margin: 0 auto; position: relative;">
-      <!-- Background Image -->
-      <img src="/assets/images/river-8286407.svg" alt="River Background" style="width: 100%; display: block;" />
+      <img src="/assets/images/river-8286407.svg" alt="River Background" style="width: 100%; height: 400px; object-fit: cover;" />
   
-      <!-- Overlayed SVG -->
       <svg viewBox="0 0 768 761" style="position: absolute; top: 0; left: 0; width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg">
+        <g id="sensors">
+          <g class="sensor-icon" id="sensor1" transform="translate(666, 524)"> 
+            <!-- Cable -->
+            <path d="M12 -20 C10 -10, 14 -10, 12 0" stroke="black" stroke-width="2" fill="none" />
+            <!-- Body -->
+            <rect x="6" y="0" width="12" height="36" rx="6" fill="black" />
+            <!-- Mounting Bracket (behind) -->
+            <rect x="4" y="26" width="16" height="12" rx="2" fill="#222" />
+            <!-- Sensor Head -->
+            <circle cx="12" cy="44" r="8" fill="#111" stroke="#555" stroke-width="2" />
+            <!-- Bolts on sensor head -->
+            <circle cx="8" cy="40" r="0.8" fill="#ccc" />
+            <circle cx="16" cy="40" r="0.8" fill="#ccc" />
+            <circle cx="8" cy="48" r="0.8" fill="#ccc" />
+            <circle cx="16" cy="48" r="0.8" fill="#ccc" />
+          </g>
+          <g class="sensor-icon" id="sensor2" transform="translate(156, 354)"> 
+            <!-- Cable -->
+            <path d="M12 -20 C10 -10, 14 -10, 12 0" stroke="black" stroke-width="2" fill="none" />
+            <!-- Body -->
+            <rect x="6" y="0" width="12" height="36" rx="6" fill="black" />
+            <!-- Mounting Bracket (behind) -->
+            <rect x="4" y="26" width="16" height="12" rx="2" fill="#222" />
+            <!-- Sensor Head -->
+            <circle cx="12" cy="44" r="8" fill="#111" stroke="#555" stroke-width="2" />
+            <!-- Bolts on sensor head -->
+            <circle cx="8" cy="40" r="0.8" fill="#ccc" />
+            <circle cx="16" cy="40" r="0.8" fill="#ccc" />
+            <circle cx="8" cy="48" r="0.8" fill="#ccc" />
+            <circle cx="16" cy="48" r="0.8" fill="#ccc" />  
+          </g>
+          <g class="sensor-icon" id="sensor3" transform="translate(326, 544)">
+            <!-- Cable -->
+            <path d="M12 -20 C10 -10, 14 -10, 12 0" stroke="black" stroke-width="2" fill="none" />
+            <!-- Body -->
+            <rect x="6" y="0" width="12" height="36" rx="6" fill="black" />
+            <!-- Mounting Bracket (behind) -->
+            <rect x="4" y="26" width="16" height="12" rx="2" fill="#222" />
+            <!-- Sensor Head -->
+            <circle cx="12" cy="44" r="8" fill="#111" stroke="#555" stroke-width="2" />
+            <!-- Bolts on sensor head -->
+            <circle cx="8" cy="40" r="0.8" fill="#ccc" />
+            <circle cx="16" cy="40" r="0.8" fill="#ccc" />
+            <circle cx="8" cy="48" r="0.8" fill="#ccc" />
+            <circle cx="16" cy="48" r="0.8" fill="#ccc" />
+          </g>
+        </g>
   
-        <!-- Water Sensor Icons (Stylized Cylinder + Cable) -->
+        <g id="mesh-lines" opacity="0">
+          <path id="meshAB" d="M672 544 L168 374" class="mesh-link" />
+          <path id="meshAC" d="M672 544 L338 564" class="mesh-link" />
+          <path id="meshBC" d="M168 374 L338 564" class="mesh-link" />
+        </g>
+  
+        <g id="gateway-lines" opacity="0">
+          <path id="line1" d="M672 544 L540 380" class="link" />
+          <path id="line2" d="M168 374 L540 380" class="link" />
+          <path id="line3" d="M338 564 L540 380" class="link" />
+          <path id="line4" d="M540 380 L384 100" class="link" />
+          <path id="line5" d="M384 100 L384 135" class="link" />
+        </g>
 
-        <!-- Large Water Sensor Icons (Cylindrical with Cable) -->
-
-        <svg class="sensor-icon" x="676" y="564" width="40" height="64" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0 C9 12, 15 12, 12 24" stroke="#00BFFF" stroke-width="3" fill="none"/>
-          <rect x="6" y="24" width="12" height="20" rx="3" fill="#00BFFF"/>
-          <circle cx="12" cy="38" r="5" fill="#0077cc" stroke="#00BFFF" stroke-width="2"/>
-        </svg>
-
-        <svg class="sensor-icon" x="156" y="434" width="40" height="64" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0 C9 12, 15 12, 12 24" stroke="#00BFFF" stroke-width="3" fill="none"/>
-          <rect x="6" y="24" width="12" height="20" rx="3" fill="#00BFFF"/>
-          <circle cx="12" cy="38" r="5" fill="#0077cc" stroke="#00BFFF" stroke-width="2"/>
-        </svg>
-
-        <svg class="sensor-icon" x="326" y="634" width="40" height="64" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0 C9 12, 15 12, 12 24" stroke="#00BFFF" stroke-width="3" fill="none"/>
-          <rect x="6" y="24" width="12" height="20" rx="3" fill="#00BFFF"/>
-          <circle cx="12" cy="38" r="5" fill="#0077cc" stroke="#00BFFF" stroke-width="2"/>
-        </svg>
-
-        <!-- Improved & Enlarged Cloud Icon -->
-        <svg id="cloud" x="324" y="40" width="100" height="64" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 30H52C58 30 60 20 52 18C52 10 42 6 36 12C30 6 18 8 16 16C8 16 8 30 20 30Z" fill="#ccc"/>
-        </svg>
-
-        <!-- Improved & Enlarged Dashboard Icon -->
-        <svg id="dashboard" x="324" y="112" width="100" height="64" viewBox="0 0 24 24" fill="#999" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="3" width="20" height="14" rx="2"/>
-          <path d="M8 21h8M12 17v4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <!-- Path from Gateway to Cloud -->
+        <path id="cloud-link" d="M540 380 L384 100" class="link" opacity="0" />
 
   
-        <!-- Connecting Lines -->
-        <path id="line1" d="M700 600 L577 347" class="link" />
-        <path id="line2" d="M180 470 L577 347" class="link" />
-        <path id="line3" d="M350 670 L577 347" class="link" />
-        <path id="line4" d="M577 347 L384 100" class="link" />
-        <path id="line5" d="M384 100 L384 135" class="link" />
-  
-        <!-- Data Flow Dots -->
         <circle id="dot1" r="4" fill="#00BFFF" />
         <circle id="dot2" r="4" fill="#00BFFF" />
         <circle id="dot3" r="4" fill="#00BFFF" />
-        <circle id="dot4" r="4" fill="#FFA500" />
-        <circle id="dot5" r="4" fill="#999" />
 
-        <!-- Updated Gateway Icon (Bigger & Styled Like AquaMesh) -->
-        <svg id="gateway" x="540" y="300" width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <!-- Device Body -->
-          <rect x="12" y="20" width="40" height="28" rx="3" fill="#FFA500" />
-
-          <!-- Antennas -->
-          <line x1="16" y1="20" x2="16" y2="2" stroke="white" stroke-width="3"/>
-          <line x1="32" y1="20" x2="32" y2="0" stroke="white" stroke-width="3"/>
-          <line x1="48" y1="20" x2="48" y2="6" stroke="white" stroke-width="3"/>
-
-          <!-- Bottom Connectors -->
-          <rect x="22" y="48" width="4" height="6" fill="white" rx="1"/>
-          <rect x="38" y="48" width="4" height="6" fill="white" rx="1"/>
-
-          <!-- Label Area -->
-          <rect x="18" y="30" width="28" height="8" fill="white" rx="2"/>
-          <text x="32" y="36" font-size="6" font-family="Arial" fill="#FFA500" text-anchor="middle">GATEWAY</text>
-        </svg>
+        <circle id="cloud-dot" r="4" fill="#FFA500" />
 
   
+        <g id="cloud-group" transform="translate(350, 70)"> 
+          <path d="M20 30H52C58 30 60 20 52 18C52 10 42 6 36 12C30 6 18 8 16 16C8 16 8 30 20 30Z" fill="#ccc" />
+        </g>
+        <g id="dashboard" transform="translate(370, 130)">
+          <rect x="2" y="3" width="20" height="14" rx="2" fill="#999" />
+          <path d="M8 21h8M12 17v4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g id="gateway" transform="translate(510, 340) scale(1)">
+          <rect x="12" y="20" width="40" height="28" rx="3" fill="#FFA500" />
+          <line x1="16" y1="20" x2="16" y2="2" stroke="white" stroke-width="3" />
+          <line x1="32" y1="20" x2="32" y2="0" stroke="white" stroke-width="3" />
+          <line x1="48" y1="20" x2="48" y2="6" stroke="white" stroke-width="3" />
+          <rect x="22" y="48" width="4" height="6" fill="white" rx="1" />
+          <rect x="38" y="48" width="4" height="6" fill="white" rx="1" />
+          <rect x="18" y="30" width="28" height="8" fill="white" rx="2" />
+          <text x="32" y="36" font-size="6" font-family="Arial" fill="#FFA500" text-anchor="middle">GATEWAY</text>
+        </g>
       </svg>
     </div>
   
-    <!-- Anime.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
     <script>
-      // Line animations
-      anime({
-        targets: ['#line1', '#line2', '#line3'],
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
-        duration: 1200,
-        delay: anime.stagger(300, { start: 600 })
-      });
-  
-      // Gateway animation
-      anime({
-        targets: '#gateway',
-        scale: [0, 1],
-        easing: 'easeOutBack',
-        duration: 600,
-        delay: 1800
-      });
-  
-      // Gateway to cloud line
-      anime({
-        targets: '#line4',
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
-        duration: 1200,
-        delay: 2400
-      });
-  
-      // Cloud pulse
-      anime({
-        targets: '#cloud',
-        scale: [0.95, 1.05],
-        direction: 'alternate',
-        loop: true,
-        easing: 'easeInOutQuad',
-        delay: 3400
-      });
-  
-      // Dashboard bounce
-      anime({
-        targets: '#dashboard',
-        scale: [1, 1.1, 1],
-        duration: 600,
-        easing: 'easeInOutSine',
-        delay: 3800
-      });
-  
-      // Animate dots on paths
-      function animateDot(dotId, pathId, delay = 0) {
-        const path = anime.path(`#${pathId}`);
-        anime({
-          targets: `#${dotId}`,
-          translateX: path('x'),
-          translateY: path('y'),
-          easing: 'linear',
-          duration: 2000,
-          delay: delay,
-          loop: true
+      document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+    
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#aquamesh-network",
+            start: "top top",
+            end: "+=2500",
+            scrub: true,
+            pin: true,
+            markers: false
+          }
         });
-      }
-  
-      animateDot('dot1', 'line1', 1000);
-      animateDot('dot2', 'line2', 1200);
-      animateDot('dot3', 'line3', 1400);
-      animateDot('dot4', 'line4', 2600);
-      animateDot('dot5', 'line5', 3000);
+    
+        timeline.from("#sensors", { opacity: 0, y: 60, scale: 0.7, duration: 1 });
+        timeline.to("#mesh-lines", { opacity: 1, duration: 1 }, "+=0.3");
+        timeline.to("#gateway-lines", { opacity: 1, duration: 1 });
+        timeline.to("#gateway", { scale: 1, duration: 1, ease: "back.out(1.7)" }, "-=0.5");
+    
+        // Animate data dots flowing from sensors to gateway
+        gsap.to("#dot1", {
+          motionPath: { path: "#line1", align: "#line1", autoRotate: false },
+          repeat: -1,
+          duration: 2,
+          ease: "linear"
+        });
+    
+        gsap.to("#dot2", {
+          motionPath: { path: "#line2", align: "#line2", autoRotate: false },
+          repeat: -1,
+          duration: 2.2,
+          ease: "linear",
+          delay: 0.4
+        });
+    
+        gsap.to("#dot3", {
+          motionPath: { path: "#line3", align: "#line3", autoRotate: false },
+          repeat: -1,
+          duration: 2.4,
+          ease: "linear",
+          delay: 0.8
+        });
+    
+        // ✅ Cloud dot animation — moved OUTSIDE the timeline
+        gsap.to("#cloud-dot", {
+          motionPath: {
+            path: "#cloud-link",
+            align: "#cloud-link",
+            autoRotate: false
+          },
+          repeat: -1,
+          duration: 2.5,
+          ease: "linear"
+        });
+      });
     </script>
+    
   
-    <!-- Styles -->
     <style>
       .link {
         stroke: #00BFFF;
         stroke-width: 2.5;
         fill: none;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
+        stroke-dasharray: 6 4;
+      }
+  
+      .mesh-link {
+        stroke: #00BFFF;
+        stroke-width: 1.8;
+        fill: none;
+        stroke-dasharray: 5 5;
       }
   
       .sensor-icon,
-      #gateway, #cloud, #dashboard {
+      #gateway, #cloud-group, #dashboard {
         transform-origin: center;
       }
   
-      #dot1, #dot2, #dot3, #dot4, #dot5 {
+      #dot1, #dot2, #dot3 {
         pointer-events: none;
+      }
+  
+      html, body {
+        scroll-behavior: smooth;
+        overflow-y: scroll;
       }
     </style>
   </section>
-  
   
   
 
