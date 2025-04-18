@@ -188,11 +188,11 @@
 
   <section id="aquamesh-network" style="padding: 3rem 1rem; background: #f5faff; min-height: 100vh;">
     <div style="max-width: 500px; margin: 0 auto; position: relative;">
-      <img src="/assets/images/landscape.png" alt="River Background" style="width: 100%; height: 400px; object-fit: cover;" />
+      <img src="/assets/images/river.png" alt="River Background" style="width: 100%; height: 400px; object-fit: cover;" />
   
       <svg viewBox="0 0 768 761" style="position: absolute; top: 0; left: 0; width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg">
         <g id="sensors">
-          <g class="sensor-icon" id="sensor1" transform="translate(666, 524)"> 
+          <g class="sensor-icon" id="sensor1" transform="translate(666, 30)"> 
             <!-- Cable -->
             <path d="M12 -20 C10 -10, 14 -10, 12 0" stroke="black" stroke-width="2" fill="none" />
             <!-- Body -->
@@ -207,7 +207,7 @@
             <circle cx="8" cy="48" r="0.8" fill="#ccc" />
             <circle cx="16" cy="48" r="0.8" fill="#ccc" />
           </g>
-          <g class="sensor-icon" id="sensor2" transform="translate(156, 354)"> 
+          <g class="sensor-icon" id="sensor2" transform="translate(176, 550)"> 
             <!-- Cable -->
             <path d="M12 -20 C10 -10, 14 -10, 12 0" stroke="black" stroke-width="2" fill="none" />
             <!-- Body -->
@@ -222,7 +222,7 @@
             <circle cx="8" cy="48" r="0.8" fill="#ccc" />
             <circle cx="16" cy="48" r="0.8" fill="#ccc" />  
           </g>
-          <g class="sensor-icon" id="sensor3" transform="translate(326, 544)">
+          <g class="sensor-icon" id="sensor3" transform="translate(326, 470)">
             <!-- Cable -->
             <path d="M12 -20 C10 -10, 14 -10, 12 0" stroke="black" stroke-width="2" fill="none" />
             <!-- Body -->
@@ -238,23 +238,28 @@
             <circle cx="16" cy="48" r="0.8" fill="#ccc" />
           </g>
         </g>
-  
+
+          <!-- Mesh network between sensors -->
         <g id="mesh-lines" opacity="0">
-          <path id="meshAB" d="M672 544 L168 374" class="mesh-link" />
-          <path id="meshAC" d="M672 544 L338 564" class="mesh-link" />
-          <path id="meshBC" d="M168 374 L338 564" class="mesh-link" />
-        </g>
-  
-        <g id="gateway-lines" opacity="0">
-          <path id="line1" d="M672 544 L540 380" class="link" />
-          <path id="line2" d="M168 374 L540 380" class="link" />
-          <path id="line3" d="M338 564 L540 380" class="link" />
-          <path id="line4" d="M540 380 L384 100" class="link" />
-          <path id="line5" d="M384 100 L384 135" class="link" />
+          <path id="meshAB" d="M666 80 L180 600" class="mesh-link" />
+          <path id="meshAC" d="M666 80 L330 520" class="mesh-link" />
+          <path id="meshBC" d="M180 600 L330 520" class="mesh-link" />
         </g>
 
-        <!-- Path from Gateway to Cloud -->
-        <path id="cloud-link" d="M540 380 L384 100" class="link" opacity="0" />
+        <!-- Sensor to Gateway -->
+        <g id="gateway-lines" opacity="0">
+          <path id="line1" d="M666 80 L130 370" class="link" />
+          <path id="line2" d="M180 600 L130 370" class="link" />
+          <path id="line3" d="M330 520 L130 370" class="link" />
+
+          <!-- Gateway to Cloud & Dashboard -->
+          <path id="line4" d="M130 370 L130 100" class="link" />
+          <path id="line5" d="M150 80 L350 80" class="link" />
+        </g>
+
+        <!-- For cloud dot motion -->
+        <path id="cloud-link" d="M130 370 L130 100" class="link" opacity="0" />
+
 
   
         <circle id="dot1" r="4" fill="#00BFFF" />
@@ -264,14 +269,14 @@
         <circle id="cloud-dot" r="4" fill="#FFA500" />
 
   
-        <g id="cloud-group" transform="translate(350, 70)"> 
+        <g id="cloud-group" transform="translate(50, 50) scale(2)"> 
           <path d="M20 30H52C58 30 60 20 52 18C52 10 42 6 36 12C30 6 18 8 16 16C8 16 8 30 20 30Z" fill="#ccc" />
         </g>
-        <g id="dashboard" transform="translate(370, 130)">
+        <g id="dashboard" transform="translate(300, 50) scale(2.5)">
           <rect x="2" y="3" width="20" height="14" rx="2" fill="#999" />
           <path d="M8 21h8M12 17v4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </g>
-        <g id="gateway" transform="translate(510, 340) scale(1)">
+        <g id="gateway" transform="translate(110, 340) scale(1)">
           <rect x="12" y="20" width="40" height="28" rx="3" fill="#FFA500" />
           <line x1="16" y1="20" x2="16" y2="2" stroke="white" stroke-width="3" />
           <line x1="32" y1="20" x2="32" y2="0" stroke="white" stroke-width="3" />
@@ -290,72 +295,88 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
-    
+
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: "#aquamesh-network",
             start: "top top",
-            end: "+=2500",
+            end: "+=3000", // Longer scroll
             scrub: true,
             pin: true,
             markers: false
           }
         });
-    
+
+        // Step 1: Sensors appear
         timeline.from("#sensors", { opacity: 0, y: 60, scale: 0.7, duration: 1 });
-        timeline.to("#mesh-lines", { opacity: 1, duration: 1 }, "+=0.3");
+
+        // Step 2: Mesh connections appear
+        timeline.to("#mesh-lines", { opacity: 1, duration: 1 });
+
+        // Step 3: Gateway, Cloud, Dashboard fade and pop in
+        timeline.from("#gateway", { opacity: 0, scale: 0.5, duration: 1, ease: "back.out(1.7)" });
+        timeline.from("#cloud-group", { opacity: 0, y: -50, duration: 1 }, "<+0.3");
+        timeline.from("#dashboard", { opacity: 0, y: 50, duration: 1 }, "<+0.3");
+
+        // Step 4: Gateway connection lines appear
         timeline.to("#gateway-lines", { opacity: 1, duration: 1 });
-        timeline.to("#gateway", { scale: 1, duration: 1, ease: "back.out(1.7)" }, "-=0.5");
-    
-        // Animate data dots flowing from sensors to gateway
-        gsap.to("#dot1", {
-          motionPath: { path: "#line1", align: "#line1", autoRotate: false },
-          repeat: -1,
-          duration: 2,
-          ease: "linear"
+
+        // Step 5: Start flow dots
+        timeline.call(() => {
+          gsap.to("#dot1", {
+            motionPath: { path: "#line1", align: "#line1", autoRotate: false },
+            repeat: -1,
+            duration: 2,
+            ease: "linear"
+          });
+
+          gsap.to("#dot2", {
+            motionPath: { path: "#line2", align: "#line2", autoRotate: false },
+            repeat: -1,
+            duration: 2.2,
+            ease: "linear",
+            delay: 0.4
+          });
+
+          gsap.to("#dot3", {
+            motionPath: { path: "#line3", align: "#line3", autoRotate: false },
+            repeat: -1,
+            duration: 2.4,
+            ease: "linear",
+            delay: 0.8
+          });
+
+          gsap.to("#cloud-dot", {
+            motionPath: {
+              path: "#cloud-link",
+              align: "#cloud-link",
+              autoRotate: false
+            },
+            repeat: -1,
+            duration: 2.5,
+            ease: "linear"
+          });
         });
-    
-        gsap.to("#dot2", {
-          motionPath: { path: "#line2", align: "#line2", autoRotate: false },
-          repeat: -1,
-          duration: 2.2,
-          ease: "linear",
-          delay: 0.4
-        });
-    
-        gsap.to("#dot3", {
-          motionPath: { path: "#line3", align: "#line3", autoRotate: false },
-          repeat: -1,
-          duration: 2.4,
-          ease: "linear",
-          delay: 0.8
-        });
-    
-        // ✅ Cloud dot animation — moved OUTSIDE the timeline
-        gsap.to("#cloud-dot", {
-          motionPath: {
-            path: "#cloud-link",
-            align: "#cloud-link",
-            autoRotate: false
-          },
-          repeat: -1,
-          duration: 2.5,
-          ease: "linear"
+
+        timeline.to(["#dot1", "#dot2", "#dot3", "#cloud-dot"], {
+        opacity: 1,
+        duration: 0.5,
         });
       });
+
     </script>
     
   
     <style>
       .link {
-        stroke: #00BFFF;
+        stroke: #ff0000;
         stroke-width: 2.5;
         fill: none;
         stroke-dasharray: 6 4;
       }
   
       .mesh-link {
-        stroke: #00BFFF;
+        stroke: #00080b;
         stroke-width: 1.8;
         fill: none;
         stroke-dasharray: 5 5;
