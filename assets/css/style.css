@@ -869,21 +869,21 @@ section {
     border-radius: 50%;
     filter: blur(30px);
   }
-  
-
-
-
-
-
-
-
-  /* Contact Section fix */
-#contact {
-    background-color: #0a9396;
+  .cta {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
     color: white;
-    padding: 4rem 0;
-    width: 100%;
+    text-align: center;
+    padding: 5rem 0;
+    position: relative;
   }
+  ...
+  /* your .cta::after wave, etc. */
+  
+  .cta .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   
   /* Cookie Banner fix */
   #cookie-banner {
@@ -929,4 +929,3 @@ section {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
   }
-  
