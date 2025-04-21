@@ -84,23 +84,45 @@
     </div>
   </section>
 
-<!-- About + Animation Combined Section -->
-<section id="about-combined" style="position: relative; background: #f5faff;">
-  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 2rem; padding: 3rem 1rem;">
-    <!-- About Text (Left Side) -->
-    <div class="blob"></div>
-    <div style="flex: 1 1 450px; max-width: 600px;">
-      <h2 class="section-title">About AquaMesh</h2>
-      <div class="about-text">
-        <p class="lead">AquaMesh designs and manufactures cutting-edge water quality monitoring systems. Our innovative technology combines high-precision sensing with seamless connectivity to provide comprehensive water quality data.</p>
-        <p>Our mission is to revolutionize water quality monitoring through advanced technology that makes data collection more efficient, accurate, and accessible than ever before.</p>
-        <h3>Our Unique Technology:</h3>
-        <ul>
-          <li><i class="fas fa-network-wired"></i> Mesh networking between sensors using LoRa technology</li>
-          <li><i class="fas fa-microscope"></i> Multiple sensing capabilities (fluorescence, absorbance, turbidity) in a single device</li>
-          <li><i class="fas fa-mobile-alt"></i> Intuitive web application for real-time monitoring and management</li>
-          <li><i class="fas fa-brain"></i> AI-powered analytics for predictive water quality insights</li>
-        </ul>
+<!-- About Section -->
+<section id="about" style="background: #f5faff; padding: 3rem 1rem;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <h2 class="section-title">About AquaMesh</h2>
+    <p class="lead">
+      AquaMesh designs and manufactures cutting-edge water quality monitoring systems. Our innovative technology combines high-precision sensing with seamless connectivity to provide comprehensive water quality data.
+    </p>
+    <p>
+      Our mission is to revolutionize water quality monitoring through advanced technology that makes data collection more efficient, accurate, and accessible than ever before.
+    </p>
+  </div>
+</section>
+
+<!-- Technology + Animation Combined Section -->
+<section id="tech-combined" style="position: relative; background: #f5faff; padding: 10rem 1rem;">
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Technology Text (Left Side) -->
+    <div style="flex: 1 1 450px; max-width: 550px;">
+      <h2 class="section-title">Our Unique Technology:</h2>
+
+      <div class="tech-feature" onclick="highlightDemo('mesh', this)">
+        <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+        <p><strong>Mesh networking</strong> between sensors using LoRa technology</p>
+      </div>
+
+      <div class="tech-feature" onclick="highlightDemo('sensing', this)">
+        <div class="icon-box"><i class="fas fa-microscope"></i></div>
+        <p><strong>Multiple sensing capabilities</strong> (fluorescence, absorbance, turbidity) in a single device</p>
+      </div>
+
+      <div class="tech-feature" onclick="highlightDemo('webapp', this)">
+        <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+        <p><strong>Intuitive web application</strong> for real-time monitoring and management</p>
+      </div>
+
+      <div class="tech-feature" onclick="highlightDemo('ai', this)">
+        <div class="icon-box"><i class="fas fa-brain"></i></div>
+        <p><strong>AI-powered analytics</strong> for predictive water quality insights</p>
       </div>
     </div>
 
@@ -143,7 +165,6 @@
               <circle cx="16" cy="40" r="0.8" fill="#ccc" />
               <circle cx="8" cy="48" r="0.8" fill="#ccc" />
               <circle cx="16" cy="48" r="0.8" fill="#ccc" />
-              <text x="-40" y="80" font-size="30" fill="#222" font-family="Arial">AquaSpectra™ Sensor</text>
             </g>
             <g class="sensor-icon" id="sensor2" transform="translate(150, 450)"> 
               <!-- Cable -->
@@ -215,13 +236,10 @@
             <rect x="22" y="48" width="4" height="6" fill="white" rx="1" />
             <rect x="38" y="48" width="4" height="6" fill="white" rx="1" />
             <rect x="18" y="30" width="28" height="8" fill="white" rx="2" />
-            <!-- <text x="32" y="36" font-size="6" font-family="Arial" fill="#FFA500" </text> -->
-            <text x="-30" y="80" font-size="30" fill="#222" font-family="Arial">AquaLink™ Hub</text>
           </g>
           <!-- Cloud -->
           <g id="cloud-group" transform="translate(620, 35) scale(1.5)"> 
             <<path d="M20 30H52C58 30 60 20 52 18C52 10 42 6 36 12C30 6 18 8 16 16C8 16 8 30 20 30Z" fill="#ccc" />
-            <text x="-30" y="55" font-size="20" fill="#222" font-family="Arial">AquaView™ Platform</text>
           </g>
           <!-- Dashboard -->
           <g id="dashboard" transform="translate(300, 30) scale(2.5)">
@@ -231,8 +249,6 @@
           <!-- Flowing Dots -->
           <circle id="dot1" r="4" fill="#00BFFF" />
           <circle id="cloud-dot" r="4" fill="#FFA500" />
-          <!-- Logo -->
-          <image id="aquamesh-logo" href="/assets/images/aquameshlogo.png" x="170" y="90" width="360" height="80" />
         </svg>
       </div>
     </div>
@@ -249,7 +265,7 @@
 
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "#about-combined",
+        trigger: "#tech-combined",
         start: "top top",
         end: "+=1500",
         scrub: true,
@@ -283,6 +299,40 @@
     });
   });
 </script>
+
+<script>
+  let currentFeature = null;
+  function highlightDemo(feature, element) {
+    const svg = document.getElementById('aquamesh-svg');
+    if (!svg) return;
+    const highlights = {
+      mesh: ['mesh-lines', 'gateway-lines'],
+      sensing: ['sensor1', 'sensor2', 'sensor3', 'sensor4', 'sensor5', 'gateway'],
+      webapp: ['dashboard'],
+      ai: ['cloud-group']
+    };
+
+    if (currentFeature === feature) {
+      Object.values(highlights).flat().forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.opacity = '1';
+      });
+      currentFeature = null;
+      document.querySelectorAll('.tech-feature').forEach(f => f.classList.remove('active'));
+    } else {
+      Object.keys(highlights).forEach(key => {
+        highlights[key].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.opacity = key === feature ? '1' : '0.2';
+        });
+      });
+      currentFeature = feature;
+      document.querySelectorAll('.tech-feature').forEach(f => f.classList.remove('active'));
+      element.classList.add('active');
+    }
+  }
+</script>
+
 <!-- Styles -->
 <style>
   .link {
@@ -321,6 +371,70 @@
     z-index: 1;
     position: absolute;
   }
+
+  .section-title {
+    color: #1c3d50;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid #1c9dbb;
+    display: inline-block;
+  }
+
+  .tech-feature {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .tech-feature:hover {
+    transform: translateY(-4px);
+    background-color: #e6f7fb;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .icon-box {
+    width: 56px;
+    height: 56px;
+    background-color: #1c9dbb;
+    color: white;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .tech-feature:hover .icon-box {
+    background-color: #147e9a;
+  }
+
+  .tech-feature p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #222;
+  }
+
+  @media (max-width: 992px) {
+    #tech-combined {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #tech-combined > div {
+      max-width: 100%;
+    }
+  }
+
 
 </style>
 </section>
