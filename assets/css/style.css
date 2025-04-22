@@ -657,13 +657,14 @@ section {
 }
 
 /* Call to Action Section */
-.cta {
+  .cta {
     background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
     color: white;
     text-align: center;
-    padding: 5rem 0; 
+    padding: 5rem 0 0;
+    margin-bottom: 0;
     position: relative;
-}
+  }
 
 /* Remove the CTA before pseudo-element since we're transitioning directly from stats */
 .cta::before {
@@ -929,3 +930,6 @@ section {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
   }
+
+
+/* Contact Section Overrides */
