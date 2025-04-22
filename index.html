@@ -298,10 +298,12 @@
 </script>
 
 <script>
-  let currentFeature = null;
+  let activeFeatures = new Set();
+
   function highlightDemo(feature, element) {
     const svg = document.getElementById('aquamesh-svg');
     if (!svg) return;
+
     const highlights = {
       mesh: ['mesh-lines', 'gateway-lines'],
       sensing: ['sensor1', 'sensor2', 'sensor3', 'sensor4', 'sensor5', 'gateway'],
@@ -309,26 +311,39 @@
       ai: ['cloud-group']
     };
 
-    if (currentFeature === feature) {
+    // Toggle feature in activeFeatures
+    if (activeFeatures.has(feature)) {
+      activeFeatures.delete(feature);
+      element.classList.remove('active');
+    } else {
+      activeFeatures.add(feature);
+      element.classList.add('active');
+    }
+
+    // First, dim all elements
+    Object.values(highlights).flat().forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.opacity = '0.2';
+    });
+
+    // Then, highlight all elements from active features
+    activeFeatures.forEach(feat => {
+      highlights[feat].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.opacity = '1';
+      });
+    });
+
+    // If nothing is selected, reset all to full opacity
+    if (activeFeatures.size === 0) {
       Object.values(highlights).flat().forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.opacity = '1';
       });
-      currentFeature = null;
-      document.querySelectorAll('.tech-feature').forEach(f => f.classList.remove('active'));
-    } else {
-      Object.keys(highlights).forEach(key => {
-        highlights[key].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.style.opacity = key === feature ? '1' : '0.2';
-        });
-      });
-      currentFeature = feature;
-      document.querySelectorAll('.tech-feature').forEach(f => f.classList.remove('active'));
-      element.classList.add('active');
     }
   }
 </script>
+
 
 <!-- Styles -->
 <style>
