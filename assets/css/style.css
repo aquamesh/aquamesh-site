@@ -661,7 +661,7 @@ section {
     background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
     color: white;
     text-align: center;
-    padding: 5rem 0;
+    padding: 5rem 0; 
     position: relative;
 }
 
