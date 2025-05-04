@@ -32,6 +32,90 @@
     .btn-outline-custom { border-color: #00b4d8; color: #00b4d8; transition: background 0.3s; }
     .btn-outline-custom:hover { background: #00b4d8; color: #fff; }
     footer { background: #001219; color: #ccc; padding: 3rem 0; }
+    .product-card .img-main,
+    .product-card {
+      position: relative;
+      background: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 370px; /* Consistent height for all cards */
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Image wrapper */
+    .product-card .position-relative {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Default image shown */
+    .product-card .img-main,
+    .product-card .img-hover {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Hover behavior */
+    .product-card .img-hover,
+    .product-card .product-content {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .product-card:hover .img-main {
+      opacity: 0;
+    }
+
+    .product-card:hover .img-hover {
+      opacity: 1;
+    }
+
+    .product-card .product-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(255,255,255,0.97);
+      width: 100%;
+      height: 100%;
+      padding: 1.5rem;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .product-card:hover .product-content {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Optional: style list and text for visibility */
+    .product-card .product-content h5 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .product-card .product-content p,
+    .product-card .product-content ul {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+
   </style>
 </head>
 <body>
@@ -51,7 +135,6 @@
         <li class="nav-item"><a class="nav-link" href="../index.html#about">About Us</a></li>
         <li class="nav-item"><a class="nav-link active" href="../products/collection.html">Products</a></li>
         <li class="nav-item"><a class="nav-link" href="../join.html">Join Team</a></li>
-        <li class="nav-item"><a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact</a></li>
         <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background:orange;">Preorder</a></li>
       </ul>
     </div>
@@ -64,86 +147,102 @@
   <p data-aos="fade-up" data-aos-delay="200">Explore our cutting-edge IoT products designed for seamless water quality monitoring.</p>
 </section>
 
-<!-- Products Grid -->
-<section class="products-grid container">
+<!-- Products Section -->
+<section class="products-grid container py-5">
   <div class="row g-4">
-    <!-- AquaSpectra Sensor Probe -->
+
+    <!-- AquaSpectra Sensor -->
     <div class="col-sm-6 col-lg-4" data-aos="fade-up">
-      <div class="product-card">
-        <img src="../assets/images/probelanding_fully_clean.png" alt="AquaSpectra Sensor Probe" style="width: 100%; height: 250px; object-fit: contain;">
-        <div class="product-content">
-          <h5>AquaSpectra™ Sensor Probe</h5>
-          <p>16-optical-parameter sensor with MagWipe™ electromagnetic cleaning to prevent fouling.</p>
-          <ul>
-            <li>Fluorometry & Absorption (190–850 nm)</li>
-            <li>Turbidity: 0–4,000 NTU (±2% EPA)</li>
-            <li>SD Card storage (2 TB) & RS-485 interface</li>
+      <div class="product-card border shadow-sm">
+        <div class="position-relative">
+          <img src="../assets/images/probelanding_fully_clean.png" class="img-main w-100" style="height: 250px; object-fit: contain;" alt="AquaSpectra Sensor">
+          <img src="../assets/images/probe_hover.png" class="img-hover w-100 position-absolute top-0 start-0" style="height: 250px; object-fit: contain; opacity: 0; transition: 0.3s;" alt="AquaSpectra Sensor Hover">
+        </div>      
+        <div class="product-content p-3">
+          <h5 class="fw-bold">AquaSpectra™ Sensor Probe</h5>
+          <p class="small mb-2">Multi-parameter optical sensor with smart anti-fouling and ultra-wide UV-VIS coverage.</p>
+          <ul class="small">
+            <li>16+ optical parameters</li>
+            <li>Auto-cleaning with MagWipe™</li>
+            <li>2 TB SD + RS-485 interface</li>
           </ul>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="price">$10,000.00</span>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="price fw-bold">$10,000</span>
             <a href="aquaspectra.html" class="btn btn-outline-custom btn-sm">Learn More</a>
           </div>
         </div>
       </div>
     </div>
+
     <!-- Aqualog Handheld Viewer -->
     <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-      <div class="product-card">
-        <img src="../assets/images/aqualog_front.png" alt="Aqualog Handheld Viewer" style="width: 100%; height: 250px; object-fit: contain;">
-        <div class="product-content">
-          <h5>Aqualog™ Handheld Viewer</h5>
-          <p>Portable spectrometer viewer displaying real‑time spectral, fluorescence, and turbidity data on a 3.5″ touchscreen.</p>
-          <ul>
+      <div class="product-card border shadow-sm">
+        <div class="position-relative">
+          <img src="../assets/images/aqualog_front.png" class="img-main w-100" style="height: 250px; object-fit: contain;" alt="Aqualog Viewer">
+          <img src="../assets/images/aqualog_side.png" class="img-hover w-100 position-absolute top-0 start-0" style="height: 250px; object-fit: contain; opacity: 0; transition: 0.3s;" alt="Aqualog Viewer Side">
+        </div>
+        <div class="product-content p-3">
+          <h5 class="fw-bold">Aqualog™ Handheld Viewer</h5>
+          <p class="small mb-2">Portable viewer for real-time spectral and turbidity data in the field.</p>
+          <ul class="small">
             <li>3.5″ IPS touchscreen</li>
-            <li>USB‑C (data & charging), Bluetooth LE</li>
-            <li>3,500 mAh battery (8 h runtime)</li>
+            <li>USB‑C, Bluetooth LE</li>
+            <li>8 hr runtime (3,500 mAh)</li>
           </ul>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="price">$1,200.00</span>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="price fw-bold">$1,200</span>
             <a href="aqualog.html" class="btn btn-outline-custom btn-sm">Learn More</a>
           </div>
         </div>
       </div>
     </div>
+
     <!-- AquaLink Hub -->
     <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-      <div class="product-card">
-        <img src="../assets/images/gateway.png" alt="AquaLink Hub" style="width: 100%; height: 250px; object-fit: contain;">
-        <div class="product-content">
-          <h5>AquaLink™ Hub</h5>
-          <p>Multi-hop LoRa mesh with cellular & WiFi backup for global deployments.</p>
-          <ul>
-            <li>902–927 MHz ISM band; 65k nodes mesh</li>
-            <li>Solar+battery for 24/7 uptime</li>
-            <li>OTA updates & external antenna support</li>
+      <div class="product-card border shadow-sm">
+        <div class="position-relative">
+          <img src="../assets/images/gateway.png" class="img-main w-100" style="height: 250px; object-fit: contain;" alt="AquaLink Hub">
+          <img src="../assets/images/gateway_alt.png" class="img-hover w-100 position-absolute top-0 start-0" style="height: 250px; object-fit: contain; opacity: 0; transition: 0.3s;" alt="AquaLink Hub Alt">
+        </div>
+        <div class="product-content p-3">
+          <h5 class="fw-bold">AquaLink™ Hub</h5>
+          <p class="small mb-2">Mesh gateway with solar power and LoRa for remote, autonomous deployment.</p>
+          <ul class="small">
+            <li>65k-node LoRa mesh (902–927 MHz)</li>
+            <li>Solar + battery uptime</li>
+            <li>Cellular, WiFi, OTA updates</li>
           </ul>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="price">$0.00</span>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="price fw-bold">Included</span>
             <a href="aqualink.html" class="btn btn-outline-custom btn-sm">Learn More</a>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- AquaView Dashboard -->
     <div class="col-sm-6 col-lg-4" data-aos="fade-up">
-      <div class="product-card">
-        <img src="../assets/images/platform.png" alt="AquaView Dashboard" style="width: 100%; height: 250px; object-fit: contain;">
-        <div class="product-content">
-          <h5>AquaView™ Dashboard</h5>
-          <p>Cloud analytics platform with interactive mapping, custom alerts, and AI-driven insights.</p>
-          <ul>
-            <li>GIS mapping & real-time geofencing</li>
-            <li>Threshold & anomaly alerts</li>
-            <li>Future AI capabilities</li>
+      <div class="product-card border shadow-sm">
+        <div class="position-relative">
+          <img src="../assets/images/platform.png" class="img-main w-100" style="height: 250px; object-fit: contain;" alt="AquaView Dashboard">
+          <img src="../assets/images/platform_alt.png" class="img-hover w-100 position-absolute top-0 start-0" style="height: 250px; object-fit: contain; opacity: 0; transition: 0.3s;" alt="AquaView Dashboard Alt">
+        </div>
+        <div class="product-content p-3">
+          <h5 class="fw-bold">AquaView™ Dashboard</h5>
+          <p class="small mb-2">AI-powered cloud dashboard for real-time water quality analytics and alerts.</p>
+          <ul class="small">
+            <li>Interactive GIS mapping</li>
+            <li>Custom alerts & anomaly detection</li>
+            <li>AI insight engine (coming soon)</li>
           </ul>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="price">Subscription</span>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="price fw-bold">Subscription</span>
             <a href="aquaview.html" class="btn btn-outline-custom btn-sm">Learn More</a>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
