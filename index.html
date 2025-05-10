@@ -444,8 +444,77 @@
     }
   }
 
+  .section-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
 
+  .table-combined {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 3rem;
+  }
+
+  .table-combined thead {
+    background-color: #e0f7fa;
+    color: #003c43;
+    font-weight: 600;
+  }
+
+  .table-combined th,
+  .table-combined td {
+    padding: 1rem;
+    border: 1px solid #eee;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .table-combined tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+
+  .highlight {
+    color: #00b4d8;
+    font-weight: 600;
+  }
+
+  .badge {
+    display: inline-block;
+    background-color: #e6f4f1;
+    color: #006d77;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    margin: 0.1rem;
+  }
+
+  .table-combined .text-success {
+    color: #2a9d8f;
+    font-weight: bold;
+  }
+
+  .table-combined .text-muted {
+    color: #999;
+  }
+
+  .btn-primary {
+    background-color: #00b4d8;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 0.5rem;
+    transition: background 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #009bbf;
+  }
 </style>
+
 </section>
 
 
@@ -625,208 +694,130 @@
   
   <section id="competitive-matrix" class="py-5 bg-white">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Why We're Better</h2>
-  
-      <!-- Sensor Technology Matrix -->
-      <div class="mb-5">
-        <h4 class="mb-3">Sensor Technology</h4>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover text-center align-middle shadow-sm">
-            <thead class="table-primary">
-              <tr>
-                <th>Product</th>
-                <th>Sensor Technology</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a href="products/aquaspectra.html">AquaSpectra™</a></td>
-                <td><strong>Full-spectrum Optical (UV-VIS, Fluorescence, Absorbance)</strong></td>
-              </tr>
-              <tr>
-                <td><a href="https://www.ysi.com/exo2">EXO2</a></td>
-                <td>Optical (Fluorescence) + Electrochemical</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.s-can.at/products/spectrolyser/">spectro::lyser V3</a></td>
-                <td>Optical (UV-VIS Absorbance)</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.hach.com/sl1000">Hach SL1000</a></td>
-                <td>Optical (Fluorescence, Absorbance) + ISE</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.ott.com/products/...">Hydrolab HL7</a></td>
-                <td>Optical (Basic) + ISE</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-  
-      <!-- Key Parameters Matrix -->
-      <div class="mb-5">
-        <h4 class="mb-3">Key Parameters Measured</h4>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover text-center align-middle shadow-sm">
-            <thead class="table-success">
-              <tr>
-                <th>Product</th>
-                <th># of Parameters</th>
-                <th>Key Parameters</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>AquaSpectra™</td>
-                <td>16</td>
-                <td><strong>Nitrate, TOC, fDOM, TLF, Chlorophyll</strong><br><span class="text-success small">(Broader & deeper coverage)</span></td>
-              </tr>
-              <tr>
-                <td>EXO2</td>
-                <td>10</td>
-                <td>DO, pH, Chlorophyll, fDOM, Nitrate</td>
-              </tr>
-              <tr>
-                <td>spectro::lyser V3</td>
-                <td>8</td>
-                <td>TOC, Nitrate, UV254, COD</td>
-              </tr>
-              <tr>
-                <td>Hach SL1000</td>
-                <td>9</td>
-                <td>Turbidity, fDOM, Nitrate, DO</td>
-              </tr>
-              <tr>
-                <td>Hydrolab HL7</td>
-                <td>9</td>
-                <td>DO, pH, Chlorophyll</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-  
-      <!-- Mesh Networking Matrix -->
-      <div class="mb-5">
-        <h4 class="mb-3">Mesh Networking Capability</h4>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover text-center align-middle shadow-sm">
-            <thead class="table-info">
-              <tr>
-                <th>Product</th>
-                <th>Mesh Networking</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>AquaSpectra™</td>
-                <td><span class="text-success fw-bold">Yes</span></td>
-              </tr>
-              <tr>
-                <td>EXO2</td>
-                <td>No</td>
-              </tr>
-              <tr>
-                <td>spectro::lyser V3</td>
-                <td>No</td>
-              </tr>
-              <tr>
-                <td>Hach SL1000</td>
-                <td>No</td>
-              </tr>
-              <tr>
-                <td>Hydrolab HL7</td>
-                <td>No</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-  
-      <!-- Price Matrix -->
-      <div class="mb-5">
-        <h4 class="mb-3">Price Comparison (USD)</h4>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover text-center align-middle shadow-sm">
-            <thead class="table-warning">
-              <tr>
-                <th>Product</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>AquaSpectra™</td>
-                <td><strong>$10,000</strong></td>
-              </tr>
-              <tr>
-                <td>EXO2</td>
-                <td>$20,000</td>
-              </tr>
-              <tr>
-                <td>spectro::lyser V3</td>
-                <td>$25,000</td>
-              </tr>
-              <tr>
-                <td>Hach SL1000</td>
-                <td>$20,000</td>
-              </tr>
-              <tr>
-                <td>Hydrolab HL7</td>
-                <td>$18,000</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <h2 class="section-title text-center">Why We're Better</h2>
+      <div class="table-responsive">
+        <table class="table-combined">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Sensor Technology</th>
+              <th># Parameters</th>
+              <th>Key Parameters</th>
+              <th>Mesh Networking</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="products/aquaspectra.html">AquaSpectra™</a></td>
+              <td><span class="highlight">Full-spectrum Optical</span><br><small>UV-VIS, Fluorescence, Absorbance</small></td>
+              <td><span class="highlight">16</span></td>
+              <td>
+                <span class="badge">Nitrate</span>
+                <span class="badge">TOC</span>
+                <span class="badge">fDOM</span>
+                <span class="badge">TLF</span>
+                <span class="badge">Chlorophyll</span>
+              </td>
+              <td><span class="text-success">✔️</span></td>
+              <td><span class="highlight">$10,000</span></td>
+            </tr>
+            <tr>
+              <td><a href="https://www.ysi.com/exo2">EXO2</a></td>
+              <td>Optical + Electrochemical</td>
+              <td>10</td>
+              <td>
+                <span class="badge">DO</span>
+                <span class="badge">pH</span>
+                <span class="badge">Chlorophyll</span>
+                <span class="badge">fDOM</span>
+                <span class="badge">Nitrate</span>
+              </td>
+              <td><span class="text-muted">✖️</span></td>
+              <td>$20,000</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.s-can.at/products/spectrolyser/">spectro::lyser V3</a></td>
+              <td>Optical (UV-VIS Absorbance)</td>
+              <td>8</td>
+              <td>
+                <span class="badge">TOC</span>
+                <span class="badge">Nitrate</span>
+                <span class="badge">UV254</span>
+                <span class="badge">COD</span>
+              </td>
+              <td><span class="text-muted">✖️</span></td>
+              <td>$25,000</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.hach.com/sl1000">Hach SL1000</a></td>
+              <td>Optical + ISE</td>
+              <td>9</td>
+              <td>
+                <span class="badge">Turbidity</span>
+                <span class="badge">fDOM</span>
+                <span class="badge">Nitrate</span>
+                <span class="badge">DO</span>
+              </td>
+              <td><span class="text-muted">✖️</span></td>
+              <td>$20,000</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.ott.com/products/...">Hydrolab HL7</a></td>
+              <td>Optical + ISE</td>
+              <td>9</td>
+              <td>
+                <span class="badge">DO</span>
+                <span class="badge">pH</span>
+                <span class="badge">Chlorophyll</span>
+              </td>
+              <td><span class="text-muted">✖️</span></td>
+              <td>$18,000</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
   
       <!-- CTA -->
-      <div class="text-center mt-4">
-        <a href="/competition.html" class="btn btn-primary mt-3" data-aos="zoom-in" data-aos-delay="300">
+      <div class="text-center">
+        <a href="/competition.html" class="btn btn-primary" data-aos="zoom-in" data-aos-delay="300">
           Learn more about our competitive edge
         </a>
       </div>
     </div>
   </section>
   
+  
+  
 
 
 
   
-<section id="contact" class="cta">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-6 col-xl-5">
-          <h2 class="section-title text-center mb-4">Contact Us</h2>
-          <div class="card shadow">
-            <div class="card-body p-4">
-              <form>
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Your Email" required>
-                </div>
-                <div class="mb-3">
-                  <select class="form-select">
-                    <option selected>I'm interested in...</option>
-                    <option value="1">AquaSpectra™ Sensor</option>
-                    <option value="2">AquaLink™ Hub</option>
-                    <option value="3">AquaView™ Platform</option>
-                    <option value="4">Custom Solution</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-light w-100 text-dark">Get in Touch</button>
-              </form>
-            </div>
-          </div>
-        </div>
+  <section id="contact" class="contact-section">
+    <div class="contact-inner">
+      <h2 class="contact-title">Contact Us</h2>
+      <div class="contact-card">
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <select required>
+            <option disabled selected>I'm interested in...</option>
+            <option>AquaSpectra™ Sensor</option>
+            <option>AquaLink™ Hub</option>
+            <option>AquaView™ Platform</option>
+            <option>Custom Solution</option>
+          </select>
+          <textarea rows="4" placeholder="Your Message"></textarea>
+          <button type="submit">Get in Touch</button>
+        </form>
       </div>
     </div>
-</section>
+  </section>
+  
+  
+  
+
+  
   
   <!-- Footer -->
   <footer class="footer py-5">

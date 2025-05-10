@@ -2,87 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AquaLink™ Hub | AquaMesh</title>
-
-  <!-- Bootstrap & Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     body {
       background: #f2fdfc;
       color: #003c43;
       font-family: 'Poppins', sans-serif;
+      font-size: 1.075rem;
+      line-height: 1.7;
+    }
+    .product-detail-section {
+      background: radial-gradient(circle at top right, #014751, #001e28);
+      color: #fff;
+      padding: 5rem 1rem;
+    }
+    .product-info h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .product-img img {
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .price {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #00b4d8;
+    }
+    .badge {
+      font-size: 0.9rem;
+    }
+    .tabs-section {
+      padding: 4rem 1rem;
+      background: #e8f6f8;
+      border-top: 1px solid #eee;
+    }
+    .nav-tabs {
+      border-bottom: 2px solid #ccc;
+    }
+    .nav-tabs .nav-link {
+      font-weight: 600;
+      color: #003c43;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .nav-tabs .nav-link.active {
+      border-bottom: 2px solid #00b4d8;
+      color: #00b4d8;
+    }
+    .nav-tabs .nav-link:hover {
+      background: #dff4f8;
+      color: #00b4d8;
+    }
+    .tab-content .card {
+      border-radius: 1rem;
+      background: #fff;
+      color: #003c43;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .tab-content ul {
+      padding-left: 1.2rem;
+    }
+    .tab-content ul li {
+      margin-bottom: 0.75rem;
     }
     .section-title {
-      font-size: 2.25rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #003c43;
-    }
-    .hero {
-      background: linear-gradient(to right, #001e28, #014751);
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 3rem;
+      font-size: 1.8rem;
       font-weight: 700;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 1rem auto 0;
-    }
-    .feature-box {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      text-align: center;
       margin-bottom: 2rem;
-    }
-    .feature-box i {
-      font-size: 2rem;
-      color: #00b4d8;
-      margin-bottom: 1rem;
-    }
-    .spec-box {
-      background: #e6f9f8;
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-    }
-    .preorder-highlight {
-      background: #003c43;
-      color: white;
-      padding: 3rem 2rem;
+      position: relative;
       text-align: center;
     }
-    .preorder-highlight h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .section-title::after {
+      content: '';
+      width: 50px;
+      height: 3px;
+      background: #00b4d8;
+      display: block;
+      margin: 0.5rem auto 0;
     }
     footer {
       background: #001219;
-      padding: 2rem 0;
       color: #ccc;
-      text-align: center;
+      padding: 3rem 0;
+    }
+    .sticky-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #00b4d8;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 100px;
+      z-index: 999;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
   </style>
 </head>
-
 <body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="../index.html#home">
-      <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height: 32px;">
+      <img src="../assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height:36px;" />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -91,146 +124,126 @@
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item"><a class="nav-link" href="../index.html#home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="../index.html#about">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="../products/collection.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="/products/collection.html">Products</a></li>
         <li class="nav-item"><a class="nav-link" href="../join.html">Join Team</a></li>
-        <li class="nav-item"><a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact Us</a></li>
-        <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background-color: orange;">Preorder</a></li>
+        <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background:orange;">Preorder</a></li>
       </ul>
     </div>
   </div>
 </nav>
-
-<!-- Hero -->
-<section class="hero">
-  <h1>AquaLink™ Hub</h1>
-  <p>The backbone of AquaMesh's long-range IoT network. Efficient, scalable, and field-ready.</p>
-</section>
-
-<!-- Features -->
-<section class="container py-5">
-  <h2 class="section-title">Key Features</h2>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="feature-box">
-        <i class="fas fa-satellite-dish"></i>
-        <h5>Mesh Connectivity</h5>
-        <p>Supports multi-hop LoRa mesh routing with cloud relay to web dashboard.</p>
-      </div>
+<!-- Hero Section -->
+<section class="product-detail-section">
+  <div class="container d-flex flex-column flex-lg-row align-items-center gap-5">
+    <div class="product-img text-center">
+      <img src="../assets/images/gateway.png" alt="AquaLink Hub" class="img-fluid" style="max-width: 350px;">
     </div>
-    <div class="col-md-4">
-      <div class="feature-box">
-        <i class="fas fa-solar-panel"></i>
-        <h5>Solar Powered</h5>
-        <p>Integrated solar panel + battery pack for remote deployment with 24/7 uptime.</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="feature-box">
-        <i class="fas fa-network-wired"></i>
-        <h5>Plug & Play Setup</h5>
-        <p>Seamless integration with AquaSpectra sensors and AquaView platform.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- System & Deployment -->
-<section class="container py-5">
-  <h2 class="section-title">Deployment & Workflow</h2>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="spec-box">
-        <h5>Deployment</h5>
-        <p>Mount to a tripod, buoy, or structure. Connect to 1–12 AquaSpectra units with up to 10km range per hop.</p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="spec-box">
-        <h5>Workflow</h5>
-        <p>Sensor data is routed through mesh nodes to AquaLink, which forwards the data to cloud services via cellular or WiFi uplink.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Technical Specifications -->
-<section class="container py-5">
-  <h2 class="section-title">Technical Specs</h2>
-  <div class="row">
-    <div class="col-md-6">
-      <ul>
-        <li><strong>LoRa Range:</strong> Up to 10 km per hop</li>
-        <li><strong>Connectivity:</strong> Cellular LTE, WiFi fallback</li>
-        <li><strong>Power:</strong> 20W solar + 30,000 mAh battery</li>
+    <div class="product-info">
+      <h1 class="fw-bold mb-3">AquaLink™ Hub</h1>
+      <p class="lead mb-4">The backbone of AquaMesh's long-range IoT network. Efficient, scalable, and field-ready.</p>
+      <ul class="list-unstyled small">
+        <li><strong>Mesh Range:</strong> 10 km per hop</li>
+        <li><strong>Power:</strong> Solar + 30,000 mAh battery</li>
+        <li><strong>Connectivity:</strong> LTE & WiFi</li>
+        <li><strong>Ports:</strong> RS-485, AquaSpectra sync</li>
       </ul>
-    </div>
-    <div class="col-md-6">
-      <ul>
-        <li><strong>Mounting:</strong> Pole, buoy, tripod compatible</li>
-        <li><strong>Interface:</strong> AquaView integration, RS-485 sensor ports</li>
-        <li><strong>Durability:</strong> Waterproof, field-tested shell</li>
-      </ul>
+      <div class="mt-4">
+        <span class="badge bg-success rounded-pill px-3 py-2">Deployment Ready</span>
+        <div class="price mt-3">Included</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="preorder-highlight">
-  <h2>Ready to Power Your Sensing Network?</h2>
-  <p>Deploy AquaLink with AquaSpectra today to enable fully autonomous, remote water quality monitoring.</p>
-  <a href="../preorder.html" class="btn btn-lg btn-warning mt-3 px-5 py-2">Preorder Now</a>
-</section>
-<!-- Footer -->
-<footer class="footer">
+<!-- Tabs Section -->
+<section class="tabs-section">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-4 mb-4 mb-lg-0">
-        <img src="assets/images/aquameshlogo.png" alt="AquaMesh Logo" class="mb-4" style="height: 40px;">
-        <p>Revolutionizing water quality monitoring with precision technology and innovative IoT solutions.
-        </p>
+    <h2 class="section-title">More Information</h2>
+    <ul class="nav nav-tabs mb-4" id="hubTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">Features</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="deployment-tab" data-bs-toggle="tab" data-bs-target="#deployment" type="button" role="tab">Deployment</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab">Technical Specs</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="hubTabsContent">
+      <div class="tab-pane fade show active card" id="overview" role="tabpanel">
+        <p>AquaLink™ is a smart mesh hub designed for rugged, autonomous deployments. Collect and transmit data from AquaSpectra sensors across remote regions.</p>
       </div>
-      <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
-        <h5>Quick Links</h5>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="#home">Home</a></li>
-          <li class="mb-2"><a href="#about">About Us</a></li>
-          <li class="mb-2"><a href="#products">Products</a></li>
-          <li class="mb-2"><a href="#contact">Contact</a></li>
+      <div class="tab-pane fade card" id="features" role="tabpanel">
+        <ul>
+          <li>Multi-hop LoRa mesh communication</li>
+          <li>Solar-powered with 30,000 mAh battery</li>
+          <li>Plug-and-play with AquaView dashboard</li>
         </ul>
       </div>
-      <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+      <div class="tab-pane fade card" id="deployment" role="tabpanel">
+        <ul>
+          <li>Mountable on buoys, poles, or tripods</li>
+          <li>Supports 1–12 AquaSpectra units</li>
+          <li>Uplink via LTE or WiFi</li>
+        </ul>
+      </div>
+      <div class="tab-pane fade card" id="specs" role="tabpanel">
+        <ul>
+          <li><strong>Connectivity:</strong> LTE, WiFi, RS-485</li>
+          <li><strong>Battery:</strong> 30,000 mAh rechargeable</li>
+          <li><strong>Power Input:</strong> Solar (20W)</li>
+          <li><strong>Enclosure:</strong> IP67 field-tested casing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <img src="/assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height: 40px;" class="mb-3">
+        <p>Revolutionizing water quality monitoring with precision technology and innovative IoT solutions.</p>
+      </div>
+      <div class="col-md-4 col-lg-2 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About Us</a></li>
+          <li><a href="/products/collection.html">Products</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-lg-3 mb-4">
         <h5>Products</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="/products/aquaspectra.html">AquaSpectra™ Sensor</a></li>
-          <li class="mb-2"><a href="/products/aqualink.html">AquaLink™ Hub</a></li>
-          <li class="mb-2"><a href="/products/aquaadaptor.html">AquaSync™ Adaptor</a></li>
+          <li><a href="/products/aquaspectra.html">AquaSpectra™ Sensor</a></li>
+          <li><a href="/products/aqualink.html">AquaLink™ Hub</a></li>
+          <li><a href="/products/aquaadaptor.html">AquaSync™ Adaptor</a></li>
         </ul>
       </div>
       <div class="col-md-4 col-lg-3">
         <h5>Contact</h5>
-        <address>
-          <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 9510 Innovation Ln, La Jolla, CA 92093
-</p>
-          <p class="mb-2"><i class="fas fa-phone me-2"></i> (619) 354-8667‬</p>
-          <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@aquamesh.ai</p>
-        </address>
+        <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>9510 Innovation Ln, La Jolla, CA</p>
+        <p class="mb-2"><i class="fas fa-phone me-2"></i>(619) 354-8667</p>
+        <p class="mb-0"><i class="fas fa-envelope me-2"></i>info@aquamesh.ai</p>
       </div>
     </div>
-    <hr class="mt-4 mb-4">
-    <div class="row">
-      <div class="col-md-6 text-center text-md-start">
-        <p class="mb-0">&copy; 2025 AquaMesh Inc. All Rights Reserved.</p>
-      </div>
-      <div class="col-md-6 text-center text-md-end">
-        <a href="privacy.html" class="me-3">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-      </div>
-    </div>
+    <hr>
+    <div class="text-center small">&copy; 2025 AquaMesh Inc. All Rights Reserved.</div>
   </div>
 </footer>
-  
 
-<!-- Scripts -->
+<!-- Sticky CTA -->
+<a href="../preorder.html" class="sticky-cta">Preorder Now</a>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>

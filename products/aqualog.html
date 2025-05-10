@@ -4,32 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aqualog™ Handheld Viewer | AquaMesh</title>
-
-  <!-- Bootstrap & Fonts -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- AOS Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    body { background: #f2fdfc; color: #003c43; font-family: 'Poppins', sans-serif; }
-    .hero { background: linear-gradient(135deg, #014751, #001e28); color: #fff; padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
-    .hero h1 { font-size: 3rem; font-weight: 700; position: relative; z-index: 1; }
-    .hero p { font-size: 1.25rem; max-width: 600px; margin: 1rem auto 0; position: relative; z-index: 1; }
-    .feature-box { background: #fff; border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-    .feature-box:hover { transform: translateY(-5px); }
-    .feature-box i { font-size: 2.5rem; color: #00b4d8; margin-bottom: 1rem; }
-    .spec-list { list-style: none; padding: 0; }
-    .spec-list li { margin-bottom: 0.75rem; }
-    .section-title { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 2rem; }
-    .btn-primary-custom { background: #00b4d8; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; }
-    footer { background: #001219; color: #ccc; padding: 3rem 0; }
+    body {
+      background: #f2fdfc;
+      color: #003c43;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.075rem;
+      line-height: 1.7;
+    }
+    .product-detail-section {
+      background: radial-gradient(circle at top right, #014751, #001e28);
+      color: #fff;
+      padding: 5rem 1rem;
+    }
+    .product-info h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .product-img img {
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .price {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #00b4d8;
+    }
+    .badge {
+      font-size: 0.9rem;
+    }
+    .tabs-section {
+      padding: 4rem 1rem;
+      background: #e8f6f8;
+      border-top: 1px solid #eee;
+    }
+    .nav-tabs {
+      border-bottom: 2px solid #ccc;
+    }
+    .nav-tabs .nav-link {
+      font-weight: 600;
+      color: #003c43;
+      border: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .nav-tabs .nav-link.active {
+      border-bottom: 2px solid #00b4d8;
+      color: #00b4d8;
+    }
+    .nav-tabs .nav-link:hover {
+      background: #dff4f8;
+      color: #00b4d8;
+    }
+    .tab-content .card {
+      border-radius: 1rem;
+      background: #fff;
+      color: #003c43;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .tab-content ul {
+      padding-left: 1.2rem;
+    }
+    .tab-content ul li {
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      width: 50px;
+      height: 3px;
+      background: #00b4d8;
+      display: block;
+      margin-top: 0.5rem;
+    }
+    footer {
+      background: #001219;
+      color: #ccc;
+      padding: 3rem 0;
+    }
+    @media (max-width: 768px) {
+      .product-detail-section .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-tabs .nav-link {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+    .sticky-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #00b4d8;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 100px;
+      z-index: 999;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
-
-<!-- Navigation -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="../index.html#home">
@@ -44,124 +135,116 @@
         <li class="nav-item"><a class="nav-link" href="../index.html#about">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="/products/collection.html">Products</a></li>
         <li class="nav-item"><a class="nav-link" href="../join.html">Join Team</a></li>
-        <li class="nav-item"><a class="btn btn-primary btn-sm text-white ms-3" href="../index.html#contact">Contact</a></li>
         <li class="nav-item"><a class="btn text-white ms-3" href="../preorder.html" style="background:orange;">Preorder</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <h1 data-aos="zoom-in">Aqualog™ Handheld Viewer</h1>
-  <p data-aos="fade-up" data-aos-delay="200">A portable, all‑in‑one spectrometer viewer with live graphs, onboard display, and USB‑C connectivity.</p>
-  <img src="../assets/images/aqualog_front.png" class="img-fluid mt-4" alt="Aqualog Handheld Viewer" style="max-width:300px;" data-aos="zoom-in" data-aos-delay="400">
-</section>
+<!-- Sticky CTA -->
+<a href="../preorder.html" class="sticky-cta">Preorder Now</a>
 
-<!-- Features -->
-<section class="container py-5">
-  <h2 class="section-title" data-aos="fade-up">Key Features</h2>
-  <div class="row g-4">
-    <div class="col-md-3" data-aos="fade-up">
-      <div class="feature-box">
-        <i class="fas fa-tv"></i>
-        <h5>Onboard Touchscreen</h5>
-        <p>3.5″ color display with real‑time graphs and numeric readouts.</p>
-      </div>
+
+<!-- Product Detail Section -->
+<section class="product-detail-section">
+  <div class="container d-flex flex-column flex-lg-row align-items-center gap-5">
+    <div class="product-img text-center">
+      <img src="../assets/images/aqualog_front.png" alt="Aqualog Viewer" class="img-fluid" style="max-width: 350px;">
     </div>
-    <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-      <div class="feature-box">
-        <i class="fas fa-bolt"></i>
-        <h5>Rechargeable Battery</h5>
-        <p>8‑hour runtime with fast USB‑C charging.</p>
-      </div>
-    </div>
-    <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-      <div class="feature-box">
-        <i class="fas fa-ellipsis-h"></i>
-        <h5>Easy Controls</h5>
-        <p>Four tactile buttons for menu navigation and data capture.</p>
-      </div>
-    </div>
-    <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-      <div class="feature-box">
-        <i class="fas fa-wifi"></i>
-        <h5>Wireless Sync</h5>
-        <p>Bluetooth LE for data upload and remote configuration.</p>
+    <div class="product-info">
+      <h1 class="fw-bold mb-3">Aqualog™ Handheld Viewer</h1>
+      <p class="lead mb-4">A portable, all‑in‑one spectrometer viewer with live graphs, onboard display, and USB‑C connectivity.</p>
+      <ul class="list-unstyled small">
+        <li><strong>Display:</strong> 3.5″ IPS, 480×320 px</li>
+        <li><strong>Connectivity:</strong> USB‑C, Bluetooth LE</li>
+        <li><strong>Battery:</strong> 3,500 mAh, 8 h runtime</li>
+        <li><strong>Size:</strong> 160 × 70 × 30 mm</li>
+        <li><strong>Weight:</strong> 250 g</li>
+        <li><strong>Enclosure:</strong> IP67 polymer</li>
+      </ul>
+      <div class="mt-4">
+        <div class="price mt-3">$1200.00</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Specifications -->
-<section class="container py-5">
-  <h2 class="section-title" data-aos="fade-up">Specifications</h2>
-  <ul class="spec-list" data-aos="fade-up" data-aos-delay="100">
-    <li><strong>Display:</strong> 3.5″ IPS touchscreen, 480×320 px</li>
-    <li><strong>Connectivity:</strong> USB‑C (data & charging), Bluetooth LE</li>
-    <li><strong>Battery:</strong> 3,500 mAh rechargeable Li‑Ion (8 h runtime)</li>
-    <li><strong>Sensor Modes:</strong> Real‑time spectral and fluorescence graphs</li>
-    <li><strong>Storage:</strong> Internal 8 GB flash; export via USB or wireless</li>
-    <li><strong>Dimensions:</strong> 160 × 70 × 30 mm</li>
-    <li><strong>Weight:</strong> 250 g</li>
-    <li><strong>Operating Temp:</strong> 0 °C to 50 °C</li>
-    <li><strong>Enclosure:</strong> IP67‑rated polymer housing</li>
-  </ul>
+<!-- More Info Tabs -->
+<section class="tabs-section">
+  <div class="container">
+    <h2 class="section-title">More Information</h2>
+    <ul class="nav nav-tabs mb-4" id="productTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab">Technical Specs</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="usecases-tab" data-bs-toggle="tab" data-bs-target="#usecases" type="button" role="tab">Use Cases</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="productTabsContent">
+      <div class="tab-pane fade show active" id="overview" role="tabpanel">
+        <p>The Aqualog™ Handheld Viewer is an all-in-one tool for viewing real-time spectral data in the field. No laptop required. Features Bluetooth sync and 8GB internal storage.</p>
+      </div>
+      <div class="tab-pane fade" id="specs" role="tabpanel">
+        <ul>
+          <li><strong>Touchscreen:</strong> 3.5″ IPS (480×320 px)</li>
+          <li><strong>Battery:</strong> 3,500 mAh, 8-hour runtime</li>
+          <li><strong>Connectivity:</strong> USB-C, Bluetooth LE</li>
+          <li><strong>Storage:</strong> 8 GB Flash</li>
+          <li><strong>Ingress Protection:</strong> IP67</li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="usecases" role="tabpanel">
+        <ul>
+          <li>Field analysis of nitrate and fluorescence levels</li>
+          <li>Sensor calibration and quick deployment validation</li>
+          <li>Paired viewing with AquaLink™ mesh nodes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
-<footer class="footer">
+<footer>
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 mb-4 mb-lg-0">
-        <img src="/assets/images/aquameshlogo.png" alt="AquaMesh Logo" class="mb-4" style="height: 40px;">
-        <p>Revolutionizing water quality monitoring with precision technology and innovative IoT solutions.
-        </p>
+      <div class="col-lg-4 mb-4">
+        <img src="/assets/images/aquameshlogo.png" alt="AquaMesh Logo" style="height: 40px;" class="mb-3">
+        <p>Revolutionizing water quality monitoring with precision technology and innovative IoT solutions.</p>
       </div>
-      <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+      <div class="col-md-4 col-lg-2 mb-4">
         <h5>Quick Links</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="#home">Home</a></li>
-          <li class="mb-2"><a href="#about">About Us</a></li>
-          <li class="mb-2"><a href="#products">Products</a></li>
-          <li class="mb-2"><a href="#contact">Contact</a></li>
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About Us</a></li>
+          <li><a href="/products/collection.html">Products</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+      <div class="col-md-4 col-lg-3 mb-4">
         <h5>Products</h5>
         <ul class="list-unstyled">
-          <li class="mb-2"><a href="/products/aquaspectra.html">AquaSpectra™ Sensor</a></li>
-          <li class="mb-2"><a href="/products/aqualink.html">AquaLink™ Hub</a></li>
-          <li class="mb-2"><a href="/products/aquaadaptor.html">AquaSync™ Adaptor</a></li>
+          <li><a href="/products/aquaspectra.html">AquaSpectra™ Sensor</a></li>
+          <li><a href="/products/aqualink.html">AquaLink™ Hub</a></li>
+          <li><a href="/products/aquaadaptor.html">AquaSync™ Adaptor</a></li>
         </ul>
       </div>
       <div class="col-md-4 col-lg-3">
         <h5>Contact</h5>
-        <address>
-          <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 9510 Innovation Ln, La Jolla, CA 92093</p>
-          <p class="mb-2"><i class="fas fa-phone me-2"></i> (619) 354-8667‬</p>
-          <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@aquamesh.ai</p>
-        </address>
+        <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>9510 Innovation Ln, La Jolla, CA</p>
+        <p class="mb-2"><i class="fas fa-phone me-2"></i>(619) 354-8667</p>
+        <p class="mb-0"><i class="fas fa-envelope me-2"></i>info@aquamesh.ai</p>
       </div>
     </div>
-    <hr class="mt-4 mb-4">
-    <div class="row">
-      <div class="col-md-6 text-center text-md-start">
-        <p class="mb-0">&copy; 2025 AquaMesh Inc. All Rights Reserved.</p>
-      </div>
-      <div class="col-md-6 text-center text-md-end">
-        <a href="privacy.html" class="me-3">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-      </div>
-    </div>
+    <hr>
+    <div class="text-center small">&copy; 2025 AquaMesh Inc. All Rights Reserved.</div>
   </div>
 </footer>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 800, once: true });
-</script>
 </body>
 </html>
