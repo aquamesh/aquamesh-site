@@ -116,6 +116,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    width: 100%;
     color: #333;
     overflow-x: hidden;
 }
@@ -707,10 +708,15 @@ section {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-color);
-    color: white;
+    background-color: #001219;
+    color: white; 
     padding: 3rem 0;
     text-align: center;
+    width: 100vw;
+    position: relative;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
 }
 
 .footer a {
@@ -722,7 +728,16 @@ section {
 .footer a:hover {
     color: white;
 }
-
+/* footer {
+    background: #001219;
+    color: #ccc;
+    padding: 3rem 0;
+    width: 100vw;
+    position: relative;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+  } */
 /* Stats Section */
 /* Stats Section - Light Background */
 .stats {
@@ -877,7 +892,7 @@ section {
     padding: 5rem 0;
     position: relative;
   }
-  ...
+  /* ... */
   /* your .cta::after wave, etc. */
   
   .cta .container {
@@ -916,6 +931,8 @@ section {
   body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    overflow-x: hidden;
   }
 
 
@@ -942,6 +959,7 @@ section {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    width: 100%;
   }
   
   /* Utility class to make background span full width */
@@ -953,10 +971,10 @@ section {
   
   /* Main contact section background */
   .contact-section {
-    /* background-color: #005f73; */
+    background-color: #005f73;
     /* background-color: transparent; */
     padding: 6rem 0;
-    color: white;
+    /* color: white; */
   }
 
   
