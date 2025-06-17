@@ -67,6 +67,7 @@
     top: -40px;
     left: -60px;
     border-radius: 50%;
+    pointer-events: none;
   }
   @keyframes floatBlob {
     0%, 100% { transform: translateY(0); }
