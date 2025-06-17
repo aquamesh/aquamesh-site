@@ -72,6 +72,9 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(20px); }
   }
+  .blob-background {
+    pointer-events: none;
+  }
   .logo-fade-in {
     opacity: 0;
     margin-top: 2rem;
