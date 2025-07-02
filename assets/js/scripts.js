@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       console.log("Preorder form submitted.");
 
-      // Retrieve and trim the input values
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const quantity = document.getElementById("quantity").value.trim();
@@ -53,14 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Captured Values:", { name, email, quantity, comments });
 
       if (name && email && quantity) {
-        // Optionally, show a loading message:
         document.getElementById("loading-message").style.display = "block";
-
-        // Build the payload
         const payload = { name, email, quantity, comments };
 
         try {
-          // Call your backend endpoint that creates a Stripe checkout session
           const response = await fetch("https://wwrg1xdnr2.execute-api.us-west-1.amazonaws.com/live/create-checkout-session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -74,11 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const data = await response.json();
           console.log("Response data:", data);
 
-          // Optionally hide the loading message
           document.getElementById("loading-message").style.display = "none";
 
           if (data.url) {
-            // Redirect to Stripe Checkout
             console.log("Redirecting to Stripe Checkout:", data.url);
             window.location.href = data.url;
           } else {
@@ -86,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("No checkout URL returned in response.");
           }
         } catch (error) {
-          // Optionally hide the loading message
           document.getElementById("loading-message").style.display = "none";
           alert("Error processing your order: " + error.message);
           console.error("Error:", error);
@@ -98,5 +90,81 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   } else {
     console.error("Preorder form not found.");
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof gsap === 'undefined') {
+      console.error("GSAP is not loaded. Please ensure gsap.min.js is included before this script.");
+      return;
+  }
+  if (typeof MotionPathPlugin === 'undefined') {
+      console.error("MotionPathPlugin is not loaded. Please ensure MotionPathPlugin.min.js is included.");
+      return;
+  }
+
+  gsap.registerPlugin(MotionPathPlugin);
+
+  // Initial state: hide elements
+  gsap.set("#aquamesh-svg", { autoAlpha: 0 }); 
+  gsap.set(".sensor-icon", { autoAlpha: 0, scale: 0.8 });
+  gsap.set("#gateway", { autoAlpha: 0, scale: 0.8 });
+  gsap.set("#cloud-group", { autoAlpha: 0, scale: 0.8 });
+  gsap.set("#dashboard", { autoAlpha: 0, scale: 0.8 });
+
+  // Set lines initial dash offset (drawSVG-like)
+  document.querySelectorAll("#mesh-lines path, #gateway-lines path").forEach(path => {
+    const length = path.getTotalLength();
+    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length, autoAlpha: 0 });
+  });
+
+  gsap.set("#dot1, #cloud-dot", { autoAlpha: 0 });
+
+  // Timeline paused until play button clicked
+  const mainTimeline = gsap.timeline({ paused: true });
+
+  mainTimeline.to("#aquamesh-svg", { autoAlpha: 1, duration: 0.5 }, 0)
+
+    .to(".sensor-icon", {
+        scale: 1, autoAlpha: 1,
+        stagger: 0.15, ease: "back.out(1.7)", duration: 0.8,
+        onStart: () => console.log("Animating sensors")
+    }, "+=0.1")
+
+    .to("#gateway", {
+        scale: 1, autoAlpha: 1,
+        ease: "back.out(1.7)", duration: 0.8,
+        onStart: () => console.log("Animating gateway")
+    }, ">")
+
+    .to("#cloud-group", {
+        scale: 1, autoAlpha: 1,
+        ease: "back.out(1.7)", duration: 0.8
+    }, ">")
+
+    .to("#dashboard", {
+        scale: 1, autoAlpha: 1,
+        ease: "back.out(1.7)", duration: 0.8
+    }, ">")
+
+    .to("#mesh-lines path", {
+        strokeDashoffset: 0, autoAlpha: 1,
+        stagger: 0.08, duration: 1.5, ease: "power2.inOut"
+    }, "+=0.1")
+
+    .to("#gateway-lines path", {
+        strokeDashoffset: 0, autoAlpha: 1,
+        stagger: 0.1, duration: 1.5, ease: "power2.inOut"
+    }, "+=0.1");
+
+  const playButton = document.getElementById("playAnimationBtn");
+  if (playButton) {
+    playButton.addEventListener("click", () => {
+      console.log("Play Animation button clicked");
+      mainTimeline.restart();
+    });
+  } else {
+    console.error("Play Animation button (#playAnimationBtn) not found.");
   }
 });

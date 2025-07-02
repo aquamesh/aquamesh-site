@@ -1,163 +1,134 @@
 /* assets/css/style.css - Global Styles */
-@media (max-width: 992px) and (min-width: 768px) {
-    .container {
-        width: 95%;
-        max-width: none;
-        margin: 0 auto;
-    }
-}
-.about {
-    background: linear-gradient(145deg, #e0f7fa, #ffffff);
-    padding: 4rem 0;
-    overflow: hidden;
-  }
-  .about-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .about-text {
-    flex: 1 1 50%;
-    padding-right: 2rem;
-  }
-  .about-image {
-    flex: 1 1 45%;
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .about ul {
-    list-style: none;
-    padding: 0;
-  }
-  .about ul li {
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-  }
-  .about ul li i {
-    color: #0d6efd;
-    margin-right: 0.75rem;
-  }
-  .about h2.section-title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #003c43;
-    margin-bottom: 2rem;
-  }
-  .about h3 {
-    margin-top: 1.5rem;
-    font-weight: 500;
-    color: #014751;
-  }
-  .about .lead {
-    font-size: 1.15rem;
-    color: #333;
-  }
-  .blob {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, #a0e9ff 0%, transparent 70%);
-    z-index: -1;
-    animation: floatBlob 6s ease-in-out infinite;
-    top: -40px;
-    left: -60px;
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  @keyframes floatBlob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(20px); }
-  }
-  .blob-background {
-    pointer-events: none;
-  }
-  .logo-fade-in {
-    opacity: 0;
-    margin-top: 2rem;
-    transition: opacity 2s ease;
-    height: auto;
-    max-height: 100px;
-    max-width: 500px;
-    object-fit: contain;
-  }
 
-  .logo-fade-in.visible {
-    opacity: 1;
-  }
-
-
-.navbar .btn-primary {
-    background-color: var(--primary-color);
-    border: none;
-    padding: 8px 20px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 4px;
-}
-
-.navbar .btn-primary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(10, 147, 150, 0.3);
-}
-
+/* --- CSS Variables --- */
 :root {
-    --primary-color: #0a9396;
-    --secondary-color: #005f73;
-    --accent-color: #94d2bd;
-    --light-color: #e9f5f5;
-    --dark-color: #001219;
+    --primary-color: #0a9396;   /* AquaMesh Teal */
+    --secondary-color: #005f73;  /* Darker Teal/Cyan */
+    --accent-color: #94d2bd;    /* Light Greenish Blue */
+    --light-color: #e9f5f5;     /* Very Light Cyan/Grey */
+    --dark-color: #001219;      /* Almost Black */
+
+    /* New colors from updated design (adjust if needed to match variables) */
+    --aquamesh-blue: #1c9dbb;
+    --aquamesh-dark-blue: #1c3d50;
+    --aquamesh-orange: orange;
+    --aquamesh-dark-orange: darkorange;
 }
 
+/* General Body Styling */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     width: 100%;
     color: #333;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* Navigation */
+/* Global Section Styling with Consistent Backgrounds */
+section {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden; /* Ensure overflow is hidden for wave SVGs and blobs */
+}
+
+/* Reusable Section Titles (from old CSS, slightly adapted for consistency) */
+.section-title {
+    text-align: center; /* Centered by default as per new layout */
+    margin-bottom: 4rem;
+    font-weight: 700;
+    color: var(--aquamesh-dark-blue); /* Using the new dark blue for titles */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* Center the underline */
+    transform: translateX(-50%); /* Adjust for centering */
+    bottom: 0;
+    width: 80px;
+    height: 5px; /* Thicker underline */
+    background-color: var(--aquamesh-blue); /* Teal underline */
+    border-radius: 5px; /* Rounded ends */
+}
+
+/* Global Button Styles (from old CSS, applied to all .btn-primary) */
+.btn-primary {
+    background-color: var(--aquamesh-blue); /* Use new primary blue */
+    border-color: var(--aquamesh-blue);
+    padding: 10px 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    border-radius: 50px; /* Rounded buttons */
+}
+
+.btn-primary:hover {
+    background-color: var(--aquamesh-dark-blue); /* Darker blue on hover */
+    border-color: var(--aquamesh-dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(28, 157, 187, 0.4); /* Shadow with new color */
+}
+
+/* --- Navigation Bar Styles --- */
 .navbar {
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* padding: 1rem 0; */
+    padding: 0.8rem 0; /* Slightly reduced padding */
     transition: all 0.3s ease;
 }
 
+/* .navbar-scrolled (kept if you re-implement scroll-based effects) */
 .navbar-scrolled {
     padding: 0.5rem 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand img {
-    height: 50px;
+    height: 40px; /* Match new logo height in HTML */
 }
 
-.nav-link {
+.navbar-nav .nav-link {
     font-weight: 500;
-    color: var(--dark-color) !important;
+    color: var(--dark-color) !important; /* From old CSS */
     margin: 0 10px;
     transition: color 0.3s;
+    padding: 0.5rem 1rem; /* More consistent padding */
 }
 
-.nav-link:hover {
-    color: var(--primary-color) !important;
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active { /* Using .active for current page */
+    color: var(--primary-color) !important; /* From old CSS */
 }
 
 .navbar-toggler {
     border: none;
 }
 
-/* Hero Section */
+/* Specific style for the Preorder button in Navbar */
+.navbar .nav-item .btn {
+    background-color: var(--aquamesh-orange) !important; /* Orange from new design */
+    color: white !important;
+    font-size: 1.1rem; /* Specific font size from new design */
+    padding: 0.5rem 1rem; /* Specific padding from new design */
+    border-radius: 0.375rem; /* Bootstrap's default for general buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    letter-spacing: normal; /* Override the 1px letter-spacing from general .btn-primary */
+    text-transform: none; /* Override uppercase from general .btn-primary */
+}
+
+.navbar .nav-item .btn:hover {
+    background-color: var(--aquamesh-dark-orange) !important;
+    transform: translateY(-2px);
+    box-shadow: none; /* Remove shadow to keep it clean */
+}
+
+
+/* --- Hero Section Styles --- */
 .hero {
     background: linear-gradient(135deg, rgba(0, 95, 115, 0.9), rgba(0, 18, 25, 0.8)),
         url('https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2');
@@ -174,7 +145,6 @@ body {
     position: relative;
 }
 
-/* Add wave transition to hero section */
 .hero::after {
     content: '';
     position: absolute;
@@ -203,83 +173,20 @@ body {
 }
 
 .hero .btn-primary {
-    background-color: var(--primary-color);
-    border: none;
     padding: 12px 30px;
     font-size: 1rem;
-    letter-spacing: 1px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-/* Buttons */
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    padding: 10px 25px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(10, 147, 150, 0.4);
 }
 
 
-.product-image {
-  max-width: 100%;
-  max-height: 300px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-
-
-/* Global Section Styling with Consistent Backgrounds */
-section {
-    padding: 6rem 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.section-title {
-    text-align: left;
-    margin-bottom: 4rem;
-    font-weight: 700;
-    color: var(--secondary-color);
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -15px;
-    width: 80px;
-    height: 4px;
-    background-color: var(--primary-color);
-}
-
-/* Partners Section */
-/* Partners Section - White Background with Subtle Pattern */
+/* --- Partners Section --- */
 .partners {
-    display: none;
-}
-
-.partners {
-    background-color: white;
+    background-color: white; /* As per new design's first white section */
     position: relative;
+    padding: 4rem 0; /* Keep padding consistent */
+    text-align: center; /* Ensure content is centered */
 }
 
-/* Add wave transition to partners section (white to light) */
+/* Add wave transition to partners section (white to light) (from old CSS) */
 .partners::after {
     content: '';
     position: absolute;
@@ -298,22 +205,26 @@ section {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 3rem;
+    gap: 3rem; /* From old CSS */
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
 .partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition: all 0.3s;
+    max-height: 80px; /* Added from new design */
+    max-width: 150px; /* Added from new design */
+    filter: grayscale(100%); /* From old CSS */
+    opacity: 0.7; /* From old CSS */
+    transition: all 0.3s; /* From old CSS */
 }
 
 .partner-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
+    filter: grayscale(0%); /* From old CSS */
+    opacity: 1; /* From old CSS */
 }
 
+
+/* --- About Section (Using your old CSS, adapted for general section-title) --- */
 /* About Section - Light Background */
 .about {
     background-color: var(--light-color);
@@ -529,15 +440,243 @@ section {
     }
 }
 
-/* Products Section */
-/* Products Section - White Background */
-.products {
-    background-color: white;
+/* --- Technology Combined Section (#tech-combined) --- */
+#tech-combined {
     position: relative;
+    background: #f5faff; /* Light blue background as in your HTML */
+    padding: 5rem 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px; /* As defined in your old CSS */
+    box-sizing: border-box;
+    margin: 0 auto; /* Center the whole section */
 }
 
-/* Update products transition to match the wave style */
-.products::after {
+/* Container for left (text) and right (animation) content */
+.tech-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* LEFT: Technology Text Area */
+.tech-text {
+    flex: 1 1 450px;
+    max-width: 550px;
+    text-align: left; /* Default for larger screens */
+}
+
+#tech-combined .section-title { /* Specific override for this section's title */
+    color: var(--aquamesh-dark-blue);
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    border-bottom: 5px solid var(--aquamesh-blue);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    line-height: 1.2;
+    text-align: left; /* Keep left aligned as per your original */
+    left: 0; /* Ensure alignment if global section-title is centered */
+    transform: none; /* Remove transform if global section-title has it */
+}
+
+.tech-feature {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+    padding: 1.2rem;
+    border-radius: 14px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    user-select: none;
+}
+
+.tech-feature:hover {
+    transform: translateY(-6px);
+    background-color: #e6f7fb;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+}
+
+.tech-feature.active {
+    background-color: #d1ecf1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--aquamesh-blue);
+    transform: translateY(-3px);
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: var(--aquamesh-blue);
+    color: white;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    flex-shrink: 0;
+    transition: background-color 0.3s, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tech-feature:hover .icon-box {
+    background-color: var(--aquamesh-dark-blue);
+    transform: scale(1.05);
+}
+
+.tech-feature.active .icon-box {
+    background-color: var(--aquamesh-dark-blue);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.tech-feature p {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #222;
+}
+
+/* RIGHT: Animation Area */
+.tech-animation {
+    flex: 1 1 500px;
+    max-width: 700px;
+    position: relative;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+    flex-direction: column;  /* stack children vertically */
+    align-items: center; 
+}
+
+.animation-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 60%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+    background-color: #cceeff;
+    flex-direction: column;  /* stack children vertically */
+    align-items: center; 
+}
+
+.animation-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+svg#aquamesh-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* SVG Element Styles */
+.sensor-icon, #gateway, #cloud-group, #dashboard {
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.sensor-icon.highlighted, #gateway.highlighted, #cloud-group.highlighted, #dashboard.highlighted {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.7)); /* Blue glow */
+}
+
+.link, .mesh-link {
+    fill: none;
+    stroke-linecap: round;
+    /* stroke-dasharray and stroke-dashoffset will be set by JS */
+    transition: opacity 0.4s ease-in-out;
+}
+.link {
+    stroke: #ff0000; /* Gateway to Cloud/Dashboard (Red for distinction) */
+    stroke-width: 2.5;
+}
+
+.mesh-link {
+    stroke: var(--aquamesh-blue); /* Brand color for mesh lines */
+    stroke-width: 3;
+}
+
+.link.highlighted, .mesh-link.highlighted {
+    stroke-dasharray: none;
+    opacity: 1;
+    stroke: #00BFFF; /* Brighter blue for highlighted lines */
+}
+
+/* Initial state for GSAP controlled elements (all hidden until played) */
+.sensor-icon, #gateway, #cloud-group, #dashboard,
+#mesh-lines path, #gateway-lines path, #dot1, #cloud-dot {
+    opacity: 0;
+    transform-origin: center center;
+}
+
+#dot1, #cloud-dot {
+    pointer-events: none;
+}
+
+/* Play Button Styles */
+#playAnimationBtn {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--aquamesh-blue);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(28, 157, 187, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#playAnimationBtn:hover {
+    background-color: var(--aquamesh-dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(28, 157, 187, 0.4);
+}
+
+#playAnimationBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(28, 157, 187, 0.2);
+}
+
+
+/* --- Products Section (Using your old CSS card structure, adapted colors) --- */
+#products {
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+/* Update products transition to match the wave style (from old CSS) */
+#products::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -550,211 +689,86 @@ section {
     z-index: 5;
 }
 
-/* Updated Product Card Styles */
-.product-card {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    /* height: 100%; */
-    display: flex;
-    flex-direction: column;
+#products .section-title {
+    color: var(--aquamesh-dark-blue);
+    margin-bottom: 4rem;
 }
 
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+#products .display-6 { /* For the new product layout, using Bootstrap heading */
+    color: var(--aquamesh-dark-blue);
 }
 
-.product-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+#products .lead {
+    color: #555;
 }
 
-.product-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    height: 100%;
+#products .list-unstyled li {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.5rem;
 }
 
-.product-content h3 {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    /* This helps with vertical centering */
-    /* No fixed height - the JS will handle this */
+#products .list-unstyled .text-success {
+    color: var(--primary-color) !important; /* Use your primary color for checks */
 }
 
-.product-description {
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    flex-grow: 0;
-    height: auto;
-    /* Allow text to display fully */
-    overflow: visible;
-    /* Show all text */
-}
-
-.product-features {
-    margin-bottom: 1.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    flex-grow: 0;
-    /* Changed from 1 to 0 to prevent stretching */
-    display: flex;
-    flex-direction: column;
-}
-
-.product-features h4 {
+#products .btn-primary {
+    /* Inherits global .btn-primary styles */
+    padding: 0.7rem 1.8rem;
     font-size: 1rem;
-    font-weight: 600;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
+    margin-right: 1rem;
 }
 
-.product-features ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    height: 100%;
-    /* Ensure consistent height */
+/* Specific image styling for products in the new layout */
+#products .img-fluid {
+    max-width: 100%;
+    height: auto;
 }
 
-.product-features li {
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-}
-
-.product-features li i {
-    color: var(--primary-color);
-    margin-right: 0.75rem;
-    font-size: 0.9rem;
-}
-
-.product-action {
-    margin-top: auto;
-    /* Pushes button to bottom */
-    text-align: center;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
-    /* Prevents shrinking */
-}
-
-.product-action .btn {
-    padding: 0.6rem 2rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.product-action .btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(10, 147, 150, 0.3);
-}
-
-/* Call to Action Section */
-  .cta {
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-    color: white;
-    text-align: center;
-    padding: 5rem 0 0;
-    margin-bottom: 0;
-    position: relative;
-  }
-
-/* Remove the CTA before pseudo-element since we're transitioning directly from stats */
-.cta::before {
-    display: none;
-}
-
-/* Add wave transition to CTA section (gradient to dark) */
-.cta::after {
-    content: '';
+/* Blob background for AquaSpectra and Aqualog (adjusted for new product section) */
+.blob-background {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23001219' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-    background-size: cover;
-    background-position: center;
-    z-index: 5;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, var(--accent-color), var(--aquamesh-blue)); /* Use your defined colors */
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Make sure it doesn't interfere with interactions */
 }
 
-.cta .section-title {
-    color: white;
+/* Specific adjustments for product images */
+#products .row:nth-child(2) .img-fluid { /* AquaSpectra image */
+    max-height: 400px;
+    object-fit: contain;
 }
 
-.cta .section-title::after {
-    background-color: var(--light-color);
+#products .row:nth-child(3) .img-fluid { /* AquaLink image */
+    max-height: 400px;
+    object-fit: contain;
 }
 
-.cta .card {
-    border-radius: 15px;
-    border: none;
+#products .row:nth-child(4) .img-fluid { /* AquaView image */
+    max-height: 400px;
+    object-fit: contain;
+}
+#products .row:nth-child(5) .img-fluid { /* Aqualog image */
+    max-height: 400px;
+    object-fit: contain;
 }
 
-.cta .form-control,
-.cta .form-select {
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-/* Footer */
-.footer {
-    background-color: #001219;
-    color: white; 
-    padding: 3rem 0;
-    text-align: center;
-    width: 100vw;
-    position: relative;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-}
-
-.footer a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer a:hover {
-    color: white;
-}
-/* footer {
-    background: #001219;
-    color: #ccc;
-    padding: 3rem 0;
-    width: 100vw;
-    position: relative;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-  } */
-/* Stats Section */
-/* Stats Section - Light Background */
+/* --- Stats Section (from old CSS) --- */
 .stats {
-    display: none;
-}
-
-
-.stats {
-    background-color: var(--light-color);
+    background-color: var(--light-color); /* From old CSS */
     position: relative;
+    padding: 6rem 0; /* Standard section padding */
 }
 
-/* Update the stats section's after pseudo-element to precisely match the CTA gradient */
+/* Update the stats section's after pseudo-element to precisely match the CTA gradient (from old CSS) */
 .stats::after {
     content: '';
     position: absolute;
@@ -762,8 +776,7 @@ section {
     left: 0;
     width: 100%;
     height: 70px;
-    /* This gradient matches the exact 90-degree gradient used in the CTA section */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23005f73;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%230a9396;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23grad)' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23005f73;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%230a9396;stop-opacity:1' /%3E%3C/linearGradient%3E%3Cpath fill='url(%23grad)' fill-opacity='1' d='M0,192L80,181.3C160,171,320,149,480,149.3C640,149,800,171,960,176C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
     background-size: cover;
     background-position: center;
     z-index: 5;
@@ -829,13 +842,527 @@ section {
     font-weight: 500;
 }
 
-@media (max-width: 992px) {
-    .stats-item {
-        margin-bottom: 2rem;
+
+/* --- Use Cases Section (Adapting previous suggestions to your colors) --- */
+#use-cases {
+    padding: 5rem 1rem;
+    background-color: #f8f9fa; /* Light grey background from previous design */
+}
+
+#use-cases .section-title {
+    color: var(--aquamesh-dark-blue);
+    margin-bottom: 3rem; /* Adjust margin for section title */
+    padding-bottom: 0.5rem;
+    border-bottom: 5px solid var(--aquamesh-blue); /* Re-add underline */
+    display: inline-block; /* Make underline fit text */
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* Specific text-success for this section to use your primary color */
+#use-cases .fw-bold.text-uppercase.text-success {
+    color: var(--primary-color) !important;
+}
+
+#use-cases .p-4 {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Center content in cards */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#use-cases .p-4:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+#use-cases .p-4 h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color); /* Use your secondary color for headings */
+}
+
+#use-cases .p-4 p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+
+/* --- Competitive Matrix Section (Adapting previous suggestions to your colors) --- */
+#competitive-matrix {
+    padding: 5rem 1rem;
+    background-color: white; /* White background */
+}
+
+#competitive-matrix .section-title {
+    color: var(--aquamesh-dark-blue);
+    margin-bottom: 3rem;
+}
+
+.table-combined {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-combined th,
+.table-combined td {
+    padding: 1rem 1.2rem;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table-combined th {
+    background-color: var(--aquamesh-blue); /* AquaMesh blue header */
+    color: white;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.table-combined tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-combined tbody tr:hover {
+    background-color: #e6f7ff;
+    transition: background-color 0.3s ease;
+}
+
+.table-combined td a {
+    color: var(--aquamesh-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.table-combined td a:hover {
+    text-decoration: underline;
+}
+
+.table-combined .highlight {
+    font-weight: 600;
+    color: var(--aquamesh-blue);
+}
+
+.table-combined .badge {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 0.3em 0.6em;
+    border-radius: 0.25rem;
+    margin-right: 0.3em;
+    margin-bottom: 0.3em;
+    display: inline-block;
+}
+
+.table-combined .text-success {
+    color: var(--primary-color) !important; /* Use your primary color for checkmark */
+    font-size: 1.2rem;
+}
+
+.table-combined .text-muted {
+    color: #6c757d !important;
+    font-size: 1.2rem;
+}
+
+/* CTA button within Competitive Matrix */
+#competitive-matrix .btn-primary {
+    /* Inherits global .btn-primary styles */
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+}
+
+
+/* --- Contact Section (from old CSS) --- */
+.contact-section {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); /* Match your CTA gradient */
+    padding: 6rem 0;
+    color: white;
+}
+
+.contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    color: white; /* Ensure text inside is white */
+}
+
+.contact-title { /* Overrides the global section-title for this section */
+    font-size: 3rem; /* Larger font size */
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: white; /* White color for the title */
+    border-bottom: none; /* Remove underline for this section title */
+    padding-bottom: 0;
+}
+
+.contact-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 2.5rem; /* Increased padding */
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    text-align: left; /* Align form elements left */
+}
+
+.contact-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* More gap */
+}
+
+.contact-card input,
+.contact-card select,
+.contact-card textarea {
+    padding: 0.9rem 1.2rem; /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+    background-color: #f8f9fa; /* Light background for fields */
+    color: #333;
+}
+
+.contact-card select { /* Custom arrow for select */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+.contact-card button {
+    background-color: var(--aquamesh-blue); /* Use new primary blue */
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem; /* Increased padding */
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card button:hover {
+    background-color: var(--aquamesh-dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* --- Footer Styles --- */
+.footer {
+    background-color: var(--dark-color); /* From old CSS */
+    color: #ccc; /* From old CSS */
+    padding: 3rem 0;
+    width: 100%; /* Ensure full width */
+    position: relative;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    text-align: left; /* Align content to left in columns */
+}
+
+.footer a {
+    color: var(--accent-color); /* From old CSS */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: white; /* From old CSS */
+}
+
+.footer img {
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+.footer h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer ul li a {
+    font-size: 0.95rem;
+}
+
+.footer p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer address p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.footer address i {
+    margin-right: 0.5rem;
+    color: var(--accent-color); /* Use your accent color for icons */
+}
+
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Cookie Banner (from old CSS, adapted for new colors) --- */
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color); /* Use primary color */
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#cookie-banner p {
+    margin: 0;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+#cookie-banner p a {
+    color: white; /* White link as per your original */
+    text-decoration: underline;
+}
+
+#accept-cookies {
+    background-color: var(--secondary-color); /* Use secondary color */
+    border: none;
+    padding: 0.5rem 1.2rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    margin-left: 1rem;
+    border-radius: 5px;
+}
+
+#accept-cookies:hover {
+    background-color: var(--dark-color); /* Darker on hover */
+}
+
+
+/* --- Responsive Adjustments (Combined and Refined) --- */
+
+/* Specific container adjustment for medium screens (from old CSS) */
+@media (max-width: 992px) and (min-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: none;
+        margin: 0 auto;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) { /* Tablets and smaller desktops */
+    .navbar-brand img {
+        height: 35px; /* Slightly smaller logo on smaller screens */
+    }
+
+    .navbar-collapse {
+        text-align: center; /* Center align items in collapsed navbar */
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem; /* Space between nav items in collapsed view */
+    }
+
+    .navbar .nav-item .btn {
+        width: auto;
+        display: inline-block;
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+
+    .section-title {
+        font-size: 2.2rem; /* Smaller section titles */
+    }
+
+    /* About Section */
+    .about-content {
+        flex-direction: column;
+        align-items: center; /* Center content when stacked */
+        gap: 2rem;
+    }
+
+    .about-text, .about-image {
+        flex: none; /* Remove flex sizing */
+        width: 100%;
+        max-width: 600px; /* Constrain width */
+        text-align: center; /* Center text for about section on mobile */
+    }
+
+    .about-image {
+        margin-top: 3rem;
+    }
+
+    .about-image::before {
+        top: 20px;
+        right: 20px;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        max-height: 600px;
+    }
+
+    .about-text h3 {
+        text-align: center; /* Center the "Our Unique Technology" title */
+        display: block; /* Ensure it takes full width for centering */
+    }
+
+    .about-text h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .about-text li {
+        justify-content: center; /* Center list items for `about-text` */
+    }
+
+    /* Technology Combined Section */
+    #tech-combined {
+        padding: 3rem 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    .tech-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .tech-text, .tech-animation {
+        max-width: 90%;
+    }
+    #tech-combined .section-title {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        left: 50%; /* Center the title for mobile */
+        transform: translateX(-50%); /* Adjust for centering */
+    }
+    .tech-feature {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+    }
+    .tech-feature p {
+        font-size: 1rem;
+    }
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    .animation-container {
+        height: 350px;
+        padding-bottom: 0;
+    }
+
+    /* Products Section */
+    #products .row {
+        flex-direction: column;
+        align-items: center; /* Center content when stacked */
+    }
+
+    #products .row:nth-child(2n) { /* Reverse for even product rows */
+        flex-direction: column-reverse;
+    }
+
+    #products .col-lg-6 {
+        margin-bottom: 2rem; /* Add spacing between stacked columns */
+    }
+    #products .btn-primary {
+        margin-bottom: 1rem; /* Space stacked buttons */
+    }
+
+    /* Stats Section */
+    .stats-item {
+        margin-bottom: 2rem;
+    }
+
+    /* Contact Section */
+    .contact-title {
+        font-size: 2.5rem;
+    }
+
+    .footer {
+        text-align: center; /* Center footer content on small screens */
+    }
+
+    .footer .col-lg-4, .footer .col-md-4 {
+        margin-bottom: 2rem !important; /* Add space between stacked footer columns */
+    }
+}
+
+@media (max-width: 767px) { /* Smaller mobile devices */
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .about-text li i {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .about-text li {
+        font-size: 1rem;
+    }
+
+    .animation-container {
+        height: 300px;
+    }
+
+    #playAnimationBtn {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+
     .stats {
         padding: 4rem 0;
     }
@@ -849,201 +1376,46 @@ section {
     .stats-number {
         font-size: 2.25rem;
     }
+
+    .cookie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .cookie-banner button {
+        width: 100%;
+        margin-top: 1rem;
+        margin-left: 0;
+    }
 }
 
-/* -----------------------------------
-  COOKIE BANNER
------------------------------------ */
-#cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-  z-index: 999;
-}
-#cookie-banner a {
-  color: var(--secondary-color);
-  text-decoration: underline;
-}
-#cookie-banner button {
-  background-color: var(--secondary-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  cursor: pointer;
-  margin-top: 0.5rem;
+@media (max-width: 576px) { /* Extra small devices */
+    .section-title {
+        font-size: 1.6rem;
+    }
+    .tech-feature {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+        padding: 0.8rem;
+    }
+    .icon-box {
+        margin-bottom: 0.5rem;
+    }
+    .animation-container {
+        height: 250px;
+    }
+    .contact-title {
+        font-size: 2rem;
+    }
 }
 
-.blob-background {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(160, 233, 255, 0.3) 0%, rgba(255,255,255,0) 70%);
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    border-radius: 50%;
-    filter: blur(30px);
-  }
-  .cta {
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-    color: white;
-    text-align: center;
-    padding: 5rem 0;
-    position: relative;
-  }
-  /* ... */
-  /* your .cta::after wave, etc. */
-  
-  .cta .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  
-  /* Cookie Banner fix */
-  #cookie-banner {
-    background-color: #0a9396;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
-  }
-  
-  #cookie-banner a {
-    color: white;
-    text-decoration: underline;
-  }
-  
-  #accept-cookies {
-    background-color: #005f73;
-    border: none;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  /* Optional: remove margins on body to eliminate white space on sides */
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-
-
-  img[src*="landscape.png"] {
-    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
-  }
-  
-  #sensor-network-section svg path {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-  }
-
-
-/* Contact Section Overrides
-.contact-section {
-    background: linear-gradient(135deg, #014751, #001e28);
-    width: 100%;
-    padding: 4rem 1rem;
-  } */
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    width: 100%;
-  }
-  
-  /* Utility class to make background span full width */
-  /* .full-bleed {
-    width: 100%;
-    background-color: #005f73;
-  } */
-  
-  
-  /* Main contact section background */
-  .contact-section {
-    background-color: #005f73;
-    /* background-color: transparent; */
-    padding: 6rem 0;
-    /* color: white; */
-  }
-
-  
-  /* Contact content container (centers card) */
-  .contact-inner {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    color: #fff;
-  }
-  
-  /* Section heading */
-  .contact-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color:#001219
-  }
-  
-  /* Form card styling */
-  .contact-card {
-    background-color: white;
-    border-radius: 16px;
-    padding: 2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Form layout */
-  .contact-card form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  /* Form elements */
-  .contact-card input,
-  .contact-card select,
-  .contact-card textarea {
-    padding: 0.75rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    width: 100%;
-  }
-  
-  /* Submit button */
-  .contact-card button {
-    background-color: #00b4d8;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .contact-card button:hover {
-    background-color: #009bbf;
-  }
-
-  
-  
-    
-  
+/* Old CSS that might conflict or be redundant, kept for reference but should be handled by new/merged styles */
+/*
+.logo-fade-in { opacity: 0; margin-top: 2rem; transition: opacity 2s ease; height: auto; max-height: 100px; max-width: 500px; object-fit: contain; }
+.logo-fade-in.visible { opacity: 1; }
+img[src*="landscape.png"] { filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15)); }
+#sensor-network-section svg path { stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+.full-bleed { width: 100%; background-color: #005f73; }
+*/
