@@ -31,15 +31,15 @@ export default function TeamPage() {
       <SectionShell eyebrow="Our Team" title="Meet the Team">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member, i) => (
-            <div key={i} className="text-center">
+            <div key={i} className="flex flex-col items-center text-center">
               {member.image ? (
                 <img
                   src={imageAssetHref(member.image)}
                   alt={member.name}
-                  className="mx-auto mb-4 h-40 w-40 rounded-full object-cover"
+                  className="mb-4 h-40 w-40 shrink-0 rounded-full object-cover"
                 />
               ) : (
-                <div className="mx-auto mb-4 h-40 w-40 rounded-full bg-slate-200" />
+                <div className="mb-4 h-40 w-40 shrink-0 rounded-full bg-slate-200" />
               )}
               <h3 className="text-xl font-semibold text-aquamesh-700">{member.name}</h3>
               <p className="text-sm font-semibold text-aquamesh-500">{member.role}</p>
