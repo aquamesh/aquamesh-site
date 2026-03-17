@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+  --color-aquamesh-50: #f5faff;
+  --color-aquamesh-300: #94d2bd;
+  --color-aquamesh-500: #1c9dbb;
+  --color-aquamesh-700: #1c3d50;
+  --color-aquamesh-900: #001219;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: #fff;
+    font-family: var(--font-sans);
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
