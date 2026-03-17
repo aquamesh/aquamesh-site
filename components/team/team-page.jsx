@@ -1,6 +1,7 @@
 import SitePageShell from "../site-page-shell";
 import SectionShell from "../ui/section-shell";
 import { teamMembers, advisors } from "./team-page-data";
+import { imageAssetHref } from "../../lib/site-assets";
 
 export default function TeamPage() {
   return (
@@ -31,7 +32,15 @@ export default function TeamPage() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member, i) => (
             <div key={i} className="text-center">
-              <div className="mx-auto mb-4 h-40 w-32 rounded-[50%] bg-slate-200" />
+              {member.image ? (
+                <img
+                  src={imageAssetHref(member.image)}
+                  alt={member.name}
+                  className="mx-auto mb-4 h-40 w-40 rounded-full object-cover"
+                />
+              ) : (
+                <div className="mx-auto mb-4 h-40 w-40 rounded-full bg-slate-200" />
+              )}
               <h3 className="text-xl font-semibold text-aquamesh-700">{member.name}</h3>
               <p className="text-sm font-semibold text-aquamesh-500">{member.role}</p>
               <p className="text-sm italic text-slate-500">{member.credentials}</p>
@@ -45,7 +54,13 @@ export default function TeamPage() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {advisors.map((advisor, i) => (
             <div key={i} className="text-center">
-              <div className="mx-auto mb-4 h-28 w-24 rounded-[50%] bg-slate-200" />
+              <div className="mx-auto mb-4 h-28 w-28 overflow-hidden rounded-full bg-[#dddddd]">
+                <img
+                  src={imageAssetHref("team/placeholder.png")}
+                  alt={advisor.name}
+                  className="h-full w-full scale-75 object-cover"
+                />
+              </div>
               <h3 className="text-lg font-semibold text-aquamesh-700">{advisor.name}</h3>
               <p className="text-sm text-slate-600">{advisor.caption}</p>
             </div>
