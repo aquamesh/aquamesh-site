@@ -20,7 +20,7 @@ export default function ProductSpecsSection({
           <span className="text-sm font-medium text-slate-500">{tableLabel}</span>
           {actionLabel ? (
             actionHref ? (
-              <a href={actionHref} className={actionClassName}>
+              <a href={actionHref} target="_blank" rel="noopener noreferrer" className={actionClassName}>
                 <i className="fa-solid fa-file-arrow-down text-xs"></i>
                 {actionLabel}
               </a>

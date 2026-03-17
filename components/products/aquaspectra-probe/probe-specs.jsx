@@ -1,3 +1,4 @@
+import { publicAssetHref } from "../../../lib/site-paths";
 import ProductSpecsSection from "../shared/product-specs-section";
 import ProbeSection from "./probe-section";
 import { specHighlights, specs } from "./probe-page-data";
@@ -15,6 +16,7 @@ export default function ProbeSpecs() {
         specs={specs}
         highlights={specHighlights}
         actionLabel="Download Datasheet"
+        actionHref={publicAssetHref("/AquaMesh_Specsheets.pdf")}
       />
     </ProbeSection>
   );
