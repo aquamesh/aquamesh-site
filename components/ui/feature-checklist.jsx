@@ -5,26 +5,40 @@ export default function FeatureChecklist({
   className,
   itemClassName,
   iconClassName,
-  textClassName
+  textClassName,
+  renderIcon
 }) {
+  const resolvedItemClassName = itemClassName || "text-slate-700";
+  const resolvedIconClassName =
+    iconClassName ||
+    "mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-aquamesh-50 text-aquamesh-500";
+
   return (
     <ul className={cx("space-y-3", className)}>
-      {items.map((item) => (
-        <li
-          key={item}
-          className={cx("flex items-start gap-3 text-sm leading-6", itemClassName || "text-slate-700")}
-        >
-          <span
-            className={cx(
-              "mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full",
-              iconClassName || "bg-aquamesh-50 text-aquamesh-500"
-            )}
+      {items.map((entry) => {
+        const item = typeof entry === "string" ? { text: entry } : entry;
+
+        return (
+          <li
+            key={item.key || item.text}
+            className={cx("flex items-start gap-3 text-sm leading-6", resolvedItemClassName)}
           >
-            <i className="fas fa-check text-[10px]"></i>
-          </span>
-          <span className={textClassName}>{item}</span>
-        </li>
-      ))}
+            {renderIcon ? (
+              renderIcon(item)
+            ) : (
+              <span
+                className={cx(
+                  resolvedIconClassName,
+                  item.iconWrapperClassName
+                )}
+              >
+                <i className={item.icon || "fas fa-check text-[10px]"}></i>
+              </span>
+            )}
+            <span className={cx(textClassName, item.textClassName)}>{item.text}</span>
+          </li>
+        );
+      })}
     </ul>
   );
 }

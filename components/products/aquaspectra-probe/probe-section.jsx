@@ -31,6 +31,10 @@ export default function ProbeSection({
   tone = "light",
   className,
   containerClassName,
+  headerClassName,
+  eyebrowClassName,
+  titleClassName,
+  introClassName,
   children
 }) {
   const styles = toneClasses[tone] ?? toneClasses.light;
@@ -43,23 +47,32 @@ export default function ProbeSection({
     >
       <SiteContainer padded={false} className={containerClassName}>
         {eyebrow || title || intro ? (
-          <div className="mb-12 max-w-3xl" data-aos="fade-up">
+          <div className={cx("mb-12 max-w-3xl", headerClassName)} data-aos="fade-up">
             {eyebrow ? (
               <p
                 className={cx(
                   "text-sm font-semibold uppercase tracking-[0.24em]",
-                  styles.eyebrow
+                  styles.eyebrow,
+                  eyebrowClassName
                 )}
               >
                 {eyebrow}
               </p>
             ) : null}
             {title ? (
-              <h2 className={cx("mt-4 text-3xl font-bold tracking-tight sm:text-4xl", styles.title)}>
+              <h2
+                className={cx(
+                  "mt-4 text-3xl font-bold tracking-tight sm:text-4xl",
+                  styles.title,
+                  titleClassName
+                )}
+              >
                 {title}
               </h2>
             ) : null}
-            {intro ? <p className={cx("mt-4 text-lg leading-8", styles.intro)}>{intro}</p> : null}
+            {intro ? (
+              <p className={cx("mt-4 text-lg leading-8", styles.intro, introClassName)}>{intro}</p>
+            ) : null}
           </div>
         ) : null}
         {children}

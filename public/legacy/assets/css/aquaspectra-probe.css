@@ -717,8 +717,21 @@ body.probe-page .probe-nav-toggle[aria-expanded="true"] .probe-nav-toggle-bar:nt
 }
 
 .probe-story-point i {
-  margin-top: 0.15rem;
-  color: #0d8bad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border-radius: 0.75rem;
+  background: rgba(28, 157, 187, 0.2);
+  color: #94d2bd;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .probe-story-point i {
+    background: color-mix(in oklab, #1c9dbb 20%, transparent);
+  }
 }
 
 .probe-story-point span {

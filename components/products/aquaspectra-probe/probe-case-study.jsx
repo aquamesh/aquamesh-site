@@ -9,58 +9,76 @@ export default function ProbeCaseStudy({ tone = "dark" }) {
     <ProbeSection
       id="case-study"
       eyebrow="Case Study"
-      title="Proving the Sensor Where It Counts"
-      intro="We're partnering with leading research institutions to validate AquaSpectra in some of the most demanding marine environments on the West Coast."
+      title="Built for varied water conditions"
+      intro="Freshwater, coastal, and industrial programs can use the same probe, with Scripps Pier serving as the current validation site."
       tone={tone}
+      className="py-12 sm:py-14"
+      containerClassName="max-w-4xl"
+      headerClassName="mb-6 max-w-3xl"
+      titleClassName="text-2xl sm:text-[2rem]"
+      introClassName="text-sm leading-6 sm:text-base"
     >
-      <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-        {/* Image side */}
+      <div
+        className={cx(
+          "grid overflow-hidden rounded-2xl border shadow-[0_18px_48px_rgba(8,24,32,0.12)] lg:grid-cols-[240px_minmax(0,1fr)]",
+          isLight
+            ? "border-slate-200 bg-white"
+            : "border-white/10 bg-white/5"
+        )}
+      >
         <div
           className={cx(
-            "overflow-hidden rounded-2xl border",
-            isLight
-              ? "border-slate-200 bg-slate-50/80"
-              : "border-white/10 bg-white/5"
+            "overflow-hidden",
+            isLight ? "bg-slate-50/80" : "bg-white/5"
           )}
           data-aos="fade-up"
         >
           <img
             src="/images/scripps_lajolla.png"
             alt="Scripps Pier in La Jolla, San Diego"
-            className="h-full w-full object-cover"
+            className="h-52 w-full object-cover lg:h-full"
           />
         </div>
 
-        {/* Content side */}
-        <div data-aos="fade-up" data-aos-delay="100">
+        <div
+          className="flex flex-col justify-center p-5 sm:p-6"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <p
+            className={cx(
+              "text-xs font-semibold uppercase tracking-[0.24em]",
+              isLight ? "text-aquamesh-500" : "text-aquamesh-300"
+            )}
+          >
+            Scripps Case Study
+          </p>
           <h3
             className={cx(
-              "text-2xl font-bold tracking-tight sm:text-3xl",
+              "mt-2 text-xl font-bold tracking-tight sm:text-2xl",
               isLight ? "text-slate-900" : "text-white"
             )}
           >
-            Scripps Pier — San Diego, CA
+            Scripps Pier, San Diego
           </h3>
           <p
             className={cx(
-              "mt-4 text-lg leading-8",
+              "mt-3 text-sm leading-6 sm:text-base",
               isLight ? "text-slate-600" : "text-slate-300"
             )}
           >
-            AquaMesh is collaborating with UC San Diego&apos;s Scripps
-            Institution of Oceanography to test AquaSpectra at Scripps Pier,
-            one of the longest-running ocean observation sites in the world.
-            The pier&apos;s exposed coastal conditions — constant wave energy,
-            biofouling pressure, and variable salinity — make it an ideal
-            proving ground for validating sensor durability and optical
-            accuracy in a demanding marine environment.
+            AquaSpectra is being validated with UC San Diego&apos;s Scripps
+            Institution of Oceanography in exposed marine conditions while
+            staying relevant to freshwater, coastal, and industrial monitoring
+            programs.
           </p>
-          <div className="mt-8">
+          <div className="mt-6">
             <ButtonLink
-              href="#"
+              href="/case-studies/scripps-pier/"
               variant={isLight ? "primary" : "secondary"}
+              size="sm"
             >
-              Read Full Case Study
+              Read Scripps Case Study
             </ButtonLink>
           </div>
         </div>

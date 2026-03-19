@@ -1,5 +1,6 @@
 import { imageAssetHref } from "../../../lib/site-assets"
 import ButtonLink from "../../ui/button-link"
+import IconBadge from "../../ui/icon-badge"
 import SiteContainer from "../../ui/site-container"
 import { aqualinkHeroStats } from "./aqualink-page-data"
 
@@ -7,29 +8,20 @@ export default function AqualinkHero() {
   return (
     <section
       id="overview"
-      className="relative isolate overflow-hidden bg-slate-950 text-white"
+      className="relative isolate overflow-hidden bg-black text-white"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(28,157,187,0.3),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(148,210,189,0.16),transparent_28%)]" />
-      <div className="relative border-y border-white/10 bg-slate-950/85">
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
+      <div className="relative overflow-hidden bg-black">
         <div
-          className="pointer-events-none absolute inset-0 opacity-55 mix-blend-screen"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background: `
-              repeating-linear-gradient(
-                112deg,
-                rgba(255, 255, 255, 0.08) 0,
-                rgba(255, 255, 255, 0.08) 1px,
-                transparent 1px,
-                transparent 18px
-              ),
-              radial-gradient(circle at 50% 38%, rgba(102, 211, 240, 0.18), transparent 30%),
-              linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.06))
+              radial-gradient(ellipse 72% 62% at 50% 42%, rgba(24,24,24,0.48) 0%, rgba(12,12,14,0.2) 42%, transparent 72%),
+              linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(8, 8, 10) 38%, rgb(14, 14, 16) 68%, rgb(0, 0, 0) 100%)
             `
           }}
         />
 
-        <SiteContainer className="px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <SiteContainer className="relative px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="mx-auto grid max-w-6xl gap-10 lg:gap-12">
             <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
             <div className="max-w-2xl" data-aos="fade-up">
@@ -83,9 +75,7 @@ export default function AqualinkHero() {
                   className="rounded-[22px] border border-white/10 bg-white/8 px-5 py-5 text-left shadow-[0_20px_40px_rgba(0,0,0,0.2)] backdrop-blur-sm"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-aquamesh-500/20 text-aquamesh-300">
-                      <i className={stat.icon} />
-                    </div>
+                    <IconBadge icon={stat.icon} />
                     <p className="text-lg font-semibold leading-tight text-white">{stat.value}</p>
                   </div>
                   <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-300">

@@ -2,6 +2,7 @@ import Script from "next/script"
 import AosRuntime from "../../runtime/aos-runtime"
 import SitePageShell from "../../site-page-shell"
 import FeatureChecklist from "../../ui/feature-checklist"
+import IconBadge from "../../ui/icon-badge"
 import InfoCard from "../../ui/info-card"
 import SectionShell from "../../ui/section-shell"
 import ProductCrossSell from "../shared/product-cross-sell"
@@ -156,9 +157,7 @@ export default function AqualinkPage() {
               key={item.step}
               className="rounded-[28px] border border-white/10 bg-white/[0.05] p-6 shadow-[0_18px_42px_rgba(0,0,0,0.18)] backdrop-blur-sm"
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-aquamesh-500/20 text-aquamesh-300">
-                <i className={item.icon} />
-              </div>
+              <IconBadge icon={item.icon} className="h-10 w-10" />
               <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-aquamesh-300">
                 {item.step}
               </p>
