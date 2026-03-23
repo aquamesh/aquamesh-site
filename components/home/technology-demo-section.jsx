@@ -91,12 +91,12 @@ export default function TechnologyDemoSection() {
 
       {/* Scroll-driven area: tall container with sticky canvas */}
       <div className="relative" style={{ height: "350vh" }}>
-        <div className="sticky top-0 h-screen flex items-center justify-center px-4 sm:px-6">
+        <div className="sticky top-0 h-screen flex items-center justify-center px-2 sm:px-6">
           <div
-            className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-aquamesh-300/20 bg-[#050f16]"
+            className="relative w-full max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl border border-aquamesh-300/20 bg-[#050f16]
+              h-[75vh] max-h-none
+              sm:h-auto sm:aspect-[16/10] sm:max-h-[75vh]"
             style={{
-              aspectRatio: "16 / 10",
-              maxHeight: "75vh",
               boxShadow:
                 "0 40px 100px rgba(8,24,32,0.18), 0 8px 32px rgba(28,157,187,0.1)",
             }}
