@@ -1,8 +1,9 @@
+import { Fragment } from "react";
 import { cx } from "../../lib/cx";
 import ButtonLink from "../ui/button-link";
 import SectionShell from "../ui/section-shell";
 import SitePageShell from "../site-page-shell";
-import { competitors, rows } from "./competition-page-data";
+import { competitors, rowGroups } from "./competition-page-data";
 
 function ValueBadge({ value, featured = false }) {
   return (
@@ -46,26 +47,38 @@ function ComparisonTable() {
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-200 text-sm">
-          {rows.map((row) => (
-            <tr key={row.label} className="align-middle hover:bg-slate-50/70">
-              <th scope="row" className="px-5 py-4 font-semibold text-slate-900">
-                {row.label}
-              </th>
-              {competitors.map((competitor) => (
+          {rowGroups.map((group) => (
+            <Fragment key={group.category}>
+              <tr>
                 <td
-                  key={`${row.label}-${competitor.id}`}
-                  className={cx(
-                    "px-5 py-4 text-center",
-                    competitor.featured ? "bg-aquamesh-50/50" : null
-                  )}
+                  colSpan={1 + competitors.length}
+                  className="bg-slate-100 px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-600"
                 >
-                  <ValueBadge
-                    value={row.values[competitor.id]}
-                    featured={competitor.featured}
-                  />
+                  {group.category}
                 </td>
+              </tr>
+              {group.rows.map((row) => (
+                <tr key={row.label} className="align-middle hover:bg-slate-50/70">
+                  <th scope="row" className="px-5 py-4 font-semibold text-slate-900">
+                    {row.label}
+                  </th>
+                  {competitors.map((competitor) => (
+                    <td
+                      key={`${row.label}-${competitor.id}`}
+                      className={cx(
+                        "px-5 py-4 text-center",
+                        competitor.featured ? "bg-aquamesh-50/50" : null
+                      )}
+                    >
+                      <ValueBadge
+                        value={row.values[competitor.id]}
+                        featured={competitor.featured}
+                      />
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </tr>
+            </Fragment>
           ))}
         </tbody>
       </table>
