@@ -56,7 +56,7 @@ function CycleNode({ node, compact = false }) {
   return (
     <article
       className={cx(
-        "rounded-[26px] border border-white/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(242,247,249,0.92))] shadow-[0_18px_45px_rgba(12,28,36,0.09)] backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-aquamesh-300/50 hover:shadow-[0_24px_55px_rgba(12,28,36,0.14)]",
+        "rounded-[26px] border border-slate-200/80 bg-white shadow-[0_18px_45px_rgba(12,28,36,0.12)] transition-all duration-300 hover:scale-[1.03] hover:border-aquamesh-300/50 hover:shadow-[0_24px_55px_rgba(12,28,36,0.18)]",
         compact ? "p-5" : "absolute w-56 p-5",
         !compact ? node.orbitClassName : null
       )}
@@ -198,12 +198,16 @@ export default function TechnologyDemoSection() {
       containerClassName="max-w-6xl"
     >
       <div
-        className="relative overflow-hidden rounded-[36px] border border-[rgba(191,210,219,0.7)] bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(239,246,248,0.94))] p-6 shadow-[0_28px_80px_rgba(8,24,32,0.08)] sm:p-8 lg:p-10"
+        className="relative overflow-hidden rounded-[36px] border border-[rgba(191,210,219,0.7)] bg-white p-6 shadow-[0_28px_80px_rgba(8,24,32,0.08)] sm:p-8 lg:p-10"
         data-aos="fade-up"
       >
-        <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,rgba(28,157,187,0.18),transparent_60%)]" />
-        <div className="absolute -left-20 top-12 h-52 w-52 rounded-full bg-aquamesh-300/20 blur-3xl" />
-        <div className="absolute -right-20 bottom-10 h-52 w-52 rounded-full bg-aquamesh-500/10 blur-3xl" />
+        {/* Logo background — fills entire card */}
+        <img
+          src={siteAssets.logoMarkBranded}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-30"
+        />
 
         {/* ── Mobile layout ── */}
         <div className="relative mx-auto max-w-xl space-y-4 lg:hidden">
@@ -211,8 +215,7 @@ export default function TechnologyDemoSection() {
             <div key={node.step}>
               <article
                 className={cx(
-                  "rounded-[26px] border border-slate-200/80 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(241,247,249,0.94))] p-5 shadow-[0_16px_38px_rgba(12,28,36,0.07)]",
-                  `bg-[linear-gradient(135deg,var(--tw-gradient-stops))] ${node.mobileTintClassName}`
+                  "rounded-[26px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_16px_38px_rgba(12,28,36,0.07)] backdrop-blur-sm"
                 )}
               >
                 <div className="flex items-start gap-4">
@@ -265,24 +268,6 @@ export default function TechnologyDemoSection() {
             className="orbit-animated absolute inset-[22%] rounded-full border border-aquamesh-500/10"
             style={{ animation: "orbit-rotate-reverse 55s linear infinite" }}
           />
-
-          {/* Center element */}
-          <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-            <div
-              className="orbit-animated flex h-28 w-28 flex-col items-center justify-center rounded-full border border-aquamesh-300/30 bg-[radial-gradient(circle,rgba(255,255,255,0.95),rgba(242,247,249,0.9))] shadow-[0_0_40px_rgba(28,157,187,0.12)]"
-              style={{ animation: "center-breathe 4s ease-in-out infinite" }}
-            >
-              <img
-                src={siteAssets.logoMark}
-                alt=""
-                aria-hidden="true"
-                className="h-10 w-10 opacity-80"
-              />
-              <p className="mt-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.2em] text-aquamesh-500/80">
-                Telemetry
-              </p>
-            </div>
-          </div>
 
           <OrbitSvg />
 
