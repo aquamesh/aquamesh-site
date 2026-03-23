@@ -32,18 +32,4 @@
   }
 }
 
-/* ── Dataflow animations (technology scroll story) ── */
-
-@keyframes dataflow-dash {
-  to { stroke-dashoffset: -40; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dataflow-animated {
-    animation: none !important;
-  }
-  .dataflow-dots {
-    display: none;
-  }
-}
 
