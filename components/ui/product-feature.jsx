@@ -80,17 +80,13 @@ export default function ProductFeature({ product, className }) {
         className
       )}
     >
-      {product.reverse ? (
-        <>
-          <ProductVisual product={product} />
-          <ProductContent product={product} />
-        </>
-      ) : (
-        <>
-          <ProductContent product={product} />
-          <ProductVisual product={product} />
-        </>
-      )}
+      {/* Image always first on mobile; use order to swap on desktop */}
+      <div className={product.reverse ? "lg:order-1" : "lg:order-2"}>
+        <ProductVisual product={product} />
+      </div>
+      <div className={product.reverse ? "lg:order-2" : "lg:order-1"}>
+        <ProductContent product={product} />
+      </div>
     </article>
   );
 }
