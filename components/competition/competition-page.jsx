@@ -31,7 +31,7 @@ function ComparisonTable() {
         <thead className="bg-slate-950 text-white">
           <tr>
             <th className="min-w-[220px] px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em]">
-              Parameter
+              Feature
             </th>
             {competitors.map((competitor) => (
               <th

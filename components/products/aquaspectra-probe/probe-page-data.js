@@ -86,8 +86,8 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "probe-story-media",
-    imageSrc: "full_probe_shot.png",
-    imageAlt: "AquaSpectra probe",
+    imageSrc: "camera_transparent.png",
+    imageAlt: "AquaSpectra onboard camera",
     badgeTitle: "Reduce field visits",
     badgeCopy:
       "Active cleaning systems keep the optical path clear so you spend less time on-site."

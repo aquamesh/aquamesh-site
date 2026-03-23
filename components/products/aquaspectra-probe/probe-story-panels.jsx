@@ -25,7 +25,17 @@ function StoryPanel({ panel }) {
   );
 
   const mediaBlock = (
-    <div className="flex items-center justify-center">
+    <div
+      className="flex items-center justify-center"
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent, black 40%), linear-gradient(to top, transparent, black 25%)",
+        maskComposite: "intersect",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent, black 40%), linear-gradient(to top, transparent, black 25%)",
+        WebkitMaskComposite: "destination-in"
+      }}
+    >
       <img
         src={imageAssetHref(panel.imageSrc)}
         alt={panel.imageAlt}
