@@ -32,42 +32,17 @@
   }
 }
 
-/* ── Orbit animations (technology demo section) ── */
+/* ── Dataflow animations (technology scroll story) ── */
 
-@keyframes orbit-rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes orbit-rotate-reverse {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
-}
-
-@keyframes orbit-pulse {
-  0%, 100% { opacity: 0.18; transform: scale(1); }
-  50%      { opacity: 0.35; transform: scale(1.04); }
-}
-
-@keyframes orbit-dash {
-  to { stroke-dashoffset: -60; }
-}
-
-@keyframes orbit-glow {
-  0%, 100% { opacity: 0.5; }
-  50%      { opacity: 1; }
-}
-
-@keyframes center-breathe {
-  0%, 100% { transform: scale(1); opacity: 0.92; }
-  50%      { transform: scale(1.05); opacity: 1; }
+@keyframes dataflow-dash {
+  to { stroke-dashoffset: -40; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit-animated {
+  .dataflow-animated {
     animation: none !important;
   }
-  .orbit-flowing-dots {
+  .dataflow-dots {
     display: none;
   }
 }
