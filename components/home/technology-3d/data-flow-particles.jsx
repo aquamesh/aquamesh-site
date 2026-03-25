@@ -2,6 +2,7 @@
 
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
+import { MathUtils } from "three";
 import { PROBE_POSITIONS } from "./sensor-probes";
 import { GATEWAY_POS } from "./gateway-hub";
 import { CLOUD_POS } from "./cloud-element";
@@ -23,11 +24,11 @@ function quadBezier(a, ctrl, b, t) {
 // Particle colors that match probe accents
 const PARTICLE_COLORS = ["#22d3ee", "#34d399", "#67e8f9", "#a78bfa", "#f0abfc", "#fbbf24"];
 
-function ProbeToGatewayParticle({ from, speed, offset, color }) {
+function ProbeToGatewayParticle({ from, speed, offset, color, active }) {
   const ref = useRef();
-  const gw = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 1, GATEWAY_POS[2]], []);
+  const gw = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 1.05, GATEWAY_POS[2]], []);
   const ctrl = useMemo(
-    () => [(from[0] + gw[0]) / 2, 2.2, (from[2] + gw[2]) / 2],
+    () => [(from[0] + gw[0]) / 2, GATEWAY_POS[1] * 0.68, (from[2] + gw[2]) / 2],
     [from, gw]
   );
 
@@ -35,7 +36,13 @@ function ProbeToGatewayParticle({ from, speed, offset, color }) {
     const t = (clock.getElapsedTime() * speed + offset) % 1;
     const [x, y, z] = quadBezier(from, ctrl, gw, t);
     ref.current.position.set(x, y, z);
-    ref.current.material.opacity = Math.sin(t * Math.PI) * 0.9;
+    const opacityTarget = Math.sin(t * Math.PI) * (active ? 0.98 : 0.18);
+    ref.current.material.opacity = MathUtils.lerp(ref.current.material.opacity, opacityTarget, 0.08);
+    ref.current.material.emissiveIntensity = MathUtils.lerp(
+      ref.current.material.emissiveIntensity,
+      active ? 2.8 : 0.6,
+      0.08
+    );
   });
 
   return (
@@ -53,12 +60,12 @@ function ProbeToGatewayParticle({ from, speed, offset, color }) {
   );
 }
 
-function GatewayToCloudParticle({ speed, offset, color }) {
+function GatewayToCloudParticle({ speed, offset, color, active }) {
   const ref = useRef();
-  const from = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 1.5, GATEWAY_POS[2]], []);
+  const from = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 2.35, GATEWAY_POS[2]], []);
   const to = useMemo(() => CLOUD_POS, []);
   const ctrl = useMemo(
-    () => [(from[0] + to[0]) / 2 - 0.5, (from[1] + to[1]) / 2 + 0.5, (from[2] + to[2]) / 2],
+    () => [(from[0] + to[0]) / 2 + 0.15, (from[1] + to[1]) / 2 + 1.1, (from[2] + to[2]) / 2],
     [from, to]
   );
 
@@ -66,7 +73,13 @@ function GatewayToCloudParticle({ speed, offset, color }) {
     const t = (clock.getElapsedTime() * speed + offset) % 1;
     const [x, y, z] = quadBezier(from, ctrl, to, t);
     ref.current.position.set(x, y, z);
-    ref.current.material.opacity = Math.sin(t * Math.PI) * 0.9;
+    const opacityTarget = Math.sin(t * Math.PI) * (active ? 0.98 : 0.18);
+    ref.current.material.opacity = MathUtils.lerp(ref.current.material.opacity, opacityTarget, 0.08);
+    ref.current.material.emissiveIntensity = MathUtils.lerp(
+      ref.current.material.emissiveIntensity,
+      active ? 3.1 : 0.7,
+      0.08
+    );
   });
 
   return (
@@ -86,7 +99,7 @@ function GatewayToCloudParticle({ speed, offset, color }) {
 
 const G2C_COLORS = ["#6ecff6", "#a78bfa", "#34d399"];
 
-export default function DataFlowParticles() {
+export default function DataFlowParticles({ activeStage = 0 }) {
   const probeParticles = useMemo(() => {
     const particles = [];
     PROBE_POSITIONS.forEach((pos, i) => {
@@ -115,10 +128,23 @@ export default function DataFlowParticles() {
   return (
     <>
       {probeParticles.map((p) => (
-        <ProbeToGatewayParticle key={p.key} from={p.from} speed={p.speed} offset={p.offset} color={p.color} />
+        <ProbeToGatewayParticle
+          key={p.key}
+          from={p.from}
+          speed={p.speed}
+          offset={p.offset}
+          color={p.color}
+          active={activeStage === 1}
+        />
       ))}
       {cloudParticles.map((p) => (
-        <GatewayToCloudParticle key={p.key} speed={p.speed} offset={p.offset} color={p.color} />
+        <GatewayToCloudParticle
+          key={p.key}
+          speed={p.speed}
+          offset={p.offset}
+          color={p.color}
+          active={activeStage === 2}
+        />
       ))}
     </>
   );

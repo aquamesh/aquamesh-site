@@ -3,14 +3,15 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
+import { MathUtils } from "three";
 
 export const PROBE_POSITIONS = [
-  [-3, 0.1, -2],
-  [-1, 0.1, -3],
-  [1.5, 0.1, -1],
-  [-2, 0.1, 1],
-  [0.5, 0.1, 2],
-  [3, 0.1, 0],
+  [-1.8, 0.1, -1.2],
+  [-0.6, 0.1, -1.8],
+  [0.9, 0.1, -0.6],
+  [-1.2, 0.1, 0.6],
+  [0.3, 0.1, 1.2],
+  [1.8, 0.1, 0],
 ];
 
 // Alternate probe accent colors for variety
@@ -23,19 +24,43 @@ const PROBE_COLORS = [
   { body: "#1a3d50", accent: "#fbbf24", emissive: "#d97706" },
 ];
 
-function Probe({ position, index }) {
+function Probe({ position, index, active }) {
   const ringRef = useRef();
   const crystalRef = useRef();
+  const lightRef = useRef();
   const colors = PROBE_COLORS[index % PROBE_COLORS.length];
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     if (ringRef.current) {
-      ringRef.current.material.emissiveIntensity =
-        0.5 + Math.sin(t * 1.5 + index * 1.2) * 0.4;
+      const target = active ? 1.25 : 0.42;
+      ringRef.current.material.emissiveIntensity = MathUtils.lerp(
+        ringRef.current.material.emissiveIntensity,
+        target + Math.sin(t * 1.5 + index * 1.2) * (active ? 0.45 : 0.18),
+        0.08
+      );
+      ringRef.current.material.opacity = MathUtils.lerp(
+        ringRef.current.material.opacity,
+        active ? 0.95 : 0.45,
+        0.08
+      );
     }
     if (crystalRef.current) {
       crystalRef.current.rotation.y = t * 0.4 + index;
+      crystalRef.current.material.emissiveIntensity = MathUtils.lerp(
+        crystalRef.current.material.emissiveIntensity,
+        active ? 0.8 : 0.22,
+        0.08
+      );
+      const s = MathUtils.lerp(crystalRef.current.scale.x, active ? 1.08 : 1, 0.08);
+      crystalRef.current.scale.setScalar(s);
+    }
+    if (lightRef.current) {
+      lightRef.current.intensity = MathUtils.lerp(
+        lightRef.current.intensity,
+        active ? 0.95 : 0.25,
+        0.08
+      );
     }
   });
 
@@ -67,17 +92,23 @@ function Probe({ position, index }) {
           />
         </mesh>
         {/* Colored point light glow */}
-        <pointLight color={colors.accent} intensity={0.5} distance={2.5} position={[0, 0.3, 0]} />
+        <pointLight
+          ref={lightRef}
+          color={colors.accent}
+          intensity={active ? 0.95 : 0.25}
+          distance={2.5}
+          position={[0, 0.3, 0]}
+        />
       </group>
     </Float>
   );
 }
 
-export default function SensorProbes() {
+export default function SensorProbes({ active = false }) {
   return (
     <>
       {PROBE_POSITIONS.map((pos, i) => (
-        <Probe key={i} position={pos} index={i} />
+        <Probe key={i} position={pos} index={i} active={active} />
       ))}
     </>
   );

@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import TechnologySceneLoader from "./technology-3d/technology-scene-loader";
-import useScrollProgress from "./technology-3d/use-scroll-progress";
 
 const STAGES = [
   {
@@ -10,73 +10,105 @@ const STAGES = [
     description:
       "Multi-parameter optical probes deployed across the water body, each measuring 20+ water-quality parameters in real time.",
     tags: ["20+ Parameters", "Optical Sensing", "Low Power"],
+    href: "/products/aquaspectra-probe",
   },
   {
     label: "AquaLink Gateway",
     description:
       "Solar-powered LoRa hub aggregates sensor data and relays it to the cloud over cellular or satellite backhaul.",
     tags: ["LoRa Mesh", "Solar-Powered", "Self-Healing"],
+    href: "/products/aqualink-hub",
   },
   {
     label: "AquaView Cloud Platform",
     description:
       "Live dashboards, AI-driven anomaly detection, and predictive analytics turn raw telemetry into actionable insight.",
     tags: ["Real-time Alerts", "AI Analytics", "Trend Detection"],
+    href: "/products/aquaview-platform",
   },
 ];
 
-function StageOverlay({ stage, opacity }) {
-  if (opacity <= 0) return null;
+function StageTile({ stage, index, isActive, onSelect }) {
   return (
-    <div
-      className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-8 text-center transition-none sm:pb-12"
-      style={{ opacity }}
+    <button
+      type="button"
+      onClick={() => onSelect(index)}
+      className={`group rounded-2xl border p-5 text-left transition-all duration-300 ${
+        isActive
+          ? "border-aquamesh-500/60 bg-aquamesh-700 text-aquamesh-50 shadow-[0_16px_40px_rgba(8,24,32,0.22)]"
+          : "border-aquamesh-200/80 bg-white/80 text-slate-900 hover:border-aquamesh-300 hover:bg-white"
+      }`}
+      aria-pressed={isActive}
     >
-      <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl drop-shadow-lg">
-        {stage.label}
-      </h3>
-      <p className="mx-auto max-w-md text-sm leading-6 text-white/70 drop-shadow sm:text-base">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <div
+            className={`mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold ${
+              isActive
+                ? "bg-aquamesh-500 text-white"
+                : "bg-aquamesh-100 text-aquamesh-700"
+            }`}
+          >
+            {index + 1}
+          </div>
+          <h3
+            className={`text-lg font-semibold tracking-tight ${
+              isActive ? "text-aquamesh-50" : "text-aquamesh-800"
+            }`}
+          >
+            {stage.label}
+          </h3>
+        </div>
+        <div
+          className={`mt-1 h-3 w-3 shrink-0 rounded-full transition-all ${
+            isActive
+              ? "bg-aquamesh-400 shadow-[0_0_14px_rgba(28,157,187,0.75)]"
+              : "bg-slate-300 group-hover:bg-aquamesh-300"
+          }`}
+        />
+      </div>
+      <p
+        className={`mt-3 text-sm leading-6 ${
+          isActive ? "text-aquamesh-100/90" : "text-slate-600"
+        }`}
+      >
         {stage.description}
       </p>
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="mt-4 flex flex-wrap gap-2">
         {stage.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-full border border-aquamesh-500/30 bg-aquamesh-900/60 px-3 py-1 text-xs font-semibold text-aquamesh-300 backdrop-blur-sm"
+            className={`rounded-full border px-3 py-1 text-xs font-semibold ${
+              isActive
+                ? "border-aquamesh-300/30 bg-aquamesh-500/20 text-aquamesh-100"
+                : "border-aquamesh-200 bg-aquamesh-50 text-aquamesh-700"
+            }`}
           >
             {tag}
           </span>
         ))}
       </div>
-    </div>
+      <Link
+        href={stage.href}
+        onClick={(e) => e.stopPropagation()}
+        className={`mt-4 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
+          isActive
+            ? "text-aquamesh-200 hover:text-white"
+            : "text-aquamesh-600 hover:text-aquamesh-800"
+        }`}
+      >
+        Learn more
+        <span aria-hidden="true">&rarr;</span>
+      </Link>
+    </button>
   );
 }
 
 export default function TechnologyDemoSection() {
-  const scrollRef = useRef(null);
-  const progress = useScrollProgress(scrollRef);
-
-  // Map progress to stage opacities with generous hold at first & last
-  // Each stage occupies a region with a plateau (full opacity) and fade edges
-  function stageOpacity(stageIndex) {
-    // Stage centers spread across 0.15 to 0.85 (not 0 to 1)
-    // This gives the first and last stage more visible time
-    const pad = 0.15;
-    const range = 1 - 2 * pad;
-    const stageCount = STAGES.length;
-    const center = pad + (stageIndex / (stageCount - 1)) * range;
-    const halfWidth = range / (stageCount - 1) / 2;
-    const fadeZone = 0.08; // how quickly it fades at the edges
-
-    const dist = Math.abs(progress - center);
-    if (dist <= halfWidth - fadeZone) return 1; // plateau
-    if (dist >= halfWidth + fadeZone) return 0; // fully out
-    return 1 - (dist - (halfWidth - fadeZone)) / (2 * fadeZone);
-  }
+  const [activeStage, setActiveStage] = useState(0);
 
   return (
-    <section id="tech-combined" className="scroll-mt-24" ref={scrollRef}>
-      {/* Header */}
+    <section id="tech-combined" className="scroll-mt-24">
       <div className="px-4 py-16 text-center sm:px-6 lg:px-8">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-aquamesh-500">
           Technology
@@ -89,39 +121,51 @@ export default function TechnologyDemoSection() {
         </p>
       </div>
 
-      {/* Scroll-driven area: tall container with sticky canvas */}
-      <div className="relative" style={{ height: "350vh" }}>
-        <div className="sticky top-0 h-screen flex items-center justify-center px-2 sm:px-6">
+      <div className="px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.9fr)] lg:items-stretch">
           <div
-            className="relative w-full max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl border border-aquamesh-300/20 bg-[#050f16]
-              h-[75vh] max-h-none
-              sm:h-auto sm:aspect-[16/10] sm:max-h-[75vh]"
+            className="relative h-full overflow-hidden rounded-2xl border border-aquamesh-300/20 bg-[#050f16] sm:rounded-3xl"
             style={{
               boxShadow:
                 "0 40px 100px rgba(8,24,32,0.18), 0 8px 32px rgba(28,157,187,0.1)",
             }}
           >
-            <TechnologySceneLoader scrollProgress={progress} />
-
-            {/* Stage text overlays */}
-            {STAGES.map((stage, i) => (
-              <StageOverlay key={i} stage={stage} opacity={stageOpacity(i)} />
-            ))}
-
-            {/* Scroll progress indicator dots */}
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2.5 sm:right-6">
-              {STAGES.map((_, i) => (
-                <div
-                  key={i}
-                  className="h-2 w-2 rounded-full transition-all duration-300"
-                  style={{
-                    background: stageOpacity(i) > 0.3 ? "#1c9dbb" : "rgba(148,210,189,0.25)",
-                    transform: stageOpacity(i) > 0.3 ? "scale(1.4)" : "scale(1)",
-                    boxShadow: stageOpacity(i) > 0.3 ? "0 0 8px rgba(28,157,187,0.6)" : "none",
-                  }}
-                />
-              ))}
+            <div className="absolute inset-x-0 top-0 z-10 flex justify-end px-4 py-4 sm:px-6">
+              <div className="flex gap-2">
+                {STAGES.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setActiveStage(i)}
+                    className="h-2.5 w-2.5 rounded-full transition-all duration-300"
+                    style={{
+                      background: activeStage === i ? "#1c9dbb" : "rgba(148,210,189,0.25)",
+                      transform: activeStage === i ? "scale(1.4)" : "scale(1)",
+                      boxShadow:
+                        activeStage === i ? "0 0 10px rgba(28,157,187,0.7)" : "none",
+                    }}
+                    aria-label={`Show ${STAGES[i].label}`}
+                    aria-pressed={activeStage === i}
+                  />
+                ))}
+              </div>
             </div>
+
+            <div className="aspect-[16/11] min-h-[420px] w-full sm:min-h-[520px] lg:h-full lg:min-h-0 lg:aspect-auto">
+              <TechnologySceneLoader activeStage={activeStage} />
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:auto-rows-fr">
+            {STAGES.map((stage, index) => (
+              <StageTile
+                key={stage.label}
+                stage={stage}
+                index={index}
+                isActive={activeStage === index}
+                onSelect={setActiveStage}
+              />
+            ))}
           </div>
         </div>
       </div>

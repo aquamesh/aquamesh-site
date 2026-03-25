@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Line } from "@react-three/drei";
+import { MathUtils } from "three";
 import { PROBE_POSITIONS } from "./sensor-probes";
 
 const EDGES = [
@@ -18,13 +19,19 @@ const EDGES = [
 // Alternate line colors for more visual pop
 const LINE_COLORS = ["#22d3ee", "#34d399", "#67e8f9", "#a78bfa", "#22d3ee", "#34d399", "#67e8f9"];
 
-function MeshLine({ a, b, index }) {
+function MeshLine({ a, b, index, active }) {
   const ref = useRef();
 
   useFrame(({ clock }) => {
     if (ref.current) {
       const t = clock.getElapsedTime();
-      ref.current.material.opacity = 0.15 + Math.sin(t * 0.8 + index * 0.9) * 0.15;
+      const pulse = Math.sin(t * 0.8 + index * 0.9);
+      const targetOpacity = active ? 0.52 + pulse * 0.18 : 0.11 + pulse * 0.08;
+      ref.current.material.opacity = MathUtils.lerp(
+        ref.current.material.opacity,
+        targetOpacity,
+        0.08
+      );
       ref.current.material.dashOffset -= 0.006;
     }
   });
@@ -51,7 +58,13 @@ export default function MeshNetworkLines() {
   return (
     <>
       {EDGES.map(([i, j], idx) => (
-        <MeshLine key={idx} a={PROBE_POSITIONS[i]} b={PROBE_POSITIONS[j]} index={idx} />
+        <MeshLine
+          key={idx}
+          a={PROBE_POSITIONS[i]}
+          b={PROBE_POSITIONS[j]}
+          index={idx}
+          active={arguments[0]?.active ?? false}
+        />
       ))}
     </>
   );

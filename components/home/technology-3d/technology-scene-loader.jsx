@@ -26,7 +26,7 @@ function hasWebGL() {
   }
 }
 
-export default function TechnologySceneLoader({ scrollProgress = 0 }) {
+export default function TechnologySceneLoader({ activeStage = 0 }) {
   const [visible, setVisible] = useState(false);
   const [supported, setSupported] = useState(true);
   const containerRef = useRef(null);
@@ -62,7 +62,7 @@ export default function TechnologySceneLoader({ scrollProgress = 0 }) {
 
   return (
     <div ref={containerRef} className="h-full w-full">
-      {visible ? <TechnologyScene scrollProgress={scrollProgress} /> : <Skeleton />}
+      {visible ? <TechnologyScene activeStage={activeStage} /> : <Skeleton />}
     </div>
   );
 }
