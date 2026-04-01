@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { MathUtils } from "three";
 
-const GATEWAY_POS = [0.35, 2.2, -0.2];
+const GATEWAY_POS = [3.5, 1.2, 0];
 
 export { GATEWAY_POS };
 
@@ -32,6 +32,11 @@ export default function GatewayHub({ active = false }) {
 
   return (
     <group position={GATEWAY_POS}>
+      {/* Support post anchoring gateway to the riverbank */}
+      <mesh position={[0, -0.1, 0]}>
+        <cylinderGeometry args={[0.08, 0.1, 1.0, 8]} />
+        <meshStandardMaterial color="#5a6a7a" metalness={0.7} roughness={0.3} />
+      </mesh>
       <Float speed={1.15} floatIntensity={0.09} rotationIntensity={0.02}>
         <group scale={0.75}>
           {/* Main box body */}

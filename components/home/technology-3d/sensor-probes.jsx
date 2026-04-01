@@ -5,60 +5,48 @@ import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { MathUtils } from "three";
 
+// Positions follow the river meander: centerX(z) = sin(z * 0.25) * 1.2
 export const PROBE_POSITIONS = [
-  [-1.8, 0.1, -1.2],
-  [-0.6, 0.1, -1.8],
-  [0.9, 0.1, -0.6],
-  [-1.2, 0.1, 0.6],
-  [0.3, 0.1, 1.2],
-  [1.8, 0.1, 0],
+  [-1.38, 0.1, -3.0],   // upstream (sin(-0.75)*1.2 ≈ -0.82, offset -0.5)
+  [-0.05, 0.1, -1.5],   // mid-upstream (sin(-0.375)*1.2 ≈ -0.44, offset +0.4)
+  [-0.3,  0.1,  0.0],   // center (sin(0)*1.2 = 0, offset -0.3)
+  [ 0.86, 0.1,  1.2],   // mid-downstream (sin(0.3)*1.2 ≈ 0.35, offset +0.5)
+  [ 0.72, 0.1,  2.8],   // downstream (sin(0.7)*1.2 ≈ 0.77, offset -0.1)
+  [ 1.77, 0.1,  4.0],   // far downstream (sin(1.0)*1.2 ≈ 1.01, offset +0.6)
 ];
 
-// Alternate probe accent colors for variety
-const PROBE_COLORS = [
-  { body: "#0e4d6e", accent: "#22d3ee", emissive: "#0891b2" },
-  { body: "#1a3d50", accent: "#34d399", emissive: "#059669" },
-  { body: "#0e4d6e", accent: "#67e8f9", emissive: "#06b6d4" },
-  { body: "#1a3d50", accent: "#a78bfa", emissive: "#7c3aed" },
-  { body: "#0e4d6e", accent: "#f0abfc", emissive: "#c026d3" },
-  { body: "#1a3d50", accent: "#fbbf24", emissive: "#d97706" },
+// Muted indicator LED color per probe
+const LED_COLORS = [
+  "#22d3ee",
+  "#34d399",
+  "#67e8f9",
+  "#22d3ee",
+  "#34d399",
+  "#67e8f9",
 ];
 
 function Probe({ position, index, active }) {
-  const ringRef = useRef();
-  const crystalRef = useRef();
+  const bodyRef = useRef();
+  const capRef = useRef();
+  const ledRef = useRef();
   const lightRef = useRef();
-  const colors = PROBE_COLORS[index % PROBE_COLORS.length];
+  const ledColor = LED_COLORS[index % LED_COLORS.length];
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    if (ringRef.current) {
-      const target = active ? 1.25 : 0.42;
-      ringRef.current.material.emissiveIntensity = MathUtils.lerp(
-        ringRef.current.material.emissiveIntensity,
-        target + Math.sin(t * 1.5 + index * 1.2) * (active ? 0.45 : 0.18),
+    if (ledRef.current) {
+      ledRef.current.material.emissiveIntensity = MathUtils.lerp(
+        ledRef.current.material.emissiveIntensity,
+        active
+          ? 1.2 + Math.sin(t * 2 + index * 1.2) * 0.4
+          : 0.3 + Math.sin(t * 0.8 + index) * 0.1,
         0.08
       );
-      ringRef.current.material.opacity = MathUtils.lerp(
-        ringRef.current.material.opacity,
-        active ? 0.95 : 0.45,
-        0.08
-      );
-    }
-    if (crystalRef.current) {
-      crystalRef.current.rotation.y = t * 0.4 + index;
-      crystalRef.current.material.emissiveIntensity = MathUtils.lerp(
-        crystalRef.current.material.emissiveIntensity,
-        active ? 0.8 : 0.22,
-        0.08
-      );
-      const s = MathUtils.lerp(crystalRef.current.scale.x, active ? 1.08 : 1, 0.08);
-      crystalRef.current.scale.setScalar(s);
     }
     if (lightRef.current) {
       lightRef.current.intensity = MathUtils.lerp(
         lightRef.current.intensity,
-        active ? 0.95 : 0.25,
+        active ? 0.4 : 0.08,
         0.08
       );
     }
@@ -67,37 +55,49 @@ function Probe({ position, index, active }) {
   return (
     <Float speed={1.8} floatIntensity={0.08} rotationIntensity={0}>
       <group position={position}>
-        {/* Low-poly probe crystal */}
-        <mesh ref={crystalRef} position={[0, 0.25, 0]}>
-          <octahedronGeometry args={[0.18, 0]} />
+        {/* Main cylindrical sensor body */}
+        <mesh ref={bodyRef} position={[0, 0.22, 0]}>
+          <cylinderGeometry args={[0.07, 0.09, 0.38, 12]} />
           <meshStandardMaterial
-            color={colors.body}
-            emissive={colors.emissive}
-            emissiveIntensity={0.3}
-            flatShading
-            metalness={0.2}
-            roughness={0.5}
+            color="#8a9bae"
+            metalness={0.85}
+            roughness={0.2}
           />
         </mesh>
-        {/* Glow ring at water level — hex-shaped */}
-        <mesh ref={ringRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]}>
-          <ringGeometry args={[0.22, 0.38, 6]} />
+        {/* Top cap — slightly wider ring */}
+        <mesh ref={capRef} position={[0, 0.42, 0]}>
+          <cylinderGeometry args={[0.1, 0.1, 0.04, 12]} />
           <meshStandardMaterial
-            color={colors.accent}
-            emissive={colors.accent}
-            emissiveIntensity={0.7}
-            flatShading
-            transparent
-            opacity={0.55}
+            color="#5a6a7a"
+            metalness={0.9}
+            roughness={0.15}
           />
         </mesh>
-        {/* Colored point light glow */}
+        {/* Bottom tip — tapered sensor tip */}
+        <mesh position={[0, 0.01, 0]}>
+          <cylinderGeometry args={[0.06, 0.02, 0.08, 12]} />
+          <meshStandardMaterial
+            color="#6b7d8e"
+            metalness={0.85}
+            roughness={0.2}
+          />
+        </mesh>
+        {/* Small LED indicator on upper body */}
+        <mesh ref={ledRef} position={[0.075, 0.36, 0]}>
+          <sphereGeometry args={[0.018, 8, 8]} />
+          <meshStandardMaterial
+            color={ledColor}
+            emissive={ledColor}
+            emissiveIntensity={0.4}
+          />
+        </mesh>
+        {/* Subtle point light from LED */}
         <pointLight
           ref={lightRef}
-          color={colors.accent}
-          intensity={active ? 0.95 : 0.25}
-          distance={2.5}
-          position={[0, 0.3, 0]}
+          color={ledColor}
+          intensity={active ? 0.4 : 0.08}
+          distance={1.5}
+          position={[0.1, 0.36, 0]}
         />
       </group>
     </Float>

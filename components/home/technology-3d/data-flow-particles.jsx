@@ -26,9 +26,9 @@ const PARTICLE_COLORS = ["#22d3ee", "#34d399", "#67e8f9", "#a78bfa", "#f0abfc", 
 
 function ProbeToGatewayParticle({ from, speed, offset, color, active }) {
   const ref = useRef();
-  const gw = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 1.05, GATEWAY_POS[2]], []);
+  const gw = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 0.6, GATEWAY_POS[2]], []);
   const ctrl = useMemo(
-    () => [(from[0] + gw[0]) / 2, GATEWAY_POS[1] * 0.68, (from[2] + gw[2]) / 2],
+    () => [(from[0] + gw[0]) / 2, 0.8, (from[2] + gw[2]) / 2],
     [from, gw]
   );
 
@@ -62,10 +62,10 @@ function ProbeToGatewayParticle({ from, speed, offset, color, active }) {
 
 function GatewayToCloudParticle({ speed, offset, color, active }) {
   const ref = useRef();
-  const from = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 2.35, GATEWAY_POS[2]], []);
+  const from = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 1.0, GATEWAY_POS[2]], []);
   const to = useMemo(() => CLOUD_POS, []);
   const ctrl = useMemo(
-    () => [(from[0] + to[0]) / 2 + 0.15, (from[1] + to[1]) / 2 + 1.1, (from[2] + to[2]) / 2],
+    () => [(from[0] + to[0]) / 2 + 0.3, 7, (from[2] + to[2]) / 2],
     [from, to]
   );
 
@@ -84,7 +84,7 @@ function GatewayToCloudParticle({ speed, offset, color, active }) {
 
   return (
     <mesh ref={ref}>
-      <tetrahedronGeometry args={[0.07, 0]} />
+      <tetrahedronGeometry args={[0.14, 0]} />
       <meshStandardMaterial
         color={color}
         emissive={color}
@@ -97,7 +97,7 @@ function GatewayToCloudParticle({ speed, offset, color, active }) {
   );
 }
 
-const G2C_COLORS = ["#6ecff6", "#a78bfa", "#34d399"];
+const G2C_COLORS = ["#6ecff6", "#a78bfa", "#34d399", "#67e8f9", "#c4b5fd"];
 
 export default function DataFlowParticles({ activeStage = 0 }) {
   const probeParticles = useMemo(() => {
@@ -117,10 +117,10 @@ export default function DataFlowParticles({ activeStage = 0 }) {
   }, []);
 
   const cloudParticles = useMemo(() => {
-    return [0, 1, 2].map((i) => ({
+    return [0, 1, 2, 3, 4].map((i) => ({
       key: `g2c-${i}`,
-      speed: 0.3 + i * 0.06,
-      offset: i * 0.33,
+      speed: 0.18 + i * 0.04,
+      offset: i * 0.2,
       color: G2C_COLORS[i],
     }));
   }, []);
