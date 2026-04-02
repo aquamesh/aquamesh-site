@@ -9,6 +9,14 @@ const crossSellCatalog = {
     image: imageAssetHref("full_probe_shot.png"),
     href: "/products/aquaspectra-probe/"
   },
+  benchtop: {
+    name: "AquaLab",
+    eyebrow: "Benchtop Analyzer",
+    tagline:
+      "Lab-grade multi-parameter optical sensing in a compact benchtop form factor.",
+    image: imageAssetHref("bench_front_trans.png"),
+    href: "/products/aqualab-benchtop/"
+  },
   hub: {
     name: "AquaLink",
     eyebrow: "Gateway Hub",

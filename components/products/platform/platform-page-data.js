@@ -31,21 +31,21 @@ export const platformSellingPoints = [
   {
     title: "Predictive, not reactive",
     copy:
-      "AI models detect shifts in organic load, turbidity, or chemistry before they affect process stability — giving operators time to act, not just respond.",
+      "AI models detect parameter shifts before they affect process stability.",
     icon: "fa-solid fa-brain",
     delay: 0
   },
   {
     title: "Connects to everything",
     copy:
-      "RS-485, Modbus, SCADA, and AWS IoT feed into one unified view. No more switching between systems to understand what's happening across sites.",
+      "RS-485, Modbus, SCADA, and AWS IoT in one unified view.",
     icon: "fa-solid fa-plug-circle-check",
     delay: 80
   },
   {
     title: "Compliance built in",
     copy:
-      "Automated compliance reports, audit trails, and maintenance triggers reduce manual effort and keep regulatory workflows on track.",
+      "Automated reports, audit trails, and maintenance triggers.",
     icon: "fa-solid fa-clipboard-check",
     delay: 160
   }
@@ -60,28 +60,28 @@ export const platformOverviewChecklist = [
 
 export const platformCapabilities = [
   {
-    eyebrow: "Analytics",
     title: "Predictive analytics",
     description:
-      "Trend forecasting, anomaly detection, and correlation mapping — surface problems before they reach compliance thresholds."
+      "Surface anomalies and forecast trends before they reach compliance thresholds.",
+    icon: "fa-solid fa-brain"
   },
   {
-    eyebrow: "Dashboards",
     title: "Live dashboards",
     description:
-      "Spectral overlays, alarm thresholds, and real-time sensor status across every connected site in one view."
+      "Real-time sensor status, alarm thresholds, and multi-site views in one place.",
+    icon: "fa-solid fa-chart-line"
   },
   {
-    eyebrow: "Integration",
     title: "Easy integration",
     description:
-      "RS-485/Modbus, SCADA, and AWS IoT infrastructure connect into a single platform — no custom middleware required."
+      "RS-485, Modbus, SCADA, and AWS IoT — one platform, no custom middleware.",
+    icon: "fa-solid fa-plug-circle-check"
   },
   {
-    eyebrow: "Infrastructure",
     title: "Scalable & secure",
     description:
-      "Multi-site management, encrypted storage, and OTA update distribution — built on AWS with 99.99% uptime."
+      "Multi-site management and encrypted storage on AWS with 99.99% uptime.",
+    icon: "fa-solid fa-shield-halved"
   }
 ];
 
@@ -93,35 +93,57 @@ export const platformPills = [
   "Compliance tracking"
 ];
 
-export const platformTourSlides = [
+export const platformTourCards = [
   {
-    tab: "Map",
-    title: "Interactive site map",
-    image: "https://placehold.co/1200x700/e2f0f5/1c9dbb?text=Site+Map",
-    copy: "View every connected sensor on a live map with color-coded status indicators. Drill into any site for real-time readings, historical trends, and maintenance status."
+    index: "01 / AI Insights",
+    title: "AI automatically surfaces trends and anomalies across parameters.",
+    copy: "AquaView's AI engine continuously analyzes incoming telemetry to identify parameter shifts, correlations, and anomalies — delivering actionable insights without manual data review.",
+    reverse: false,
+    imageSrc: "platform/ai_insights.png",
+    imageAlt: "AI Insights panel showing Nitrate, COD, and CDOM parameter analysis",
+    points: [
+      { text: "Automated trend detection across all connected parameters", icon: "fa-solid fa-chart-line" },
+      { text: "Severity-ranked alerts for critical, warning, and informational anomalies", icon: "fa-solid fa-triangle-exclamation" },
+      { text: "Plain-language explanations of what changed and why it matters", icon: "fa-solid fa-comment-dots" }
+    ]
   },
   {
-    tab: "Time Series",
-    title: "Time series prediction",
-    image: "https://placehold.co/1200x700/e2f0f5/1c9dbb?text=Time+Series",
-    copy: "AI models forecast parameter trends hours and days ahead — giving operators early warning of turbidity spikes, dissolved-oxygen drops, or pH drift before they reach compliance thresholds."
+    index: "02 / Predictive Analytics",
+    title: "Forecast parameter trends before they reach compliance thresholds.",
+    copy: "AI models trained on your site's historical telemetry project parameter values hours and days ahead — giving operators early warning of turbidity spikes, dissolved-oxygen drops, or pH drift.",
+    reverse: true,
+    imageSrc: "platform/data_predictions.png",
+    imageAlt: "Chlorophyll time series chart with measured data and future predictions overlay",
+    points: [
+      { text: "Time series forecasting with confidence intervals for key parameters", icon: "fa-solid fa-wave-square" },
+      { text: "Early warning of threshold exceedances before they happen", icon: "fa-solid fa-bell" },
+      { text: "Models improve continuously as more site data is collected", icon: "fa-solid fa-brain" }
+    ]
   },
   {
-    tab: "AI Reports",
-    title: "AI report generation",
-    image: "https://placehold.co/1200x700/e2f0f5/1c9dbb?text=AI+Reports",
-    copy: "Generate plain-language summaries of site performance, anomaly explanations, and recommended actions. Export as PDF or share directly with stakeholders."
+    index: "03 / Natural Language Queries",
+    title: "Ask your data questions in plain English.",
+    copy: "AquaView Analytics lets operators query their monitoring data using natural language — no SQL, no report builders. Ask a question and get an answer with supporting context.",
+    reverse: false,
+    imageSrc: "platform/ask_questions.png",
+    imageAlt: "Chat interface where users ask natural language questions to AquaView Analytics",
+    points: [
+      { text: "Natural language interface — no technical query syntax required", icon: "fa-solid fa-message" },
+      { text: "Instant answers with auto-generated charts and data summaries", icon: "fa-solid fa-chart-bar" },
+      { text: "Context-aware responses grounded in your site's actual telemetry", icon: "fa-solid fa-database" }
+    ]
   },
   {
-    tab: "Compliance",
-    title: "Automated compliance",
-    image: "https://placehold.co/1200x700/e2f0f5/1c9dbb?text=Compliance",
-    copy: "Continuously track regulatory limits and automatically flag exceedances. Scheduled reports and audit trails keep your program inspection-ready without manual effort."
-  },
-  {
-    tab: "Dashboards",
-    title: "Live dashboards",
-    image: "https://placehold.co/1200x700/e2f0f5/1c9dbb?text=Dashboards",
-    copy: "Customizable real-time dashboards with spectral overlays, alarm thresholds, and multi-site comparisons — accessible from any device, anywhere."
+    index: "04 / Automated Reports",
+    title: "Generate compliance reports and anomaly alerts automatically.",
+    copy: "Scheduled water quality reports with executive summaries, parameter statistics, and anomaly flags — ready for stakeholders and regulatory review without manual assembly.",
+    reverse: true,
+    imageSrc: "platform/reports_summary.png",
+    imageAlt: "Water Quality Report with executive summary and parameter statistics table",
+    points: [
+      { text: "Scheduled report generation with executive summaries and parameter breakdowns", icon: "fa-solid fa-file-lines" },
+      { text: "Anomaly flags with severity levels and recommended follow-up actions", icon: "fa-solid fa-flag" },
+      { text: "Export as PDF or share directly with compliance teams and stakeholders", icon: "fa-solid fa-share-from-square" }
+    ]
   }
 ];

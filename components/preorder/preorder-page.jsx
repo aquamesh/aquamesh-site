@@ -61,11 +61,12 @@ export default function PreorderPage() {
               Preorder
             </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
-              Preorder AquaSpectra™
+              Preorder AquaMesh™
             </h1>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-300">
-              Be among the first to experience the next-generation water quality
-              probe. Reserve yours today and get priority access when we ship.
+              Be among the first to deploy next-generation water quality
+              instruments. Reserve the AquaSpectra™ field probe, the AquaLab™
+              benchtop analyzer, or both — and get priority access when we ship.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="#preorder-form" variant="secondary" size="sm">
@@ -76,7 +77,14 @@ export default function PreorderPage() {
                 variant="outline"
                 size="sm"
               >
-                View Tech Specs
+                AquaSpectra Specs
+              </ButtonLink>
+              <ButtonLink
+                href="/products/aqualab-benchtop/"
+                variant="outline"
+                size="sm"
+              >
+                AquaLab Specs
               </ButtonLink>
             </div>
           </div>
@@ -91,11 +99,12 @@ export default function PreorderPage() {
                 Preorder Form
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-aquamesh-700">
-                Secure Your AquaSpectra™
+                Secure Your Order
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-600">
-                Fill out the form below to reserve your probe. You&apos;ll be
-                redirected to our secure checkout to complete your order.
+                Fill out the form below to reserve an AquaSpectra™ probe,
+                AquaLab™ benchtop unit, or both. You&apos;ll be redirected to
+                our secure checkout to complete your order.
               </p>
             </div>
 

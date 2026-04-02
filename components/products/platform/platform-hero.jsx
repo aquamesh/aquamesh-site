@@ -41,7 +41,7 @@ export default function PlatformHero() {
               <div className="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.05] p-2 shadow-[0_36px_90px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:rounded-[26px] sm:p-3">
                 <div className="overflow-hidden rounded-[16px] border border-white/10 bg-slate-900/60 sm:rounded-[20px]">
                   <img
-                    src={imageAssetHref("platform_home_screenshot.png")}
+                    src={imageAssetHref("platform/platform_hero.png")}
                     alt="AquaView dashboard showing water quality trends and deployment analytics"
                     className="h-auto w-full"
                   />

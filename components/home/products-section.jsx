@@ -30,6 +30,28 @@ const products = [
     ctaContainerAosDelay: 200
   },
   {
+    eyebrow: "Benchtop",
+    title: "AquaLab™ Benchtop",
+    description:
+      "The same multi-parameter optical engine as the AquaSpectra probe, repackaged in a compact benchtop unit for lab-side verification and grab-sample analysis.",
+    features: ["USB-C powered", "Field-to-lab continuity", "Same optical engine"],
+    imageSrc: "bench_top_angle_trans.png",
+    imageAlt: "AquaLab Benchtop",
+    imageAos: "fade-right",
+    ctas: [
+      {
+        href: "/products/aqualab-benchtop/",
+        label: "Learn More",
+        variant: "primary",
+        dataAos: "zoom-in",
+        dataAosDelay: 300
+      }
+    ],
+    reverse: true,
+    textAos: "fade-left",
+    imageHasBlob: true
+  },
+  {
     eyebrow: "Gateway",
     title: "AquaLink™ Hub",
     description:
@@ -37,7 +59,7 @@ const products = [
     features: ["LoRa connectivity", "Solar powered", "Extensive range"],
     imageSrc: "transparent_hub.png",
     imageAlt: "AquaLink Hub",
-    imageAos: "fade-right",
+    imageAos: "fade-left",
     ctas: [
       {
         href: "/products/aqualink-hub/",
@@ -47,8 +69,8 @@ const products = [
         dataAosDelay: 300
       }
     ],
-    reverse: true,
-    textAos: "fade-left"
+    reverse: false,
+    textAos: "fade-right"
   },
   {
     eyebrow: "Platform",
@@ -59,7 +81,7 @@ const products = [
     imageSrc: "platform_home_screenshot.png",
     imageAlt: "AquaView Platform",
     imageFullBleed: true,
-    imageAos: "fade-left",
+    imageAos: "fade-right",
     ctas: [
       {
         href: "/products/aquaview-platform/",
@@ -69,8 +91,8 @@ const products = [
         dataAosDelay: 300
       }
     ],
-    reverse: false,
-    textAos: "fade-right"
+    reverse: true,
+    textAos: "fade-left"
   }
 ];
 

@@ -8,7 +8,7 @@ export default function FeatureChecklist({
   textClassName,
   renderIcon
 }) {
-  const resolvedItemClassName = itemClassName || "text-slate-700";
+  const resolvedItemClassName = itemClassName || "flex items-start gap-3 text-sm leading-6 text-slate-700";
   const resolvedIconClassName =
     iconClassName ||
     "mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-aquamesh-50 text-aquamesh-500";
@@ -21,7 +21,7 @@ export default function FeatureChecklist({
         return (
           <li
             key={item.key || item.text}
-            className={cx("flex items-start gap-3 text-sm leading-6", resolvedItemClassName)}
+            className={cx(resolvedItemClassName)}
           >
             {renderIcon ? (
               renderIcon(item)
