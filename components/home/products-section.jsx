@@ -35,7 +35,7 @@ const products = [
     description:
       "The same multi-parameter optical engine as the AquaSpectra probe, repackaged in a compact benchtop unit for lab-side verification and grab-sample analysis.",
     features: ["USB-C powered", "Field-to-lab continuity", "Same optical engine"],
-    imageSrc: "bench_top_angle_trans.png",
+    imageSrc: "bench_front_trans.png",
     imageAlt: "AquaLab Benchtop",
     imageAos: "fade-right",
     ctas: [

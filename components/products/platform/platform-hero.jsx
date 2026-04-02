@@ -1,7 +1,7 @@
-import { imageAssetHref } from "../../../lib/site-assets";
 import ButtonLink from "../../ui/button-link";
 import IconBadge from "../../ui/icon-badge";
 import SiteContainer from "../../ui/site-container";
+import PlatformHeroMedia from "./platform-hero-media";
 import { platformHeroStats } from "./platform-page-data";
 
 export default function PlatformHero() {
@@ -39,13 +39,7 @@ export default function PlatformHero() {
             <div className="relative mt-10 w-full max-w-6xl sm:mt-12" data-aos="fade-up">
               <div className="absolute inset-x-8 bottom-10 h-36 rounded-full bg-aquamesh-500/30 blur-3xl sm:inset-x-16 sm:h-44" />
               <div className="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.05] p-2 shadow-[0_36px_90px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:rounded-[26px] sm:p-3">
-                <div className="overflow-hidden rounded-[16px] border border-white/10 bg-slate-900/60 sm:rounded-[20px]">
-                  <img
-                    src={imageAssetHref("platform/platform_hero.png")}
-                    alt="AquaView dashboard showing water quality trends and deployment analytics"
-                    className="h-auto w-full"
-                  />
-                </div>
+                <PlatformHeroMedia />
               </div>
             </div>
 
