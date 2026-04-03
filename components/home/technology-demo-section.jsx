@@ -105,7 +105,13 @@ function StageTile({ stage, index, isActive, onSelect }) {
 }
 
 export default function TechnologyDemoSection() {
-  const [activeStage, setActiveStage] = useState(0);
+  const [activeStage, setActiveStage] = useState(null);
+
+  const handleStageSelect = (index) => {
+    setActiveStage(activeStage === index ? null : index);
+  };
+
+  const isOverview = activeStage === null;
 
   return (
     <section id="tech-combined" className="scroll-mt-24">
@@ -117,7 +123,9 @@ export default function TechnologyDemoSection() {
           How It Works
         </h2>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg">
-          From sensor to insight — AquaMesh connects field-deployed probes through a resilient mesh network to a real-time cloud analytics platform.
+          From sensor to insight — AquaMesh connects field-deployed probes
+          through a resilient mesh network to a real-time cloud analytics
+          platform.
         </p>
       </div>
 
@@ -130,19 +138,45 @@ export default function TechnologyDemoSection() {
                 "0 40px 100px rgba(8,24,32,0.18), 0 8px 32px rgba(28,157,187,0.1)",
             }}
           >
+            {/* Canvas stage indicators */}
             <div className="absolute inset-x-0 top-0 z-10 flex justify-end px-4 py-4 sm:px-6">
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
+                {/* Overview pill indicator */}
+                <button
+                  type="button"
+                  onClick={() => setActiveStage(null)}
+                  className="h-2.5 rounded-full transition-all duration-300"
+                  style={{
+                    width: isOverview ? "20px" : "10px",
+                    background: isOverview
+                      ? "#1c9dbb"
+                      : "rgba(148,210,189,0.25)",
+                    boxShadow: isOverview
+                      ? "0 0 10px rgba(28,157,187,0.7)"
+                      : "none",
+                  }}
+                  aria-label="Show system overview"
+                  aria-pressed={isOverview}
+                />
+                <div className="mx-0.5 h-3 w-px bg-aquamesh-300/20" />
+                {/* Stage dots */}
                 {STAGES.map((_, i) => (
                   <button
                     key={i}
                     type="button"
-                    onClick={() => setActiveStage(i)}
+                    onClick={() => handleStageSelect(i)}
                     className="h-2.5 w-2.5 rounded-full transition-all duration-300"
                     style={{
-                      background: activeStage === i ? "#1c9dbb" : "rgba(148,210,189,0.25)",
-                      transform: activeStage === i ? "scale(1.4)" : "scale(1)",
+                      background:
+                        activeStage === i
+                          ? "#1c9dbb"
+                          : "rgba(148,210,189,0.25)",
+                      transform:
+                        activeStage === i ? "scale(1.4)" : "scale(1)",
                       boxShadow:
-                        activeStage === i ? "0 0 10px rgba(28,157,187,0.7)" : "none",
+                        activeStage === i
+                          ? "0 0 10px rgba(28,157,187,0.7)"
+                          : "none",
                     }}
                     aria-label={`Show ${STAGES[i].label}`}
                     aria-pressed={activeStage === i}
@@ -156,14 +190,39 @@ export default function TechnologyDemoSection() {
             </div>
           </div>
 
-          <div className="grid gap-4 lg:auto-rows-fr">
+          <div
+            className="grid gap-3"
+            style={{ gridTemplateRows: "auto repeat(3, 1fr)" }}
+          >
+            {/* Overview / Back control */}
+            {isOverview ? (
+              <div className="flex items-center gap-3 rounded-xl border border-aquamesh-400/30 bg-gradient-to-r from-aquamesh-50 to-aquamesh-100/50 px-4 py-3">
+                <div className="h-2 w-2 shrink-0 rounded-full bg-aquamesh-500 shadow-[0_0_8px_rgba(28,157,187,0.5)]" />
+                <p className="text-sm font-medium text-aquamesh-700">
+                  System Overview
+                  <span className="ml-1.5 font-normal text-aquamesh-600/80">
+                    — select a component to explore
+                  </span>
+                </p>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setActiveStage(null)}
+                className="flex items-center gap-2 rounded-xl border border-aquamesh-200/60 bg-white/60 px-4 py-3 text-sm font-medium text-aquamesh-600 transition-colors hover:bg-aquamesh-50 hover:text-aquamesh-700"
+              >
+                <span aria-hidden="true">&larr;</span>
+                Back to overview
+              </button>
+            )}
+
             {STAGES.map((stage, index) => (
               <StageTile
                 key={stage.label}
                 stage={stage}
                 index={index}
                 isActive={activeStage === index}
-                onSelect={setActiveStage}
+                onSelect={handleStageSelect}
               />
             ))}
           </div>

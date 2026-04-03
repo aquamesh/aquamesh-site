@@ -54,7 +54,7 @@ function MeshLine({ a, b, index, active }) {
   );
 }
 
-export default function MeshNetworkLines() {
+export default function MeshNetworkLines({ active = false }) {
   return (
     <>
       {EDGES.map(([i, j], idx) => (
@@ -63,7 +63,7 @@ export default function MeshNetworkLines() {
           a={PROBE_POSITIONS[i]}
           b={PROBE_POSITIONS[j]}
           index={idx}
-          active={arguments[0]?.active ?? false}
+          active={active}
         />
       ))}
     </>

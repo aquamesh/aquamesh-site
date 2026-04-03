@@ -26,7 +26,7 @@ function hasWebGL() {
   }
 }
 
-export default function TechnologySceneLoader({ activeStage = 0 }) {
+export default function TechnologySceneLoader({ activeStage = null }) {
   const [visible, setVisible] = useState(false);
   const [supported, setSupported] = useState(true);
   const containerRef = useRef(null);

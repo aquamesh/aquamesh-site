@@ -99,7 +99,7 @@ function GatewayToCloudParticle({ speed, offset, color, active }) {
 
 const G2C_COLORS = ["#6ecff6", "#a78bfa", "#34d399", "#67e8f9", "#c4b5fd"];
 
-export default function DataFlowParticles({ activeStage = 0 }) {
+export default function DataFlowParticles({ activeStage = null }) {
   const probeParticles = useMemo(() => {
     const particles = [];
     PROBE_POSITIONS.forEach((pos, i) => {
@@ -134,7 +134,7 @@ export default function DataFlowParticles({ activeStage = 0 }) {
           speed={p.speed}
           offset={p.offset}
           color={p.color}
-          active={activeStage === 1}
+          active={activeStage === null || activeStage === 1}
         />
       ))}
       {cloudParticles.map((p) => (
@@ -143,7 +143,7 @@ export default function DataFlowParticles({ activeStage = 0 }) {
           speed={p.speed}
           offset={p.offset}
           color={p.color}
-          active={activeStage === 2}
+          active={activeStage === null || activeStage === 2}
         />
       ))}
     </>
