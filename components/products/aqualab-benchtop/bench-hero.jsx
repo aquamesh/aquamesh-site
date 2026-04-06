@@ -31,9 +31,13 @@ export default function BenchHero() {
               Multi-parameter optical water analysis in a compact benchtop unit
               built for lab verification and grab-sample workflows.
             </p>
-            <div className="relative mt-10 w-full max-w-3xl sm:mt-12">
+            <div
+              className="relative mt-10 w-full max-w-3xl sm:mt-12"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <div
-                className="pointer-events-none absolute inset-x-10 bottom-2 h-28 rounded-full bg-white/8 blur-3xl sm:inset-x-16 sm:h-36"
+                className="pointer-events-none absolute inset-x-10 bottom-2 h-24 rounded-full bg-white/4 blur-2xl sm:inset-x-16 sm:h-28"
                 aria-hidden="true"
               />
               <img
@@ -42,9 +46,9 @@ export default function BenchHero() {
                 alt="AquaLab benchtop unit"
                 style={{
                   WebkitMaskImage:
-                    "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0.82) 82%, rgba(0, 0, 0, 0) 100%)",
+                    "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0.6) 72%, rgba(0,0,0,0) 90%)",
                   maskImage:
-                    "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0.82) 82%, rgba(0, 0, 0, 0) 100%)"
+                    "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0.6) 72%, rgba(0,0,0,0) 90%)"
                 }}
               />
             </div>
@@ -79,6 +83,7 @@ export default function BenchHero() {
             </div>
           </div>
         </SiteContainer>
+
       </div>
     </section>
   );

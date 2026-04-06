@@ -125,7 +125,7 @@ export const platformTourCards = [
     title: "Ask your data questions in plain English.",
     copy: "AquaView Analytics lets operators query their monitoring data using natural language — no SQL, no report builders. Ask a question and get an answer with supporting context.",
     reverse: false,
-    imageSrc: "platform/ask_questions.png",
+    imageSrc: "platform/prompt_complex.png",
     imageAlt: "Chat interface where users ask natural language questions to AquaView Analytics",
     points: [
       { text: "Natural language interface — no technical query syntax required", icon: "fa-solid fa-message" },
