@@ -6,29 +6,36 @@ import { BufferGeometry, Float32BufferAttribute } from "three";
 
 // River meander function — shared with sensor-probes for alignment
 export function riverCenterX(z) {
-  return Math.sin(z * 0.25) * 1.2;
+  return (
+    Math.sin(z * 0.11 - 0.55) * 1.7 +
+    Math.sin(z * 0.27 + 1.15) * 0.72 +
+    Math.sin(z * 0.05 - 1.1) * 0.46
+  );
+}
+
+function riverHalfWidth(z) {
+  return 2.45 + Math.sin(z * 0.18 + 0.9) * 0.32 + Math.sin(z * 0.07 - 0.35) * 0.18;
 }
 
 const RIVER_LENGTH = 24; // z from -12 to +12
-const RIVER_WIDTH = 4;
 const SEGMENTS_Z = 80;
-const SEGMENTS_X = 12;
+const SEGMENTS_X = 16;
 
 export default function WaterSurface() {
   const meshRef = useRef();
 
-  const geo = useMemo(() => {
+  const { geometry, riverbedGeometry, baseYPositions } = useMemo(() => {
     const g = new BufferGeometry();
     const vertices = [];
     const indices = [];
-    const halfW = RIVER_WIDTH / 2;
 
     // Build vertex grid
     for (let iz = 0; iz <= SEGMENTS_Z; iz++) {
       const z = -RIVER_LENGTH / 2 + (iz / SEGMENTS_Z) * RIVER_LENGTH;
       const cx = riverCenterX(z);
+      const halfW = riverHalfWidth(z);
       for (let ix = 0; ix <= SEGMENTS_X; ix++) {
-        const localX = -halfW + (ix / SEGMENTS_X) * RIVER_WIDTH;
+        const localX = -halfW + (ix / SEGMENTS_X) * halfW * 2;
         vertices.push(cx + localX, 0, z);
       }
     }
@@ -48,7 +55,12 @@ export default function WaterSurface() {
     g.setIndex(indices);
     g.setAttribute("position", new Float32BufferAttribute(vertices, 3));
     g.computeVertexNormals();
-    return g;
+    const bedGeometry = g.clone();
+    return {
+      geometry: g,
+      riverbedGeometry: bedGeometry,
+      baseYPositions: new Float32Array(vertices.filter((_, index) => index % 3 === 1)),
+    };
   }, []);
 
   useFrame(({ clock }) => {
@@ -59,9 +71,10 @@ export default function WaterSurface() {
       const z = pos.getZ(i);
       pos.setY(
         i,
-        Math.sin(x * 0.35 + t * 0.5) * 0.08 +
-        Math.sin(z * 0.25 + t * 0.4) * 0.06 +
-        Math.sin((x + z) * 0.5 + t * 0.3) * 0.03
+        baseYPositions[i] +
+          Math.sin(x * 0.22 + t * 0.16) * 0.012 +
+          Math.sin(z * 0.16 + t * 0.12) * 0.008 +
+          Math.sin((x + z) * 0.24 + t * 0.1) * 0.004
       );
     }
     pos.needsUpdate = true;
@@ -69,17 +82,29 @@ export default function WaterSurface() {
   });
 
   return (
-    <mesh ref={meshRef} geometry={geo}>
-      <meshStandardMaterial
-        color="#0c3547"
-        emissive="#0a2a3a"
-        emissiveIntensity={0.15}
-        metalness={0.1}
-        roughness={0.65}
-        flatShading
-        transparent
-        opacity={0.88}
-      />
-    </mesh>
+    <>
+      <mesh geometry={riverbedGeometry} position={[0, 0.002, 0]}>
+        <meshStandardMaterial
+          color="#5c4a34"
+          emissive="#3f2f1f"
+          emissiveIntensity={0.08}
+          metalness={0.04}
+          roughness={0.92}
+          flatShading
+        />
+      </mesh>
+      <mesh ref={meshRef} geometry={geometry} position={[0, 0.035, 0]}>
+        <meshStandardMaterial
+          color="#1f647d"
+          emissive="#154c64"
+          emissiveIntensity={0.3}
+          metalness={0.14}
+          roughness={0.54}
+          flatShading
+          transparent
+          opacity={0.94}
+        />
+      </mesh>
+    </>
   );
 }

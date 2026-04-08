@@ -26,7 +26,7 @@ function MeshLine({ a, b, index, active }) {
     if (ref.current) {
       const t = clock.getElapsedTime();
       const pulse = Math.sin(t * 0.8 + index * 0.9);
-      const targetOpacity = active ? 0.52 + pulse * 0.18 : 0.11 + pulse * 0.08;
+      const targetOpacity = active ? 0.68 + pulse * 0.16 : 0.22 + pulse * 0.08;
       ref.current.material.opacity = MathUtils.lerp(
         ref.current.material.opacity,
         targetOpacity,
@@ -44,12 +44,12 @@ function MeshLine({ a, b, index, active }) {
       ref={ref}
       points={[from, to]}
       color={LINE_COLORS[index % LINE_COLORS.length]}
-      lineWidth={1.5}
+      lineWidth={2.2}
       transparent
-      opacity={0.25}
+      opacity={0.34}
       dashed
-      dashSize={0.25}
-      gapSize={0.15}
+      dashSize={0.28}
+      gapSize={0.13}
     />
   );
 }

@@ -2,9 +2,10 @@
 
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
+import { Line } from "@react-three/drei";
 import { MathUtils } from "three";
 import { PROBE_POSITIONS } from "./sensor-probes";
-import { GATEWAY_POS } from "./gateway-hub";
+import { GATEWAY_BOX_CENTER, GATEWAY_POS } from "./gateway-hub";
 import { CLOUD_POS } from "./cloud-element";
 
 function lerp3(a, b, t) {
@@ -23,49 +24,63 @@ function quadBezier(a, ctrl, b, t) {
 
 // Particle colors that match probe accents
 const PARTICLE_COLORS = ["#22d3ee", "#34d399", "#67e8f9", "#a78bfa", "#f0abfc", "#fbbf24"];
+const GATEWAY_LINK_POINT = GATEWAY_BOX_CENTER;
+const CLOSEST_PROBE_INDICES = PROBE_POSITIONS.map((pos, index) => ({
+  index,
+  distance:
+    (pos[0] - GATEWAY_LINK_POINT[0]) ** 2 +
+    (pos[1] - GATEWAY_LINK_POINT[1]) ** 2 +
+    (pos[2] - GATEWAY_LINK_POINT[2]) ** 2,
+}))
+  .sort((a, b) => a.distance - b.distance)
+  .slice(0, 2)
+  .map(({ index }) => index);
 
-function ProbeToGatewayParticle({ from, speed, offset, color, active }) {
+function ProbeToGatewayLink({ from, color, index, active }) {
   const ref = useRef();
-  const gw = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 0.6, GATEWAY_POS[2]], []);
-  const ctrl = useMemo(
-    () => [(from[0] + gw[0]) / 2, 0.8, (from[2] + gw[2]) / 2],
-    [from, gw]
-  );
+  const to = useMemo(() => GATEWAY_LINK_POINT, []);
 
   useFrame(({ clock }) => {
-    const t = (clock.getElapsedTime() * speed + offset) % 1;
-    const [x, y, z] = quadBezier(from, ctrl, gw, t);
-    ref.current.position.set(x, y, z);
-    const opacityTarget = Math.sin(t * Math.PI) * (active ? 0.98 : 0.18);
-    ref.current.material.opacity = MathUtils.lerp(ref.current.material.opacity, opacityTarget, 0.08);
-    ref.current.material.emissiveIntensity = MathUtils.lerp(
-      ref.current.material.emissiveIntensity,
-      active ? 2.8 : 0.6,
+    if (!ref.current) return;
+    const t = clock.getElapsedTime();
+    const pulse = Math.sin(t * 1.1 + index * 1.7);
+    const targetOpacity = active ? 0.72 + pulse * 0.12 : 0.24 + pulse * 0.05;
+    ref.current.material.opacity = MathUtils.lerp(
+      ref.current.material.opacity,
+      targetOpacity,
       0.08
     );
+    ref.current.material.dashOffset -= 0.007;
   });
 
   return (
-    <mesh ref={ref}>
-      <tetrahedronGeometry args={[0.06, 0]} />
-      <meshStandardMaterial
-        color={color}
-        emissive={color}
-        emissiveIntensity={2}
-        flatShading
-        transparent
-        opacity={0.8}
-      />
-    </mesh>
+    <Line
+      ref={ref}
+      points={[from, to]}
+      color={color}
+      lineWidth={2.2}
+      transparent
+      opacity={0.4}
+      dashed
+      dashSize={0.22}
+      gapSize={0.12}
+    />
   );
 }
 
 function GatewayToCloudParticle({ speed, offset, color, active }) {
   const ref = useRef();
-  const from = useMemo(() => [GATEWAY_POS[0], GATEWAY_POS[1] + 1.0, GATEWAY_POS[2]], []);
+  const from = useMemo(
+    () => [GATEWAY_POS[0], GATEWAY_POS[1] + 1.1, GATEWAY_POS[2]],
+    []
+  );
   const to = useMemo(() => CLOUD_POS, []);
   const ctrl = useMemo(
-    () => [(from[0] + to[0]) / 2 + 0.3, 7, (from[2] + to[2]) / 2],
+    () => [
+      (from[0] + to[0]) / 2 + 1.1,
+      Math.max(from[1], to[1]) * 0.74,
+      (from[2] + to[2]) / 2 - 0.6,
+    ],
     [from, to]
   );
 
@@ -100,20 +115,17 @@ function GatewayToCloudParticle({ speed, offset, color, active }) {
 const G2C_COLORS = ["#6ecff6", "#a78bfa", "#34d399", "#67e8f9", "#c4b5fd"];
 
 export default function DataFlowParticles({ activeStage = null }) {
-  const probeParticles = useMemo(() => {
-    const particles = [];
-    PROBE_POSITIONS.forEach((pos, i) => {
-      for (let j = 0; j < 2; j++) {
-        particles.push({
-          key: `p2g-${i}-${j}`,
-          from: [pos[0], pos[1] + 0.3, pos[2]],
-          speed: 0.25 + j * 0.08,
-          offset: i * 0.15 + j * 0.5,
-          color: PARTICLE_COLORS[i % PARTICLE_COLORS.length],
-        });
-      }
-    });
-    return particles;
+  const probeLinks = useMemo(() => {
+    return CLOSEST_PROBE_INDICES.map((probeIndex, linkIndex) => ({
+      key: `p2g-link-${probeIndex}`,
+      from: [
+        PROBE_POSITIONS[probeIndex][0],
+        PROBE_POSITIONS[probeIndex][1] + 0.22,
+        PROBE_POSITIONS[probeIndex][2],
+      ],
+      color: PARTICLE_COLORS[probeIndex % PARTICLE_COLORS.length],
+      index: linkIndex,
+    }));
   }, []);
 
   const cloudParticles = useMemo(() => {
@@ -127,13 +139,12 @@ export default function DataFlowParticles({ activeStage = null }) {
 
   return (
     <>
-      {probeParticles.map((p) => (
-        <ProbeToGatewayParticle
-          key={p.key}
-          from={p.from}
-          speed={p.speed}
-          offset={p.offset}
-          color={p.color}
+      {probeLinks.map((link) => (
+        <ProbeToGatewayLink
+          key={link.key}
+          from={link.from}
+          color={link.color}
+          index={link.index}
           active={activeStage === null || activeStage === 1}
         />
       ))}

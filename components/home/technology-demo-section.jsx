@@ -185,7 +185,7 @@ export default function TechnologyDemoSection() {
               </div>
             </div>
 
-            <div className="aspect-[16/11] min-h-[420px] w-full sm:min-h-[520px] lg:h-full lg:min-h-0 lg:aspect-auto">
+            <div className="aspect-[16/10] min-h-[460px] w-full sm:min-h-[560px] lg:h-full lg:min-h-0 lg:aspect-auto">
               <TechnologySceneLoader activeStage={activeStage} />
             </div>
           </div>

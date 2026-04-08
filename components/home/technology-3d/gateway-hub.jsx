@@ -2,12 +2,19 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
+import { RoundedBox } from "@react-three/drei";
 import { MathUtils } from "three";
 
 const GATEWAY_POS = [3.5, 1.2, 0];
+const GATEWAY_MODEL_SCALE = 0.68;
+const GATEWAY_BOX_CENTER_LOCAL = [0, 1.34, 0.36];
+const GATEWAY_BOX_CENTER = [
+  GATEWAY_POS[0] + GATEWAY_BOX_CENTER_LOCAL[0] * GATEWAY_MODEL_SCALE,
+  GATEWAY_POS[1] + GATEWAY_BOX_CENTER_LOCAL[1] * GATEWAY_MODEL_SCALE,
+  GATEWAY_POS[2] + GATEWAY_BOX_CENTER_LOCAL[2] * GATEWAY_MODEL_SCALE,
+];
 
-export { GATEWAY_POS };
+export { GATEWAY_POS, GATEWAY_BOX_CENTER };
 
 export default function GatewayHub({ active = false }) {
   const mainLightRef = useRef();
@@ -17,14 +24,14 @@ export default function GatewayHub({ active = false }) {
     if (mainLightRef.current) {
       mainLightRef.current.intensity = MathUtils.lerp(
         mainLightRef.current.intensity,
-        active ? 1.6 : 0.55,
+        active ? 1.9 : 0.8,
         0.08
       );
     }
     if (accentLightRef.current) {
       accentLightRef.current.intensity = MathUtils.lerp(
         accentLightRef.current.intensity,
-        active ? 0.8 : 0.2,
+        active ? 0.95 : 0.35,
         0.08
       );
     }
@@ -32,100 +39,126 @@ export default function GatewayHub({ active = false }) {
 
   return (
     <group position={GATEWAY_POS}>
-      {/* Support post anchoring gateway to the riverbank */}
-      <mesh position={[0, -0.1, 0]}>
-        <cylinderGeometry args={[0.08, 0.1, 1.0, 8]} />
-        <meshStandardMaterial color="#5a6a7a" metalness={0.7} roughness={0.3} />
-      </mesh>
-      <Float speed={1.15} floatIntensity={0.09} rotationIntensity={0.02}>
-        <group scale={0.75}>
-          {/* Main box body */}
-          <mesh position={[0, 0.55, 0]} castShadow>
-            <boxGeometry args={[1.4, 0.5, 0.8]} />
-            <meshStandardMaterial
-              color="#1e4d6b"
-              emissive="#0f3a55"
-              emissiveIntensity={active ? 0.6 : 0.3}
-              flatShading
-              roughness={0.62}
-              metalness={0.28}
-            />
-          </mesh>
+      <group scale={GATEWAY_MODEL_SCALE}>
+        <mesh position={[0, -0.06, 0]}>
+          <cylinderGeometry args={[0.18, 0.22, 0.16, 12]} />
+          <meshStandardMaterial
+            color="#50606d"
+            emissive="#2c3742"
+            emissiveIntensity={0.05}
+            roughness={0.72}
+            metalness={0.42}
+          />
+        </mesh>
 
-          {/* Top lid / trim strip */}
-          <mesh position={[0, 0.82, 0]}>
-            <boxGeometry args={[1.44, 0.06, 0.84]} />
-            <meshStandardMaterial
-              color="#2a6a8a"
-              emissive="#164a65"
-              emissiveIntensity={active ? 0.7 : 0.35}
-              flatShading
-              roughness={0.44}
-              metalness={0.38}
-            />
-          </mesh>
+        <mesh position={[0, 0.98, 0]}>
+          <cylinderGeometry args={[0.08, 0.1, 1.96, 10]} />
+          <meshStandardMaterial
+            color="#8e98a2"
+            emissive="#54606a"
+            emissiveIntensity={0.08}
+            roughness={0.36}
+            metalness={0.78}
+          />
+        </mesh>
 
-          {/* Front panel accent line */}
-          <mesh position={[0, 0.55, 0.405]}>
-            <boxGeometry args={[1.2, 0.06, 0.02]} />
-            <meshStandardMaterial
-              color="#22d3ee"
-              emissive="#22d3ee"
-              emissiveIntensity={active ? 0.9 : 0.25}
-              roughness={0.2}
-              metalness={0.5}
-            />
-          </mesh>
+        <mesh position={[0, 2.04, 0]}>
+          <boxGeometry args={[0.16, 0.16, 0.28]} />
+          <meshStandardMaterial
+            color="#8b96a0"
+            emissive="#505b66"
+            emissiveIntensity={0.08}
+            roughness={0.34}
+            metalness={0.76}
+          />
+        </mesh>
 
-          {/* LED indicators on front face */}
-          <mesh position={[-0.45, 0.62, 0.41]}>
-            <sphereGeometry args={[0.035, 8, 8]} />
-            <meshStandardMaterial
-              color="#34d399"
-              emissive="#34d399"
-              emissiveIntensity={active ? 1.8 : 0.4}
-              roughness={0.1}
-              metalness={0.1}
-            />
-          </mesh>
-          <mesh position={[-0.35, 0.62, 0.41]}>
-            <sphereGeometry args={[0.035, 8, 8]} />
-            <meshStandardMaterial
-              color="#22d3ee"
-              emissive="#22d3ee"
-              emissiveIntensity={active ? 1.8 : 0.3}
-              roughness={0.1}
-              metalness={0.1}
-            />
-          </mesh>
-          <mesh position={[-0.25, 0.62, 0.41]}>
-            <sphereGeometry args={[0.035, 8, 8]} />
-            <meshStandardMaterial
-              color="#f59e0b"
-              emissive="#f59e0b"
-              emissiveIntensity={active ? 1.2 : 0.2}
-              roughness={0.1}
-              metalness={0.1}
-            />
-          </mesh>
+        <mesh position={[0, 1.34, 0.14]}>
+          <boxGeometry args={[0.16, 0.1, 0.24]} />
+          <meshStandardMaterial
+            color="#7f8b96"
+            emissive="#49535d"
+            emissiveIntensity={0.06}
+            roughness={0.38}
+            metalness={0.74}
+          />
+        </mesh>
 
+        <RoundedBox
+          args={[0.46, 0.52, 0.18]}
+          radius={0.08}
+          smoothness={5}
+          position={[0, 1.34, 0.36]}
+          rotation={[0, 0, 0]}
+          castShadow
+        >
+          <meshStandardMaterial
+            color="#aab3bc"
+            emissive="#606b76"
+            emissiveIntensity={active ? 0.34 : 0.18}
+            roughness={0.28}
+            metalness={0.74}
+          />
+        </RoundedBox>
 
+        <mesh position={[0, 2.2, 0]}>
+          <boxGeometry args={[0.18, 0.16, 0.18]} />
+          <meshStandardMaterial
+            color="#8b97a2"
+            emissive="#515c66"
+            emissiveIntensity={0.06}
+            roughness={0.34}
+            metalness={0.78}
+          />
+        </mesh>
+
+        <mesh position={[0, 2.56, 0.1]} rotation={[-Math.PI / 4, 0, 0]}>
+          <boxGeometry args={[0.08, 0.4, 0.08]} />
+          <meshStandardMaterial
+            color="#8b97a2"
+            emissive="#515c66"
+            emissiveIntensity={0.06}
+            roughness={0.34}
+            metalness={0.78}
+          />
+        </mesh>
+
+        <group position={[0, 2.74, 0.18]} rotation={[-Math.PI / 4, 0, 0]}>
+          <RoundedBox args={[1.16, 0.78, 0.06]} radius={0.04} smoothness={4}>
+            <meshStandardMaterial
+              color="#6d7781"
+              emissive="#3e4851"
+              emissiveIntensity={0.08}
+              roughness={0.34}
+              metalness={0.74}
+            />
+          </RoundedBox>
+          <mesh position={[0, 0, 0.038]}>
+            <boxGeometry args={[1.0, 0.62, 0.02]} />
+            <meshStandardMaterial
+              color="#255a74"
+              emissive="#1d6f8d"
+              emissiveIntensity={active ? 0.24 : 0.12}
+              roughness={0.42}
+              metalness={0.16}
+            />
+          </mesh>
         </group>
-      </Float>
+      </group>
 
       <pointLight
         ref={mainLightRef}
         color="#22d3ee"
-        intensity={active ? 1.6 : 0.55}
-        distance={6}
-        position={[0, 1.5, 0.3]}
+        intensity={active ? 1.9 : 0.8}
+        distance={7}
+        position={[0.15, 1.75, 1.0]}
       />
       <pointLight
         ref={accentLightRef}
         color="#34d399"
-        intensity={active ? 0.8 : 0.2}
-        distance={4}
-        position={[0, 0.6, 0.1]}
+        intensity={active ? 0.95 : 0.35}
+        distance={5}
+        position={[0, 2.78, 0.92]}
       />
     </group>
   );

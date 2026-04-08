@@ -4,16 +4,22 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { MathUtils } from "three";
+import { riverCenterX } from "./water-surface";
 
-// Positions follow the river meander: centerX(z) = sin(z * 0.25) * 1.2
-export const PROBE_POSITIONS = [
-  [-1.38, 0.1, -3.0],   // upstream (sin(-0.75)*1.2 ≈ -0.82, offset -0.5)
-  [-0.05, 0.1, -1.5],   // mid-upstream (sin(-0.375)*1.2 ≈ -0.44, offset +0.4)
-  [-0.3,  0.1,  0.0],   // center (sin(0)*1.2 = 0, offset -0.3)
-  [ 0.86, 0.1,  1.2],   // mid-downstream (sin(0.3)*1.2 ≈ 0.35, offset +0.5)
-  [ 0.72, 0.1,  2.8],   // downstream (sin(0.7)*1.2 ≈ 0.77, offset -0.1)
-  [ 1.77, 0.1,  4.0],   // far downstream (sin(1.0)*1.2 ≈ 1.01, offset +0.6)
+const PROBE_LAYOUT = [
+  { z: -3.2, offset: -0.72 },
+  { z: -1.6, offset: 0.58 },
+  { z: 0.1, offset: -0.46 },
+  { z: 1.7, offset: 0.74 },
+  { z: 3.1, offset: -0.28 },
+  { z: 4.6, offset: 0.62 },
 ];
+
+export const PROBE_POSITIONS = PROBE_LAYOUT.map(({ z, offset }) => [
+  riverCenterX(z) + offset,
+  0.1,
+  z,
+]);
 
 // Muted indicator LED color per probe
 const LED_COLORS = [
@@ -59,16 +65,20 @@ function Probe({ position, index, active }) {
         <mesh ref={bodyRef} position={[0, 0.22, 0]}>
           <cylinderGeometry args={[0.07, 0.09, 0.38, 12]} />
           <meshStandardMaterial
-            color="#8a9bae"
+            color="#a8b6c4"
+            emissive="#5f6f7e"
+            emissiveIntensity={0.08}
             metalness={0.85}
-            roughness={0.2}
+            roughness={0.18}
           />
         </mesh>
         {/* Top cap — slightly wider ring */}
         <mesh ref={capRef} position={[0, 0.42, 0]}>
           <cylinderGeometry args={[0.1, 0.1, 0.04, 12]} />
           <meshStandardMaterial
-            color="#5a6a7a"
+            color="#758495"
+            emissive="#465362"
+            emissiveIntensity={0.05}
             metalness={0.9}
             roughness={0.15}
           />
@@ -77,9 +87,11 @@ function Probe({ position, index, active }) {
         <mesh position={[0, 0.01, 0]}>
           <cylinderGeometry args={[0.06, 0.02, 0.08, 12]} />
           <meshStandardMaterial
-            color="#6b7d8e"
+            color="#8899ab"
+            emissive="#4f6070"
+            emissiveIntensity={0.05}
             metalness={0.85}
-            roughness={0.2}
+            roughness={0.18}
           />
         </mesh>
         {/* Small LED indicator on upper body */}

@@ -1,36 +1,113 @@
 "use client";
 
-const PEAKS = [
-  // Back row — tall peaks
-  { pos: [-6, 0, -12], height: 8, radius: 4.5, segments: 6, color: "#1a2e2a", snow: true },
-  { pos: [0, 0, -14], height: 7, radius: 4, segments: 5, color: "#1f332e", snow: true },
-  { pos: [7, 0, -11], height: 9, radius: 5, segments: 7, color: "#1a2e2a", snow: true },
-  { pos: [-3, 0, -10], height: 6, radius: 3.5, segments: 6, color: "#223830", snow: true },
-
-  // Mid row — medium peaks
-  { pos: [-10, 0, -8], height: 5, radius: 3, segments: 5, color: "#1f332e" },
-  { pos: [10, 0, -9], height: 5.5, radius: 3.5, segments: 6, color: "#1a2e2a" },
-  { pos: [4, 0, -13], height: 4.5, radius: 3, segments: 5, color: "#223830" },
-
-  // Flanking — smaller hills
-  { pos: [-9, 0, -5], height: 3, radius: 2.5, segments: 5, color: "#1c3029" },
-  { pos: [9, 0, -6], height: 3.5, radius: 2.8, segments: 5, color: "#1c3029" },
-  { pos: [-12, 0, -10], height: 4, radius: 3, segments: 6, color: "#223830" },
+const LANDFORMS = [
+  {
+    pos: [-7.2, 0, -11.8],
+    radii: [4.8, 3.7, 2.7],
+    segments: 7,
+    colors: ["#2a4a3f", "#366055", "#4b7b6c"],
+  },
+  {
+    pos: [0.1, 0, -13.2],
+    radii: [4.4, 3.3, 2.4],
+    segments: 6,
+    colors: ["#2c4d42", "#3a6458", "#4f8172"],
+  },
+  {
+    pos: [7.8, 0, -10.9],
+    radii: [5.1, 3.8, 2.8],
+    segments: 8,
+    colors: ["#29493e", "#355f53", "#4a7a6b"],
+  },
+  {
+    pos: [-10.3, 0, -6.7],
+    radii: [3.4, 2.5],
+    segments: 6,
+    colors: ["#2b493e", "#436e60"],
+  },
+  {
+    pos: [10.2, 0, -7.1],
+    radii: [3.6, 2.6],
+    segments: 6,
+    colors: ["#2a473d", "#416b5d"],
+  },
+  {
+    pos: [-3.9, 0, -8.4],
+    radii: [2.8, 1.9],
+    segments: 6,
+    colors: ["#2e4d42", "#487566"],
+  },
+  {
+    pos: [4.6, 0, -12.8],
+    radii: [2.9, 2.1],
+    segments: 6,
+    colors: ["#2d4c41", "#467264"],
+  },
 ];
 
-function Mountain({ pos, height, radius, segments, color, snow }) {
+function TopographicMound({ pos, radii, segments, colors }) {
+  const stepHeight = 0.18;
+
   return (
     <group position={pos}>
-      <mesh position={[0, height / 2, 0]}>
-        <coneGeometry args={[radius, height, segments]} />
-        <meshStandardMaterial color={color} flatShading roughness={0.85} metalness={0.05} />
-      </mesh>
-      {snow && (
-        <mesh position={[0, height * 0.82, 0]}>
-          <coneGeometry args={[radius * 0.35, height * 0.28, segments]} />
-          <meshStandardMaterial color="#3a5a52" flatShading roughness={0.9} metalness={0.02} />
+      {radii.map((radius, index) => (
+        <mesh
+          key={`${radius}-${index}`}
+          position={[0, stepHeight / 2 + index * stepHeight, 0]}
+        >
+          <cylinderGeometry args={[radius * 0.9, radius, stepHeight, segments]} />
+          <meshStandardMaterial
+            color={colors[Math.min(index, colors.length - 1)]}
+            emissive={colors[Math.min(index, colors.length - 1)]}
+            emissiveIntensity={0.08}
+            flatShading
+            roughness={0.86}
+            metalness={0.03}
+          />
         </mesh>
-      )}
+      ))}
+      <mesh position={[0, radii.length * stepHeight + 0.035, 0]}>
+        <cylinderGeometry
+          args={[radii[radii.length - 1] * 0.52, radii[radii.length - 1] * 0.68, 0.07, segments]}
+        />
+        <meshStandardMaterial
+          color="#82b3a1"
+          emissive="#4b7267"
+          emissiveIntensity={0.12}
+          flatShading
+          roughness={0.82}
+          metalness={0.02}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+function RiverBank({ position, colorTop, colorBase }) {
+  return (
+    <group position={position}>
+      <mesh position={[0, -0.06, 0]}>
+        <boxGeometry args={[7.4, 0.16, 28.2]} />
+        <meshStandardMaterial
+          color={colorTop}
+          emissive={colorTop}
+          emissiveIntensity={0.06}
+          flatShading
+          roughness={0.86}
+          metalness={0.03}
+        />
+      </mesh>
+      <mesh position={[0, -0.19, 0]}>
+        <boxGeometry args={[8.2, 0.12, 29]} />
+        <meshStandardMaterial
+          color={colorBase}
+          emissive={colorBase}
+          emissiveIntensity={0.04}
+          flatShading
+          roughness={0.92}
+          metalness={0.02}
+        />
+      </mesh>
     </group>
   );
 }
@@ -38,21 +115,24 @@ function Mountain({ pos, height, radius, segments, color, snow }) {
 export default function MountainTerrain() {
   return (
     <>
-      {PEAKS.map((peak, i) => (
-        <Mountain key={i} {...peak} />
+      <mesh position={[0, -0.28, 0]}>
+        <boxGeometry args={[24.5, 0.16, 30.5]} />
+        <meshStandardMaterial
+          color="#14252d"
+          emissive="#112129"
+          emissiveIntensity={0.04}
+          flatShading
+          roughness={0.93}
+          metalness={0.02}
+        />
+      </mesh>
+
+      <RiverBank position={[-8.7, 0, 0]} colorTop="#23463a" colorBase="#173229" />
+      <RiverBank position={[8.7, 0, 0]} colorTop="#23463a" colorBase="#173229" />
+
+      {LANDFORMS.map((form, index) => (
+        <TopographicMound key={index} {...form} />
       ))}
-
-      {/* Left riverbank */}
-      <mesh position={[-6, -0.1, 0]}>
-        <boxGeometry args={[10, 0.1, 28]} />
-        <meshStandardMaterial color="#12261f" flatShading roughness={0.85} metalness={0.05} />
-      </mesh>
-
-      {/* Right riverbank */}
-      <mesh position={[6, -0.1, 0]}>
-        <boxGeometry args={[10, 0.1, 28]} />
-        <meshStandardMaterial color="#12261f" flatShading roughness={0.85} metalness={0.05} />
-      </mesh>
     </>
   );
 }
