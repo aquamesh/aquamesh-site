@@ -14,15 +14,31 @@ const EDGES = [
   [2, 5],
   [3, 4],
   [4, 5],
+  [5, 6],
+  [4, 7],
+  [6, 7],
+  [7, 8],
 ];
 
-const LINE_COLORS = ["#7dd3cf", "#5eead4", "#67e8f9", "#8ae4dc", "#7dd3cf", "#5eead4", "#67e8f9"];
+const LINE_COLORS = [
+  "#7dd3cf",
+  "#5eead4",
+  "#67e8f9",
+  "#8ae4dc",
+  "#7dd3cf",
+  "#5eead4",
+  "#67e8f9",
+  "#38bdf8",
+  "#60a5fa",
+  "#67e8f9",
+  "#38bdf8",
+];
 
 function MeshLine({ a, b, index, active }) {
   const glowRef = useRef();
   const coreRef = useRef();
-  const from = [a[0], 0.2, a[2]];
-  const to = [b[0], 0.2, b[2]];
+  const from = [a[0], a[1] + 0.14, a[2]];
+  const to = [b[0], b[1] + 0.14, b[2]];
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();

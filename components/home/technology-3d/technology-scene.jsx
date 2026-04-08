@@ -5,57 +5,62 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Vector3, MathUtils } from "three";
 import SkyEnvironment from "./sky-environment";
 import MountainTerrain from "./mountain-terrain";
+import BackgroundMountains from "./background-mountains";
 import WaterSurface from "./water-surface";
 import SensorProbes from "./sensor-probes";
 import MeshNetworkLines from "./mesh-network-lines";
 import GatewayHub from "./gateway-hub";
 import DataFlowParticles from "./data-flow-particles";
 import CloudElement from "./cloud-element";
+import IndustrialSite from "./industrial-site";
+import SceneAnnotations from "./scene-annotations";
 
 const CAMERA_OVERVIEW = {
-  // Overview: more aerial, map-like view across the full system
-  position: [4.5, 13.2, 16.2],
-  target: [1.6, 1.45, -1.1],
+  position: [2.5, 10.9, 18.1],
+  target: [0.05, 0.02, 3.2],
 };
 
-const CAMERA_STAGES = [
-  {
-    // Stage 0: Elevated look at the sensor cluster within the river path
-    position: [2.6, 5.9, 7.5],
-    target: [0.1, 0.4, 0.6],
+const CAMERA_VIEWS = {
+  sensors: {
+    position: [1.35, 4.85, 8.9],
+    target: [0.15, 0.18, -1.2],
   },
-  {
-    // Stage 1: Tighter bank framing so the gateway hardware owns the shot
-    position: [5.45, 4.95, 6.55],
-    target: [4.02, 1.12, 0.16],
+  industrial: {
+    position: [-2.45, 3.3, 9.25],
+    target: [-6.1, 0.05, 2.7],
   },
-  {
-    // Stage 2: Wide aerial shot of the full river-to-cloud stack
-    position: [5.2, 11.0, 14.7],
-    target: [2.8, 4.5, -3.3],
+  coastal: {
+    position: [-2.15, 2.9, 14.4],
+    target: [-3.55, 0.05, 8.85],
   },
-];
+  gateway: {
+    position: [9.2, 3.9, 8.0],
+    target: [6.45, 0.75, 2.1],
+  },
+  cloud: {
+    position: [6.1, 8.55, 14.6],
+    target: [2.6, 5.25, 1.0],
+  },
+};
 
 const _pos = new Vector3();
 const _target = new Vector3();
 
-function StageCamera({ activeStageRef }) {
+function StageCamera({ activeViewRef }) {
   const { camera, size } = useThree();
   const currentPos = useRef(new Vector3(...CAMERA_OVERVIEW.position));
   const currentTarget = useRef(new Vector3(...CAMERA_OVERVIEW.target));
 
   useFrame(() => {
-    const stageIndex = activeStageRef.current;
+    const activeView = activeViewRef.current;
     const stage =
-      stageIndex === null
+      activeView === null
         ? CAMERA_OVERVIEW
-        : CAMERA_STAGES[
-            Math.max(0, Math.min(CAMERA_STAGES.length - 1, stageIndex))
-          ];
+        : CAMERA_VIEWS[activeView] ?? CAMERA_VIEWS.sensors;
 
     const aspect = size.width / Math.max(size.height, 1);
     const framePadding =
-      aspect < 1 ? 1.6 : aspect < 1.3 ? 1.15 : aspect < 1.6 ? 0.7 : 0.35;
+      aspect < 1 ? 1.8 : aspect < 1.3 ? 1.3 : aspect < 1.6 ? 0.9 : 0.65;
 
     _pos.set(
       stage.position[0],
@@ -78,14 +83,14 @@ function StageCamera({ activeStageRef }) {
   return null;
 }
 
-function DynamicFog({ activeStageRef }) {
+function DynamicFog({ activeViewRef }) {
   const fogRef = useRef();
 
   useFrame(() => {
     if (!fogRef.current) return;
-    const isOverview = activeStageRef.current === null;
-    const nearTarget = isOverview ? 34 : 19;
-    const farTarget = isOverview ? 78 : 54;
+    const isOverview = activeViewRef.current === null;
+    const nearTarget = isOverview ? 42 : 26;
+    const farTarget = isOverview ? 108 : 72;
     fogRef.current.near = MathUtils.lerp(
       fogRef.current.near,
       nearTarget,
@@ -94,12 +99,16 @@ function DynamicFog({ activeStageRef }) {
     fogRef.current.far = MathUtils.lerp(fogRef.current.far, farTarget, 0.05);
   });
 
-  return <fog ref={fogRef} attach="fog" args={["#0a1820", 34, 78]} />;
+  return <fog ref={fogRef} attach="fog" args={["#d9e6e8", 42, 108]} />;
 }
 
-export default function TechnologyScene({ activeStage = null }) {
-  const activeStageRef = useRef(null);
-  activeStageRef.current = activeStage;
+export default function TechnologyScene({
+  activeStage = null,
+  activeView = null,
+  onSelectView,
+}) {
+  const activeViewRef = useRef(null);
+  activeViewRef.current = activeView;
   const isOverview = activeStage === null;
 
   return (
@@ -107,21 +116,27 @@ export default function TechnologyScene({ activeStage = null }) {
       shadows
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
-      camera={{ position: CAMERA_OVERVIEW.position, fov: 42 }}
+      camera={{ position: CAMERA_OVERVIEW.position, fov: 40 }}
     >
-      <color attach="background" args={["#08141b"]} />
-      <DynamicFog activeStageRef={activeStageRef} />
+      <color attach="background" args={["#dfe8e8"]} />
+      <DynamicFog activeViewRef={activeViewRef} />
       <SkyEnvironment />
 
       <MountainTerrain />
+      <BackgroundMountains />
       <WaterSurface />
+      <IndustrialSite />
       <SensorProbes active={isOverview || activeStage === 0} />
       <MeshNetworkLines active={isOverview || activeStage === 0} />
       <GatewayHub active={isOverview || activeStage === 1} />
       <DataFlowParticles activeStage={activeStage} />
       <CloudElement active={isOverview || activeStage === 2} />
+      <SceneAnnotations
+        activeView={activeView}
+        onSelectView={onSelectView}
+      />
 
-      <StageCamera activeStageRef={activeStageRef} />
+      <StageCamera activeViewRef={activeViewRef} />
     </Canvas>
   );
 }

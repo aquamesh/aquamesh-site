@@ -4,14 +4,22 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 import { MathUtils } from "three";
+import { terrainHeight } from "./river-geometry";
 
-const GATEWAY_POS = [4.1, 0.14, 0.18];
-const GATEWAY_MODEL_SCALE = 0.68;
+const GATEWAY_SITE_X = 6.45;
+const GATEWAY_SITE_Z = 2.05;
+const GATEWAY_POS = [
+  GATEWAY_SITE_X,
+  terrainHeight(GATEWAY_SITE_X, GATEWAY_SITE_Z) + 0.02,
+  GATEWAY_SITE_Z,
+];
+const GATEWAY_SCENE_SCALE = 0.84;
+const GATEWAY_MODEL_SCALE = 0.56;
 const GATEWAY_BOX_CENTER_LOCAL = [0, 1.34, 0.36];
 const GATEWAY_BOX_CENTER = [
-  GATEWAY_POS[0] + GATEWAY_BOX_CENTER_LOCAL[0] * GATEWAY_MODEL_SCALE,
-  GATEWAY_POS[1] + GATEWAY_BOX_CENTER_LOCAL[1] * GATEWAY_MODEL_SCALE,
-  GATEWAY_POS[2] + GATEWAY_BOX_CENTER_LOCAL[2] * GATEWAY_MODEL_SCALE,
+  GATEWAY_POS[0] + GATEWAY_BOX_CENTER_LOCAL[0] * GATEWAY_MODEL_SCALE * GATEWAY_SCENE_SCALE,
+  GATEWAY_POS[1] + GATEWAY_BOX_CENTER_LOCAL[1] * GATEWAY_MODEL_SCALE * GATEWAY_SCENE_SCALE,
+  GATEWAY_POS[2] + GATEWAY_BOX_CENTER_LOCAL[2] * GATEWAY_MODEL_SCALE * GATEWAY_SCENE_SCALE,
 ];
 
 export { GATEWAY_POS, GATEWAY_BOX_CENTER };
@@ -106,7 +114,7 @@ export default function GatewayHub({ active = false }) {
   });
 
   return (
-    <group position={GATEWAY_POS}>
+    <group position={GATEWAY_POS} scale={GATEWAY_SCENE_SCALE}>
       <EllipseShadow position={[0.02, 0.045, 0.08]} scale={[0.72, 0.56, 1]} opacity={0.34} />
       <EllipseShadow position={[-0.88, 0.042, 0.24]} scale={[0.94, 0.42, 1]} opacity={0.18} />
 

@@ -10,7 +10,7 @@ const TechnologyScene = dynamic(() => import("./technology-scene"), {
 
 function Skeleton() {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[#050f16]">
+    <div className="flex h-full w-full items-center justify-center bg-[#dfe8e8]">
       <div className="h-8 w-8 animate-pulse rounded-full bg-aquamesh-500/30" />
     </div>
   );
@@ -26,7 +26,11 @@ function hasWebGL() {
   }
 }
 
-export default function TechnologySceneLoader({ activeStage = null }) {
+export default function TechnologySceneLoader({
+  activeStage = null,
+  activeView = null,
+  onSelectView,
+}) {
   const [visible, setVisible] = useState(false);
   const [supported, setSupported] = useState(true);
   const containerRef = useRef(null);
@@ -54,7 +58,7 @@ export default function TechnologySceneLoader({ activeStage = null }) {
 
   if (!supported) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-[#050f16] text-aquamesh-300/60 text-sm">
+      <div className="flex h-full w-full items-center justify-center bg-[#dfe8e8] text-aquamesh-700/70 text-sm">
         Interactive 3D visualization requires WebGL
       </div>
     );
@@ -62,7 +66,15 @@ export default function TechnologySceneLoader({ activeStage = null }) {
 
   return (
     <div ref={containerRef} className="h-full w-full">
-      {visible ? <TechnologyScene activeStage={activeStage} /> : <Skeleton />}
+      {visible ? (
+        <TechnologyScene
+          activeStage={activeStage}
+          activeView={activeView}
+          onSelectView={onSelectView}
+        />
+      ) : (
+        <Skeleton />
+      )}
     </div>
   );
 }

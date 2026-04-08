@@ -4,24 +4,38 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { MathUtils } from "three";
-import { riverCenterX } from "./water-surface";
+import { sampleChannelPoint, waterSurfaceY } from "./river-geometry";
 
 const PROBE_LAYOUT = [
-  { z: -3.2, offset: -0.72 },
-  { z: -1.6, offset: 0.58 },
-  { z: 0.1, offset: -0.46 },
-  { z: 1.7, offset: 0.74 },
-  { z: 3.1, offset: -0.28 },
-  { z: 4.6, offset: 0.62 },
+  { channelId: "main", z: -6.2, lateral: -0.22 },
+  { channelId: "main", z: -4.3, lateral: 0.18 },
+  { channelId: "main", z: -2.1, lateral: -0.14 },
+  { channelId: "center", z: 0.9, lateral: 0.14 },
+  { channelId: "east-primary", z: 2.8, lateral: -0.16 },
+  { channelId: "west-primary", z: 4.5, lateral: 0.12 },
+  { x: -5.4, z: 8.4 },
+  { x: -2.0, z: 9.7 },
+  { x: 0.8, z: 9.2 },
 ];
 
-export const PROBE_POSITIONS = PROBE_LAYOUT.map(({ z, offset }) => [
-  riverCenterX(z) + offset,
-  0.1,
-  z,
-]);
+export const PROBE_POSITIONS = PROBE_LAYOUT.map(({ channelId, x, z, lateral = 0 }) => {
+  const [positionX, y, positionZ] = channelId
+    ? sampleChannelPoint(channelId, z, lateral)
+    : [x, waterSurfaceY(x, z), z];
+  return [positionX, y + 0.055, positionZ];
+});
 
-const LED_COLORS = ["#22d3ee", "#34d399", "#67e8f9", "#22d3ee", "#34d399", "#67e8f9"];
+const LED_COLORS = [
+  "#22d3ee",
+  "#34d399",
+  "#67e8f9",
+  "#22d3ee",
+  "#34d399",
+  "#67e8f9",
+  "#38bdf8",
+  "#60a5fa",
+  "#22d3ee",
+];
 
 function ProbeShadow() {
   return (
