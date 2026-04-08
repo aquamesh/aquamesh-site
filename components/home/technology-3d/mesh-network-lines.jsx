@@ -16,41 +16,70 @@ const EDGES = [
   [4, 5],
 ];
 
-// Alternate line colors for more visual pop
-const LINE_COLORS = ["#22d3ee", "#34d399", "#67e8f9", "#a78bfa", "#22d3ee", "#34d399", "#67e8f9"];
+const LINE_COLORS = ["#7dd3cf", "#5eead4", "#67e8f9", "#8ae4dc", "#7dd3cf", "#5eead4", "#67e8f9"];
 
 function MeshLine({ a, b, index, active }) {
-  const ref = useRef();
+  const glowRef = useRef();
+  const coreRef = useRef();
+  const from = [a[0], 0.2, a[2]];
+  const to = [b[0], 0.2, b[2]];
 
   useFrame(({ clock }) => {
-    if (ref.current) {
-      const t = clock.getElapsedTime();
-      const pulse = Math.sin(t * 0.8 + index * 0.9);
-      const targetOpacity = active ? 0.68 + pulse * 0.16 : 0.22 + pulse * 0.08;
-      ref.current.material.opacity = MathUtils.lerp(
-        ref.current.material.opacity,
-        targetOpacity,
+    const t = clock.getElapsedTime();
+    const pulse = Math.sin(t * 0.8 + index * 0.9);
+
+    if (glowRef.current) {
+      const glowTarget = active ? 0.12 + pulse * 0.02 : 0.045 + pulse * 0.015;
+      glowRef.current.material.opacity = MathUtils.lerp(
+        glowRef.current.material.opacity,
+        glowTarget,
         0.08
       );
-      ref.current.material.dashOffset -= 0.006;
+    }
+
+    if (coreRef.current) {
+      const coreTarget = active ? 0.42 + pulse * 0.08 : 0.16 + pulse * 0.05;
+      coreRef.current.material.opacity = MathUtils.lerp(
+        coreRef.current.material.opacity,
+        coreTarget,
+        0.08
+      );
+      coreRef.current.material.dashOffset -= 0.004;
     }
   });
 
-  const from = [a[0], 0.18, a[2]];
-  const to = [b[0], 0.18, b[2]];
+  const color = LINE_COLORS[index % LINE_COLORS.length];
 
   return (
-    <Line
-      ref={ref}
-      points={[from, to]}
-      color={LINE_COLORS[index % LINE_COLORS.length]}
-      lineWidth={2.2}
-      transparent
-      opacity={0.34}
-      dashed
-      dashSize={0.28}
-      gapSize={0.13}
-    />
+    <>
+      <Line
+        ref={glowRef}
+        points={[from, to]}
+        color={color}
+        lineWidth={4.2}
+        transparent
+        opacity={0.08}
+        depthTest={false}
+        depthWrite={false}
+        toneMapped={false}
+        renderOrder={8}
+      />
+      <Line
+        ref={coreRef}
+        points={[from, to]}
+        color={color}
+        lineWidth={1.35}
+        transparent
+        opacity={0.38}
+        dashed
+        dashSize={0.16}
+        gapSize={0.19}
+        depthTest={false}
+        depthWrite={false}
+        toneMapped={false}
+        renderOrder={9}
+      />
+    </>
   );
 }
 

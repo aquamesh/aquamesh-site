@@ -25,9 +25,9 @@ const CAMERA_STAGES = [
     target: [0.1, 0.4, 0.6],
   },
   {
-    // Stage 1: Elevated bank view to keep a systems-diagram feel
-    position: [5.8, 6.9, 9.9],
-    target: [2.2, 1.15, -0.5],
+    // Stage 1: Tighter bank framing so the gateway hardware owns the shot
+    position: [5.45, 4.95, 6.55],
+    target: [4.02, 1.12, 0.16],
   },
   {
     // Stage 2: Wide aerial shot of the full river-to-cloud stack
@@ -104,9 +104,10 @@ export default function TechnologyScene({ activeStage = null }) {
 
   return (
     <Canvas
+      shadows
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
-      camera={{ position: CAMERA_OVERVIEW.position, fov: 44 }}
+      camera={{ position: CAMERA_OVERVIEW.position, fov: 42 }}
     >
       <color attach="background" args={["#08141b"]} />
       <DynamicFog activeStageRef={activeStageRef} />

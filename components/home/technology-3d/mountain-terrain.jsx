@@ -1,21 +1,25 @@
 "use client";
 
+import { useMemo } from "react";
+import { BufferGeometry, Float32BufferAttribute } from "three";
+import { RIVER_LENGTH, bankHeight, riverCenterX, riverHalfWidth } from "./river-geometry";
+
 const LANDFORMS = [
   {
-    pos: [-7.2, 0, -11.8],
-    radii: [4.8, 3.7, 2.7],
+    pos: [-9.2, 0, -11.7],
+    radii: [4.0, 3.0, 2.2],
     segments: 7,
     colors: ["#2a4a3f", "#366055", "#4b7b6c"],
   },
   {
-    pos: [0.1, 0, -13.2],
-    radii: [4.4, 3.3, 2.4],
+    pos: [4.2, 0, -14.2],
+    radii: [2.2, 1.65, 1.2],
     segments: 6,
     colors: ["#2c4d42", "#3a6458", "#4f8172"],
   },
   {
-    pos: [7.8, 0, -10.9],
-    radii: [5.1, 3.8, 2.8],
+    pos: [9.2, 0, -10.8],
+    radii: [4.5, 3.4, 2.5],
     segments: 8,
     colors: ["#29493e", "#355f53", "#4a7a6b"],
   },
@@ -38,12 +42,66 @@ const LANDFORMS = [
     colors: ["#2e4d42", "#487566"],
   },
   {
-    pos: [4.6, 0, -12.8],
-    radii: [2.9, 2.1],
+    pos: [5.8, 0, -14.6],
+    radii: [1.65, 1.2],
     segments: 6,
     colors: ["#2d4c41", "#467264"],
   },
 ];
+
+const BANK_SEGMENTS_Z = 84;
+const BANK_SEGMENTS_X = 16;
+const SHADOW_SEGMENTS_X = 5;
+const BANK_WIDTH = 5.8;
+const SHORE_SHADOW_WIDTH = 1.05;
+
+function buildStripGeometry(side, width, segmentsX, yOffset = 0) {
+  const geometry = new BufferGeometry();
+  const vertices = [];
+  const indices = [];
+
+  for (let iz = 0; iz <= BANK_SEGMENTS_Z; iz++) {
+    const z = -RIVER_LENGTH / 2 + (iz / BANK_SEGMENTS_Z) * RIVER_LENGTH;
+    const cx = riverCenterX(z);
+    const halfW = riverHalfWidth(z);
+    const edgeX = cx + side * (halfW + 0.12);
+
+    for (let ix = 0; ix <= segmentsX; ix++) {
+      const t = ix / segmentsX;
+      const lateralEase = 0.84 + Math.sin(z * 0.16 + side * 0.5) * 0.04;
+      const x = edgeX + side * width * t * lateralEase;
+      const y =
+        bankHeight(side, z, t) +
+        Math.sin(t * Math.PI) * 0.018 +
+        Math.sin((z + side * 1.6) * 0.42 + t * 4.2) * 0.008 +
+        yOffset;
+
+      vertices.push(x, y, z);
+    }
+  }
+
+  for (let iz = 0; iz < BANK_SEGMENTS_Z; iz++) {
+    for (let ix = 0; ix < segmentsX; ix++) {
+      const a = iz * (segmentsX + 1) + ix;
+      const b = a + 1;
+      const c = a + (segmentsX + 1);
+      const d = c + 1;
+      if (side < 0) {
+        indices.push(a, b, c);
+        indices.push(b, d, c);
+      } else {
+        indices.push(a, c, b);
+        indices.push(b, c, d);
+      }
+    }
+  }
+
+  geometry.setIndex(indices);
+  geometry.setAttribute("position", new Float32BufferAttribute(vertices, 3));
+  geometry.computeVertexNormals();
+
+  return geometry;
+}
 
 function TopographicMound({ pos, radii, segments, colors }) {
   const stepHeight = 0.18;
@@ -54,6 +112,8 @@ function TopographicMound({ pos, radii, segments, colors }) {
         <mesh
           key={`${radius}-${index}`}
           position={[0, stepHeight / 2 + index * stepHeight, 0]}
+          castShadow
+          receiveShadow
         >
           <cylinderGeometry args={[radius * 0.9, radius, stepHeight, segments]} />
           <meshStandardMaterial
@@ -66,7 +126,11 @@ function TopographicMound({ pos, radii, segments, colors }) {
           />
         </mesh>
       ))}
-      <mesh position={[0, radii.length * stepHeight + 0.035, 0]}>
+      <mesh
+        position={[0, radii.length * stepHeight + 0.035, 0]}
+        castShadow
+        receiveShadow
+      >
         <cylinderGeometry
           args={[radii[radii.length - 1] * 0.52, radii[radii.length - 1] * 0.68, 0.07, segments]}
         />
@@ -83,52 +147,55 @@ function TopographicMound({ pos, radii, segments, colors }) {
   );
 }
 
-function RiverBank({ position, colorTop, colorBase }) {
+function ChannelBank({ side }) {
+  const bankGeometry = useMemo(() => buildStripGeometry(side, BANK_WIDTH, BANK_SEGMENTS_X), [side]);
+  const shadowGeometry = useMemo(
+    () => buildStripGeometry(side, SHORE_SHADOW_WIDTH, SHADOW_SEGMENTS_X, 0.01),
+    [side]
+  );
+
   return (
-    <group position={position}>
-      <mesh position={[0, -0.06, 0]}>
-        <boxGeometry args={[7.4, 0.16, 28.2]} />
+    <>
+      <mesh geometry={bankGeometry} castShadow receiveShadow>
         <meshStandardMaterial
-          color={colorTop}
-          emissive={colorTop}
-          emissiveIntensity={0.06}
-          flatShading
-          roughness={0.86}
-          metalness={0.03}
-        />
-      </mesh>
-      <mesh position={[0, -0.19, 0]}>
-        <boxGeometry args={[8.2, 0.12, 29]} />
-        <meshStandardMaterial
-          color={colorBase}
-          emissive={colorBase}
-          emissiveIntensity={0.04}
-          flatShading
-          roughness={0.92}
+          color="#23463a"
+          emissive="#183329"
+          emissiveIntensity={0.1}
+          roughness={0.9}
           metalness={0.02}
         />
       </mesh>
-    </group>
+      <mesh geometry={shadowGeometry} receiveShadow>
+        <meshBasicMaterial
+          color="#07141a"
+          transparent
+          opacity={0.22}
+          depthWrite={false}
+          polygonOffset
+          polygonOffsetFactor={-1}
+        />
+      </mesh>
+    </>
   );
 }
 
 export default function MountainTerrain() {
   return (
     <>
-      <mesh position={[0, -0.28, 0]}>
-        <boxGeometry args={[24.5, 0.16, 30.5]} />
+      <mesh position={[0, -0.31, 0]} receiveShadow>
+        <boxGeometry args={[24.5, 0.2, 30.5]} />
         <meshStandardMaterial
           color="#14252d"
           emissive="#112129"
           emissiveIntensity={0.04}
           flatShading
-          roughness={0.93}
+          roughness={0.95}
           metalness={0.02}
         />
       </mesh>
 
-      <RiverBank position={[-8.7, 0, 0]} colorTop="#23463a" colorBase="#173229" />
-      <RiverBank position={[8.7, 0, 0]} colorTop="#23463a" colorBase="#173229" />
+      <ChannelBank side={-1} />
+      <ChannelBank side={1} />
 
       {LANDFORMS.map((form, index) => (
         <TopographicMound key={index} {...form} />
