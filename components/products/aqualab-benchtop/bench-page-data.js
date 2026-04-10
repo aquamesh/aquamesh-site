@@ -33,7 +33,7 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "bench-story-media",
-    imageSrc: "bench_front_trans.png",
+    imageSrc: "bench_front_trans.webp",
     imageAlt: "AquaLab benchtop front view",
     badgeTitle: "Same optics, lab-ready form factor",
     badgeCopy: "Field-proven sensing technology adapted for the tabletop."
@@ -59,7 +59,7 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "bench-story-media bench-story-media--terrain",
-    imageSrc: "bench_top_angle_trans.png",
+    imageSrc: "bench_top_angle_trans.webp",
     imageAlt: "AquaLab benchtop top angle view",
     badgeTitle: "Field-to-lab continuity",
     badgeCopy:
@@ -85,7 +85,7 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "bench-story-media",
-    imageSrc: "bench_back_trans.png",
+    imageSrc: "bench_back_trans.webp",
     imageAlt: "AquaLab benchtop back panel",
     badgeTitle: "Minimal training required",
     badgeCopy:

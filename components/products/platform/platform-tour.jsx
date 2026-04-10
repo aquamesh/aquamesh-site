@@ -3,6 +3,7 @@ import { cx } from "../../../lib/cx";
 import SectionShell from "../../ui/section-shell";
 import FeatureChecklist from "../../ui/feature-checklist";
 import IconBadge from "../../ui/icon-badge";
+import SiteImage from "../../ui/site-image";
 import { platformTourCards } from "./platform-page-data";
 
 function TourCard({ card }) {
@@ -26,7 +27,7 @@ function TourCard({ card }) {
 
   const mediaBlock = (
     <div className="order-first flex items-center justify-center lg:order-none">
-      <img
+      <SiteImage
         src={imageAssetHref(card.imageSrc)}
         alt={card.imageAlt}
         className="w-full rounded-2xl border border-slate-200 object-cover shadow-lg"

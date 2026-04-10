@@ -10,36 +10,56 @@ export default function AosRuntime({
   once = true
 }) {
   useEffect(() => {
-    let cancelled = false;
-    let retryId = null;
-
-    function initialize() {
-      if (cancelled || typeof window === "undefined") {
-        return;
-      }
-
-      if (typeof window.AOS?.init !== "function") {
-        retryId = window.setTimeout(initialize, 50);
-        return;
-      }
-
-      window.AOS.init({
-        delay,
-        duration,
-        easing,
-        offset,
-        once
-      });
-      window.AOS.refresh?.();
+    if (typeof window === "undefined") {
+      return;
     }
 
-    initialize();
+    const elements = Array.from(document.querySelectorAll("[data-aos]"));
+    const root = document.documentElement;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    root.style.setProperty("--aos-duration", `${duration}ms`);
+    root.style.setProperty("--aos-easing", easing);
+
+    elements.forEach((element) => {
+      const elementDelay = Number(element.getAttribute("data-aos-delay") || 0);
+      element.style.transitionDelay = `${delay + elementDelay}ms`;
+    });
+
+    if (mediaQuery.matches) {
+      elements.forEach((element) => {
+        element.setAttribute("data-aos-in", "true");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            if (!once) {
+              entry.target.removeAttribute("data-aos-in");
+            }
+            return;
+          }
+
+          entry.target.setAttribute("data-aos-in", "true");
+
+          if (once) {
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: `0px 0px -${offset}px 0px`,
+        threshold: 0.14
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
 
     return () => {
-      cancelled = true;
-      if (retryId) {
-        window.clearTimeout(retryId);
-      }
+      observer.disconnect();
     };
   }, [delay, duration, easing, offset, once]);
 

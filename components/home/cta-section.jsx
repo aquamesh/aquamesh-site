@@ -101,12 +101,18 @@ export default function CtaSection() {
             {/* Honeypot field — hidden from humans, traps bots */}
             <input
               type="text"
+              hidden
+              aria-hidden="true"
               name="_gotcha"
               tabIndex={-1}
               autoComplete="off"
               className="!absolute !overflow-hidden !h-0 !w-0 !p-0 !border-0"
             />
+            <label htmlFor="cta-name" className="sr-only">
+              Your Name
+            </label>
             <input
+              id="cta-name"
               className={formFieldClassName}
               type="text"
               placeholder="Your Name"
@@ -115,7 +121,11 @@ export default function CtaSection() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            <label htmlFor="cta-email" className="sr-only">
+              Your Email
+            </label>
             <input
+              id="cta-email"
               className={formFieldClassName}
               type="email"
               placeholder="Your Email"
@@ -124,7 +134,11 @@ export default function CtaSection() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <label htmlFor="cta-product" className="sr-only">
+              Product Interest
+            </label>
             <select
+              id="cta-product"
               className={formFieldClassName}
               required
               disabled={loading}
@@ -139,7 +153,11 @@ export default function CtaSection() {
               <option>AquaView™ Platform</option>
               <option>Custom Solution</option>
             </select>
+            <label htmlFor="cta-message" className="sr-only">
+              Your Message
+            </label>
             <textarea
+              id="cta-message"
               className={formFieldClassName}
               rows="4"
               placeholder="Your Message"

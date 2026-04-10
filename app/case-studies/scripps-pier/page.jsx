@@ -3,6 +3,7 @@ import SectionShell from "../../../components/ui/section-shell";
 import SiteContainer from "../../../components/ui/site-container";
 import ButtonLink from "../../../components/ui/button-link";
 import IconBadge from "../../../components/ui/icon-badge";
+import SiteImage from "../../../components/ui/site-image";
 import { createPageMetadata } from "../../../lib/page-metadata";
 
 export const metadata = createPageMetadata({
@@ -38,14 +39,14 @@ const highlights = [
 
 const labGallery = [
   {
-    src: "/images/use-cases/benchtop_in_lab.jpeg",
+    src: "/images/use-cases/benchtop_in_lab.webp",
     alt: "Benchtop AquaSpectra setup in the lab",
     title: "Benchtop validation",
     description:
       "The benchtop system is being used in real-world validation work to refine calibration routines, confirm repeatability, and tighten confidence in optical performance."
   },
   {
-    src: "/images/use-cases/lab_work_benchtop.jpeg",
+    src: "/images/use-cases/lab_work_benchtop.webp",
     alt: "Researcher performing calibration work at the lab bench",
     title: "Calibration workflow",
     description:
@@ -79,9 +80,10 @@ export default function ScrippsPierCaseStudyPage() {
           </div>
 
           <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_24px_72px_rgba(0,0,0,0.24)]">
-            <img
-              src="/images/scripps_lajolla.png"
+            <SiteImage
+              src="/images/scripps_lajolla.webp"
               alt="Scripps Pier coastal deployment site in La Jolla, San Diego"
+              priority
               className="h-full w-full object-cover"
             />
           </div>
@@ -103,7 +105,7 @@ export default function ScrippsPierCaseStudyPage() {
               className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_72px_rgba(15,23,42,0.08)]"
             >
               <div className="aspect-[4/3] bg-slate-100">
-                <img
+                <SiteImage
                   src={image.src}
                   alt={image.alt}
                   className="h-full w-full object-cover"

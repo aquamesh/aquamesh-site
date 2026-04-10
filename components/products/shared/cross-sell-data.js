@@ -6,7 +6,7 @@ const crossSellCatalog = {
     eyebrow: "Sensor Probe",
     tagline:
       "Multi-parameter optical sensing for continuous water-quality monitoring in the field.",
-    image: imageAssetHref("full_probe_shot.png"),
+    image: imageAssetHref("full_probe_shot.webp"),
     imageAlt: "AquaSpectra multi-parameter water-quality probe",
     href: "/products/aquaspectra-probe/"
   },
@@ -15,7 +15,7 @@ const crossSellCatalog = {
     eyebrow: "Benchtop Analyzer",
     tagline:
       "Lab-grade multi-parameter optical sensing in a compact benchtop form factor.",
-    image: imageAssetHref("bench_front_trans.png"),
+    image: imageAssetHref("bench_front_trans.webp"),
     imageAlt: "AquaLab benchtop analyzer for sample testing and calibration",
     href: "/products/aqualab-benchtop/"
   },
@@ -24,7 +24,7 @@ const crossSellCatalog = {
     eyebrow: "Gateway Hub",
     tagline:
       "A compact gateway that aggregates sensor traffic and bridges field telemetry to the cloud.",
-    image: imageAssetHref("transparent_hub.png"),
+    image: imageAssetHref("transparent_hub.webp"),
     imageAlt: "AquaLink gateway hardware for remote telemetry",
     href: "/products/aqualink-hub/"
   },
@@ -33,7 +33,7 @@ const crossSellCatalog = {
     eyebrow: "Software Platform",
     tagline:
       "Live dashboards and operational tools for distributed water-quality programs.",
-    image: imageAssetHref("platform_home_screenshot.png"),
+    image: imageAssetHref("platform_home_screenshot.webp"),
     imageAlt: "AquaView monitoring dashboard with water-quality charts",
     href: "/products/aquaview-platform/"
   }

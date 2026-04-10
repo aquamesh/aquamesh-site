@@ -3,6 +3,7 @@ import { cx } from "../../../lib/cx";
 import ButtonLink from "../../ui/button-link";
 import FeatureChecklist from "../../ui/feature-checklist";
 import IconBadge from "../../ui/icon-badge";
+import SiteImage from "../../ui/site-image";
 import ProbeSection from "./probe-section";
 import { storyPanels } from "./probe-page-data";
 
@@ -37,7 +38,7 @@ function StoryPanel({ panel }) {
               : "rounded-[16px] bg-[linear-gradient(180deg,#f8fbfc_0%,#e9f1f4_100%)] px-6 py-8 sm:px-8 sm:py-10"
           )}
         >
-          <img
+          <SiteImage
             src={imageAssetHref(panel.imageSrc)}
             alt={panel.imageAlt}
             className={cx(

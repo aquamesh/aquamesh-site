@@ -1,4 +1,3 @@
-import Script from "next/script";
 import AosRuntime from "../../runtime/aos-runtime";
 import SitePageShell from "../../site-page-shell";
 import IconBadge from "../../ui/icon-badge";
@@ -18,10 +17,6 @@ export default function PlatformPage() {
       supplemental={
         <>
           <AosRuntime duration={900} offset={50} />
-          <Script
-            src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"
-            strategy="afterInteractive"
-          />
         </>
       }
     >

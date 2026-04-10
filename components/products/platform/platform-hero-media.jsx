@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { imageAssetHref } from "../../../lib/site-assets";
 import { publicAssetHref } from "../../../lib/site-paths";
+import SiteImage from "../../ui/site-image";
 
 const VIDEO_SRC = publicAssetHref("/videos/aquaview-demo.mp4");
 
@@ -71,9 +72,10 @@ export default function PlatformHeroMedia() {
     <>
       <div className="overflow-hidden rounded-[16px] border border-white/10 bg-slate-900/60 sm:rounded-[20px]">
         <div className="relative">
-          <img
-            src={imageAssetHref("platform/platform_hero.png")}
+          <SiteImage
+            src={imageAssetHref("platform/platform_hero.webp")}
             alt="AquaView dashboard showing water quality trends and deployment analytics"
+            priority
             className="h-auto w-full"
           />
           <button

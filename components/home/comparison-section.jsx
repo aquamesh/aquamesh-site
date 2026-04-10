@@ -73,6 +73,7 @@ export default function ComparisonSection() {
     <SectionShell
       id="competitive-matrix"
       eyebrow="Comparison"
+      eyebrowClassName="text-aquamesh-700"
       title="Why We&apos;re Better"
       description="AquaMesh combines broader optical coverage with connected deployment infrastructure that typical sondes do not include."
       className="bg-slate-50"
@@ -121,7 +122,7 @@ export default function ComparisonSection() {
                   </div>
                 </td>
                 <td className="px-6 py-5 text-sm font-semibold">
-                  <span className={competitor.meshNetworking ? "text-emerald-600" : "text-slate-400"}>
+                  <span className={competitor.meshNetworking ? "text-emerald-700" : "text-slate-600"}>
                     {competitor.meshNetworking ? "Yes" : "No"}
                   </span>
                 </td>

@@ -1,6 +1,7 @@
 import { cx } from "../../../lib/cx";
 import ProbeSection from "./probe-section";
 import ButtonLink from "../../ui/button-link";
+import SiteImage from "../../ui/site-image";
 
 export default function ProbeCaseStudy({ tone = "dark" }) {
   const isLight = tone === "light" || tone === "mist";
@@ -33,8 +34,8 @@ export default function ProbeCaseStudy({ tone = "dark" }) {
           )}
           data-aos="fade-up"
         >
-          <img
-            src="/images/scripps_lajolla.png"
+          <SiteImage
+            src="/images/scripps_lajolla.webp"
             alt="Scripps Pier coastal validation site in La Jolla, San Diego"
             className="h-52 w-full object-cover lg:h-full"
           />

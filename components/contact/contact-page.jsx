@@ -125,17 +125,20 @@ export default function ContactPage() {
                   {/* Honeypot field — hidden from humans, traps bots */}
                   <input
                     type="text"
+                    hidden
+                    aria-hidden="true"
                     name="_gotcha"
                     tabIndex={-1}
                     autoComplete="off"
                     className="!absolute !overflow-hidden !h-0 !w-0 !p-0 !border-0"
                   />
                   <div className="grid gap-4 md:grid-cols-2">
-                    <label>
+                    <label htmlFor="contact-name">
                       <span className="text-sm font-medium text-slate-700">
                         Name
                       </span>
                       <input
+                        id="contact-name"
                         type="text"
                         required
                         disabled={loading}
@@ -146,11 +149,12 @@ export default function ContactPage() {
                       />
                     </label>
 
-                    <label>
+                    <label htmlFor="contact-email">
                       <span className="text-sm font-medium text-slate-700">
                         Email
                       </span>
                       <input
+                        id="contact-email"
                         type="email"
                         required
                         disabled={loading}
@@ -161,11 +165,12 @@ export default function ContactPage() {
                       />
                     </label>
 
-                    <label>
+                    <label htmlFor="contact-product">
                       <span className="text-sm font-medium text-slate-700">
                         Product Interest
                       </span>
                       <select
+                        id="contact-product"
                         disabled={loading}
                         value={product}
                         onChange={(e) => setProduct(e.target.value)}
@@ -183,11 +188,12 @@ export default function ContactPage() {
                       </select>
                     </label>
 
-                    <label className="md:col-span-2">
+                    <label className="md:col-span-2" htmlFor="contact-message">
                       <span className="text-sm font-medium text-slate-700">
                         Message
                       </span>
                       <textarea
+                        id="contact-message"
                         rows="4"
                         disabled={loading}
                         value={message}

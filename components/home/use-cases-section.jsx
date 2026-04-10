@@ -1,6 +1,7 @@
 import ButtonLink from "../ui/button-link";
 import SectionShell from "../ui/section-shell";
 import InfoCard from "../ui/info-card";
+import SiteImage from "../ui/site-image";
 
 const useCases = [
   {
@@ -52,8 +53,8 @@ export default function UseCasesSection() {
       {/* Case study highlight */}
       <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div className="grid lg:grid-cols-2">
-          <img
-            src="/images/scripps_lajolla.png"
+          <SiteImage
+            src="/images/scripps_lajolla.webp"
             alt="Scripps Pier coastal monitoring site in La Jolla, San Diego"
             className="h-full w-full object-cover"
           />
@@ -75,7 +76,7 @@ export default function UseCasesSection() {
                 href="/case-studies/scripps-pier/"
                 variant="primary"
               >
-                Read More
+                Read Scripps case study
               </ButtonLink>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import ButtonLink from "../../ui/button-link";
 import InfoCard from "../../ui/info-card";
 import SectionShell from "../../ui/section-shell";
+import SiteImage from "../../ui/site-image";
 import crossSellCatalog from "./cross-sell-data";
 
 const slugs = Object.keys(crossSellCatalog);
@@ -29,7 +30,7 @@ export default function ProductCrossSell({ currentProduct }) {
                 <div
                   className={`aspect-[16/9] overflow-hidden rounded-xl bg-slate-50 ${slug === "platform" ? "" : "p-5"}`}
                 >
-                  <img
+                  <SiteImage
                     src={product.image}
                     alt={product.imageAlt || product.name}
                     className="h-full w-full object-contain"
@@ -38,7 +39,7 @@ export default function ProductCrossSell({ currentProduct }) {
               }
             >
               <ButtonLink href={product.href} variant="subtle" size="sm">
-                Learn more
+                Explore {product.name}
               </ButtonLink>
             </InfoCard>
           );

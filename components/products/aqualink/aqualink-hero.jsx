@@ -1,6 +1,7 @@
 import { imageAssetHref } from "../../../lib/site-assets"
 import ButtonLink from "../../ui/button-link"
 import IconBadge from "../../ui/icon-badge"
+import SiteImage from "../../ui/site-image"
 import SiteContainer from "../../ui/site-container"
 import { aqualinkHeroStats } from "./aqualink-page-data"
 
@@ -59,9 +60,10 @@ export default function AqualinkHero() {
             <div className="relative" data-aos="fade-up" data-aos-delay="100">
               <div className="absolute inset-x-8 top-12 h-40 rounded-full bg-aquamesh-500/25 blur-3xl sm:inset-x-16 sm:h-48" />
               <div className="relative flex justify-center px-4 pb-2 pt-2 sm:px-8 sm:pt-6 lg:px-6">
-                <img
-                  src={imageAssetHref("transparent_hub.png")}
+                <SiteImage
+                  src={imageAssetHref("transparent_hub.webp")}
                   alt="AquaLink Hub gateway hardware"
+                  priority
                   className="h-auto max-h-[420px] w-full max-w-[380px] object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.55)] sm:max-h-[500px] sm:max-w-[440px] lg:max-h-[560px] lg:max-w-[500px]"
                 />
               </div>

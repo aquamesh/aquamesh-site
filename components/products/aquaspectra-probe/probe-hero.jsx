@@ -1,6 +1,7 @@
 import { imageAssetHref } from "../../../lib/site-assets";
 import ButtonLink from "../../ui/button-link";
 import IconBadge from "../../ui/icon-badge";
+import SiteImage from "../../ui/site-image";
 import SiteContainer from "../../ui/site-container";
 import { heroStats } from "./probe-page-data";
 
@@ -60,10 +61,11 @@ export default function ProbeHero() {
                 className="pointer-events-none absolute inset-x-10 bottom-2 h-28 rounded-full bg-white/8 blur-3xl sm:inset-x-16 sm:h-36"
                 aria-hidden="true"
               />
-              <img
+              <SiteImage
                 className="relative mx-auto max-h-[420px] w-full object-contain sm:max-h-[520px] lg:max-h-[560px]"
-                src={imageAssetHref("transparent_optics_shot_cold.png")}
+                src={imageAssetHref("transparent_optics_shot_cold.webp")}
                 alt="AquaSpectra optics closeup"
+                priority
                 style={{
                   WebkitMaskImage:
                     "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0.82) 82%, rgba(0, 0, 0, 0) 100%)",

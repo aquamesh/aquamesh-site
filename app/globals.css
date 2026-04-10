@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Poppins", sans-serif;
+  --font-sans: var(--font-poppins), "Poppins", sans-serif;
   --color-aquamesh-50: #f5faff;
   --color-aquamesh-300: #94d2bd;
-  --color-aquamesh-500: #1c9dbb;
+  --color-aquamesh-500: #0f7f96;
   --color-aquamesh-700: #1c3d50;
   --color-aquamesh-900: #001219;
 }
@@ -29,6 +29,40 @@
 }
 
 @layer utilities {
+  [data-aos] {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition-duration: var(--aos-duration, 800ms);
+    transition-property: opacity, transform;
+    transition-timing-function: var(--aos-easing, cubic-bezier(0.22, 1, 0.36, 1));
+    will-change: opacity, transform;
+  }
+
+  [data-aos="fade-left"] {
+    transform: translate3d(-28px, 0, 0);
+  }
+
+  [data-aos="fade-right"] {
+    transform: translate3d(28px, 0, 0);
+  }
+
+  [data-aos="zoom-in"] {
+    transform: scale(0.96);
+  }
+
+  [data-aos-in="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   .text-balance {
     text-wrap: balance;
   }

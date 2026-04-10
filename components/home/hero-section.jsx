@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { siteAssets } from "../../lib/site-assets";
+import SiteImage from "../ui/site-image";
 import ButtonLink from "../ui/button-link";
 import SiteContainer from "../ui/site-container";
 
@@ -9,7 +10,19 @@ const FADE_DURATION = 1; // seconds — must match the CSS duration-1000
 
 export default function HeroSection() {
   const [visible, setVisible] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const fadingOut = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktopViewport = window.matchMedia("(min-width: 1024px)");
+
+    setShowVideo(!reducedMotion.matches && desktopViewport.matches);
+  }, []);
 
   const handleTimeUpdate = useCallback((e) => {
     const v = e.currentTarget;
@@ -30,19 +43,29 @@ export default function HeroSection() {
   return (
     <section id="home" className="relative isolate overflow-hidden bg-slate-950 text-white">
       <div className="absolute inset-0">
-        <video
-          src={siteAssets.heroVideo}
-          poster={siteAssets.heroLandscape}
-          autoPlay
-          loop
-          muted
-          playsInline
+        <SiteImage
+          src={siteAssets.heroLandscape}
+          alt=""
+          priority
           aria-hidden="true"
-          onPlaying={() => setVisible(true)}
-          onTimeUpdate={handleTimeUpdate}
-          onSeeked={handleSeeked}
-          className={`h-full w-full object-cover transition-opacity duration-1000 ease-in ${visible ? "opacity-100" : "opacity-0"}`}
+          className="h-full w-full object-cover"
         />
+        {showVideo ? (
+          <video
+            src={siteAssets.heroVideo}
+            poster={siteAssets.heroLandscape}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            onPlaying={() => setVisible(true)}
+            onTimeUpdate={handleTimeUpdate}
+            onSeeked={handleSeeked}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in ${visible ? "opacity-100" : "opacity-0"}`}
+          />
+        ) : null}
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,95,115,0.88),rgba(0,18,25,0.82))]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/50 to-transparent" />
       </div>
@@ -60,7 +83,7 @@ export default function HeroSection() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <ButtonLink href="#products" size="lg">
-              Learn More
+              Explore Products
             </ButtonLink>
             <ButtonLink href="#contact" variant="secondary" size="lg">
               Talk to Us

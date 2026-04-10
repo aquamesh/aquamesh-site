@@ -6,6 +6,7 @@ import { siteAssets } from "../lib/site-assets";
 import { getPrimaryNavigation } from "../lib/site-navigation";
 import { routeHref } from "../lib/site-paths";
 import { useHeaderVisible } from "./header-visibility-context";
+import SiteImage from "./ui/site-image";
 import { buttonClassName } from "./ui/button-link";
 import SiteContainer from "./ui/site-container";
 
@@ -229,8 +230,8 @@ export default function SiteHeader({ route = "" }) {
       )}
     >
       <SiteContainer className="flex min-h-20 items-center justify-between gap-6">
-        <a href={routeHref("/")} className="flex items-center gap-3">
-          <img src={siteAssets.logo} alt="AquaMesh Logo" className="h-10 w-auto" />
+        <a href={routeHref("/")} className="flex items-center gap-3" aria-label="AquaMesh home">
+          <SiteImage src={siteAssets.logo} alt="AquaMesh Logo" priority className="h-10 w-auto" />
         </a>
 
         <MenuToggle open={open} onClick={() => setOpen((current) => !current)} dark={dark} />

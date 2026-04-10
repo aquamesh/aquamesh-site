@@ -2,6 +2,7 @@ import SitePageShell from "../site-page-shell";
 import SectionShell from "../ui/section-shell";
 import { teamMembers, advisors } from "./team-page-data";
 import { imageAssetHref } from "../../lib/site-assets";
+import SiteImage from "../ui/site-image";
 
 export default function TeamPage() {
   return (
@@ -33,7 +34,7 @@ export default function TeamPage() {
           {teamMembers.map((member, i) => (
             <div key={i} className="flex flex-col items-center text-center">
               {member.image ? (
-                <img
+                <SiteImage
                   src={imageAssetHref(member.image)}
                   alt={`${member.name}, ${member.role} at AquaMesh`}
                   className="mb-4 h-40 w-40 shrink-0 rounded-full object-cover"
@@ -55,7 +56,7 @@ export default function TeamPage() {
           {advisors.map((advisor, i) => (
             <div key={i} className="text-center">
               <div className="mx-auto mb-4 h-28 w-28 overflow-hidden rounded-full bg-[#dddddd]">
-                <img
+                <SiteImage
                   src={imageAssetHref("team/placeholder.png")}
                   alt={`Portrait placeholder for ${advisor.name}`}
                   className="h-full w-full scale-75 object-cover"

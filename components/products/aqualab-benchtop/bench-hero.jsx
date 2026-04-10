@@ -1,6 +1,7 @@
 import { imageAssetHref } from "../../../lib/site-assets";
 import ButtonLink from "../../ui/button-link";
 import IconBadge from "../../ui/icon-badge";
+import SiteImage from "../../ui/site-image";
 import SiteContainer from "../../ui/site-container";
 import { heroStats } from "./bench-page-data";
 
@@ -40,10 +41,11 @@ export default function BenchHero() {
                 className="pointer-events-none absolute inset-x-10 bottom-2 h-24 rounded-full bg-white/4 blur-2xl sm:inset-x-16 sm:h-28"
                 aria-hidden="true"
               />
-              <img
+              <SiteImage
                 className="relative mx-auto max-h-[420px] w-full object-contain sm:max-h-[520px] lg:max-h-[560px]"
-                src={imageAssetHref("bench_front_trans.png")}
+                src={imageAssetHref("bench_front_trans.webp")}
                 alt="AquaLab benchtop unit"
+                priority
                 style={{
                   WebkitMaskImage:
                     "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0.6) 72%, rgba(0,0,0,0) 90%)",

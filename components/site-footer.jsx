@@ -4,6 +4,7 @@ import {
   getFooterQuickLinks
 } from "../lib/site-navigation";
 import { routeHref } from "../lib/site-paths";
+import SiteImage from "./ui/site-image";
 import SiteContainer from "./ui/site-container";
 
 const currentYear = new Date().getFullYear();
@@ -40,7 +41,7 @@ function MarketingFooter({ route = "" }) {
       <SiteContainer className="py-16">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr_0.75fr_1fr]">
           <div className="max-w-sm">
-            <img src={siteAssets.logo} alt="AquaMesh Logo" className="h-11 w-auto" />
+            <SiteImage src={siteAssets.logo} alt="AquaMesh Logo" className="h-11 w-auto" />
             <p className="mt-5 text-sm leading-7 text-slate-300">{description}</p>
           </div>
 

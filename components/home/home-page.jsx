@@ -1,4 +1,3 @@
-import Script from "next/script";
 import AosRuntime from "../runtime/aos-runtime";
 import SitePageShell from "../site-page-shell";
 
@@ -16,10 +15,6 @@ export default function HomePage() {
       supplemental={
         <>
           <AosRuntime />
-          <Script
-            src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"
-            strategy="afterInteractive"
-          />
         </>
       }
     >

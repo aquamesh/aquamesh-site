@@ -2,6 +2,7 @@ import { imageAssetHref } from "../../../lib/site-assets";
 import { cx } from "../../../lib/cx";
 import FeatureChecklist from "../../ui/feature-checklist";
 import IconBadge from "../../ui/icon-badge";
+import SiteImage from "../../ui/site-image";
 import BenchSection from "./bench-section";
 import { storyPanels } from "./bench-page-data";
 
@@ -36,7 +37,7 @@ function StoryPanel({ panel }) {
         WebkitMaskComposite: "destination-in"
       }}
     >
-      <img
+      <SiteImage
         src={imageAssetHref(panel.imageSrc)}
         alt={panel.imageAlt}
         className="mx-auto w-[85%] object-contain drop-shadow-[0_26px_46px_rgba(0,0,0,0.42)]"

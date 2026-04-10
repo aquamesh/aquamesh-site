@@ -123,12 +123,18 @@ export default function JoinPage() {
           >
             <input
               type="text"
+              hidden
+              aria-hidden="true"
               name="_gotcha"
               tabIndex={-1}
               autoComplete="off"
               className="!absolute !overflow-hidden !h-0 !w-0 !p-0 !border-0"
             />
+            <label htmlFor="join-name" className="sr-only">
+              Your Name
+            </label>
             <input
+              id="join-name"
               className={formFieldClassName}
               type="text"
               placeholder="Your Name"
@@ -137,7 +143,11 @@ export default function JoinPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            <label htmlFor="join-email" className="sr-only">
+              Your Email
+            </label>
             <input
+              id="join-email"
               className={formFieldClassName}
               type="email"
               placeholder="Your Email"
@@ -146,7 +156,11 @@ export default function JoinPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <label htmlFor="join-role" className="sr-only">
+              Role Interest
+            </label>
             <select
+              id="join-role"
               className={formFieldClassName}
               required
               disabled={loading}
@@ -160,7 +174,11 @@ export default function JoinPage() {
               <option>Mechanical Engineering Co-Founder</option>
               <option>Other / General Interest</option>
             </select>
+            <label htmlFor="join-message" className="sr-only">
+              Message
+            </label>
             <textarea
+              id="join-message"
               className={formFieldClassName}
               rows="4"
               placeholder="Tell us about yourself and why you're excited about AquaMesh"

@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Poppins } from "next/font/google";
 import SharedHeadLinks from "../components/shared-head-links";
 import { siteAssets } from "../lib/site-assets";
 import {
@@ -10,6 +11,12 @@ import {
 
 const siteTitle = SITE_NAME;
 const siteDescription = DEFAULT_DESCRIPTION;
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins"
+});
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -86,7 +93,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="bg-white text-slate-900 antialiased">{children}</body>
+      <body className={`${poppins.variable} bg-white text-slate-900 antialiased`}>{children}</body>
     </html>
   );
 }

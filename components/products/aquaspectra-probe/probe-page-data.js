@@ -35,7 +35,7 @@ export const storyPanels = [
     ],
     mediaClassName: "probe-story-media",
     mediaImageClassName: "w-[64%]",
-    imageSrc: "full_probe_shot.png",
+    imageSrc: "full_probe_shot.webp",
     imageAlt: "AquaSpectra multi-parameter probe for fluorescence, absorbance, and turbidity monitoring",
     badgeTitle: "One deployment, wider chemistry coverage",
     badgeCopy:
@@ -62,12 +62,12 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "probe-story-media probe-story-media--interface",
-    imageSrc: "platform_home_screenshot.png",
+    imageSrc: "platform_home_screenshot.webp",
     imageAlt: "AquaView platform dashboard showing site data and trend monitoring",
     badgeTitle: "Probe-to-platform continuity",
     badgeCopy:
       "Designed as part of a deployable water intelligence system, not an isolated sensor.",
-    ctaLabel: "Learn More",
+    ctaLabel: "Explore AquaView",
     ctaHref: "/products/aquaview-platform"
   },
   {
@@ -90,7 +90,7 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "probe-story-media probe-story-media--interface",
-    imageSrc: "camera_view.png",
+    imageSrc: "camera_view.webp",
     imageAlt: "Camera view from inside the AquaSpectra probe",
     badgeTitle: "Reduce field visits",
     badgeCopy:

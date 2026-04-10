@@ -99,7 +99,7 @@ export const platformTourCards = [
     title: "AI automatically surfaces trends and anomalies across parameters.",
     copy: "AquaView's AI engine continuously analyzes incoming telemetry to identify parameter shifts, correlations, and anomalies — delivering actionable insights without manual data review.",
     reverse: false,
-    imageSrc: "platform/ai_insights.png",
+    imageSrc: "platform/ai_insights.webp",
     imageAlt: "AI Insights panel showing Nitrate, COD, and CDOM parameter analysis",
     points: [
       { text: "Automated trend detection across all connected parameters", icon: "fa-solid fa-chart-line" },
@@ -112,7 +112,7 @@ export const platformTourCards = [
     title: "Forecast parameter trends before they reach compliance thresholds.",
     copy: "AI models trained on your site's historical telemetry project parameter values hours and days ahead — giving operators early warning of turbidity spikes, dissolved-oxygen drops, or pH drift.",
     reverse: true,
-    imageSrc: "platform/data_predictions.png",
+    imageSrc: "platform/data_predictions.webp",
     imageAlt: "Chlorophyll time series chart with measured data and future predictions overlay",
     points: [
       { text: "Time series forecasting with confidence intervals for key parameters", icon: "fa-solid fa-wave-square" },
@@ -125,7 +125,7 @@ export const platformTourCards = [
     title: "Ask your data questions in plain English.",
     copy: "AquaView Analytics lets operators query their monitoring data using natural language — no SQL, no report builders. Ask a question and get an answer with supporting context.",
     reverse: false,
-    imageSrc: "platform/prompt_complex.png",
+    imageSrc: "platform/prompt_complex.webp",
     imageAlt: "Chat interface where users ask natural language questions to AquaView Analytics",
     points: [
       { text: "Natural language interface — no technical query syntax required", icon: "fa-solid fa-message" },
@@ -138,7 +138,7 @@ export const platformTourCards = [
     title: "Generate compliance reports and anomaly alerts automatically.",
     copy: "Scheduled water quality reports with executive summaries, parameter statistics, and anomaly flags — ready for stakeholders and regulatory review without manual assembly.",
     reverse: true,
-    imageSrc: "platform/reports_summary.png",
+    imageSrc: "platform/reports_summary.webp",
     imageAlt: "Water Quality Report with executive summary and parameter statistics table",
     points: [
       { text: "Scheduled report generation with executive summaries and parameter breakdowns", icon: "fa-solid fa-file-lines" },

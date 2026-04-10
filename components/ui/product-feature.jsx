@@ -1,6 +1,7 @@
 import { cx } from "../../lib/cx";
 import ButtonLink from "./button-link";
 import FeatureChecklist from "./feature-checklist";
+import SiteImage from "./site-image";
 
 function AccentBlob({ className }) {
   return (
@@ -26,7 +27,7 @@ function ProductVisual({ product }) {
       data-aos={product.imageAos}
     >
       {product.imageHasBlob ? <AccentBlob /> : null}
-      <img
+      <SiteImage
         src={product.imageSrc}
         alt={product.imageAlt}
         className={cx(
