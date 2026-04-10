@@ -54,7 +54,7 @@ export default function UseCasesSection() {
         <div className="grid lg:grid-cols-2">
           <img
             src="/images/scripps_lajolla.png"
-            alt="Scripps Pier in La Jolla, San Diego"
+            alt="Scripps Pier coastal monitoring site in La Jolla, San Diego"
             className="h-full w-full object-cover"
           />
           <div className="flex flex-col justify-center p-8 lg:p-10">

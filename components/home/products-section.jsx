@@ -10,7 +10,7 @@ const products = [
       "Our flagship multi-parameter sensor featuring fluorescence, absorbance, and turbidity measurements in a single compact device.",
     features: ["High precision", "Low power consumption", "Extended battery life"],
     imageSrc: "full_probe_shot.png",
-    imageAlt: "AquaSpectra Sensor",
+    imageAlt: "AquaSpectra multi-parameter optical water-quality sensor",
     imageAos: "fade-left",
     ctas: [
       {
@@ -36,7 +36,7 @@ const products = [
       "The same multi-parameter optical engine as the AquaSpectra probe, repackaged in a compact benchtop unit for lab-side verification and grab-sample analysis.",
     features: ["USB-C powered", "Field-to-lab continuity", "Same optical engine"],
     imageSrc: "bench_front_trans.png",
-    imageAlt: "AquaLab Benchtop",
+    imageAlt: "AquaLab benchtop analyzer for lab-side water-quality verification",
     imageAos: "fade-right",
     ctas: [
       {
@@ -63,7 +63,7 @@ const products = [
       "The central gateway for our mesh network, facilitating long-range communication between sensors and seamless data transmission to the cloud.",
     features: ["LoRa connectivity", "Solar powered", "Extensive range"],
     imageSrc: "transparent_hub.png",
-    imageAlt: "AquaLink Hub",
+    imageAlt: "AquaLink telemetry hub for remote water-quality monitoring sites",
     imageAos: "fade-left",
     ctas: [
       {
@@ -84,7 +84,7 @@ const products = [
       "Comprehensive web application for monitoring, visualizing, and analyzing water quality data from all connected sensors.",
     features: ["Real-time alerts", "Data visualization", "Custom reporting"],
     imageSrc: "platform_home_screenshot.png",
-    imageAlt: "AquaView Platform",
+    imageAlt: "AquaView dashboard with water-quality monitoring charts and site analytics",
     imageFullBleed: true,
     imageAos: "fade-right",
     ctas: [

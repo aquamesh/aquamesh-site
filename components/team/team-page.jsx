@@ -35,7 +35,7 @@ export default function TeamPage() {
               {member.image ? (
                 <img
                   src={imageAssetHref(member.image)}
-                  alt={member.name}
+                  alt={`${member.name}, ${member.role} at AquaMesh`}
                   className="mb-4 h-40 w-40 shrink-0 rounded-full object-cover"
                 />
               ) : (
@@ -57,7 +57,7 @@ export default function TeamPage() {
               <div className="mx-auto mb-4 h-28 w-28 overflow-hidden rounded-full bg-[#dddddd]">
                 <img
                   src={imageAssetHref("team/placeholder.png")}
-                  alt={advisor.name}
+                  alt={`Portrait placeholder for ${advisor.name}`}
                   className="h-full w-full scale-75 object-cover"
                 />
               </div>

@@ -7,6 +7,7 @@ const crossSellCatalog = {
     tagline:
       "Multi-parameter optical sensing for continuous water-quality monitoring in the field.",
     image: imageAssetHref("full_probe_shot.png"),
+    imageAlt: "AquaSpectra multi-parameter water-quality probe",
     href: "/products/aquaspectra-probe/"
   },
   benchtop: {
@@ -15,6 +16,7 @@ const crossSellCatalog = {
     tagline:
       "Lab-grade multi-parameter optical sensing in a compact benchtop form factor.",
     image: imageAssetHref("bench_front_trans.png"),
+    imageAlt: "AquaLab benchtop analyzer for sample testing and calibration",
     href: "/products/aqualab-benchtop/"
   },
   hub: {
@@ -23,6 +25,7 @@ const crossSellCatalog = {
     tagline:
       "A compact gateway that aggregates sensor traffic and bridges field telemetry to the cloud.",
     image: imageAssetHref("transparent_hub.png"),
+    imageAlt: "AquaLink gateway hardware for remote telemetry",
     href: "/products/aqualink-hub/"
   },
   platform: {
@@ -31,6 +34,7 @@ const crossSellCatalog = {
     tagline:
       "Live dashboards and operational tools for distributed water-quality programs.",
     image: imageAssetHref("platform_home_screenshot.png"),
+    imageAlt: "AquaView monitoring dashboard with water-quality charts",
     href: "/products/aquaview-platform/"
   }
 };

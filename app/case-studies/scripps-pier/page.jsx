@@ -3,10 +3,17 @@ import SectionShell from "../../../components/ui/section-shell";
 import SiteContainer from "../../../components/ui/site-container";
 import ButtonLink from "../../../components/ui/button-link";
 import IconBadge from "../../../components/ui/icon-badge";
+import { createPageMetadata } from "../../../lib/page-metadata";
 
-export const metadata = {
-  title: "Scripps Pier Case Study | AquaMesh"
-};
+export const metadata = createPageMetadata({
+  title: "Scripps Pier Case Study | AquaMesh",
+  description:
+    "See how AquaMesh is validating AquaSpectra and AquaLab with UC San Diego's Scripps Institution of Oceanography under real coastal deployment conditions.",
+  path: "/case-studies/scripps-pier/",
+  image: "/images/scripps_lajolla.png",
+  imageAlt: "Scripps Pier coastal deployment site in La Jolla, San Diego",
+  type: "article"
+});
 
 const highlights = [
   {
@@ -74,7 +81,7 @@ export default function ScrippsPierCaseStudyPage() {
           <div className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_24px_72px_rgba(0,0,0,0.24)]">
             <img
               src="/images/scripps_lajolla.png"
-              alt="Scripps Pier in La Jolla, San Diego"
+              alt="Scripps Pier coastal deployment site in La Jolla, San Diego"
               className="h-full w-full object-cover"
             />
           </div>

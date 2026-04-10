@@ -36,7 +36,7 @@ export const storyPanels = [
     mediaClassName: "probe-story-media",
     mediaImageClassName: "w-[64%]",
     imageSrc: "full_probe_shot.png",
-    imageAlt: "AquaSpectra probe",
+    imageAlt: "AquaSpectra multi-parameter probe for fluorescence, absorbance, and turbidity monitoring",
     badgeTitle: "One deployment, wider chemistry coverage",
     badgeCopy:
       "Measure fluorescence, absorbance, and turbidity in one device, simplifying deployment and reducing sensor sprawl."

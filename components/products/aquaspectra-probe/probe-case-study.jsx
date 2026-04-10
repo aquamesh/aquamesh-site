@@ -35,7 +35,7 @@ export default function ProbeCaseStudy({ tone = "dark" }) {
         >
           <img
             src="/images/scripps_lajolla.png"
-            alt="Scripps Pier in La Jolla, San Diego"
+            alt="Scripps Pier coastal validation site in La Jolla, San Diego"
             className="h-52 w-full object-cover lg:h-full"
           />
         </div>
