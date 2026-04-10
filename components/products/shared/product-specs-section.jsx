@@ -8,7 +8,7 @@ export default function ProductSpecsSection({
   actionHref
 }) {
   const actionClassName =
-    "inline-flex items-center gap-2 rounded-full bg-aquamesh-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aquamesh-600"
+    "inline-flex w-full items-center justify-center gap-2 rounded-full bg-aquamesh-500 px-5 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-aquamesh-700 sm:w-auto"
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_360px] lg:items-start">
@@ -16,18 +16,18 @@ export default function ProductSpecsSection({
         className="overflow-hidden rounded-[30px] border border-[rgba(18,37,47,0.08)] bg-white/[0.97] shadow-[0_22px_54px_rgba(8,24,32,0.08)]"
         data-aos="fade-up"
       >
-        <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-6 py-4">
-          <span className="text-sm font-medium text-slate-500">{tableLabel}</span>
+        <div className="flex flex-col items-stretch gap-3 border-b border-slate-200 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <span className="min-w-0 text-sm font-medium text-slate-500">{tableLabel}</span>
           {actionLabel ? (
             actionHref ? (
               <a href={actionHref} target="_blank" rel="noopener noreferrer" className={actionClassName}>
-                <i className="fa-solid fa-file-arrow-down text-xs"></i>
-                {actionLabel}
+                <i className="fa-solid fa-file-arrow-down shrink-0 text-xs" aria-hidden="true"></i>
+                <span>{actionLabel}</span>
               </a>
             ) : (
               <button type="button" className={actionClassName}>
-                <i className="fa-solid fa-file-arrow-down text-xs"></i>
-                {actionLabel}
+                <i className="fa-solid fa-file-arrow-down shrink-0 text-xs" aria-hidden="true"></i>
+                <span>{actionLabel}</span>
               </button>
             )
           ) : null}
