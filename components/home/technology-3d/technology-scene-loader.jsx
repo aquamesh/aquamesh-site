@@ -65,7 +65,7 @@ export default function TechnologySceneLoader({
   }
 
   return (
-    <div ref={containerRef} className="h-full w-full">
+    <div ref={containerRef} className="block h-full w-full overflow-hidden">
       {visible ? (
         <TechnologyScene
           activeStage={activeStage}

@@ -121,6 +121,8 @@ export default function TechnologyScene({
 
   return (
     <Canvas
+      className="block h-full w-full"
+      style={{ display: "block", height: "100%", width: "100%" }}
       shadows
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
