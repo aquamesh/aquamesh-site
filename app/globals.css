@@ -13,11 +13,13 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    overflow-x: hidden;
   }
 
   body {
     background: #fff;
     font-family: var(--font-sans);
+    overflow-x: hidden;
   }
 
   img {
@@ -31,4 +33,3 @@
     text-wrap: balance;
   }
 }
-

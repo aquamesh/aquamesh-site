@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import TechnologySceneLoader from "./technology-3d/technology-scene-loader";
+import {
+  ACCENT_STYLES,
+  ANNOTATION_COPY,
+  OVERVIEW_HIGHLIGHT,
+} from "./technology-3d/scene-annotation-copy";
 
 const STAGES = [
   {
-    label: "AquaSpectra Sensor Nodes",
+    label: "Surface",
     viewId: "sensors",
   },
   {
@@ -25,9 +30,15 @@ function stageFromView(activeView) {
   return 0;
 }
 
+const MOBILE_HIGHLIGHTS = ANNOTATION_COPY;
+
 export default function TechnologyDemoSection() {
   const [activeView, setActiveView] = useState(null);
   const activeStage = stageFromView(activeView);
+  const activeHighlight =
+    ANNOTATION_COPY.find((item) => item.viewId === activeView) ??
+    OVERVIEW_HIGHLIGHT;
+  const activeAccent = ACCENT_STYLES[activeHighlight.accent];
 
   const handleStageSelect = (index) => {
     const nextView = STAGES[index].viewId;
@@ -75,7 +86,7 @@ export default function TechnologyDemoSection() {
             ) : null}
 
             {/* Canvas stage indicators */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-end px-4 py-4 sm:px-6">
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 hidden justify-end px-4 py-4 sm:px-6 lg:flex">
               <div className="pointer-events-auto flex items-center gap-2">
                 {/* Overview pill indicator */}
                 <button
@@ -121,12 +132,89 @@ export default function TechnologyDemoSection() {
               </div>
             </div>
 
-            <div className="aspect-[16/9] min-h-[390px] w-full sm:min-h-[450px] lg:min-h-[520px]">
+            <div className="aspect-[4/3] min-h-[360px] w-full sm:aspect-[16/10] sm:min-h-[420px] lg:aspect-[16/9] lg:min-h-[520px]">
               <TechnologySceneLoader
                 activeStage={activeStage}
                 activeView={activeView}
                 onSelectView={setActiveView}
               />
+            </div>
+
+            <div className="border-t border-white/70 bg-white/80 px-4 py-4 backdrop-blur lg:hidden">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Explore the flow
+              </p>
+              <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+                {MOBILE_HIGHLIGHTS.map((item) => {
+                  const accent = ACCENT_STYLES[item.accent];
+                  const isSelected = item.viewId === activeView;
+                  const chipStyle = isSelected
+                    ? {
+                        borderColor: accent.border,
+                        background: `linear-gradient(135deg, ${accent.soft} 0%, rgba(255,255,255,0.98) 100%)`,
+                        boxShadow:
+                          "inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 2px rgba(16,52,66,0.06)",
+                        color: accent.title,
+                      }
+                    : undefined;
+                  const dotStyle = isSelected
+                    ? {
+                        background: accent.dot,
+                        boxShadow: `0 0 0 6px ${accent.glow}`,
+                      }
+                    : { background: accent.dot };
+
+                  return (
+                    <button
+                      key={item.viewId ?? "overview"}
+                      type="button"
+                      onClick={() => setActiveView(item.viewId)}
+                      aria-pressed={isSelected}
+                      className="flex shrink-0 items-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition duration-200"
+                      style={chipStyle}
+                    >
+                      <span className="h-2.5 w-2.5 rounded-full" style={dotStyle} />
+                      {item.mobileLabel}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div
+                className="mt-4 rounded-[1.4rem] border px-4 py-4 shadow-[0_22px_55px_rgba(28,61,80,0.10)]"
+                style={{
+                  borderColor: activeAccent.border,
+                  background: `linear-gradient(135deg, ${activeAccent.soft} 0%, rgba(255,255,255,0.96) 100%)`,
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <span
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{
+                      background: activeAccent.dot,
+                      boxShadow: `0 0 0 5px ${activeAccent.glow}`,
+                    }}
+                  />
+                  <p
+                    className="text-[11px] font-semibold uppercase tracking-[0.18em]"
+                    style={{ color: activeAccent.body }}
+                  >
+                    {activeHighlight.eyebrow}
+                  </p>
+                </div>
+                <h3
+                  className="mt-3 text-lg font-semibold leading-tight"
+                  style={{ color: activeAccent.title }}
+                >
+                  {activeHighlight.title}
+                </h3>
+                <p
+                  className="mt-2 text-sm leading-6"
+                  style={{ color: activeAccent.body }}
+                >
+                  {activeHighlight.description}
+                </p>
+              </div>
             </div>
           </div>
         </div>

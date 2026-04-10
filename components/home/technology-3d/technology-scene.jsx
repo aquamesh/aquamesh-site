@@ -60,7 +60,15 @@ function StageCamera({ activeViewRef }) {
 
     const aspect = size.width / Math.max(size.height, 1);
     const framePadding =
-      aspect < 1 ? 1.8 : aspect < 1.3 ? 1.3 : aspect < 1.6 ? 0.9 : 0.65;
+      aspect < 0.8
+        ? 2.35
+        : aspect < 1
+          ? 1.8
+          : aspect < 1.3
+            ? 1.3
+            : aspect < 1.6
+              ? 0.9
+              : 0.65;
 
     _pos.set(
       stage.position[0],
