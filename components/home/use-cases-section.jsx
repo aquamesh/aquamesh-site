@@ -72,7 +72,7 @@ export default function UseCasesSection() {
             </p>
             <div className="mt-6">
               <ButtonLink
-                href="/products/aquaspectra-probe/#case-study"
+                href="/case-studies/scripps-pier/"
                 variant="primary"
               >
                 Read More

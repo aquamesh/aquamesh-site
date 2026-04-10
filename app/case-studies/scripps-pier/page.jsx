@@ -2,15 +2,48 @@ import SitePageShell from "../../../components/site-page-shell";
 import SectionShell from "../../../components/ui/section-shell";
 import SiteContainer from "../../../components/ui/site-container";
 import ButtonLink from "../../../components/ui/button-link";
+import IconBadge from "../../../components/ui/icon-badge";
 
 export const metadata = {
   title: "Scripps Pier Case Study | AquaMesh"
 };
 
 const highlights = [
-  "Exposed coastal deployment with constant wave energy and variable salinity.",
-  "High biofouling pressure for validating optical durability and cleaning systems.",
-  "Real-world research setting for proving autonomous monitoring performance."
+  {
+    title: "Dynamic coastal conditions",
+    description:
+      "Exposed coastal deployment with constant wave energy and variable salinity.",
+    icon: "fa-solid fa-water"
+  },
+  {
+    title: "Biofouling stress test",
+    description:
+      "High biofouling pressure for validating optical durability and cleaning systems.",
+    icon: "fa-solid fa-shield-halved"
+  },
+  {
+    title: "Operational proof point",
+    description:
+      "Real-world research setting for proving autonomous monitoring performance.",
+    icon: "fa-solid fa-flask"
+  }
+];
+
+const labGallery = [
+  {
+    src: "/images/use-cases/benchtop_in_lab.jpeg",
+    alt: "Benchtop AquaSpectra setup in the lab",
+    title: "Benchtop validation",
+    description:
+      "The benchtop system is being used in real-world validation work to refine calibration routines, confirm repeatability, and tighten confidence in optical performance."
+  },
+  {
+    src: "/images/use-cases/lab_work_benchtop.jpeg",
+    alt: "Researcher performing calibration work at the lab bench",
+    title: "Calibration workflow",
+    description:
+      "Probe and benchtop instruments are being calibrated side by side so the field deployment starts from a stronger baseline ahead of the planned May 2026 installation."
+  }
 ];
 
 export default function ScrippsPierCaseStudyPage() {
@@ -49,9 +82,43 @@ export default function ScrippsPierCaseStudyPage() {
       </section>
 
       <SectionShell
+        eyebrow="In The Lab"
+        title="Real World Testing"
+        description="The Scripps program is progressing on two fronts: the benchtop unit is already undergoing real-world validation, while the probe is being calibrated for a planned May 2026 deployment at the pier."
+        align="left"
+        className="bg-white"
+        containerClassName="max-w-5xl"
+      >
+        <div className="grid gap-5 md:grid-cols-2">
+          {labGallery.map((image) => (
+            <article
+              key={image.src}
+              className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_72px_rgba(15,23,42,0.08)]"
+            >
+              <div className="aspect-[4/3] bg-slate-100">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="space-y-3 p-6">
+                <h2 className="text-xl font-semibold tracking-tight text-slate-900">
+                  {image.title}
+                </h2>
+                <p className="text-sm leading-6 text-slate-600 sm:text-base">
+                  {image.description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </SectionShell>
+
+      <SectionShell
         eyebrow="Why This Site"
         title="A strong proving ground for broader deployments"
-        description="The same probe architecture used here is intended for freshwater, coastal, and industrial monitoring programs where autonomous visibility matters."
+        description="Scripps combines coastal exposure, research rigor, and operational complexity in one site, making it a useful proving ground as AquaMesh moves from calibration into sustained field validation."
         align="left"
         className="bg-white"
         containerClassName="max-w-5xl"
@@ -59,10 +126,22 @@ export default function ScrippsPierCaseStudyPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {highlights.map((highlight) => (
             <article
-              key={highlight}
+              key={highlight.title}
               className="rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-sm"
             >
-              <p className="text-sm leading-6 text-slate-700">{highlight}</p>
+              <div className="flex items-center gap-4">
+                <IconBadge
+                  icon={highlight.icon}
+                  className="h-11 w-11"
+                  iconClassName="text-[15px]"
+                />
+                <h2 className="text-lg font-semibold tracking-tight text-slate-900">
+                  {highlight.title}
+                </h2>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-slate-700">
+                {highlight.description}
+              </p>
             </article>
           ))}
         </div>

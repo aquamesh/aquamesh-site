@@ -69,7 +69,7 @@ export default function ProductSpecsSection({
                   items={highlight.items}
                   className="mt-4"
                   itemClassName="text-slate-300"
-                  iconClassName="bg-white/10 text-aquamesh-300"
+                  iconClassName="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center text-aquamesh-300"
                 />
               ) : null}
             </aside>

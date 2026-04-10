@@ -207,6 +207,8 @@ export default function SceneAnnotations({
   const { size } = useThree();
   const showCards = size.width >= LARGE_CANVAS_BREAKPOINT;
 
+  if (!showCards) return null;
+
   return (
     <>
       {ANNOTATIONS.map((item) => (

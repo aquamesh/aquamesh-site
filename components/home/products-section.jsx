@@ -45,6 +45,11 @@ const products = [
         variant: "primary",
         dataAos: "zoom-in",
         dataAosDelay: 300
+      },
+      {
+        href: "/preorder/",
+        label: "Preorder Now",
+        variant: "outline"
       }
     ],
     reverse: true,

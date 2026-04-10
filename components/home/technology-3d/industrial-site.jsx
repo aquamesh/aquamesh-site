@@ -218,17 +218,6 @@ function ProcessTower() {
           metalness={0.64}
         />
       </mesh>
-
-      <mesh position={[0.16, 1.12, 0]}>
-        <sphereGeometry args={[0.045, 10, 10]} />
-        <meshStandardMaterial
-          color="#ffc76d"
-          emissive="#ffc76d"
-          emissiveIntensity={0.48}
-          roughness={0.2}
-          metalness={0.1}
-        />
-      </mesh>
     </group>
   );
 }

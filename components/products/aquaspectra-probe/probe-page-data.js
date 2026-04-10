@@ -34,10 +34,12 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "probe-story-media",
+    mediaImageClassName: "w-[64%]",
     imageSrc: "full_probe_shot.png",
     imageAlt: "AquaSpectra probe",
     badgeTitle: "One deployment, wider chemistry coverage",
-    badgeCopy: "Measure more with fewer devices in the water."
+    badgeCopy:
+      "Measure fluorescence, absorbance, and turbidity in one device, simplifying deployment and reducing sensor sprawl."
   },
   {
     index: "02 / Easy Scalability",
@@ -59,12 +61,14 @@ export const storyPanels = [
         icon: "fa-solid fa-clipboard-check"
       }
     ],
-    mediaClassName: "probe-story-media probe-story-media--terrain",
-    imageSrc: "full_probe_shot.png",
-    imageAlt: "AquaSpectra probe",
+    mediaClassName: "probe-story-media probe-story-media--interface",
+    imageSrc: "platform_home_screenshot.png",
+    imageAlt: "AquaView platform dashboard showing site data and trend monitoring",
     badgeTitle: "Probe-to-platform continuity",
     badgeCopy:
-      "Designed as part of a deployable water intelligence system, not an isolated sensor."
+      "Designed as part of a deployable water intelligence system, not an isolated sensor.",
+    ctaLabel: "Learn More",
+    ctaHref: "/products/aquaview-platform"
   },
   {
     index: "03 / Low Maintenance",
@@ -85,12 +89,12 @@ export const storyPanels = [
         icon: "fa-solid fa-clock"
       }
     ],
-    mediaClassName: "probe-story-media",
-    imageSrc: "camera_transparent.png",
-    imageAlt: "AquaSpectra onboard camera",
+    mediaClassName: "probe-story-media probe-story-media--interface",
+    imageSrc: "camera_view.png",
+    imageAlt: "Camera view from inside the AquaSpectra probe",
     badgeTitle: "Reduce field visits",
     badgeCopy:
-      "Active cleaning systems keep the optical path clear so you spend less time on-site."
+      "Use the onboard camera to spot potential fouling, verify site conditions, and better understand whether parameter shifts reflect the water or the sensor."
   }
 ];
 
