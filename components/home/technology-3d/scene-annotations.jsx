@@ -33,8 +33,8 @@ const ANNOTATIONS = [
   },
   {
     ...ANNOTATION_BY_VIEW.gateway,
-    position: [GATEWAY_POS[0], GATEWAY_POS[1] + 0.02, GATEWAY_POS[2] + 0.24],
-    stemHeight: 0.96,
+    position: [GATEWAY_POS[0], GATEWAY_POS[1] + 0.02, GATEWAY_POS[2] - 0.35],
+    stemHeight: 0.5,
   },
   {
     ...ANNOTATION_BY_VIEW.cloud,

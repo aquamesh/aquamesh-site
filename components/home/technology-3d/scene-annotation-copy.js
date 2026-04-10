@@ -49,7 +49,8 @@ export const ANNOTATION_COPY = [
     description:
       "Solar LoRa gateway aggregates field traffic for cellular or satellite backhaul.",
     accent: "teal",
-    align: "right",
+    align: "left",
+    cardShift: [18, -24],
   },
   {
     viewId: "cloud",

@@ -34,8 +34,8 @@ const CAMERA_VIEWS = {
     target: [-3.55, 0.05, 8.85],
   },
   gateway: {
-    position: [9.2, 3.9, 8.0],
-    target: [6.45, 0.75, 2.1],
+    position: [6.7, 0.75, 2.7],
+    target: [6.45, 0.7, 2.28],
   },
   cloud: {
     position: [6.1, 8.55, 14.6],
@@ -59,7 +59,7 @@ function StageCamera({ activeViewRef }) {
         : CAMERA_VIEWS[activeView] ?? CAMERA_VIEWS.sensors;
 
     const aspect = size.width / Math.max(size.height, 1);
-    const framePadding =
+    let framePadding =
       aspect < 0.8
         ? 2.35
         : aspect < 1
@@ -69,6 +69,10 @@ function StageCamera({ activeViewRef }) {
             : aspect < 1.6
               ? 0.9
               : 0.65;
+
+    if (activeView === "gateway" && aspect < 1.0) {
+      framePadding *= 0.4;
+    }
 
     _pos.set(
       stage.position[0],

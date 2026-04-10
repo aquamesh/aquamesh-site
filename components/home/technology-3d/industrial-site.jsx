@@ -2,9 +2,9 @@
 
 import { terrainHeight } from "./river-geometry";
 
-const INDUSTRIAL_OFFSET_X = -0.98;
-const INDUSTRIAL_OFFSET_Z = -0.22;
-const INDUSTRIAL_SCALE = [1.18, 1.1, 1.18];
+const INDUSTRIAL_OFFSET_X = -2.8;
+const INDUSTRIAL_OFFSET_Z = -2.0;
+const INDUSTRIAL_SCALE = [2.4, 1.1, 4.2];
 
 function siteX(x) {
   return x + INDUSTRIAL_OFFSET_X;
@@ -15,7 +15,7 @@ function siteZ(z) {
 }
 
 function scaleFootprint([width, height, depth]) {
-  return [width * 1.18, height * 1.08, depth * 1.18];
+  return [width * 2.4, height * 1.1, depth * 4.2];
 }
 
 const INDUSTRIAL_SITE_X = siteX(-5.08);
@@ -48,11 +48,19 @@ function ShadowEllipse({ position, scale, opacity = 0.2 }) {
 }
 
 function Platform({ x, z, size }) {
-  const y = terrainHeight(x, z) + size[1] / 2 + 0.02;
+  const originalHeight = size[1];
+  const addedDepth = 1.0; // Anchor deep into the terrain
+  const newHeight = originalHeight + addedDepth;
+  
+  // Keep the top surface of the platform exactly where it was before
+  const topY = terrainHeight(x, z) + originalHeight + 0.02;
+  const y = topY - newHeight / 2;
+  
+  const newSize = [size[0], newHeight, size[2]];
 
   return (
     <mesh position={[x, y, z]} castShadow receiveShadow>
-      <boxGeometry args={size} />
+      <boxGeometry args={newSize} />
       <meshStandardMaterial
         color="#97846c"
         emissive="#574738"
@@ -189,36 +197,48 @@ function SettlingTanks() {
 }
 
 function ProcessTower() {
-  const x = siteX(-6.02);
-  const z = siteZ(2.22);
-  const ground = terrainHeight(x, z) + 0.03;
+  const towers = [
+    { id: 1, dx: 0, dz: 0 },
+    { id: 2, dx: 0.85, dz: 0 },
+    { id: 3, dx: 1.7, dz: 0 },
+  ];
 
   return (
-    <group position={[x, ground, z]} scale={INDUSTRIAL_SCALE}>
-      <ShadowEllipse position={[0.02, 0.02, 0.05]} scale={[0.5, 0.38, 1]} opacity={0.2} />
+    <>
+      {towers.map(({ id, dx, dz }) => {
+        const x = siteX(-6.75) + dx;
+        const z = siteZ(1.0) + dz;
+        const ground = terrainHeight(x, z) + 0.03;
 
-      <mesh position={[0, 0.38, 0]} castShadow receiveShadow>
-        <cylinderGeometry args={[0.22, 0.24, 0.76, 18]} />
-        <meshStandardMaterial
-          color="#9aa5ac"
-          emissive="#58656c"
-          emissiveIntensity={0.08}
-          roughness={0.34}
-          metalness={0.56}
-        />
-      </mesh>
+        return (
+          <group key={id} position={[x, ground, z]} scale={[1.3, 2.0, 1.3]}>
+            <ShadowEllipse position={[0.02, 0.02, 0.05]} scale={[0.5, 0.38, 1]} opacity={0.2} />
 
-      <mesh position={[0, 0.94, 0]} receiveShadow>
-        <cylinderGeometry args={[0.06, 0.07, 0.34, 12]} />
-        <meshStandardMaterial
-          color="#7f8a92"
-          emissive="#4b555e"
-          emissiveIntensity={0.06}
-          roughness={0.32}
-          metalness={0.64}
-        />
-      </mesh>
-    </group>
+            <mesh position={[0, 0.38, 0]} castShadow receiveShadow>
+              <cylinderGeometry args={[0.22, 0.24, 0.76, 18]} />
+              <meshStandardMaterial
+                color="#9aa5ac"
+                emissive="#58656c"
+                emissiveIntensity={0.08}
+                roughness={0.34}
+                metalness={0.56}
+              />
+            </mesh>
+
+            <mesh position={[0, 0.94, 0]} receiveShadow>
+              <cylinderGeometry args={[0.06, 0.07, 0.34, 12]} />
+              <meshStandardMaterial
+                color="#7f8a92"
+                emissive="#4b555e"
+                emissiveIntensity={0.06}
+                roughness={0.32}
+                metalness={0.64}
+              />
+            </mesh>
+          </group>
+        );
+      })}
+    </>
   );
 }
 
