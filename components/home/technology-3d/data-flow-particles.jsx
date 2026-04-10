@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { Line } from "@react-three/drei";
 import { MathUtils } from "three";
 import { PROBE_POSITIONS } from "./sensor-probes";
-import { GATEWAY_BOX_CENTER, GATEWAY_POS } from "./gateway-hub";
+import { GATEWAY_BOX_CENTER } from "./gateway-hub";
 import { CLOUD_POS } from "./cloud-element";
 
 // Particle colors that match probe accents
@@ -22,131 +22,6 @@ const CLOSEST_PROBE_INDICES = PROBE_POSITIONS.map((pos, index) => ({
   .slice(0, 2)
   .map(({ index }) => index);
 
-function ProbeToGatewayLink({ from, color, index, active }) {
-  const glowRef = useRef();
-  const coreRef = useRef();
-  const to = useMemo(() => GATEWAY_LINK_POINT, []);
-
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-    const pulse = Math.sin(t * 1.1 + index * 1.7);
-
-    if (glowRef.current) {
-      const glowTarget = active ? 0.14 + pulse * 0.02 : 0.05 + pulse * 0.015;
-      glowRef.current.material.opacity = MathUtils.lerp(
-        glowRef.current.material.opacity,
-        glowTarget,
-        0.08
-      );
-    }
-
-    if (coreRef.current) {
-      const targetOpacity = active ? 0.46 + pulse * 0.08 : 0.17 + pulse * 0.04;
-      coreRef.current.material.opacity = MathUtils.lerp(
-        coreRef.current.material.opacity,
-        targetOpacity,
-        0.08
-      );
-      coreRef.current.material.dashOffset -= 0.0045;
-    }
-  });
-
-  return (
-    <>
-      <Line
-        ref={glowRef}
-        points={[from, to]}
-        color={color}
-        lineWidth={4.8}
-        transparent
-        opacity={0.08}
-        depthTest={false}
-        depthWrite={false}
-        toneMapped={false}
-        renderOrder={8}
-      />
-      <Line
-        ref={coreRef}
-        points={[from, to]}
-        color={color}
-        lineWidth={1.5}
-        transparent
-        opacity={0.42}
-        dashed
-        dashSize={0.14}
-        gapSize={0.18}
-        depthTest={false}
-        depthWrite={false}
-        toneMapped={false}
-        renderOrder={9}
-      />
-    </>
-  );
-}
-
-function GatewayToCloudLink({ active }) {
-  const glowRef = useRef();
-  const coreRef = useRef();
-  const from = useMemo(() => GATEWAY_BOX_CENTER, []);
-  const to = useMemo(() => CLOUD_POS, []);
-
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-    const pulse = Math.sin(t * 1.05);
-
-    if (glowRef.current) {
-      const glowTarget = active ? 0.16 + pulse * 0.03 : 0.05 + pulse * 0.015;
-      glowRef.current.material.opacity = MathUtils.lerp(
-        glowRef.current.material.opacity,
-        glowTarget,
-        0.08
-      );
-    }
-
-    if (coreRef.current) {
-      const coreTarget = active ? 0.48 + pulse * 0.08 : 0.16 + pulse * 0.04;
-      coreRef.current.material.opacity = MathUtils.lerp(
-        coreRef.current.material.opacity,
-        coreTarget,
-        0.08
-      );
-      coreRef.current.material.dashOffset -= 0.005;
-    }
-  });
-
-  return (
-    <>
-      <Line
-        ref={glowRef}
-        points={[from, to]}
-        color="#8fdcff"
-        lineWidth={5.2}
-        transparent
-        opacity={0.1}
-        depthTest={false}
-        depthWrite={false}
-        toneMapped={false}
-        renderOrder={8}
-      />
-      <Line
-        ref={coreRef}
-        points={[from, to]}
-        color="#8fdcff"
-        lineWidth={1.8}
-        transparent
-        opacity={0.34}
-        dashed
-        dashSize={0.2}
-        gapSize={0.18}
-        depthTest={false}
-        depthWrite={false}
-        toneMapped={false}
-        renderOrder={9}
-      />
-    </>
-  );
-}
-
 export default function DataFlowParticles({ activeStage = null }) {
   const probeLinks = useMemo(() => {
     return CLOSEST_PROBE_INDICES.map((probeIndex, linkIndex) => ({
@@ -156,23 +31,134 @@ export default function DataFlowParticles({ activeStage = null }) {
         PROBE_POSITIONS[probeIndex][1] + 0.22,
         PROBE_POSITIONS[probeIndex][2],
       ],
+      to: GATEWAY_LINK_POINT,
       color: PARTICLE_COLORS[probeIndex % PARTICLE_COLORS.length],
-      index: linkIndex,
+      pulseFreq: 1.1,
+      pulseOffset: linkIndex * 1.7,
+      glowActiveBase: 0.14,
+      glowInactiveBase: 0.05,
+      glowPulseActive: 0.02,
+      glowPulseInactive: 0.015,
+      coreActiveBase: 0.46,
+      coreInactiveBase: 0.17,
+      corePulseActive: 0.08,
+      corePulseInactive: 0.04,
+      dashSpeed: 0.0045,
+      activeStage: 1,
+      glowLineWidth: 4.8,
+      glowOpacityInit: 0.08,
+      coreLineWidth: 1.5,
+      coreOpacityInit: 0.42,
+      dashSize: 0.14,
+      gapSize: 0.18,
     }));
   }, []);
 
+  const gatewayToCloud = useMemo(
+    () => ({
+      key: "g2c-link",
+      from: GATEWAY_BOX_CENTER,
+      to: CLOUD_POS,
+      color: "#8fdcff",
+      pulseFreq: 1.05,
+      pulseOffset: 0,
+      glowActiveBase: 0.16,
+      glowInactiveBase: 0.05,
+      glowPulseActive: 0.03,
+      glowPulseInactive: 0.015,
+      coreActiveBase: 0.48,
+      coreInactiveBase: 0.16,
+      corePulseActive: 0.08,
+      corePulseInactive: 0.04,
+      dashSpeed: 0.005,
+      activeStage: 2,
+      glowLineWidth: 5.2,
+      glowOpacityInit: 0.1,
+      coreLineWidth: 1.8,
+      coreOpacityInit: 0.34,
+      dashSize: 0.2,
+      gapSize: 0.18,
+    }),
+    []
+  );
+
+  const allLinks = useMemo(
+    () => [...probeLinks, gatewayToCloud],
+    [probeLinks, gatewayToCloud]
+  );
+
+  const glowRefs = useRef([]);
+  const coreRefs = useRef([]);
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+
+    for (let i = 0; i < allLinks.length; i++) {
+      const link = allLinks[i];
+      const isActive =
+        activeStage === null || activeStage === link.activeStage;
+      const pulse = Math.sin(t * link.pulseFreq + link.pulseOffset);
+
+      const glow = glowRefs.current[i];
+      if (glow) {
+        const glowTarget = isActive
+          ? link.glowActiveBase + pulse * link.glowPulseActive
+          : link.glowInactiveBase + pulse * link.glowPulseInactive;
+        glow.material.opacity = MathUtils.lerp(
+          glow.material.opacity,
+          glowTarget,
+          0.08
+        );
+      }
+
+      const core = coreRefs.current[i];
+      if (core) {
+        const coreTarget = isActive
+          ? link.coreActiveBase + pulse * link.corePulseActive
+          : link.coreInactiveBase + pulse * link.corePulseInactive;
+        core.material.opacity = MathUtils.lerp(
+          core.material.opacity,
+          coreTarget,
+          0.08
+        );
+        core.material.dashOffset -= link.dashSpeed;
+      }
+    }
+  });
+
   return (
     <>
-      {probeLinks.map((link) => (
-        <ProbeToGatewayLink
-          key={link.key}
-          from={link.from}
-          color={link.color}
-          index={link.index}
-          active={activeStage === null || activeStage === 1}
-        />
+      {allLinks.map((link, i) => (
+        <group key={link.key}>
+          <Line
+            ref={(el) => (glowRefs.current[i] = el)}
+            points={[link.from, link.to]}
+            color={link.color}
+            lineWidth={link.glowLineWidth}
+            transparent
+            opacity={link.glowOpacityInit}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            renderOrder={8}
+          />
+          <Line
+            ref={(el) => (coreRefs.current[i] = el)}
+            points={[link.from, link.to]}
+            color={link.color}
+            lineWidth={link.coreLineWidth}
+            transparent
+            opacity={link.coreOpacityInit}
+            dashed
+            dashSize={link.dashSize}
+            gapSize={link.gapSize}
+            depthTest={false}
+            depthWrite={false}
+            toneMapped={false}
+            renderOrder={9}
+          />
+        </group>
       ))}
-      <GatewayToCloudLink active={activeStage === null || activeStage === 2} />
     </>
   );
 }

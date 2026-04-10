@@ -10,8 +10,8 @@ export default function SkyEnvironment() {
         position={[7, 12, 9]}
         intensity={1.34}
         color="#fffdf6"
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
         shadow-bias={-0.00006}
         shadow-normalBias={0.028}
         shadow-camera-near={1}

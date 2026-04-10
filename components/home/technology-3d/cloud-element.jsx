@@ -10,28 +10,9 @@ const CLOUD_POS = [6.2, 7.4, -5.6];
 export { CLOUD_POS };
 
 // Abstract cloud: cluster of low-poly rotating polyhedra with vivid color
-function CloudShard({ position, size, color, emissive, speed, axis, active }) {
-  const ref = useRef();
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-    ref.current.rotation.x = axis[0] * t * speed;
-    ref.current.rotation.y = axis[1] * t * speed;
-    ref.current.rotation.z = axis[2] * t * speed;
-    ref.current.material.emissiveIntensity = MathUtils.lerp(
-      ref.current.material.emissiveIntensity,
-      active ? 1.05 : 0.28,
-      0.08
-    );
-    ref.current.material.opacity = MathUtils.lerp(
-      ref.current.material.opacity,
-      active ? 0.98 : 0.48,
-      0.08
-    );
-    const s = MathUtils.lerp(ref.current.scale.x, active ? 1.1 : 1, 0.08);
-    ref.current.scale.setScalar(s);
-  });
+function CloudShard({ position, size, color, emissive, setRef }) {
   return (
-    <mesh ref={ref} position={position}>
+    <mesh ref={setRef} position={position}>
       <icosahedronGeometry args={[size, 0]} />
       <meshStandardMaterial
         color={color}
@@ -58,8 +39,33 @@ const SHARDS = [
 export default function CloudElement({ active = false }) {
   const mainLightRef = useRef();
   const accentLightRef = useRef();
+  const shardRefs = useRef([]);
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+
+    for (let i = 0; i < SHARDS.length; i++) {
+      const shard = shardRefs.current[i];
+      if (!shard) continue;
+      const { speed, axis } = SHARDS[i];
+
+      shard.rotation.x = axis[0] * t * speed;
+      shard.rotation.y = axis[1] * t * speed;
+      shard.rotation.z = axis[2] * t * speed;
+      shard.material.emissiveIntensity = MathUtils.lerp(
+        shard.material.emissiveIntensity,
+        active ? 1.05 : 0.28,
+        0.08
+      );
+      shard.material.opacity = MathUtils.lerp(
+        shard.material.opacity,
+        active ? 0.98 : 0.48,
+        0.08
+      );
+      const s = MathUtils.lerp(shard.scale.x, active ? 1.1 : 1, 0.08);
+      shard.scale.setScalar(s);
+    }
+
     if (mainLightRef.current) {
       mainLightRef.current.intensity = MathUtils.lerp(
         mainLightRef.current.intensity,
@@ -86,9 +92,7 @@ export default function CloudElement({ active = false }) {
             size={s.size}
             color={s.color}
             emissive={s.emissive}
-            speed={s.speed}
-            axis={s.axis}
-            active={active}
+            setRef={(el) => (shardRefs.current[i] = el)}
           />
         ))}
         <pointLight

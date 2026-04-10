@@ -151,13 +151,6 @@ function Annotation({ item, activeView, onSelectView }) {
         />
       </mesh>
 
-      <pointLight
-        color={accent.dot}
-        intensity={isFocused ? 0.55 : 0.14}
-        distance={2.4}
-        position={[0, item.stemHeight, 0]}
-      />
-
       <Html
         position={[0, item.stemHeight, 0]}
         zIndexRange={[120, 0]}

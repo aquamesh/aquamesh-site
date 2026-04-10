@@ -37,58 +37,14 @@ const LED_COLORS = [
   "#22d3ee",
 ];
 
-function ProbeShadow() {
-  return (
-    <mesh
-      position={[0, -0.055, 0]}
-      rotation={[-Math.PI / 2, 0, 0]}
-      scale={[0.36, 0.24, 1]}
-      receiveShadow
-    >
-      <circleGeometry args={[1, 20]} />
-      <meshBasicMaterial
-        color="#061017"
-        transparent
-        opacity={0.24}
-        depthWrite={false}
-      />
-    </mesh>
-  );
-}
-
-function Probe({ position, index, active }) {
-  const ledRef = useRef();
-  const lightRef = useRef();
+function Probe({ position, index, setLedRef }) {
   const ledColor = LED_COLORS[index % LED_COLORS.length];
-
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-
-    if (ledRef.current) {
-      ledRef.current.material.emissiveIntensity = MathUtils.lerp(
-        ledRef.current.material.emissiveIntensity,
-        active
-          ? 1.2 + Math.sin(t * 2 + index * 1.2) * 0.4
-          : 0.3 + Math.sin(t * 0.8 + index) * 0.1,
-        0.08
-      );
-    }
-
-    if (lightRef.current) {
-      lightRef.current.intensity = MathUtils.lerp(
-        lightRef.current.intensity,
-        active ? 0.4 : 0.08,
-        0.08
-      );
-    }
-  });
 
   return (
     <group position={position}>
-      <ProbeShadow />
       <Float speed={1.8} floatIntensity={0.08} rotationIntensity={0}>
         <group>
-          <mesh position={[0, 0.22, 0]} castShadow receiveShadow>
+          <mesh position={[0, 0.22, 0]} receiveShadow>
             <cylinderGeometry args={[0.07, 0.09, 0.38, 12]} />
             <meshStandardMaterial
               color="#a8b6c4"
@@ -98,7 +54,7 @@ function Probe({ position, index, active }) {
               roughness={0.18}
             />
           </mesh>
-          <mesh position={[0, 0.42, 0]} castShadow receiveShadow>
+          <mesh position={[0, 0.42, 0]} receiveShadow>
             <cylinderGeometry args={[0.1, 0.1, 0.04, 12]} />
             <meshStandardMaterial
               color="#758495"
@@ -108,7 +64,7 @@ function Probe({ position, index, active }) {
               roughness={0.15}
             />
           </mesh>
-          <mesh position={[0, 0.01, 0]} castShadow receiveShadow>
+          <mesh position={[0, 0.01, 0]} receiveShadow>
             <cylinderGeometry args={[0.06, 0.02, 0.08, 12]} />
             <meshStandardMaterial
               color="#8899ab"
@@ -118,7 +74,7 @@ function Probe({ position, index, active }) {
               roughness={0.18}
             />
           </mesh>
-          <mesh ref={ledRef} position={[0.075, 0.36, 0]} castShadow>
+          <mesh ref={setLedRef} position={[0.075, 0.36, 0]}>
             <sphereGeometry args={[0.018, 8, 8]} />
             <meshStandardMaterial
               color={ledColor}
@@ -126,13 +82,6 @@ function Probe({ position, index, active }) {
               emissiveIntensity={0.4}
             />
           </mesh>
-          <pointLight
-            ref={lightRef}
-            color={ledColor}
-            intensity={active ? 0.4 : 0.08}
-            distance={1.5}
-            position={[0.1, 0.36, 0]}
-          />
         </group>
       </Float>
     </group>
@@ -140,10 +89,34 @@ function Probe({ position, index, active }) {
 }
 
 export default function SensorProbes({ active = false }) {
+  const ledRefs = useRef([]);
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+
+    for (let index = 0; index < PROBE_POSITIONS.length; index++) {
+      const led = ledRefs.current[index];
+      if (!led) continue;
+
+      led.material.emissiveIntensity = MathUtils.lerp(
+        led.material.emissiveIntensity,
+        active
+          ? 1.2 + Math.sin(t * 2 + index * 1.2) * 0.4
+          : 0.3 + Math.sin(t * 0.8 + index) * 0.1,
+        0.08
+      );
+    }
+  });
+
   return (
     <>
       {PROBE_POSITIONS.map((pos, i) => (
-        <Probe key={i} position={pos} index={i} active={active} />
+        <Probe
+          key={i}
+          position={pos}
+          index={i}
+          setLedRef={(el) => (ledRefs.current[i] = el)}
+        />
       ))}
     </>
   );

@@ -95,7 +95,7 @@ function ProcessHall() {
         />
       </mesh>
 
-      <mesh position={[0.68, 0.46, 0.01]} castShadow receiveShadow>
+      <mesh position={[0.68, 0.46, 0.01]} receiveShadow>
         <boxGeometry args={[0.08, 0.16, 0.56]} />
         <meshStandardMaterial
           color="#f2b35f"
@@ -174,7 +174,7 @@ function SettlingTanks() {
         />
       </mesh>
 
-      <mesh position={[-0.04, 0.34, 0.05]} castShadow receiveShadow>
+      <mesh position={[-0.04, 0.34, 0.05]} receiveShadow>
         <boxGeometry args={[0.74, 0.08, 0.14]} />
         <meshStandardMaterial
           color="#768189"
@@ -208,7 +208,7 @@ function ProcessTower() {
         />
       </mesh>
 
-      <mesh position={[0, 0.94, 0]} castShadow receiveShadow>
+      <mesh position={[0, 0.94, 0]} receiveShadow>
         <cylinderGeometry args={[0.06, 0.07, 0.34, 12]} />
         <meshStandardMaterial
           color="#7f8a92"
@@ -219,7 +219,7 @@ function ProcessTower() {
         />
       </mesh>
 
-      <mesh position={[0.16, 1.12, 0]} castShadow receiveShadow>
+      <mesh position={[0.16, 1.12, 0]}>
         <sphereGeometry args={[0.045, 10, 10]} />
         <meshStandardMaterial
           color="#ffc76d"
@@ -240,7 +240,7 @@ function PipeRack() {
 
   return (
     <group position={[x, ground, z]} scale={INDUSTRIAL_SCALE}>
-      <mesh position={[0, 0.32, 0]} castShadow receiveShadow>
+      <mesh position={[0, 0.32, 0]} receiveShadow>
         <boxGeometry args={[0.9, 0.08, 0.18]} />
         <meshStandardMaterial
           color="#7c878f"
@@ -250,11 +250,11 @@ function PipeRack() {
           metalness={0.56}
         />
       </mesh>
-      <mesh position={[-0.34, 0.16, 0]} castShadow receiveShadow>
+      <mesh position={[-0.34, 0.16, 0]} receiveShadow>
         <boxGeometry args={[0.08, 0.32, 0.08]} />
         <meshStandardMaterial color="#6a757e" roughness={0.52} metalness={0.42} />
       </mesh>
-      <mesh position={[0.34, 0.16, 0]} castShadow receiveShadow>
+      <mesh position={[0.34, 0.16, 0]} receiveShadow>
         <boxGeometry args={[0.08, 0.32, 0.08]} />
         <meshStandardMaterial color="#6a757e" roughness={0.52} metalness={0.42} />
       </mesh>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { BufferGeometry, Color, Float32BufferAttribute } from "three";
 import {
@@ -114,10 +114,6 @@ function pushTriangle(target, a, b, c, useSurface) {
     c3.g,
     c3.b
   );
-
-  if (useSurface) {
-    target.baseYPositions.push(a.surfaceY, b.surfaceY, c.surfaceY);
-  }
 }
 
 function addPolygon(targets, polygon) {
@@ -148,7 +144,6 @@ function buildUnifiedWaterGeometry() {
   const surface = {
     vertices: [],
     colors: [],
-    baseYPositions: [],
   };
   const bed = {
     vertices: [],
@@ -221,36 +216,43 @@ function buildUnifiedWaterGeometry() {
   return {
     surfaceGeometry,
     bedGeometry,
-    baseYPositions: new Float32Array(surface.baseYPositions),
   };
 }
 
 export default function WaterSurface() {
-  const waterMeshRef = useRef();
-  const { surfaceGeometry, bedGeometry, baseYPositions } = useMemo(
+  const waveShaderRef = useRef(null);
+  const { surfaceGeometry, bedGeometry } = useMemo(
     () => buildUnifiedWaterGeometry(),
     []
   );
 
-  useFrame(({ clock }) => {
-    if (!waterMeshRef.current) return;
-
-    const t = clock.getElapsedTime();
-    const positions = waterMeshRef.current.geometry.attributes.position;
-
-    for (let pointIndex = 0; pointIndex < positions.count; pointIndex++) {
-      const x = positions.getX(pointIndex);
-      const z = positions.getZ(pointIndex);
-      positions.setY(
-        pointIndex,
-        baseYPositions[pointIndex] +
-          Math.sin(x * 0.24 + t * 0.18) * 0.009 +
-          Math.sin(z * 0.18 + t * 0.12) * 0.006 +
-          Math.sin((x + z) * 0.16 + t * 0.08) * 0.003
+  const attachWaterMaterial = useCallback((material) => {
+    if (!material || material.userData.wavePatched) return;
+    material.userData.wavePatched = true;
+    material.onBeforeCompile = (shader) => {
+      shader.uniforms.uTime = { value: 0 };
+      shader.vertexShader = shader.vertexShader.replace(
+        "#include <common>",
+        `#include <common>
+uniform float uTime;`
       );
-    }
+      shader.vertexShader = shader.vertexShader.replace(
+        "#include <begin_vertex>",
+        `#include <begin_vertex>
+transformed.y +=
+    sin(transformed.x * 0.24 + uTime * 0.18) * 0.009
+  + sin(transformed.z * 0.18 + uTime * 0.12) * 0.006
+  + sin((transformed.x + transformed.z) * 0.16 + uTime * 0.08) * 0.003;`
+      );
+      waveShaderRef.current = shader;
+    };
+    material.customProgramCacheKey = () => "water-wave-v1";
+  }, []);
 
-    positions.needsUpdate = true;
+  useFrame(({ clock }) => {
+    if (waveShaderRef.current) {
+      waveShaderRef.current.uniforms.uTime.value = clock.getElapsedTime();
+    }
   });
 
   return (
@@ -264,8 +266,9 @@ export default function WaterSurface() {
           roughness={0.96}
         />
       </mesh>
-      <mesh ref={waterMeshRef} geometry={surfaceGeometry} receiveShadow>
+      <mesh geometry={surfaceGeometry} receiveShadow>
         <meshStandardMaterial
+          ref={attachWaterMaterial}
           vertexColors
           emissive="#5eb4db"
           emissiveIntensity={0.16}

@@ -26,7 +26,7 @@ export { GATEWAY_POS, GATEWAY_BOX_CENTER };
 
 function Rock({ position, rotation, scale }) {
   return (
-    <mesh position={position} rotation={rotation} scale={scale} castShadow receiveShadow>
+    <mesh position={position} rotation={rotation} scale={scale} receiveShadow>
       <dodecahedronGeometry args={[0.18, 0]} />
       <meshStandardMaterial
         color="#68736c"
@@ -55,7 +55,6 @@ function GrassClump({ position, rotation = [0, 0, 0], scale = 1 }) {
           key={index}
           position={[blade.x, blade.h / 2, blade.z]}
           rotation={[blade.tilt, 0, blade.tilt * 0.5]}
-          castShadow
           receiveShadow
         >
           <coneGeometry args={[0.03, blade.h, 5]} />
@@ -160,7 +159,7 @@ export default function GatewayHub({ active = false }) {
           />
         </mesh>
 
-        <mesh position={[0, 2.04, 0]} castShadow receiveShadow>
+        <mesh position={[0, 2.04, 0]} receiveShadow>
           <boxGeometry args={[0.16, 0.16, 0.28]} />
           <meshStandardMaterial
             color="#8b96a0"
@@ -171,7 +170,7 @@ export default function GatewayHub({ active = false }) {
           />
         </mesh>
 
-        <mesh position={[0, 1.34, 0.14]} castShadow receiveShadow>
+        <mesh position={[0, 1.34, 0.14]} receiveShadow>
           <boxGeometry args={[0.16, 0.1, 0.24]} />
           <meshStandardMaterial
             color="#7f8b96"
@@ -199,7 +198,7 @@ export default function GatewayHub({ active = false }) {
           />
         </RoundedBox>
 
-        <mesh position={[0, 2.2, 0]} castShadow receiveShadow>
+        <mesh position={[0, 2.2, 0]} receiveShadow>
           <boxGeometry args={[0.18, 0.16, 0.18]} />
           <meshStandardMaterial
             color="#8b97a2"
@@ -210,7 +209,7 @@ export default function GatewayHub({ active = false }) {
           />
         </mesh>
 
-        <mesh position={[0, 2.56, 0.1]} rotation={[-Math.PI / 4, 0, 0]} castShadow receiveShadow>
+        <mesh position={[0, 2.56, 0.1]} rotation={[-Math.PI / 4, 0, 0]} receiveShadow>
           <boxGeometry args={[0.08, 0.4, 0.08]} />
           <meshStandardMaterial
             color="#8b97a2"
@@ -231,7 +230,7 @@ export default function GatewayHub({ active = false }) {
               metalness={0.74}
             />
           </RoundedBox>
-          <mesh position={[0, 0, 0.038]} castShadow receiveShadow>
+          <mesh position={[0, 0, 0.038]} receiveShadow>
             <boxGeometry args={[1.0, 0.62, 0.02]} />
             <meshStandardMaterial
               color="#255a74"
