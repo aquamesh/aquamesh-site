@@ -68,13 +68,22 @@ export default function ScrippsPierCaseStudyPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
               AquaMesh is validating AquaSpectra with UC San Diego&apos;s Scripps
-              Institution of Oceanography at Scripps Pier, using a demanding
-              marine site to prove durability, anti-fouling performance, and
-              optical reliability in real deployment conditions.
+              Institution of Oceanography and the COOL Lab at Scripps Pier,
+              using a demanding marine site to prove durability, anti-fouling
+              performance, and optical reliability in real deployment
+              conditions while advancing joint research and calibration work.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-4">
               <ButtonLink href="/products/aquaspectra-probe/#case-study" variant="secondary">
                 Back To Probe
+              </ButtonLink>
+              <ButtonLink
+                href="https://coollab.ucsd.edu/"
+                variant="secondary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit COOL Lab
               </ButtonLink>
             </div>
           </div>
@@ -93,7 +102,7 @@ export default function ScrippsPierCaseStudyPage() {
       <SectionShell
         eyebrow="In The Lab"
         title="Real World Testing"
-        description="The Scripps program is progressing on two fronts: the benchtop unit is already undergoing real-world validation, while the probe is being calibrated for a planned May 2026 deployment at the pier."
+        description="The Scripps program is progressing on two fronts with the COOL Lab team: the benchtop unit is already supporting research validation work, while the probe is being calibrated for a planned May 2026 deployment at the pier."
         align="left"
         className="bg-white"
         containerClassName="max-w-5xl"
@@ -104,7 +113,7 @@ export default function ScrippsPierCaseStudyPage() {
               key={image.src}
               className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_72px_rgba(15,23,42,0.08)]"
             >
-              <div className="aspect-[4/3] bg-slate-100">
+              <div className="aspect-[3/4] bg-slate-100">
                 <SiteImage
                   src={image.src}
                   alt={image.alt}

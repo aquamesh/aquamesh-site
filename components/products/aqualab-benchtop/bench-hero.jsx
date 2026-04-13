@@ -59,7 +59,11 @@ export default function BenchHero() {
               <ButtonLink href="#specs" size="lg">
                 Tech Specs
               </ButtonLink>
-              <ButtonLink href="/preorder/" variant="secondary" size="lg">
+              <ButtonLink
+                href="/preorder/"
+                size="lg"
+                className="!bg-orange-500 !text-white shadow-lg shadow-orange-500/25 hover:!bg-orange-600 hover:shadow-orange-600/30"
+              >
                 Preorder
               </ButtonLink>
               <ButtonLink href="#contact" variant="secondary" size="lg">

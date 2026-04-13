@@ -61,7 +61,13 @@ function MarketingFooter({ route = "" }) {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {currentYear} AquaMesh Inc. All Rights Reserved.</p>
+          <div className="space-y-2">
+            <p>&copy; {currentYear} AquaMesh Inc. All Rights Reserved.</p>
+            <p>
+              <sup>1</sup> Starlink is a trademark of SpaceX. AquaMesh is not affiliated with or
+              endorsed by SpaceX.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-4">
             <a className="transition hover:text-white" href={routeHref("/privacy/")}>
               Privacy Policy

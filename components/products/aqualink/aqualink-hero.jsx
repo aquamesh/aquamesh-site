@@ -78,7 +78,10 @@ export default function AqualinkHero() {
                 >
                   <div className="flex items-center gap-3">
                     <IconBadge icon={stat.icon} />
-                    <p className="text-lg font-semibold leading-tight text-white">{stat.value}</p>
+                    <p className="text-lg font-semibold leading-tight text-white">
+                      {stat.value}
+                      {stat.footnote ? <sup>{stat.footnote}</sup> : null}
+                    </p>
                   </div>
                   <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-300">
                     {stat.label}

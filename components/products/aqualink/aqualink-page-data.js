@@ -1,8 +1,9 @@
 export const aqualinkHeroStats = [
   {
-    value: "5 Radios",
-    label: "Multi-network ready",
-    icon: "fa-solid fa-tower-broadcast"
+    value: "Starlink Direct-to-Cell\u2122 connectivity",
+    label: "Remote uplink",
+    footnote: "1",
+    icon: "fa-solid fa-satellite-dish"
   },
   {
     value: "4x RS485",

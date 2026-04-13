@@ -59,8 +59,8 @@ export const storyPanels = [
       }
     ],
     mediaClassName: "bench-story-media bench-story-media--terrain",
-    imageSrc: "bench_top_angle_trans.webp",
-    imageAlt: "AquaLab benchtop top angle view",
+    imageSrc: "bench_vials.webp",
+    imageAlt: "AquaLab benchtop with cuvettes",
     badgeTitle: "Field-to-lab continuity",
     badgeCopy:
       "Designed as part of the AquaMesh ecosystem, not a standalone lab instrument."

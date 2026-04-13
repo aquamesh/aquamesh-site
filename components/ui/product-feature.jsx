@@ -62,6 +62,7 @@ function ProductContent({ product }) {
             key={cta.label}
             href={cta.href}
             variant={cta.variant}
+            className={cta.className}
             data-aos={cta.dataAos}
             data-aos-delay={cta.dataAosDelay}
           >

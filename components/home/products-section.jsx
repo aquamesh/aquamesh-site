@@ -49,7 +49,8 @@ const products = [
       {
         href: "/preorder/",
         label: "Preorder Now",
-        variant: "outline"
+        variant: "outline",
+        className: "!bg-orange-500 !text-white !ring-0 shadow-lg shadow-orange-500/25 hover:!bg-orange-600 hover:shadow-orange-600/30"
       }
     ],
     reverse: true,
