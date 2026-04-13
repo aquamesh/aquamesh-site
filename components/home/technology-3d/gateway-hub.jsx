@@ -7,7 +7,7 @@ import { CanvasTexture, MathUtils, SRGBColorSpace } from "three";
 import { terrainHeight } from "./river-geometry";
 
 const GATEWAY_SITE_X = 6.45;
-const GATEWAY_SITE_Z = 2.05;
+const GATEWAY_SITE_Z = 9.2;
 const GATEWAY_POS = [
   GATEWAY_SITE_X,
   terrainHeight(GATEWAY_SITE_X, GATEWAY_SITE_Z) + 0.02,

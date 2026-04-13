@@ -34,12 +34,12 @@ const CAMERA_VIEWS = {
     target: [-3.55, 0.05, 8.85],
   },
   gateway: {
-    position: [6.7, 0.75, 2.7],
-    target: [6.45, 0.7, 2.28],
+    position: [6.7, 0.75, 9.85],
+    target: [6.45, 0.7, 9.43],
   },
   cloud: {
-    position: [6.1, 8.55, 14.6],
-    target: [2.6, 5.25, 1.0],
+    position: [6.1, 8.55, 15.6],
+    target: [6.45, 5.2, 9.2],
   },
 };
 

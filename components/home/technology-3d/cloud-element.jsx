@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { MathUtils } from "three";
 
-const CLOUD_POS = [6.2, 7.4, -5.6];
+const CLOUD_POS = [6.45, 5.2, 9.2];
 
 export { CLOUD_POS };
 
