@@ -31,6 +31,7 @@ function FooterColumn({ title, links }) {
 function MarketingFooter({ route = "" }) {
   const quickLinks = getFooterQuickLinks(route);
   const productLinks = getFooterProductLinks(route);
+  const showStarlinkFootnote = route === "products/aqualink-hub";
   const description =
     route === "products/aquaspectra-probe"
       ? "Continuous optical sensing, resilient telemetry, and deployable field systems for modern monitoring programs."
@@ -63,10 +64,12 @@ function MarketingFooter({ route = "" }) {
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-2">
             <p>&copy; {currentYear} AquaMesh Inc. All Rights Reserved.</p>
-            <p>
-              <sup>1</sup> Starlink is a trademark of SpaceX. AquaMesh is not affiliated with or
-              endorsed by SpaceX.
-            </p>
+            {showStarlinkFootnote ? (
+              <p>
+                <sup>1</sup> Starlink is a trademark of SpaceX. AquaMesh is not affiliated with
+                or endorsed by SpaceX.
+              </p>
+            ) : null}
           </div>
           <div className="flex flex-wrap gap-4">
             <a className="transition hover:text-white" href={routeHref("/privacy/")}>
