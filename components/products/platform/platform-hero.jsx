@@ -31,7 +31,7 @@ export default function PlatformHero() {
                 AquaView
               </h1>
               <p className="mt-6 text-lg leading-8 text-slate-200 sm:text-xl">
-                A web application for monitoring, visualizing, and analyzing
+                AI operations dashboard for monitoring, visualizing, and analyzing
                 water quality data from connected AquaMesh sensors in real time.
               </p>
             </div>
